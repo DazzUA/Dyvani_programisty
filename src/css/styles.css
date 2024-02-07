@@ -5,21 +5,48 @@
   |============================
 */
 @import url('./reset.css');
-@import url('./vite-promo.css');
-@import url('./header.css');
-
+/**/
+@import url('./home_css/header_hero.css');
+@import url('./home_css/quote_of_the_day.css');
+@import url('./home_css/exercises.css');
+@import url('./home_css/110_min.css');
+@import url('./home_css/footer.css');
+/**/
+@import url('./favorites_css/header_favorites.css');
+@import url('./favorites_css/quote_of_the_day_favorives.css');
+@import url('./favorites_css/110_min_favorites.css');
+@import url('./favorites_css/favorites_section.css');
+/**/
+@import url('./modal_window.css');
+/*base_styles*/
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  --white-bg-color: rgb(246, 246, 246);
+  --white-color: rgb(255, 255, 255);
+  --dark-grey-color: rgb(126, 132, 127);
+  --grey-color: rgb(232, 232, 232);
+  --light-grey-color: rgb(246, 246, 246);
+  --black-color: rgb(27, 27, 27);
+}
 
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+html {
+  scroll-behavior: smooth;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--light-grey-color);
+  background-color: var(--white-bg-color);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

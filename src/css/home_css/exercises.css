@@ -167,6 +167,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 .MainPartName::first-letter {
   text-transform: uppercase;

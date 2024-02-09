@@ -2,6 +2,7 @@ import axios from 'axios';
 const filterButtons = document.querySelector('.filter-buttons');
 const exerciseFiltersList = document.querySelector('.exercise-filters-list');
 const ExercisesHead = document.querySelector('.ExercisesHead');
+const pagination = document.querySelector('.pagination');
 
 const BASE_URL = 'https://energyflow.b.goit.study/api';
 exerciseFiltersList.addEventListener('click', onCardClick);
@@ -24,8 +25,14 @@ async function onCardClick(event) {
   try {
     const data = await getExercisesByFilter(filterValue, nameValue);
     // це буде масив об'єктів
-    exerciseFiltersList.innerHTML = createMarkUp(data);
+    console.log(data);
+    exerciseFiltersList.innerHTML = createMarkUp(data.results);
     ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue);
+    const FilterBtn = document.querySelector('#FilterBtn');
+    console.log(FilterBtn);
+    FilterBtn.addEventListener('click', onBtnClick);
+    // пагінація
+    pagination.innerHTML = '';
   } catch (error) {
     console.log(error);
   }
@@ -40,21 +47,21 @@ async function getExercisesByFilter(filterValue, nameValue) {
           muscles: nameValue,
         },
       });
-      return response.data.results;
+      return response.data;
     } else if (filterValue === 'Body parts') {
       const response = await axios.get(`${BASE_URL}/exercises`, {
         params: {
           bodypart: nameValue,
         },
       });
-      return response.data.results;
+      return response.data;
     } else {
       const response = await axios.get(`${BASE_URL}/exercises`, {
         params: {
           equipment: nameValue,
         },
       });
-      return response.data.results;
+      return response.data;
     }
   } catch (error) {
     console.log(error);
@@ -108,7 +115,7 @@ function updateExercisesHeaderMarkup(nameValue) {
   return `<div>
   <h2 class="title-exercises">Exercises / <span class="NameValue"> ${nameValue}</span></h2>
   <div class="ExercisesHeared">
-  <div class="list-exercises filter-buttons ">
+  <div class="list-exercises filter-buttons" id='FilterBtn'>
     <button class="item-exercises" data-filter="Muscles">Muscles</button>
     <button class="item-exercises" data-filter="Body parts">Body parts</button>
     <button class="item-exercises" data-filter="Equipment">Equipment</button>
@@ -126,34 +133,29 @@ function updateExercisesHeaderMarkup(nameValue) {
 `;
 }
 // ---------------------------------------------------------------------------------------------------------------------
-filterButtons.addEventListener('click', filterBtnClick);
 
-async function filterBtnClick(event) {
-  // preventDefault напево нетреба (нема посилань і сабміту)
-  event.preventDefault();
-  // тут посилання на ДОМ-ел на який клікнули
-  const filterValue = event.target;
-  // дістаємо значення дата-атрибута елемента, на який клацнули
-  const qwer = filterValue.dataset.filter;
-  // чому робиш пустим ul при виклику функції?
-  // exerciseFiltersList.innerHTML = '';
-  console.log(qwer);
-  // tagName чи nodeName?
-  if (event.target.tagName !== 'BUTTON') {
+// тут має бути код для реалізації кліку назад на фільтри
+
+// це виклик функції Данила. Треба щоб він зробив експорт
+async function onBtnClick(event) {
+  if (event.target === event.currentTarget) {
     return;
   }
+  // дістаємо значення дата-атрибута елемента, на який клацнули
+  const filterValue = event.target.dataset.filter;
+  console.log(filterValue);
+  // чому робиш пустим ul при виклику функції?
+  // exerciseFiltersList.innerHTML = '';
   try {
+    const data = await getExercise(filterValue);
     // передаємо аргументом значення дата атрибута кнопки на яку клікнули
-    getExercises(qwer).then(data => {
-      console.log(data);
-      exerciseFiltersList.innerHTML = markupExercises(data);
-    });
+    exerciseFiltersList.innerHTML = markupExercise(data);
   } catch (error) {
     console.log(error);
   }
 }
 // по замовчувнню значення фільтра буде 'Muscles'
-async function getExercises(filter = filterValueDefault) {
+async function getExercise(filter = filterValueDefault) {
   try {
     const response = await axios.get(`${BASE_URL}/filters`, {
       params: {
@@ -168,7 +170,7 @@ async function getExercises(filter = filterValueDefault) {
   }
 }
 // функція отримує масив об'єктів
-function markupExercises(results) {
+function markupExercise(results) {
   const markup = results
     .map(
       ({
@@ -189,3 +191,7 @@ function markupExercises(results) {
   // exerciseFiltersList.insertAdjacentHTML('beforeend', markup);
 }
 // --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+
+// пагінація

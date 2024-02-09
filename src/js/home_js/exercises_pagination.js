@@ -70,19 +70,19 @@ function createMarkUp(array) {
           <p class='Workout'>workout</p>
           <div class='RatingWrapper'><p>${rating}</p>
           <svg class='StarIcon' width='13' height='13'>
-          <use href='/src/img/symbol-defs.svg#icon-star'></use>
+          <use href='./img/symbol-defs.svg#icon-star'></use>
         </svg></div>
         </div>
         <div class='StartBtn'>
           <p>Start</p>
           <svg width='13' height='13'>
-          <use href='/src/img/symbol-defs.svg#icon-arrow'></use>
+          <use href='./img/symbol-defs.svg#icon-arrow'></use>
         </svg>
         </div>
       </div>
       <div class='CardMainPart'>
       <div class='RunIconWrapper'><svg width='14' height='14'>
-          <use href='/src/img/symbol-defs.svg#icon-running'></use>
+          <use href='./img/symbol-defs.svg#icon-running'></use>
         </svg></div>
         <p class='MainPartName'>${name}</p>
       </div>
@@ -97,6 +97,7 @@ function createMarkUp(array) {
           <p class='CardFooterTextDescr'>Target: <span class='CardFooterTextValue'>${target}</span></p>
         </li>
       </ul>
+      
     </li>`;
     })
     .join('');
@@ -107,7 +108,7 @@ function updateExercisesHeaderMarkup(nameValue) {
   return `<div>
   <h2 class="title-exercises">Exercises / <span class="NameValue"> ${nameValue}</span></h2>
   <div class="ExercisesHeared">
-  <div class="list-exercises filter-buttons">
+  <div class="list-exercises filter-buttons ">
     <button class="item-exercises" data-filter="Muscles">Muscles</button>
     <button class="item-exercises" data-filter="Body parts">Body parts</button>
     <button class="item-exercises" data-filter="Equipment">Equipment</button>
@@ -117,10 +118,74 @@ function updateExercisesHeaderMarkup(nameValue) {
       <input class='SearchInput' name="search" placeholder="Search" type="search" id="search" />
       <button class='SearchButton' type="submit">
         <svg class='IconSearch' width='18' height='18'>
-          <use href='/src/img/symbol-defs.svg#icon-search'></use>
+          <use href='./img/symbol-defs.svg#icon-search'></use>
         </svg>
       </button>
     </form></div>
 </div>
 `;
 }
+// ---------------------------------------------------------------------------------------------------------------------
+filterButtons.addEventListener('click', filterBtnClick);
+
+async function filterBtnClick(event) {
+  // preventDefault напево нетреба (нема посилань і сабміту)
+  event.preventDefault();
+  // тут посилання на ДОМ-ел на який клікнули
+  const filterValue = event.target;
+  // дістаємо значення дата-атрибута елемента, на який клацнули
+  const qwer = filterValue.dataset.filter;
+  // чому робиш пустим ul при виклику функції?
+  // exerciseFiltersList.innerHTML = '';
+  console.log(qwer);
+  // tagName чи nodeName?
+  if (event.target.tagName !== 'BUTTON') {
+    return;
+  }
+  try {
+    // передаємо аргументом значення дата атрибута кнопки на яку клікнули
+    getExercises(qwer).then(data => {
+      console.log(data);
+      exerciseFiltersList.innerHTML = markupExercises(data);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+// по замовчувнню значення фільтра буде 'Muscles'
+async function getExercises(filter = filterValueDefault) {
+  try {
+    const response = await axios.get(`${BASE_URL}/filters`, {
+      params: {
+        filter: filter,
+        page: 1,
+        limit: 20,
+      },
+    });
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+  }
+}
+// функція отримує масив об'єктів
+function markupExercises(results) {
+  const markup = results
+    .map(
+      ({
+        name,
+        filter,
+        imgUrl,
+      }) => ` <li class='ExercisesItem' data-filter='${filter}' data-name='${name}'>
+        <img class="img-exercises" src="${imgUrl}" alt="${filter}">
+        <div>
+          <p>${name}</p>
+          <p>${filter}</p>
+        </div>
+      </li>`
+    )
+    .join('');
+  return markup;
+  // треба іннерhtml, щоб при кліку відбувалась заміна розмітки, а не продовження
+  // exerciseFiltersList.insertAdjacentHTML('beforeend', markup);
+}
+// --------------------------------------------------------------------------------------

@@ -19,15 +19,34 @@ if (screenWidth <= 375) {
   currentLimit = 12;
 }
 
+async function getExercises() {
+  try {
+    const response = await axios.get(`${BASE_URL}/filters`, {
+      params: {
+        filter: filterValueDefault,
+        page: currentPage,
+        limit: currentLimit,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function filterBtnClick(event) {
   event.preventDefault();
-  const filterValue = event.target.dataset.filter;
+  currentPage = 1;
+  const filterValue = event.target;
+  const qwer = filterValue.dataset.filter;
+  filterValueDefault = qwer;
   exerciseFiltersList.innerHTML = '';
   if (event.target.tagName !== 'BUTTON') {
     return;
   }
   try {
-    getExercises(filterValue).then(data => {
+    getExercises(qwer).then(data => {
       const { results, totalPages, page } = data;
       markupExercises(results);
       if (totalPages > 1) {
@@ -37,22 +56,6 @@ async function filterBtnClick(event) {
         pagination.innerHTML = '';
       }
     });
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-async function getExercises(filter = filterValueDefault) {
-  try {
-    const response = await axios.get(`${BASE_URL}/filters`, {
-      params: {
-        filter: filter,
-        page: currentPage,
-        limit: currentLimit,
-      },
-    });
-
-    return response.data;
   } catch (error) {
     console.log(error);
   }
@@ -86,6 +89,7 @@ async function onPaginationPages(e) {
   exerciseFiltersList.innerHTML = '';
   try {
     const { results, page, totalPages } = await getExercises();
+    const filter = results[0].filter;
 
     if (page === totalPages) {
       return;

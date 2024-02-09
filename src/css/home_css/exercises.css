@@ -1,0 +1,95 @@
+.exercises {
+  border-radius: 30px;
+  padding: 40px 20px;
+  background: rgb(232, 232, 232);
+}
+
+.title-exercises {
+  color: rgb(27, 27, 27);
+  font-family: DM Sans;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+
+.exercise-filters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.list-exercises {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 40px;
+}
+
+.item-exercises {
+  padding: 7px 14px;
+  color: rgb(27, 27, 27);
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+  border: none;
+  border-radius: 30px;
+  background: rgb(246, 246, 246);
+}
+
+.filter-list {
+  position: relative;
+  cursor: pointer;
+}
+
+.img-exercises {
+  border: 1px solid rgba(246, 246, 246, 0.3);
+  border-radius: 12px;
+
+  background: lightgray;
+}
+
+.filter-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    0deg,
+    rgba(16, 16, 16, 0.7) 0%,
+    rgba(16, 16, 16, 0.7) 100%
+  );
+}
+
+.filter-exercises {
+  color: rgb(246, 246, 246);
+  font-family: DM Sans;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-transform: capitalize;
+}
+
+.filter-name {
+  color: rgba(246, 246, 246, 0.4);
+  font-family: DM Sans;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+}

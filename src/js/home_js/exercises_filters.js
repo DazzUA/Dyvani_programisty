@@ -64,7 +64,11 @@ async function filterBtnClick(event) {
 function markupExercises(results) {
   const markup = results
     .map(
-      ({ name, filter, imgUrl }) => ` <li class="filter-list" data-filter>
+      ({
+        name,
+        filter,
+        imgUrl,
+      }) => ` <li class="filter-list ExercisesItem" data-filter='${filter}' data-name='${name}'>
         <img class="img-exercises" src="${imgUrl}" alt="${filter}">
         <div class="filter-text">
           <p class="filter-exercises">${name}</p>

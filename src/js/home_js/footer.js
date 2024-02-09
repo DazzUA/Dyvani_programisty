@@ -4,9 +4,9 @@ import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
 
 const refs = {
-  form: document.querySelector('.footer-form'),
-  input: document.querySelector('.form-input'),
-  submit: document.querySelector('.modal-button'),
+  form: document.querySelector('.footerForm'),
+  input: document.querySelector('.formInput'),
+  submit: document.querySelector('.modalButton'),
 };
 const BASE_URL = 'https://energyflow.b.goit.study/api/subscription';
 const localStorageKey = 'feedback-form-state';

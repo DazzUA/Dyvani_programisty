@@ -93,3 +93,159 @@
   line-height: 18px;
   letter-spacing: 0px;
 }
+
+/* ТУТ ПОЧИНАЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises.subcategories.js */
+
+.WorkoutCard {
+  width: 424px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  padding: 16px;
+}
+
+.ExerciseCategoryList {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 28px;
+  column-gap: 20px;
+}
+.CardHeader {
+  display: flex;
+  margin-bottom: 29px;
+  justify-content: space-between;
+}
+.CardMainPart {
+  display: flex;
+  margin-bottom: 12px;
+  align-items: center;
+}
+.CardFooter {
+  display: flex;
+  gap: 8px;
+}
+.StartBtn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #1b1b1b;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  line-height: 1.5;
+  stroke: #1b1b1b;
+  fill: white;
+}
+.WorkoutWrapper {
+  display: flex;
+}
+.CardFooterTextDescr {
+  color: rgba(27, 27, 27, 0.4);
+  font-family: 'DM Sans';
+  font-size: 12px;
+  line-height: 1.5;
+}
+.CardFooterTextValue {
+  color: #1b1b1b;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  line-height: 1.5;
+  text-transform: capitalize;
+}
+.RunIconWrapper {
+  width: 24px;
+  height: 24px;
+  fill: #f6f6f6;
+  background-color: #7e847f;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+}
+.MainPartName::first-letter {
+  text-transform: uppercase;
+}
+.MainPartName {
+  color: #1b1b1b;
+  font-family: 'DM Sans';
+  font-size: 24px;
+  line-height: 1.33;
+}
+.Workout {
+  border-radius: 15px;
+  background-color: #7e847f;
+  padding: 5px 8px;
+  text-transform: uppercase;
+  color: #f6f6f6;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  margin-right: 16px;
+}
+.RatingWrapper {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  color: #1b1b1b;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  line-height: 1.5;
+  fill: #eea10c;
+}
+.StarIcon {
+  padding: 5px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.ExercisesHeared {
+  display: flex;
+  justify-content: space-between;
+}
+.title-exercises {
+  text-transform: capitalize;
+}
+.IconSearch {
+  stroke: black;
+  fill: #f6f6f6;
+}
+.SearchButton {
+  border: none;
+  background-color: #f6f6f6;
+}
+.ExercisesForm {
+  border-radius: 30px;
+  background: #f6f6f6;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+}
+.SearchInput {
+  border: none;
+  background-color: #f6f6f6;
+  color: #1b1b1b;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  line-height: 1.5;
+}
+.NameValue {
+  color: rgba(27, 27, 27, 0.5);
+  font-family: 'DM Sans';
+  font-size: 24px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+}
+
+/* ТУТ ЗАКІНЧУЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises.subcategories.js */

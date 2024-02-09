@@ -1,0 +1,146 @@
+.header-inern {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-nav {
+  display: flex;
+}
+.header-menu {
+  display: flex;
+  align-items: center;
+  width: 211px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 60px;
+  background: #7e847f;
+}
+
+.mobile-icons {
+  display: flex;
+  gap: 12px;
+}
+.mobile-icons-list {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(126, 132, 127, 0.2);
+}
+.mobile-fill {
+  fill: #7e847f;
+}
+.header-logo {
+  color: #1b1b1b;
+  font-family: 'DM Sans';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px; /* 100% */
+  letter-spacing: -0.56px;
+}
+.header-link {
+  display: flex;
+  padding: 6px 26px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.current {
+  color: #1b1b1b;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  margin: 8px 0px 8px 16px;
+  border-radius: 30px;
+  background: #fff;
+}
+
+.favorites {
+  color: #f6f6f6;
+
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+.hero-text-main {
+  color: #1b1b1b;
+
+  font-family: 'DM Sans';
+  font-size: 120px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 115px; /* 95.833% */
+  letter-spacing: -2.4px;
+  padding: 225px 33px 25px;
+}
+
+.hero-word {
+  color: #7e847f;
+  font-family: 'DM Sans';
+  font-size: 120px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 115px;
+  letter-spacing: -2.4px;
+}
+.hero-container {
+  border-radius: 0px 50px 50px 50px;
+  background: #fff;
+}
+.hero-double {
+  display: flex;
+}
+.hero-text {
+  color: #1b1b1b;
+  font-family: 'DM Sans';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 133.333% */
+  letter-spacing: -0.18px;
+  width: 528px;
+  padding-left: 33px;
+}
+
+.quota-item {
+  color: #f6f6f6;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  display: flex;
+  padding: 4px 16px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  border: 1px solid rgba(246, 246, 246, 0.3);
+}
+
+.small-quota {
+  width: 704px;
+  height: 884px;
+  background-image: url('../../img/desktop/hero/women.desk.png');
+  background-repeat: no-repeat;
+  border-radius: 50px 0px 50px 50px;
+  display: flex;
+
+  align-items: end;
+}
+
+.quota-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  height: 72px;
+  width: 196px;
+  margin-left: 48px;
+  margin-bottom: 32px;
+}

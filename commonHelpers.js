@@ -1,10 +1,10 @@
-import{a as o}from"./assets/vendor-0cb09735.js";(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))t(r);new MutationObserver(r=>{for(const i of r)if(i.type==="childList")for(const n of i.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&t(n)}).observe(document,{childList:!0,subtree:!0});function s(r){const i={};return r.integrity&&(i.integrity=r.integrity),r.referrerPolicy&&(i.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?i.credentials="include":r.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function t(r){if(r.ep)return;r.ep=!0;const i=s(r);fetch(r.href,i)}})();const v=document.querySelector(".filter-buttons"),f=document.querySelector(".exercise-filters-list"),p=document.querySelector(".pagination"),$="https://energyflow.b.goit.study/api";let h="Muscles",g=1,m=window.innerWidth,c=0;v.addEventListener("click",b);m<=375?c=8:(m<=768,c=12);async function y(){try{return(await o.get(`${$}/filters`,{params:{filter:h,page:g,limit:c}})).data}catch(e){console.log(e)}}async function b(e){e.preventDefault(),g=1;const s=e.target.dataset.filter;if(h=s,f.innerHTML="",e.target.tagName==="BUTTON")try{y(s).then(t=>{const{results:r,totalPages:i,page:n}=t;if(x(r),i>1){const d=E(n,i);p.innerHTML=d}else p.innerHTML=""})}catch(t){console.log(t)}}function x(e){const a=e.map(({name:s,filter:t,imgUrl:r})=>` <li class="filter-list ExercisesItem" data-filter='${t}' data-name='${s}'>
-        <img class="img-exercises" src="${r}" alt="${t}">
+import{a as o}from"./assets/vendor-0cb09735.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const i of r)if(i.type==="childList")for(const n of i.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&a(n)}).observe(document,{childList:!0,subtree:!0});function s(r){const i={};return r.integrity&&(i.integrity=r.integrity),r.referrerPolicy&&(i.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?i.credentials="include":r.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function a(r){if(r.ep)return;r.ep=!0;const i=s(r);fetch(r.href,i)}})();const v=document.querySelector(".filter-buttons"),f=document.querySelector(".exercise-filters-list"),p=document.querySelector(".pagination"),b="https://energyflow.b.goit.study/api";let y="Muscles",g=1,m=window.innerWidth,c=0;v.addEventListener("click",$);m<=375?c=8:(m<=768,c=12);async function h(){try{return(await o.get(`${b}/filters`,{params:{filter:y,page:g,limit:c}})).data}catch(e){console.log(e)}}async function $(e){e.preventDefault(),g=1;const s=e.target.dataset.filter;if(y=s,f.innerHTML="",e.target.tagName==="BUTTON")try{h(s).then(a=>{const{results:r,totalPages:i,page:n}=a;if(x(r),i>1){const d=E(n,i);p.innerHTML=d}else p.innerHTML=""})}catch(a){console.log(a)}}function x(e){const t=e.map(({name:s,filter:a,imgUrl:r})=>` <li class="filter-list ExercisesItem" data-filter='${a}' data-name='${s}'>
+        <img class="img-exercises" src="${r}" alt="${a}">
         <div class="filter-text">
           <p class="filter-exercises">${s}</p>
-          <p class="filter-name">${t}</p>
+          <p class="filter-name">${a}</p>
         </div>
-      </li>`).join("");f.insertAdjacentHTML("beforeend",a)}function E(e,a){let s="";for(let t=1;t<=a;t+=1)s+=`<button class="pagination-btn" type="button">${t}</button>`;return s}async function L(e){g=e.target.textContent,f.innerHTML="";try{const{results:a,page:s,totalPages:t}=await y(),r=a[0].filter;if(s===t)return;x(a)}catch(a){console.log(a)}}p.addEventListener("click",L);const w=document.querySelector(".filter-buttons"),u=document.querySelector(".exercise-filters-list"),T=document.querySelector(".ExercisesHead"),l="https://energyflow.b.goit.study/api";u.addEventListener("click",M);async function M(e){if(e.target===e.currentTarget)return;u.classList.add("ExerciseCategoryList");const a=e.target.closest(".ExercisesItem");console.log(a);const s=a.dataset.filter,t=a.dataset.name;console.log(s),console.log(t);try{const r=await S(s,t);u.innerHTML=B(r),T.innerHTML=C(t)}catch(r){console.log(r)}}async function S(e,a){try{return e==="Muscles"?(await o.get(`${l}/exercises`,{params:{muscles:a}})).data.results:e==="Body parts"?(await o.get(`${l}/exercises`,{params:{bodypart:a}})).data.results:(await o.get(`${l}/exercises`,{params:{equipment:a}})).data.results}catch(s){console.log(s)}}function B(e){return e.map(({rating:s,name:t,burnedCalories:r,time:i,bodyPart:n,target:d})=>`<li class="WorkoutCard">
+      </li>`).join("");f.insertAdjacentHTML("beforeend",t)}function E(e,t){let s="";for(let a=1;a<=t;a+=1)s+=`<button class="pagination-btn" type="button">${a}</button>`;return s}async function L(e){g=e.target.textContent,f.innerHTML="";try{const{results:t,page:s,totalPages:a}=await h(),r=t[0].filter;if(s===a)return;x(t)}catch(t){console.log(t)}}p.addEventListener("click",L);document.querySelector(".filter-buttons");const u=document.querySelector(".exercise-filters-list"),w=document.querySelector(".ExercisesHead"),T=document.querySelector(".pagination"),l="https://energyflow.b.goit.study/api";u.addEventListener("click",S);async function S(e){if(e.target===e.currentTarget)return;u.classList.add("ExerciseCategoryList");const t=e.target.closest(".ExercisesItem");console.log(t);const s=t.dataset.filter,a=t.dataset.name;console.log(s),console.log(a);try{const r=await M(s,a);console.log(r),u.innerHTML=B(r.results),w.innerHTML=C(a);const i=document.querySelector("#FilterBtn");console.log(i),i.addEventListener("click",k),T.innerHTML=""}catch(r){console.log(r)}}async function M(e,t){try{return e==="Muscles"?(await o.get(`${l}/exercises`,{params:{muscles:t}})).data:e==="Body parts"?(await o.get(`${l}/exercises`,{params:{bodypart:t}})).data:(await o.get(`${l}/exercises`,{params:{equipment:t}})).data}catch(s){console.log(s)}}function B(e){return e.map(({rating:s,name:a,burnedCalories:r,time:i,bodyPart:n,target:d})=>`<li class="WorkoutCard">
       <div class='CardHeader'>
         <div class='WorkoutWrapper'>
           <p class='Workout'>workout</p>
@@ -24,7 +24,7 @@ import{a as o}from"./assets/vendor-0cb09735.js";(function(){const a=document.cre
       <div class='RunIconWrapper'><svg width='14' height='14'>
           <use href='./img/symbol-defs.svg#icon-running'></use>
         </svg></div>
-        <p class='MainPartName'>${t}</p>
+        <p class='MainPartName'>${a}</p>
       </div>
       <ul class="CardFooter">
         <li>
@@ -41,7 +41,7 @@ import{a as o}from"./assets/vendor-0cb09735.js";(function(){const a=document.cre
     </li>`).join("")}function C(e){return`<div>
   <h2 class="title-exercises">Exercises / <span class="NameValue"> ${e}</span></h2>
   <div class="ExercisesHeared">
-  <div class="list-exercises filter-buttons ">
+  <div class="list-exercises filter-buttons" id='FilterBtn'>
     <button class="item-exercises" data-filter="Muscles">Muscles</button>
     <button class="item-exercises" data-filter="Body parts">Body parts</button>
     <button class="item-exercises" data-filter="Equipment">Equipment</button>
@@ -56,11 +56,11 @@ import{a as o}from"./assets/vendor-0cb09735.js";(function(){const a=document.cre
       </button>
     </form></div>
 </div>
-`}w.addEventListener("click",k);async function k(e){e.preventDefault();const s=e.target.dataset.filter;if(console.log(s),e.target.tagName==="BUTTON")try{H(s).then(t=>{console.log(t),u.innerHTML=q(t)})}catch(t){console.log(t)}}async function H(e=filterValueDefault){try{return(await o.get(`${l}/filters`,{params:{filter:e,page:1,limit:20}})).data.results}catch(a){console.log(a)}}function q(e){return e.map(({name:s,filter:t,imgUrl:r})=>` <li class='ExercisesItem' data-filter='${t}' data-name='${s}'>
-        <img class="img-exercises" src="${r}" alt="${t}">
+`}async function k(e){if(e.target===e.currentTarget)return;const t=e.target.dataset.filter;console.log(t);try{const s=await F(t);u.innerHTML=H(s)}catch(s){console.log(s)}}async function F(e=filterValueDefault){try{return(await o.get(`${l}/filters`,{params:{filter:e,page:1,limit:20}})).data.results}catch(t){console.log(t)}}function H(e){return e.map(({name:s,filter:a,imgUrl:r})=>` <li class='ExercisesItem' data-filter='${a}' data-name='${s}'>
+        <img class="img-exercises" src="${r}" alt="${a}">
         <div>
           <p>${s}</p>
-          <p>${t}</p>
+          <p>${a}</p>
         </div>
       </li>`).join("")}
 //# sourceMappingURL=commonHelpers.js.map

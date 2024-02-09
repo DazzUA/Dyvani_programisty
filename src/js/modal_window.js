@@ -2,8 +2,10 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
 
+const modalBackdrop = document.querySelector('.backdrop');
 const card = document.querySelector('.modal');
 const button = document.querySelector('.search-button');
+const hiddenClass = 'is-hidden';
 
 button.addEventListener('click', modalcard);
 
@@ -19,21 +21,21 @@ async function fetchImages() {
 
 function displayImages(cardObj) {
   card.innerHTML = ` <div>
-  <img src="${cardObj.gifUrl}"/>
+  <img class="image-gif" src="${cardObj.gifUrl}" alt="gif"/>
   </div>
   <div>
   <h3>${cardObj.name}</h3>
   <div>
   <p>${cardObj.rating}</p>
   </div>
-  <ul>
+  <ul class="modal-list">
   <li>${cardObj.target}</li>
   <li>${cardObj.bodyPart}</li>
   <li>${cardObj.equipment}</li>
   <li>${cardObj.popularity}</li>
   <li>${cardObj.burnedCalories}/${cardObj.time} min</li>
   </ul>
-  <p>${cardObj.description}</p>
+  <p class="description">${cardObj.description}</p>
   <button type="button">Add to favorites</button>
   </div>  `;
 }
@@ -43,4 +45,12 @@ async function modalcard() {
     const cardObj = await fetchImages();
     displayImages(cardObj);
   } catch (error) {}
+}
+
+function hideButton() {
+  modalBackdrop.classList.add(hiddenClass);
+}
+
+function showButton() {
+  modalBackdrop.classList.remove(hiddenClass);
 }

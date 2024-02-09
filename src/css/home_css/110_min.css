@@ -1,0 +1,49 @@
+.daily_norm {
+  margin-left: 20px;
+}
+.daily_norm_div {
+  display: flex;
+  border-radius: 30px;
+  background: rgb(27, 27, 27);
+  color: rgba(246, 246, 246, 0.6);
+  width: 100%;
+}
+.daily_norm_icon {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: rgba(246, 246, 246, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  margin-left: 20px;
+}
+.daily_norm_svg {
+  fill: rgb(246, 246, 246);
+}
+.daily_norm_div_info {
+  margin: 40px 20px 40px 70px;
+}
+.daily_norm_info {
+  margin-top: 14px;
+}
+
+/*media*/
+@media screen and (min-width: 375px) {
+  .daily_norm_div {
+    width: 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .daily_norm_div {
+    width: 736px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .daily_norm_div {
+    width: 704px;
+  }
+}

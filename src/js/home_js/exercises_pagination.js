@@ -34,6 +34,27 @@ async function onCardClick(event) {
       'submit',
       onFormSubmit(filterValue, nameValue)
     );
+    // =================================new=========================//
+    async function onFormSubmit(query) {
+      try {
+        const url = `https://energyflow.b.goit.study/api/exercises?`;
+
+        const response = await axios.get(url, {
+          params: {
+            bodypart: 'back',
+            keyword: query,
+            page: 1,
+            limit: 9,
+          },
+        });
+        renderExercises(response.data.results); // Отображение результатов на странице
+      } catch (error) {
+        handleError(error); // Обработка ошибки при запросе данных
+      } finally {
+        searchForm.reset(); // сброс полей форми
+      }
+    }
+    // =================================new=========================//
     // -------------------------------new
     const FilterBtn = document.querySelector('#FilterBtn');
     console.log(FilterBtn);

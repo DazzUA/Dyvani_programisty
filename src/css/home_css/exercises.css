@@ -1,0 +1,246 @@
+.exercises {
+  border-radius: 30px;
+  padding: 40px 20px;
+  background: rgb(232, 232, 232);
+}
+
+.title-exercises {
+  color: rgb(27, 27, 27);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+
+.exercise-filters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.list-exercises {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 40px;
+}
+
+.item-exercises {
+  padding: 7px 14px;
+  color: rgb(27, 27, 27);
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+  border: none;
+  border-radius: 30px;
+  background: rgb(246, 246, 246);
+}
+
+.filter-list {
+  position: relative;
+  cursor: pointer;
+}
+
+.img-exercises {
+  border: 1px solid rgba(246, 246, 246, 0.3);
+  border-radius: 12px;
+
+  background: lightgray;
+}
+
+.filter-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    0deg,
+    rgba(16, 16, 16, 0.7) 0%,
+    rgba(16, 16, 16, 0.7) 100%
+  );
+}
+
+.filter-exercises {
+  color: rgb(246, 246, 246);
+  font-family: DM Sans;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-transform: capitalize;
+}
+
+.filter-name {
+  color: rgba(246, 246, 246, 0.4);
+  font-family: DM Sans;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+}
+
+/* ТУТ ПОЧИНАЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises.subcategories.js */
+
+.WorkoutCard {
+  width: 424px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  padding: 16px;
+  height: 165px;
+}
+
+.ExerciseCategoryList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 28px;
+  column-gap: 20px;
+  justify-content: center;
+}
+.CardHeader {
+  display: flex;
+  margin-bottom: 29px;
+  justify-content: space-between;
+}
+.CardMainPart {
+  display: flex;
+  margin-bottom: 12px;
+  align-items: center;
+  gap: 16px;
+}
+/* .MainFooterWrapper {
+  display: flex;
+  flex-direction: column;
+} */
+.CardFooter {
+  display: flex;
+  gap: 8px;
+}
+.StartBtn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #1b1b1b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  stroke: #1b1b1b;
+  fill: white;
+}
+.WorkoutWrapper {
+  display: flex;
+}
+.CardFooterTextDescr {
+  color: rgba(27, 27, 27, 0.4);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.CardFooterTextValue {
+  color: #1b1b1b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  text-transform: capitalize;
+}
+.RunIconWrapper {
+  width: 24px;
+  height: 24px;
+  fill: #f6f6f6;
+  background-color: #7e847f;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.MainPartName::first-letter {
+  text-transform: uppercase;
+}
+.MainPartName {
+  color: #1b1b1b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  line-height: 1.33;
+}
+.Workout {
+  border-radius: 15px;
+  background-color: #7e847f;
+  padding: 5px 8px;
+  text-transform: uppercase;
+  color: #f6f6f6;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  margin-right: 16px;
+}
+.RatingWrapper {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  color: #1b1b1b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  fill: #eea10c;
+}
+/* .StarIcon {
+
+} */
+.ExercisesHeared {
+  display: flex;
+  justify-content: space-between;
+}
+.title-exercises {
+  text-transform: capitalize;
+}
+.IconSearch {
+  stroke: black;
+  fill: #f6f6f6;
+}
+.SearchButton {
+  border: none;
+  background-color: #f6f6f6;
+}
+.ExercisesForm {
+  border-radius: 30px;
+  background: #f6f6f6;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+}
+.SearchInput {
+  border: none;
+  background-color: #f6f6f6;
+  color: #1b1b1b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  outline: none;
+}
+.NameValue {
+  color: rgba(27, 27, 27, 0.5);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+}
+
+/* ТУТ ЗАКІНЧУЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises.subcategories.js */

@@ -34,7 +34,7 @@ html {
 
 body {
   font-family: 'DM Sans', sans-serif;
-  color: var(--light-grey-color);
+  /*color: var(--light-grey-color);*/
   background-color: var(--white-bg-color);
 }
 

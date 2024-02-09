@@ -48,21 +48,33 @@
           <input
             class="form-input"
             type="email"
+            pattern="^[\\w\-]+(\\.[\\w\-]+)*@([\\w\-]+\\.)+[a-zA-Z]{2,7}$"
             id="modal-footer"
             name="modal-footer"
             placeholder="Email"
+            required
           />
         </label>
         <button class="modal-button" type="submit">Send</button>
       </form>
       <div class="footer-text">
-        <p class="footer-privace footer-privace-ots">
-          Energy Flow. All rights reserved.
-        </p>
-        <p class="footer-privace">Privacy Policy</p>
-        <p class="footer-privace">/</p>
-        <p class="footer-privace">Terms of Service</p>
+        <p class="footer-privacy">Energy Flow. All rights reserved.</p>
+        <div class="last">
+          <p class="footer-privacy">Privacy Policy</p>
+          <p class="footer-privacy">/</p>
+          <p class="footer-privacy">Terms of Service</p>
+        </div>
       </div>
     </div>
+  </div>
+  <!-- loader -->
+  <div class="lod-div">
+    <span class="loader"></span>
+  </div>
+  <!-- scroll up -->
+  <div class="scroll" id="scrollUpButton">
+    <svg class="scrool-svg" width="13" height="13">
+      <use href="./img/symbol-defs.svg#icon-arrow-scrollup"></use>
+    </svg>
   </div>
 </section>

@@ -11,41 +11,85 @@ const refs = {
 const BASE_URL = 'https://energyflow.b.goit.study/api/subscription';
 const localStorageKey = 'feedback-form-state';
 const localFormData = JSON.parse(localStorage.getItem(localStorageKey));
+// loader
+const loaderForm = document.querySelector('.loader');
+
+if (localFormData !== null && localFormData !== undefined) {
+  refs.input.value = localFormData.email;
+} else {
+  refs.input.value = '';
+}
 
 refs.submit.addEventListener('click', searchForm);
 async function searchForm(event) {
-  event.preventDefault();
   const email = refs.input.value.trim();
+  event.preventDefault();
+  //   console.log('____', emailInput);
+  //   if (!emailInput.checkValidity()) {
+  //     console.log('validiti = ', emailInput.checkValidity());
+  //     iziToast.show({
+  //       // class: 'error-svg',
+  //       position: 'topRight',
+  //       message: 'Please enter a valid email adress',
+  //       maxWidth: '432',
+  //       messageColor: '#fff',
+  //       messageSize: '16px',
+  //       backgroundColor: 'pink',
+  //       close: false,
+  //       closeOnClick: true,
+  //     });
+  //   }
   try {
     const response = await axios.post(BASE_URL, {
       email: email,
     });
-    // console.log('Response:', response);
-    createMessage(
-      JSON.stringify(JSON.parse(response.request.responseText).message)
-    );
+    iziToast.show({
+      // class: 'error-svg',
+      position: 'topRight',
+      message: JSON.stringify(
+        JSON.parse(response.request.responseText).message
+      ),
+      maxWidth: '352',
+      messageColor: '#fff',
+      messageSize: '15px',
+      backgroundColor: 'rgba(27, 27, 27, 0.7)',
+      close: false,
+      closeOnClick: true,
+    });
+    // }
+    refs.input.value = '';
   } catch (error) {
-    // console.error(
-    //   'Error:',
-    //   JSON.stringify(JSON.parse(error.request.responseText).message)
-    // );
-    createMessage(
-      JSON.stringify(JSON.parse(error.request.responseText).message)
-    );
+    iziToast.show({
+      position: 'topRight',
+      message: JSON.stringify(JSON.parse(error.request.responseText).message),
+      maxWidth: '352',
+      messageColor: '#fff',
+      messageSize: '15px',
+      backgroundColor: '#EF4040',
+      close: false,
+      closeOnClick: true,
+    });
+
+    refs.input.value = '';
   }
-  refs.input.innerHTML = '';
 }
-function createMessage(message) {
-  iziToast.show({
-    class: 'error-svg',
-    position: 'topRight',
-    icon: 'error-svg',
-    message: message,
-    maxWidth: '432',
-    messageColor: '#fff',
-    messageSize: '16px',
-    backgroundColor: '#EF4040',
-    close: false,
-    closeOnClick: true,
-  });
+
+// loader для очікування відповіді на клік
+function showLoader(state = true) {
+  refs.loaderForm.style.display = !state ? 'none' : 'inline-block';
+  filterButtons.disabled = state;
+}
+// scrool
+const scrollBtn = document.querySelector('.scroll');
+window.addEventListener('scroll', trackScroll);
+function trackScroll() {}
+scrollBtn.addEventListener('click', goTop);
+function goTop() {
+  if (
+    document.body.scrollTop !== 0 ||
+    document.documentElement.scrollTop !== 0
+  ) {
+    window.scrollBy(0, -75);
+    setTimeout(goTop, 0);
+  }
 }

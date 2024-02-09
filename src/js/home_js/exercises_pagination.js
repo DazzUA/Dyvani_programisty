@@ -28,6 +28,13 @@ async function onCardClick(event) {
     console.log(data);
     exerciseFiltersList.innerHTML = createMarkUp(data.results);
     ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue);
+    // ------------------------------new
+    const ExercisesForm = document.querySelector('.ExercisesForm');
+    ExercisesForm.addEventListener(
+      'submit',
+      onFormSubmit(filterValue, nameValue)
+    );
+    // -------------------------------new
     const FilterBtn = document.querySelector('#FilterBtn');
     console.log(FilterBtn);
     FilterBtn.addEventListener('click', onBtnClick);

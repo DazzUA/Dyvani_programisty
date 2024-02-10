@@ -10,50 +10,27 @@ const addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
 const openClass = 'IsOpen';
 let cardObj = {};
 
-button.addEventListener('click', modalCard);
+button.addEventListener('click', onStartBtnClick);
 
-async function modalCard() {
+async function onStartBtnClick() {
   try {
     cardObj = await fetchImages();
     showModal();
     displayImages(cardObj);
     addRemoveFavorites.addEventListener('submit', addFavorites);
-    modalClose.addEventListener('click', function (event) {
-      if (event.target === modalClose) {
-        hideModal();
-      }
-    });
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        hideModal();
-      }
-    });
 
-    modalBackdrop.addEventListener('click', function (event) {
-      if (event.target === modalBackdrop) {
-        hideModal();
-      }
-    });
+    card.addEventListener('click', hideModal);
   } catch (error) {}
 }
 
-function modalCloseFunc() {
-  modalClose.addEventListener('click', function (event) {
-    if (event.target === modalClose) {
-      hideModal();
-    }
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-      hideModal();
-    }
-  });
-
-  modalBackdrop.addEventListener('click', function (event) {
-    if (event.target === modalBackdrop) {
-      hideModal();
-    }
-  });
+function modalCloseFunc(event) {
+  if (
+    event.currentTarget === modalClose ||
+    event.key === 'Escape' ||
+    event.target === modalBackdrop
+  ) {
+    hideModal();
+  }
 }
 
 async function fetchImages() {
@@ -104,14 +81,4 @@ function hideModal() {
   modalBackdrop.classList.remove(openClass);
 }
 
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape') {
-    close();
-  }
-});
-
-modalBackdrop.addEventListener('click', function (event) {
-  if (event.target === modalBackdrop) {
-    close();
-  }
-});
+export { onStartBtnClick };

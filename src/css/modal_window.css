@@ -20,7 +20,7 @@
 
 .Modal {
     position: absolute;
-    top: 8px;
+    top: 100px;
     max-width: 335px;
     border-radius: 20px;
     background-color: #FCFCFC;

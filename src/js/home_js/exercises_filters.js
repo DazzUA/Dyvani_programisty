@@ -11,7 +11,7 @@ let screenWidth = window.innerWidth;
 let currentLimit = 0;
 //-----------------------------------------------Слухачі------------------------------------------------------------------------
 filterButtons.addEventListener('click', filterBtnClick);
-pagination.addEventListener('click', onPaginationPages);
+pagination.addEventListener('click', onPaginationFilterPages);
 //--------------------------------------------------Кількість картинок в залежності від розміру екрана---------------------------
 if (screenWidth <= 375) {
   currentLimit = 8;
@@ -44,7 +44,8 @@ async function fetchDefaultApiUrl() {
     const response = await getExercises().then(data => {
       const { results, totalPages, page } = data;
       if (results && results.length > 0) {
-        markupExercises(results);
+        exerciseFiltersList.innerHTML = markupExercises(results);
+
         const pag = paginationPages(page, totalPages);
         pagination.innerHTML = pag;
       } else {
@@ -82,7 +83,8 @@ async function filterBtnClick(event) {
   try {
     getExercises(qwer).then(data => {
       const { results, totalPages, page } = data;
-      markupExercises(results);
+      exerciseFiltersList.innerHTML = markupExercises(results);
+
       if (1) {
         const pag = paginationPages(page, totalPages);
         pagination.innerHTML = pag;
@@ -96,7 +98,7 @@ async function filterBtnClick(event) {
 }
 //-----------------------------------------Функція перехід по сторінкам------------------------------------------------------
 
-async function onPaginationPages(e) {
+async function onPaginationFilterPages(e) {
   currentPage = e.target.textContent;
   Array.from(e.currentTarget.children).map(item => {
     if (item.textContent !== currentPage) {
@@ -112,7 +114,7 @@ async function onPaginationPages(e) {
       return;
     }
 
-    markupExercises(results);
+    exerciseFiltersList.innerHTML = markupExercises(results);
   } catch (error) {
     console.log(error);
   }
@@ -127,7 +129,7 @@ function markupExercises(results) {
         name,
         filter,
         imgUrl,
-      }) => ` <li class="FilterList ExercisesItem" data-filter='${filter}' data-name='${name}'>
+      }) => ` <li class='FilterList ExercisesItem' data-filter='${filter}' data-name='${name}'>
         <img class="ImgExercises" src="${imgUrl}" alt="${filter}">
         <div class="FilterText">
           <p class="FilterExercises">${name}</p>
@@ -136,7 +138,7 @@ function markupExercises(results) {
       </li>`
     )
     .join('');
-  exerciseFiltersList.insertAdjacentHTML('beforeend', markup);
+  return markup;
 }
 //---------------------------------------------------Розмітка номерів сторінки--------------------------------------------
 
@@ -149,4 +151,6 @@ function paginationPages(page, totalPages) {
   return paginationHtml;
 }
 
-export { onPaginationPages };
+export { onPaginationFilterPages };
+export { paginationPages };
+export { markupExercises };

@@ -148,3 +148,5 @@ function paginationPages(page, totalPages) {
   }
   return paginationHtml;
 }
+
+export { onPaginationPages };

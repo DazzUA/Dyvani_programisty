@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { onPaginationPages } from './exercises_filters';
 
 const filterButtons = document.querySelector('.FilterButtons');
 const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
@@ -15,6 +16,8 @@ let nameValue;
 exerciseFiltersList.addEventListener('click', onCardClick);
 
 async function onCardClick(event) {
+  pagination.removeEventListener('click', onPaginationPages);
+  pagination.removeEventListener('click', onPaginationPagesbyFilter);
   if (event.target === event.currentTarget) {
     return;
   }
@@ -83,7 +86,7 @@ async function onCardClick(event) {
     // }
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!НОВЕ
     // вішаємо на дів з кнопками нумерації сторінок слухача подій при кліку
-    pagination.addEventListener('click', onPaginationPages);
+    pagination.addEventListener('click', onPaginationPage);
   } catch (error) {
     console.log(error);
   }
@@ -199,7 +202,7 @@ async function onBtnClick(event) {
   // робимо поточну сторінку першою
   currentPage = 1;
   // видаляємо з нумерації сторінок слухача попереднього
-  pagination.removeEventListener('click', onPaginationPages);
+  pagination.removeEventListener('click', onPaginationPage);
   // pagination.addEventListener('click', onPaginationPagesbyFilter);
   if (event.target === event.currentTarget) {
     return;
@@ -260,11 +263,11 @@ function markupExercise(results) {
         name,
         filter,
         imgUrl,
-      }) => ` <li class='ExercisesItem' data-filter='${filter}' data-name='${name}'>
+      }) => ` <li class='FilterList ExercisesItem' data-filter='${filter}' data-name='${name}'>
         <img class="ImgExercises" src="${imgUrl}" alt="${filter}">
-        <div>
-          <p>${name}</p>
-          <p>${filter}</p>
+        <div class="FilterText">
+          <p class="FilterExercises">${name}</p>
+          <p class="FilterName">${filter}</p>
         </div>
       </li>`
     )
@@ -287,7 +290,7 @@ function paginationPages(totalPages) {
   return paginationHtml;
 }
 
-async function onPaginationPages(e) {
+async function onPaginationPage(e) {
   // при кліку на цифру сторінки будемо діставати цифру (текст-контент кнопки: 1, 4, 7...)
   currentPage = e.target.textContent;
   console.log(currentPage); // 7

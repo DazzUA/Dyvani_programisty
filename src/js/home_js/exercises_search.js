@@ -1,11 +1,15 @@
 // Что реализовано в коде:
 // Пользователь может вводить поисковый запрос и отправлять его на сервер;
 // После получения ответа от сервера, результаты поиска отображаются на странице;
+// Созданы элементы списка с названиями упражнений и добавляены в список результатов поиска.
 // В случае отсутствия результатов поиска выводится соответствующее уведомление.
 
 import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import Pagination from 'tui-pagination';
+
+import { createMarkUp } from './exercises_filters.js';
 
 // базовый URL для отправки запросов к API
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
@@ -44,25 +48,27 @@ async function handleSearch(event) {
   }
 
   // Вызываем функция onFormSubmit с передачей параметров запроса.
-  await onFormSubmit(queryParams);
+  try {
+    const card = await onFormSubmit(query);
+    createMarkUp(card.data); // передаем массив упражнений из объекта card.data
+  } catch (error) {}
 }
 
 // Определяем асинхронную функцию onFormSubmit. Функция принимает объект запроса query
-async function onFormSubmit(query) {
+export async function onFormSubmit(query) {
   try {
     // Выполняем GET-запрос к API с передачей параметров запроса. Результат запроса сохраняем в переменной response
-    const response = await axios.get(`${BASE_URL}`, {
+    const response = await axios.get(BASE_URL, {
       params: {
         bodypart: '',
         muscles: '',
         equipment: '',
-        keyword: query.query, // эти значения из queryParams
-        page: query.page,
+        keyword: query.query, // передаем значение из свойства query объекта query, которое содержит строку ключевого слова для поиска
+        page: query.page, // передаем значение из свойства page объекта query, которое содержит номер страницы
         limit: 9,
       },
     });
-    // Вызываем функцию renderExercises с передачей массива упражнений из ответа
-    renderExercises(response.data.results);
+    return response.data;
   } catch (error) {
     handleError(error); // Вывод ошибки в консоль при возникновении ошибки запроса
   }
@@ -91,3 +97,5 @@ function showNoResultsToast() {
       'Unfortunately, no results were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs',
   });
 }
+
+//--------------------------------------Пагинация------------------------------------//

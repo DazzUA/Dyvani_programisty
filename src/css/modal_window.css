@@ -1,4 +1,4 @@
-.backdrop {
+.Backdrop {
     position: fixed;
     inset: 0;
     display: flex;
@@ -6,24 +6,23 @@
     align-items: center;
     padding: 20px;
     background-color: #2E2F4266;
-    opacity: 1;
+    opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.backdrop.is-hidden {
-    opacity: 0;
+.Backdrop.IsOpen {
+    opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
 
-.modal {
+.Modal {
     position: absolute;
     top: 8px;
-    width: 335px;
-    height: 824px;
-
+    max-width: 335px;
+    border-radius: 20px;
     background-color: #FCFCFC;
     border-radius: 4px;
     padding: 72px 16px 24px;
@@ -34,7 +33,7 @@
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-close {
+.ModalClose {
     position: absolute;
     display: flex;
     align-items: center;
@@ -51,31 +50,98 @@
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-close:hover,
-.modal-close:focus {
+.ModalClose:hover,
+.ModalClose:focus {
     background-color: #404bbf;
     border: none;
 }
 
-.close-modal-icon {
+/* .CloseModalIcon {
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+} */
 
-.modal-close:hover .close-modal-icon,
-.modal-close:focus .close-modal-icon {
+/* .ModalClose:hover .CloseModalIcon,
+.ModalClose:focus .CloseModalIcon {
     fill: #ffffff;
+    
+} */
+
+.ModalImage {
+    border-radius: 12px;
+    background-color: rgba(27, 27, 27, 0.2);
+    background-blend-mode: multiply;
 }
 
-.image-gif {
+.ImageGif {
     width: 295px;
     height: 258px;
+    border-radius: 12px;
+    opacity: 0.6;
 }
 
-.modal-list {
-    width: 295px;
+.ModalTitle {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    color: #1b1b1b;
 }
 
-.description {
+.ModalTitle::first-letter {
+    text-transform: uppercase;
+}
+
+/* .ModalRating{} */
+
+.NumberRating {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #1b1b1b;
+}
+
+/* .StarRating{} */
+
+
+.ModalList {
     width: 295px;
-    height: 125px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.ModalListItem {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.Description {
+    width: 295px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: rgba(27, 27, 27, 0.6);
+}
+
+
+.AddRemoveFavorites {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 9px;
+    border-radius: 30px;
+    padding: 12px 83px;
+    width: 295px;
+    height: 42px;
+    background: #7e847f;
+    border: none;
 }

@@ -23,13 +23,14 @@ async function onCardClick(event) {
   const liEl = event.target.closest('.ExercisesItem'); // при кліку на картку шукаємо найближчий елемент у якого буде заданий селектор (це li)
   filterValue = liEl.dataset.filter; //Muscles   // тепер можемо отримати li дата-атрибути
   nameValue = liEl.dataset.name; // abductors
+
   try {
+    ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue); // оновлюємо хедер секції Exercises
     const { totalPages, results } = await getExercisesByFilter(
       filterValue,
       nameValue
     );
     exerciseFiltersList.innerHTML = createMarkUp(results); // це буде масив об'єктів
-    ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue); // оновлюємо хедер секції Exercises
 
     // ------------------------------new КОД ДЛЯ ДЕНИСА --- ПОМИЛКА--- ПОКИ КОМЕНТУЮ---------------------------------------
     // const ExercisesForm = document.querySelector('.ExercisesForm');
@@ -63,6 +64,7 @@ async function onCardClick(event) {
 
     const FilterBtn = document.querySelector('#FilterBtn'); // додаємо на три кнопки фільтрів слухача по кліку
     FilterBtn.addEventListener('click', onBtnClick);
+    FilterBtn.addEventListener('click', onBtnClickForFormDelete);
     pagination.innerHTML = ''; // пагінація
     if (totalPages > 1) {
       const pag = paginationPages(totalPages); // const pag це буде рядок розмітки кнопок(нумерація сторінок)
@@ -72,6 +74,13 @@ async function onCardClick(event) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function onBtnClickForFormDelete() {
+  const ExercisesForm = document.querySelector('.ExercisesForm');
+  // ???vформа видаляється при першому кліку, а при другому знову хоче видалити, а її вже нема
+  ExercisesForm.remove();
+  FilterBtn.removeEventListener('click', onBtnClickForFormDelete);
 }
 
 async function getExercisesByFilter(filterValue, nameValue, currentPage) {
@@ -158,9 +167,9 @@ function updateExercisesHeaderMarkup(nameValue) {
   <h2 class="TitleExercises">Exercises / <span class="NameValue"> ${nameValue}</span></h2>
   <div class="ExercisesHeared">
   <div class="ListExercises FilterButtons" id='FilterBtn'>
-    <button class="ItemExercises" data-filter="Muscles">Muscles</button>
-    <button class="ItemExercises" data-filter="Body parts">Body parts</button>
-    <button class="ItemExercises" data-filter="Equipment">Equipment</button>
+    <button class="ItemExercises" data-filter="Muscles" id='MusclesBtn'>Muscles</button>
+    <button class="ItemExercises" data-filter="Body parts" id='BodyPartBtn'>Body parts</button>
+    <button class="ItemExercises" data-filter="Equipment" id='EquipmentBtn'>Equipment</button>
   </div>
     <form action="" class="ExercisesForm">
       <label for="#search" class="visually-hidden">Search</label>
@@ -181,6 +190,13 @@ async function onBtnClick(event) {
   exerciseFiltersList.classList.remove('ExerciseCategoryList');
   currentPage = 1; // робимо поточну сторінку першою
   pagination.removeEventListener('click', onPaginationPage); // видаляємо з нумерації сторінок слухача попереднього
+  Array.from(event.currentTarget.children).map(item => {
+    if (item.textContent !== event.target.textContent) {
+      item.classList.remove('ButtonIsActive');
+    } else {
+      event.target.classList.add('ButtonIsActive');
+    }
+  });
   if (event.target === event.currentTarget) {
     return;
   }
@@ -198,9 +214,7 @@ async function onBtnClick(event) {
     // тут видалення тексту після слеша та форми
     const titleExercises = document.querySelector('.TitleExercises');
     titleExercises.innerHTML = 'Exercises';
-    const ExercisesForm = document.querySelector('.ExercisesForm');
-    // ????????????????????????vформа видаляється при першому кліку, а при другому знову хоче видалити, а її вже нема????????????????????????????????????????????/
-    // ExercisesForm.remove();
+    // ------------------------------------------
   } catch (error) {
     console.log(error);
   }
@@ -276,5 +290,7 @@ async function onPaginationPagesbyFilter(e) {
     console.log(error);
   }
 }
+
+export { createMarkUp };
 
 // Импорт необходимых библиотек

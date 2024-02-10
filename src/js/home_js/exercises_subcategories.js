@@ -166,9 +166,9 @@ function updateExercisesHeaderMarkup(nameValue) {
   <h2 class="TitleExercises">Exercises / <span class="NameValue"> ${nameValue}</span></h2>
   <div class="ExercisesHeared">
   <div class="ListExercises FilterButtons" id='FilterBtn'>
-    <button class="ItemExercises" data-filter="Muscles">Muscles</button>
-    <button class="ItemExercises" data-filter="Body parts">Body parts</button>
-    <button class="ItemExercises" data-filter="Equipment">Equipment</button>
+    <button class="ItemExercises" data-filter="Muscles" id='MusclesBtn'>Muscles</button>
+    <button class="ItemExercises" data-filter="Body parts" id='BodyPartBtn'>Body parts</button>
+    <button class="ItemExercises" data-filter="Equipment" id='EquipmentBtn'>Equipment</button>
   </div>
     <form action="" class="ExercisesForm">
       <label for="#search" class="visually-hidden">Search</label>

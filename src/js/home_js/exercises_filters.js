@@ -1,16 +1,18 @@
 import axios from 'axios';
 
-const filterButtons = document.querySelector('.filter-buttons');
-const exerciseFiltersList = document.querySelector('.exercise-filters-list');
-const pagination = document.querySelector('.pagination');
+const filterButtons = document.querySelector('.FilterButtons');
+const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
+const pagination = document.querySelector('.Pagination');
+
 const BASE_URL = 'https://energyflow.b.goit.study/api';
 let filterValueDefault = 'Muscles';
 let currentPage = 1;
 let screenWidth = window.innerWidth;
 let currentLimit = 0;
-
+//-----------------------------------------------Слухачі------------------------------------------------------------------------
 filterButtons.addEventListener('click', filterBtnClick);
-
+pagination.addEventListener('click', onPaginationPages);
+//--------------------------------------------------Кількість картинок в залежності від розміру екрана---------------------------
 if (screenWidth <= 375) {
   currentLimit = 8;
 } else if (screenWidth <= 768) {
@@ -18,7 +20,7 @@ if (screenWidth <= 375) {
 } else {
   currentLimit = 12;
 }
-
+//---------------------------------------------------Запит на сервер-------------------------------------------------------------
 async function getExercises() {
   try {
     const response = await axios.get(`${BASE_URL}/filters`, {
@@ -35,13 +37,45 @@ async function getExercises() {
   }
 }
 
+//---------------------------------------------------Дефолтний запит для відображення Muscles при загрузці сторінки-----------------------
+
+async function fetchDefaultApiUrl() {
+  try {
+    const response = await getExercises().then(data => {
+      const { results, totalPages, page } = data;
+      if (results && results.length > 0) {
+        markupExercises(results);
+        const pag = paginationPages(page, totalPages);
+        pagination.innerHTML = pag;
+      } else {
+        console.error('No exercises found.');
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching exercises:', error);
+  }
+}
+
+//---------------------------------------------------Виклик функцію для відображення Muscles при загрузці сторінки-----------------------
+
+fetchDefaultApiUrl();
+
+//-----------------------------------------Функція фільтрів Muscles, Body parts, Equipment--------------------------------------------
 async function filterBtnClick(event) {
   event.preventDefault();
+
   currentPage = 1;
   const filterValue = event.target;
   const qwer = filterValue.dataset.filter;
   filterValueDefault = qwer;
   exerciseFiltersList.innerHTML = '';
+  Array.from(event.currentTarget.children).map(item => {
+    if (item.textContent !== event.target.textContent) {
+      item.classList.remove('ButtonIsActive');
+    } else {
+      event.target.classList.add('ButtonIsActive');
+    }
+  });
   if (event.target.tagName !== 'BUTTON') {
     return;
   }
@@ -49,7 +83,7 @@ async function filterBtnClick(event) {
     getExercises(qwer).then(data => {
       const { results, totalPages, page } = data;
       markupExercises(results);
-      if (totalPages > 1) {
+      if (1) {
         const pag = paginationPages(page, totalPages);
         pagination.innerHTML = pag;
       } else {
@@ -60,6 +94,31 @@ async function filterBtnClick(event) {
     console.log(error);
   }
 }
+//-----------------------------------------Функція перехід по сторінкам------------------------------------------------------
+
+async function onPaginationPages(e) {
+  currentPage = e.target.textContent;
+  Array.from(e.currentTarget.children).map(item => {
+    if (item.textContent !== currentPage) {
+      item.classList.remove('PaginationBtnIsActive');
+    } else {
+      e.target.classList.add('PaginationBtnIsActive');
+    }
+  });
+  exerciseFiltersList.innerHTML = '';
+  try {
+    const { results, page, totalPages } = await getExercises();
+    if (page === totalPages) {
+      return;
+    }
+
+    markupExercises(results);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//---------------------------------------------------Розмітка Muscles, Body parts, Equipment--------------------------------------------
 
 function markupExercises(results) {
   const markup = results
@@ -68,40 +127,26 @@ function markupExercises(results) {
         name,
         filter,
         imgUrl,
-      }) => ` <li class="filter-list ExercisesItem" data-filter='${filter}' data-name='${name}'>
-        <img class="img-exercises" src="${imgUrl}" alt="${filter}">
-        <div class="filter-text">
-          <p class="filter-exercises">${name}</p>
-          <p class="filter-name">${filter}</p>
+      }) => ` <li class="FilterList ExercisesItem" data-filter='${filter}' data-name='${name}'>
+        <img class="ImgExercises" src="${imgUrl}" alt="${filter}">
+        <div class="FilterText">
+          <p class="FilterExercises">${name}</p>
+          <p class="FilterName">${filter}</p>
         </div>
       </li>`
     )
     .join('');
   exerciseFiltersList.insertAdjacentHTML('beforeend', markup);
 }
+//---------------------------------------------------Розмітка номерів сторінки--------------------------------------------
 
 function paginationPages(page, totalPages) {
   let paginationHtml = '';
+
   for (let i = 1; i <= totalPages; i += 1) {
-    paginationHtml += `<button class="pagination-btn" type="button">${i}</button>`;
+    paginationHtml += `<button class="PaginationBtn PaginationBtnIsActive" type="button">${i}</button>`;
   }
   return paginationHtml;
 }
 
-async function onPaginationPages(e) {
-  currentPage = e.target.textContent;
-  exerciseFiltersList.innerHTML = '';
-  try {
-    const { results, page, totalPages } = await getExercises();
-    const filter = results[0].filter;
-
-    if (page === totalPages) {
-      return;
-    }
-    markupExercises(results);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-pagination.addEventListener('click', onPaginationPages);
+export { onPaginationPages };

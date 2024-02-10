@@ -13,6 +13,7 @@ let nameValue;
 exerciseFiltersList.addEventListener('click', onCardClick);
 
 async function onCardClick(event) {
+  exerciseFiltersList.removeEventListener('click', onCardClick);
   exerciseFiltersList.classList.add('ExerciseCategoryList');
   pagination.removeEventListener('click', onPaginationPages);
   pagination.removeEventListener('click', onPaginationPagesbyFilter);
@@ -31,6 +32,9 @@ async function onCardClick(event) {
       nameValue
     );
     exerciseFiltersList.innerHTML = createMarkUp(results); // це буде масив об'єктів
+    const StartBtn = document.querySelector('.StartBtn');
+    // треба імпортувати функцію onStartBtnClick -------
+    // StartBtn.addEventListener('click', onStartBtnClick)
 
     // ------------------------------new КОД ДЛЯ ДЕНИСА --- ПОМИЛКА--- ПОКИ КОМЕНТУЮ---------------------------------------
     // const ExercisesForm = document.querySelector('.ExercisesForm');
@@ -121,7 +125,7 @@ async function getExercisesByFilter(filterValue, nameValue, currentPage) {
 
 function createMarkUp(array) {
   const markup = array
-    .map(({ rating, name, burnedCalories, time, bodyPart, target }) => {
+    .map(({ rating, name, burnedCalories, time, bodyPart, target, _id }) => {
       return `<li class="WorkoutCard">
       <div class='CardHeader'>
         <div class='WorkoutWrapper'>
@@ -131,7 +135,7 @@ function createMarkUp(array) {
           <use href='./img/symbol-defs.svg#icon-star'></use>
         </svg></div>
         </div>
-        <div class='StartBtn'>
+        <div class='StartBtn' data-id='${_id}'>
           <p>Start</p>
           <svg width='13' height='13'>
           <use href='./img/symbol-defs.svg#icon-arrow'></use>
@@ -187,6 +191,7 @@ function updateExercisesHeaderMarkup(nameValue) {
 // це виклик функції Данила. Треба щоб він зробив експорт
 // функція, яка спрацьовує коли ми клікаємо по фільтру (Muscle, Body Part, Equipment) і повертаємось назад
 async function onBtnClick(event) {
+  exerciseFiltersList.addEventListener('click', onCardClick);
   exerciseFiltersList.classList.remove('ExerciseCategoryList');
   currentPage = 1; // робимо поточну сторінку першою
   pagination.removeEventListener('click', onPaginationPage); // видаляємо з нумерації сторінок слухача попереднього

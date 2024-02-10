@@ -13,7 +13,7 @@
     <script type="module" crossorigin src="/Dyvani_programisty/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/Dyvani_programisty/assets/vendor-8cce9181.js">
     <link rel="stylesheet" href="/Dyvani_programisty/assets/vendor-e5212ee8.css">
-    <link rel="stylesheet" href="/Dyvani_programisty/assets/index-19363b5e.css">
+    <link rel="stylesheet" href="/Dyvani_programisty/assets/index-6b4643ff.css">
   </head>
   <body>
     
@@ -162,27 +162,29 @@
   <h2 class="favorites-title">Favorites</h2>
   <div class="div-favorites-section">
     <!----------- IF NOT FAVORITES EXERCISE -------------->
-
     <div class="message-favorites">
-      <img
-        class="dumbbell-favorites"
-        srcset="
-          ./img/mob/favorites/dumbbell.mob.png 1x,
-          ./img/favorites/dumbbell.mob@2x.png  2x
-        "
-        src="./img/favorites/dumbbell.mob.png"
-        alt="dumbbell"
-        width="85"
-        height="52"
-      />
-      <p class="text-favorites">
-        It appears that you haven't added any exercises to your favorites yet.
-        To get started, you can add exercises that you like to your favorites
-        for easier access in the future.
-      </p>
+      <div class="message-favorites-block">
+        <img
+          class="dumbbell-favorites"
+          srcset="
+            ../../img/mob/favorites/dumbbell.mob.png    1x,
+            ../../img/mob/favorites/dumbbell.mob@2x.png 2x
+          "
+          src="../../img/mob/favorites/dumbbell.mob.png"
+          alt="dumbbell"
+        />
+        <p class="text-favorites">
+          It appears that you haven't added any exercises to your favorites yet.
+          To get started, you can add exercises that you like to your favorites
+          for easier access in the future.
+        </p>
+      </div>
     </div>
 
-    <!----------- PAGINATION FOR MOBILE------------------>
+    <!---------- Favorite Card ------------>
+    <ul class="favorites-list"></ul>
+
+    <!----------- Pagination for mobile------------------>
     <div class="favorites-pagination-block">
       <button class="active-btn" aria-label="first-page" type="button">
         1
@@ -191,8 +193,7 @@
       <button aria-label="third-page" type="button">3</button>
     </div>
 
-    <!---------- Favorite Card ------------>
-    <ul class="favorites-list"></ul>
+    <button class="add-favorites">Add to favorites</button>
   </div>
 </section>
 

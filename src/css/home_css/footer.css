@@ -1,42 +1,33 @@
 .footerSection {
-  border: 1px solid black;
+  width: 335px;
   margin: 20px;
+  padding: 40px 20px 20px;
   border-radius: 30px;
-  /* background-image: linear-gradient(rgba(27, 27, 27, 0.7)),
-    url('../img/mob/basement/women.footer.jpg'); */
+  border: 1px solid black;
   background-image: url('../img/mob/basement/women.footer.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  font-family: DM Sans, sans-serif;
 }
-.footP {
-  margin: 40px 20px 20px;
-  width: 279px;
-}
-/* .footInner {
-  width: 279px;
-} */
 .footLogo {
   color: rgb(246, 246, 246);
-
   font-weight: 700;
   font-size: 16px;
   line-height: 1;
   letter-spacing: -0.02em;
-
   text-align: left;
-  /* padding: 40px; */
 }
 .footerH {
   font-weight: 400;
   font-size: 32px;
   line-height: 1;
-  letter-spacing: 0.02em;
-  width: 279px;
+  letter-spacing: -0.02em;
   margin-bottom: 20px;
   color: #f6f6f6;
   text-align: left;
-  /* font-family: DM Sans; */
+  font-family: DM Sans, sans-serif;
 }
 .accent {
   font-style: italic;
@@ -82,7 +73,7 @@
   border: 1px solid rgb(27, 27, 27);
 }
 .footerSvg {
-  fill: rgb(126, 132, 127);
+  fill: rgb(246, 246, 246);
   display: block;
   align-items: center;
   justify-content: center;
@@ -92,19 +83,6 @@
   fill: rgb(95, 101, 96);
 }
 .formInput {
-  /* position: static;
-  width: 295px;
-  height: 42px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 12px 246px 12px 14px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 12px 0px; */
-
   padding: 8px 16px;
   width: 295px;
   height: 42px;
@@ -113,6 +91,14 @@
   border: 1px solid rgb(246, 246, 246);
   outline: none;
   background-color: transparent;
+  margin-bottom: 12px;
+}
+.formInput::placeholder {
+  color: rgba(246, 246, 246, 0.6);
+}
+
+.formInput[type='email'] {
+  color: rgb(246, 246, 246);
 }
 .modalButton {
   width: 295px;

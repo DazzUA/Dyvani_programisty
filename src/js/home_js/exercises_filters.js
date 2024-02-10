@@ -123,7 +123,11 @@ async function onPaginationPages(e) {
 function markupExercises(results) {
   const markup = results
     .map(
-      ({ name, filter, imgUrl }) => ` <li class="FilterList" data-filter>
+      ({
+        name,
+        filter,
+        imgUrl,
+      }) => ` <li class="FilterList ExercisesItem" data-filter='${filter}' data-name='${name}'>
         <img class="ImgExercises" src="${imgUrl}" alt="${filter}">
         <div class="FilterText">
           <p class="FilterExercises">${name}</p>

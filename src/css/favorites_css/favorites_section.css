@@ -256,19 +256,16 @@
   flex-shrink: 0;
 }
 
-.favorites-name-part {
+.favorites-name-part.favorites-name-part {
   color: #1b1b1b;
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 20px;
   font-weight: 400;
   line-height: 1;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.favorites-name-part::first-word {
-  text-transform: capitalize;
 }
 
 .favorites-card-footer {

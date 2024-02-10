@@ -1,0 +1,159 @@
+.footerSection {
+  border: 1px solid black;
+  margin: 20px;
+  border-radius: 30px;
+  background-image: url('../img/mob/basement/women.footer.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.footLogo {
+  /* width: 150px;
+  height: 28px; */
+  color: black;
+  /* color: rgb(246, 246, 246); */
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 9px;
+  text-align: left;
+  /* padding: 40px; */
+}
+.footerH {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: black;
+  max-width: 279px;
+  margin-bottom: 20px;
+  /* color: #f6f6f6; */
+  text-align: left;
+}
+.accent {
+  font-style: italic;
+  color: red;
+  /* color: rgba(246, 246, 246, 0.3); */
+}
+.footerUl {
+  display: flex;
+  gap: 12px;
+  margin-top: 9px;
+  margin-bottom: 40px;
+}
+/* .foot-p{
+  display: block;
+  gap: 40px;
+} */
+.footerP {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: black;
+  /* color: #f6f6f6; */
+  margin-bottom: 20px;
+}
+.footerSocialList {
+  box-sizing: border-box;
+  /* border: 1px solid rgba(246, 246, 246, 0.2); */
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: 10px;
+}
+.footerSocialList:hover,
+.footerSocialList:focus {
+  border: 1px solid rgb(95, 101, 96);
+}
+.footerInput {
+  width: 295px;
+  height: 42px;
+  border-radius: 30px;
+  border: 1px solid #000000;
+  outline: none;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+.footerInput:hover,
+.footerInput:focus {
+  border: 1px solid red;
+  /* border: 1px solid rgb(27, 27, 27); */
+}
+.footerSvg {
+  fill: rgb(126, 132, 127);
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+.footerSvg:hover,
+.footerSvg:focus {
+  fill: rgb(95, 101, 96);
+}
+
+.modalButton {
+  width: 295px;
+  height: 42px;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+
+  border-radius: 30px;
+
+  background: rgb(126, 132, 127);
+  /* background-color: #0138ff; */
+  border: none;
+  padding: 0;
+  margin-bottom: 60px;
+}
+.modalButton:hover,
+.modalButton:focus {
+  background: rgb(95, 101, 96);
+}
+
+.footerText {
+  /* color: rgb(246, 246, 246); */
+  color: #000000;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.footerPrivacy {
+  padding-bottom: 10px;
+}
+.last {
+  display: flex;
+  gap: 8px;
+}
+
+/* loader */
+.lodDiv {
+  display: flex;
+  justify-content: center;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(27, 27, 27, 0.7);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  box-sizing: border-box;
+  animation: rotation 10s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

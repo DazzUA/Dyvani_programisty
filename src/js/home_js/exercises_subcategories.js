@@ -291,4 +291,6 @@ async function onPaginationPagesbyFilter(e) {
   }
 }
 
+export { createMarkUp };
+
 // Импорт необходимых библиотек

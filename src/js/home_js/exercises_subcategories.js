@@ -63,6 +63,7 @@ async function onCardClick(event) {
 
     const FilterBtn = document.querySelector('#FilterBtn'); // додаємо на три кнопки фільтрів слухача по кліку
     FilterBtn.addEventListener('click', onBtnClick);
+    FilterBtn.addEventListener('click', onBtnClickForFormDelete);
     pagination.innerHTML = ''; // пагінація
     if (totalPages > 1) {
       const pag = paginationPages(totalPages); // const pag це буде рядок розмітки кнопок(нумерація сторінок)
@@ -72,6 +73,13 @@ async function onCardClick(event) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function onBtnClickForFormDelete() {
+  const ExercisesForm = document.querySelector('.ExercisesForm');
+  // ???vформа видаляється при першому кліку, а при другому знову хоче видалити, а її вже нема
+  ExercisesForm.remove();
+  FilterBtn.removeEventListener('click', onBtnClickForFormDelete);
 }
 
 async function getExercisesByFilter(filterValue, nameValue, currentPage) {
@@ -198,9 +206,7 @@ async function onBtnClick(event) {
     // тут видалення тексту після слеша та форми
     const titleExercises = document.querySelector('.TitleExercises');
     titleExercises.innerHTML = 'Exercises';
-    const ExercisesForm = document.querySelector('.ExercisesForm');
-    // ????????????????????????vформа видаляється при першому кліку, а при другому знову хоче видалити, а її вже нема????????????????????????????????????????????/
-    // ExercisesForm.remove();
+    // ------------------------------------------
   } catch (error) {
     console.log(error);
   }

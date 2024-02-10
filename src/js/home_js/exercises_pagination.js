@@ -1,8 +1,8 @@
 import axios from 'axios';
-const filterButtons = document.querySelector('.filter-buttons');
-const exerciseFiltersList = document.querySelector('.exercise-filters-list');
+const filterButtons = document.querySelector('.FilterButtons');
+const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
 const ExercisesHead = document.querySelector('.ExercisesHead');
-const pagination = document.querySelector('.pagination');
+const pagination = document.querySelector('.Pagination');
 
 const BASE_URL = 'https://energyflow.b.goit.study/api';
 exerciseFiltersList.addEventListener('click', onCardClick);
@@ -141,12 +141,12 @@ function createMarkUp(array) {
 
 function updateExercisesHeaderMarkup(nameValue) {
   return `<div>
-  <h2 class="title-exercises">Exercises / <span class="NameValue"> ${nameValue}</span></h2>
+  <h2 class="TitleExercises">Exercises / <span class="NameValue"> ${nameValue}</span></h2>
   <div class="ExercisesHeared">
-  <div class="list-exercises filter-buttons" id='FilterBtn'>
-    <button class="item-exercises" data-filter="Muscles">Muscles</button>
-    <button class="item-exercises" data-filter="Body parts">Body parts</button>
-    <button class="item-exercises" data-filter="Equipment">Equipment</button>
+  <div class="ListExercises FilterButtons" id='FilterBtn'>
+    <button class="ItemExercises" data-filter="Muscles">Muscles</button>
+    <button class="ItemExercises" data-filter="Body parts">Body parts</button>
+    <button class="ItemExercises" data-filter="Equipment">Equipment</button>
   </div>
     <form action="" class="ExercisesForm">
       <label for="#search" class="visually-hidden">Search</label>
@@ -178,7 +178,7 @@ async function onBtnClick(event) {
     const data = await getExercise(filterValue);
     // передаємо аргументом значення дата атрибута кнопки на яку клікнули
     exerciseFiltersList.innerHTML = markupExercise(data);
-    const titleExercises = document.querySelector('.title-exercises');
+    const titleExercises = document.querySelector('.TitleExercises');
     titleExercises.innerHTML = 'Exercises';
     const ExercisesForm = document.querySelector('.ExercisesForm');
     ExercisesForm.remove();
@@ -211,7 +211,7 @@ function markupExercise(results) {
         filter,
         imgUrl,
       }) => ` <li class='ExercisesItem' data-filter='${filter}' data-name='${name}'>
-        <img class="img-exercises" src="${imgUrl}" alt="${filter}">
+        <img class="ImgExercises" src="${imgUrl}" alt="${filter}">
         <div>
           <p>${name}</p>
           <p>${filter}</p>

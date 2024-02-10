@@ -132,7 +132,7 @@ function createMarkUp(array) {
           <p class='CardFooterTextDescr'>Target: <span class='CardFooterTextValue'>${target}</span></p>
         </li>
       </ul>
-      
+
     </li>`;
     })
     .join('');
@@ -223,3 +223,4 @@ function markupExercise(results) {
 // --------------------------------------------------------------------------------------
 
 // пагінація
+// Импорт необходимых библиотек

@@ -1,6 +1,6 @@
 @media (max-width: 767px) {
   .favorites-pagination-block.close {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -319,7 +319,6 @@
     column-gap: 14px;
     row-gap: 20px;
     max-height: 740px;
-    /* overflow-y: scroll; */
   }
 
   .favorites-list-item {
@@ -440,11 +439,9 @@
 /*List Card Desktop*/
 @media (min-width: 1440px) {
   .favorites-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     column-gap: 20px;
     row-gap: 28px;
+    overflow-y: auto;
   }
 
   .favorites-list-item {

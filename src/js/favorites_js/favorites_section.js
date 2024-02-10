@@ -99,8 +99,7 @@ if (result === '/page-2.html') {
       event.target.classList.contains('favorites-icon-delete') ||
       event.target.classList.contains('favorites-icon-delete-use')
     ) {
-      id = event.target.closest('.favorites-list-item').id;
-
+      id = event.currentTarget.id;
       const index = parsedItem.findIndex(item => item.id == id);
       parsedItem.splice(index, 1);
       localStorage.setItem(storage, JSON.stringify(parsedItem));
@@ -242,6 +241,8 @@ if (result === '/page-2.html') {
     }
   });
 }
+
+//**Ігорю на кнопку*/
 
 favorites.addEventListener('click', () => {
   if (favorites.textContent.trim() == 'Add to favorites') {

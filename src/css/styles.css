@@ -5,6 +5,7 @@
   |============================
 */
 @import url('./reset.css');
+@import url('./container.css');
 /**/
 @import url('./home_css/header_hero.css');
 @import url('./home_css/quote_of_the_day.css');

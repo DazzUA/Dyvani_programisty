@@ -1,72 +1,93 @@
+// Что реализовано в коде:
+// Пользователь может вводить поисковый запрос и отправлять его на сервер;
+// После получения ответа от сервера, результаты поиска отображаются на странице;
+// В случае отсутствия результатов поиска выводится соответствующее уведомление.
+
 import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-const searchForm = document.querySelector('.SearchExercises'); // Получение ссылки на форму поиска
-const searchInput = document.querySelector('.SearchInput'); // Получение ссылки на поле ввода поискового запроса
-const searchList = document.querySelector('.SearchExercisesList'); // Получение ссылки на список результатов поиска
-const loadMoreButton = document.querySelector('#LoadMoreButton'); // Получение ссылки на кнопку "Загрузить еще"
+// базовый URL для отправки запросов к API
+const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 
-// let currentPage = 1; // Установка начального значения переменной currentPage равное 1. Текущая страница
-// const limit = 9; // Установка константы limit равное 9
-let query = '';
-searchForm.addEventListener('submit', handleSearch); // Добавление обработчика события submit на форму поиска
+// объект с ссылками на форму поиска, поле ввода и список результатов поиска
+const refs = {
+  searchForm: document.querySelector('.SearchExercises'),
+  searchInput: document.querySelector('.SearchInput'),
+  searchList: document.querySelector('.SearchExercisesList'),
+};
 
-function handleSearch(event) {
-  event.preventDefault(); // Предотвращение стандартного поведения формы
+// передаем параметры запроса при выполнении запроса к API. Задаем начальные параметры для поиска.
+const queryParams = {
+  query: '', // строка запроса для поиска
+  page: 1, // по умолчанию отображается первая страница результатов
+};
 
-  query = searchInput.value; // Извлечение поискового запроса из поля ввода
-  //   const bodypart = ''; // Установка пустого значения для bodypar, muscles, equipment
-  //   const muscles = '';
-  //   const equipment = '';
-  //   currentPage = 1; // Обнуление currentPage
+// повесили слушателя события submit на форму поиска, который вызывает функцию handleSearch при отправке формы.
+refs.searchForm.addEventListener('submit', handleSearch);
 
-  onFormSubmit(query); // Вызов функции onFormSubmit для получения данных и отображения результатов query, bodypart, muscles, equipment
+// Определяем асинхронную функцию handleSearch. Функция принимает событие в качестве аргумента
+
+async function handleSearch(event) {
+  event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+  // Очищаем список результатов поиска перед новым запросом
+  refs.searchList.innerHTML = '';
+
+  // Обновляем параметры запроса queryParams.
+  queryParams.page = 1;
+  const form = event.currentTarget;
+  queryParams.query = form.elements.query.value.trim();
+
+  if (!queryParams.query) {
+    return;
+  }
+
+  // Вызываем функция onFormSubmit с передачей параметров запроса.
+  await onFormSubmit(queryParams);
 }
 
+// Определяем асинхронную функцию onFormSubmit. Функция принимает объект запроса query
 async function onFormSubmit(query) {
   try {
-    const url = `https://energyflow.b.goit.study/api/exercises?`;
-
-    const response = await axios.get(url, {
+    // Выполняем GET-запрос к API с передачей параметров запроса. Результат запроса сохраняем в переменной response
+    const response = await axios.get(`${BASE_URL}`, {
       params: {
-        bodypart: 'back',
-        keyword: query,
-        page: 1,
+        bodypart: '',
+        muscles: '',
+        equipment: '',
+        keyword: query.query, // эти значения из queryParams
+        page: query.page,
         limit: 9,
       },
     });
-    renderExercises(response.data.results); // Отображение результатов на странице
+    // Вызываем функцию renderExercises с передачей массива упражнений из ответа
+    renderExercises(response.data.results);
   } catch (error) {
-    handleError(error); // Обработка ошибки при запросе данных
-  } finally {
-    searchForm.reset(); // сброс полей форми
+    handleError(error); // Вывод ошибки в консоль при возникновении ошибки запроса
   }
 }
-// Функция принимает массив объектов упражнений exercises, и отображает их на странице. Она отображает список упражнений на странице, используя данные из массива exercises.
+// Определяем функцию renderExercises. Функция принимает массив упражнений. Если массив пустой, вызывается функция showNoResultsToast. Если нет - создаются элементы списка 'li' с названиями упражнений и добавляются в список результатов поиска.
 
 function renderExercises(exercises) {
   if (exercises.length === 0) {
-    showNoResultsToast(); // Вывод всплывающего уведомления о отсутствии результатов
+    showNoResultsToast(); // Вызов функции showNoResultsToast при отсутствии результатов поиска
   } else {
     exercises.forEach(exercise => {
-      const exerciseItem = document.createElement('li'); // Создается новый элемент списка
+      const exerciseItem = document.createElement('li');
+      exerciseItem.textContent = exercise.name;
 
-      exerciseItem.textContent = exercise.name; // Текстовое содержимое этого элемента устанавливается равным названию упражнения из объекта
-      searchList.appendChild(exerciseItem); // Созданный элемент добавляется к списку упражнений на странице
+      // Используем refs для доступа к searchList
+      refs.searchList.appendChild(exerciseItem);
     });
   }
 }
 
-function handleError(error) {
-  console.log(error); // Вывод ошибки в консоль
-}
-
+// Функция для вывода всплывающего уведомления с сообщением о отсутствии результатов поиска
 function showNoResultsToast() {
   iziToast.error({
     title: 'No Results',
     message:
       'Unfortunately, no results were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs',
-  }); // Уведомление об отсутствии упражнений по запросу
+  });
 }
-export { onFormSubmit };

@@ -56,9 +56,11 @@ if (result === '/page-2.html') {
                 </button>
                 </div>
                 <div class="favorites-main-container">
-                    <svg class="favorite-icon-run-man" width="24" height="24">
-                        <use href="${sprite}#icon-man-run"></use>
-                    </svg>
+
+                <div class="favorite-icon-run-man">
+                <svg width="14" height="14">
+          <use href="${sprite}#icon-running"></use>
+        </svg></div>                  
                     <h3 class="favorites-name-part">${elem.name}</h3>
                 </div>
                 <div class="favorites-card-footer">

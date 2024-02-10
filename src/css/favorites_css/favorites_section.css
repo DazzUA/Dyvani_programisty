@@ -186,6 +186,7 @@
 
 .favorites-card-header {
   display: inline-block;
+  margin-bottom: 29px;
 }
 
 .favorites-workout {
@@ -238,12 +239,21 @@
 
 .favorites-main-container {
   display: flex;
+  margin-bottom: 12px;
   align-items: center;
-  margin-top: 25px;
+  gap: 16px;
 }
 
 .favorite-icon-run-man {
-  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+  fill: #f6f6f6;
+  background-color: #7e847f;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .favorites-name-part {
@@ -326,6 +336,9 @@
     transition: transform 0.25s var(--transition-animation);
   }
 
+  .favorites-card-header {
+    margin-bottom: 0;
+  }
   .favorites-btn-trash {
     display: inline-block;
     stroke: #1b1b1b;
@@ -442,6 +455,7 @@
     display: flex;
     gap: 8px;
   }
+
   .favorites-card-footer {
     margin-top: 8px;
     margin-bottom: 16px;

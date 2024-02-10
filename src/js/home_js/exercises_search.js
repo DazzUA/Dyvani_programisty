@@ -8,7 +8,7 @@ import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-import { createMarkUp } from './exercises_filters.js';
+import { createMarkUp } from './exercises_subcategories';
 
 // базовый URL для отправки запросов к API
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';

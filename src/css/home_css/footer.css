@@ -2,22 +2,28 @@
   border: 1px solid black;
   margin: 20px;
   border-radius: 30px;
+  /* background-image: linear-gradient(rgba(27, 27, 27, 0.7)),
+    url('../img/mob/basement/women.footer.jpg'); */
   background-image: url('../img/mob/basement/women.footer.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
+.footP {
+  margin: 40px 20px 20px;
+  width: 279px;
+}
+/* .footInner {
+  width: 279px;
+} */
 .footLogo {
-  /* width: 150px;
-  height: 28px; */
-  color: black;
-  /* color: rgb(246, 246, 246); */
+  color: rgb(246, 246, 246);
 
   font-weight: 700;
   font-size: 16px;
   line-height: 1;
   letter-spacing: -0.02em;
-  margin-bottom: 9px;
+
   text-align: left;
   /* padding: 40px; */
 }
@@ -25,17 +31,16 @@
   font-weight: 400;
   font-size: 32px;
   line-height: 1;
-  letter-spacing: -0.02em;
-  color: black;
-  max-width: 279px;
+  letter-spacing: 0.02em;
+  width: 279px;
   margin-bottom: 20px;
-  /* color: #f6f6f6; */
+  color: #f6f6f6;
   text-align: left;
+  /* font-family: DM Sans; */
 }
 .accent {
   font-style: italic;
-  color: red;
-  /* color: rgba(246, 246, 246, 0.3); */
+  color: rgba(246, 246, 246, 0.3);
 }
 .footerUl {
   display: flex;
@@ -43,22 +48,18 @@
   margin-top: 9px;
   margin-bottom: 40px;
 }
-/* .foot-p{
-  display: block;
-  gap: 40px;
-} */
+
 .footerP {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
-  color: black;
-  /* color: #f6f6f6; */
+  color: #f6f6f6;
+  width: 268px;
   margin-bottom: 20px;
 }
 .footerSocialList {
   box-sizing: border-box;
-  /* border: 1px solid rgba(246, 246, 246, 0.2); */
-  border: 1px solid black;
+  border: 1px solid rgba(246, 246, 246, 0.2);
   padding: 8px;
   border-radius: 10px;
 }
@@ -78,8 +79,7 @@
 }
 .footerInput:hover,
 .footerInput:focus {
-  border: 1px solid red;
-  /* border: 1px solid rgb(27, 27, 27); */
+  border: 1px solid rgb(27, 27, 27);
 }
 .footerSvg {
   fill: rgb(126, 132, 127);
@@ -91,18 +91,37 @@
 .footerSvg:focus {
   fill: rgb(95, 101, 96);
 }
+.formInput {
+  /* position: static;
+  width: 295px;
+  height: 42px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px 246px 12px 14px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 12px 0px; */
 
+  padding: 8px 16px;
+  width: 295px;
+  height: 42px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  border: 1px solid rgb(246, 246, 246);
+  outline: none;
+  background-color: transparent;
+}
 .modalButton {
   width: 295px;
   height: 42px;
   color: #fff;
   font-weight: 400;
   letter-spacing: 0.04em;
-
   border-radius: 30px;
-
   background: rgb(126, 132, 127);
-  /* background-color: #0138ff; */
   border: none;
   padding: 0;
   margin-bottom: 60px;
@@ -113,8 +132,7 @@
 }
 
 .footerText {
-  /* color: rgb(246, 246, 246); */
-  color: #000000;
+  color: rgb(246, 246, 246);
   font-size: 12px;
   font-weight: 400;
   line-height: 1;

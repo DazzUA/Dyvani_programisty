@@ -60,4 +60,4 @@ async function searchForm(event) {
 // function showLoader(state = true) {
 //   refs.loaderForm.style.display = !state ? 'none' : 'inline-block';
 //   filterButtons.disabled = state;
-// jjjj}
+// }

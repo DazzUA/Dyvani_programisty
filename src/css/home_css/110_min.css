@@ -1,3 +1,11 @@
+.DailyNormBackgroundImage {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 335px;
+  height: 269px;
+  background-image: url(../img/mob/basement/women.bas.mob.png);
+}
 .daily_norm_div {
   display: flex;
   border-radius: 30px;
@@ -28,15 +36,29 @@
 }
 
 /*media*/
+@media only screen and (min-resolution: 192dpi) and (min-width: 375px) {
+  .DailyNormBackgroundImage {
+    background-image: url(../img/mob/basement/women.bas.mob@2x.png);
+  }
+}
 @media screen and (min-width: 375px) {
   .daily_norm_div {
     width: 335px;
   }
 }
-
+@media only screen and (min-resolution: 192dpi) and (min-width: 768px) {
+  .DailyNormBackgroundImage {
+    background-image: url(../img/tablet/basament/women.bas.tab@2x.png);
+  }
+}
 @media screen and (min-width: 768px) {
   .daily_norm_div {
     width: 736px;
+  }
+  .DailyNormBackgroundImage {
+    max-width: 736px;
+    height: 302px;
+    background-image: url(../img/tablet/basament/women.bas.tab.png);
   }
   .daily_norm_icon {
     margin-top: 65px;
@@ -46,12 +68,22 @@
     margin: 64px 96px 64px 114px;
   }
 }
-@media screen and (min-width: 1280px) {
-  .container {
+@media only screen and (min-resolution: 192dpi) and (min-width: 1440px) {
+  .DailyNormBackgroundImage {
+    background-image: url(../img/desktop/basament/women.bas@2x.png);
+  }
+}
+@media screen and (min-width: 1440px) {
+  .DailyNormContainer {
     display: flex;
   }
   .daily_norm_div {
     width: 704px;
+  }
+  .DailyNormBackgroundImage {
+    max-width: 704px;
+    height: 302px;
+    background-image: url(../img/desktop/basament/women.bas.png);
   }
   .daily_norm_div_info {
     margin-right: 64px;

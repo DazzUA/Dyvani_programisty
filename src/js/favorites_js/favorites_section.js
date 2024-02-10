@@ -120,11 +120,11 @@ if (result === '/page-2.html') {
 
 if (result === '/page-2.html') {
   document.addEventListener('DOMContentLoaded', function () {
-    // Function to show pagination based on screen width
+    // Функція для відображення пагінації залежно від ширини екрану.
     function togglePagination() {
-      const currentPage = window.location.pathname; // Get current page path
+      const currentPage = window.location.pathname; // Отримання поточного шляху сторінки
 
-      // Check if current page is '/page-2.html' and screen width is less than or equal to 767px
+      // Перевірка, чи поточна сторінка - '/page-2.html', і ширина екрану менше або дорівнює 767px.
       if (
         window.innerWidth <= 767 &&
         isFavoritesListVisible()
@@ -132,10 +132,10 @@ if (result === '/page-2.html') {
         window.innerWidth <= 767 &&
         isFavoritesListVisible()*/
       ) {
-        // Show pagination for small screens on page 2
+        // Відображення пагінації для невеликих екранів на сторінці 2.
         paginationBlock.style.display = 'flex';
       } else {
-        // Hide pagination for larger screens or if favorites list is not visible
+        // Приховати пагінацію для більших екранів або якщо список вибраного вмісту не видимий.
         paginationBlock.style.display = 'none';
       }
     }
@@ -244,7 +244,8 @@ if (result === '/page-2.html') {
 
 //**Ігорю на кнопку*/
 
-favorites.addEventListener('click', () => {
+favorites.addEventListener('click', evt => {
+  evt.preventDefault();
   if (favorites.textContent.trim() == 'Add to favorites') {
     parsedItem.push({
       id: '64f389465ae26083f39b17df', //id

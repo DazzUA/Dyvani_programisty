@@ -267,6 +267,10 @@
   text-overflow: ellipsis;
 }
 
+.favorites-name-part::first-word {
+  text-transform: capitalize;
+}
+
 .favorites-card-footer {
   margin-top: 18px;
 }

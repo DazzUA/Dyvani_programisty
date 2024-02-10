@@ -23,13 +23,14 @@ async function onCardClick(event) {
   const liEl = event.target.closest('.ExercisesItem'); // при кліку на картку шукаємо найближчий елемент у якого буде заданий селектор (це li)
   filterValue = liEl.dataset.filter; //Muscles   // тепер можемо отримати li дата-атрибути
   nameValue = liEl.dataset.name; // abductors
+
   try {
+    ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue); // оновлюємо хедер секції Exercises
     const { totalPages, results } = await getExercisesByFilter(
       filterValue,
       nameValue
     );
     exerciseFiltersList.innerHTML = createMarkUp(results); // це буде масив об'єктів
-    ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue); // оновлюємо хедер секції Exercises
 
     // ------------------------------new КОД ДЛЯ ДЕНИСА --- ПОМИЛКА--- ПОКИ КОМЕНТУЮ---------------------------------------
     // const ExercisesForm = document.querySelector('.ExercisesForm');
@@ -189,6 +190,13 @@ async function onBtnClick(event) {
   exerciseFiltersList.classList.remove('ExerciseCategoryList');
   currentPage = 1; // робимо поточну сторінку першою
   pagination.removeEventListener('click', onPaginationPage); // видаляємо з нумерації сторінок слухача попереднього
+  Array.from(event.currentTarget.children).map(item => {
+    if (item.textContent !== event.target.textContent) {
+      item.classList.remove('ButtonIsActive');
+    } else {
+      event.target.classList.add('ButtonIsActive');
+    }
+  });
   if (event.target === event.currentTarget) {
     return;
   }

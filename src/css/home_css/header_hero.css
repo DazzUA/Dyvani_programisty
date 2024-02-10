@@ -164,7 +164,7 @@
     display: flex;
     align-items: center;
     color: #1b1b1b;
-    margin-right: 81px;
+
     font-family: 'DM Sans';
     font-size: 28px;
     font-style: normal;
@@ -175,7 +175,6 @@
 }
 @media screen and (min-width: 1440px) {
   .header-logo {
-    margin-right: 397px;
   }
 }
 .header-link {
@@ -272,19 +271,43 @@
     line-height: 24px;
   }
 }
-/*.hero-text-main {
+.hero-text-main {
   color: #1b1b1b;
 
   font-family: 'DM Sans';
-  font-size: 120px;
+  font-size: 56px;
   font-style: normal;
   font-weight: 400;
-  line-height: 115px; 
-  letter-spacing: -2.4px;
-  padding: 225px 33px 25px;
-}*/
+  line-height: 50px; /* 89.286% */
+  letter-spacing: -1.12px;
+}
+@media screen and (min-width: 768px) {
+  .hero-text-main {
+    color: #1b1b1b;
 
-/*.hero-word {
+    font-family: 'DM Sans';
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 115px;
+    letter-spacing: -2.4px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-text-main {
+    color: #1b1b1b;
+
+    font-family: 'DM Sans';
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 115px;
+    letter-spacing: -2.4px;
+    padding: 225px 33px 25px;
+  }
+}
+
+.hero-word {
   color: #7e847f;
   font-family: 'DM Sans';
   font-size: 120px;
@@ -292,27 +315,111 @@
   font-weight: 400;
   line-height: 115px;
   letter-spacing: -2.4px;
-}*/
-/*.hero-container {
+}
+@media screen and (min-width: 768px) {
+  .hero-word {
+    color: #7e847f;
+    font-family: 'DM Sans';
+    font-size: 120px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 115px;
+    letter-spacing: -2.4px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-word {
+    color: #7e847f;
+    font-family: 'DM Sans';
+    font-size: 120px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 115px;
+    letter-spacing: -2.4px;
+  }
+}
+.hero-main {
   border-radius: 0px 50px 50px 50px;
   background: #fff;
-}*/
-/*.hero-double {
-  display: flex;
-}*/
-/*.hero-text {
+}
+@media screen and (min-width: 768px) {
+  .hero-main {
+    border-radius: 0px 50px 50px 50px;
+    background: #fff;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-main {
+    border-radius: 0px 50px 50px 50px;
+    background: #fff;
+  }
+}
+.hero-inern {
+  display: block;
+  max-width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .hero-inern {
+    display: flex;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-inern {
+    display: flex;
+  }
+}
+.hero-double {
+  display: block;
+}
+@media screen and (min-width: 768px) {
+  .hero-double {
+    display: block;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-double {
+    display: block;
+  }
+}
+
+.hero-text {
   color: #1b1b1b;
   font-family: 'DM Sans';
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px; 
+  line-height: 24px;
   letter-spacing: -0.18px;
   width: 528px;
   padding-left: 33px;
-}*/
-
-/*.quota-item {
+}
+@media screen and (min-width: 768px) {
+  .hero-text {
+    color: #1b1b1b;
+    font-family: 'DM Sans';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.18px;
+    width: 528px;
+    padding-left: 33px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-text {
+    color: #1b1b1b;
+    font-family: 'DM Sans';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.18px;
+    width: 528px;
+    padding-left: 33px;
+  }
+}
+.quota-item {
   color: #f6f6f6;
   font-family: 'DM Sans';
   font-size: 16px;
@@ -325,25 +432,113 @@
   gap: 10px;
   border-radius: 30px;
   border: 1px solid rgba(246, 246, 246, 0.3);
-}*/
+}
+@media screen and (min-width: 768px) {
+  .quota-item {
+    color: #f6f6f6;
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    display: flex;
+    padding: 4px 16px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    border: 1px solid rgba(246, 246, 246, 0.3);
+  }
+}
+@media screen and (min-width: 1440px) {
+  .quota-item {
+    color: #f6f6f6;
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    display: flex;
+    padding: 4px 16px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    border: 1px solid rgba(246, 246, 246, 0.3);
+  }
+}
+.small-quota {
+  min-width: 335px;
 
-/*.small-quota {
-  width: 704px;
-  height: 884px;
-  background-image: url('../../img/desktop/hero/women.desk.png');
+  background-image: url('../../img/mob/hero/women.hero.mob.png');
   background-repeat: no-repeat;
   border-radius: 50px 0px 50px 50px;
   display: flex;
 
   align-items: end;
 }
-*/
-/*.quota-list {
+@media screen and (min-width: 768px) {
+  .small-quota {
+    width: 704px;
+    height: 884px;
+    background-image: url('../../img/tablet/hero/women.full.tab.png');
+    background-repeat: no-repeat;
+    border-radius: 50px 0px 50px 50px;
+    display: flex;
+
+    align-items: end;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .small-quota {
+    width: 704px;
+    height: 884px;
+    background-image: url('../../img/desktop/hero/women.desk.png');
+    background-repeat: no-repeat;
+    border-radius: 50px 0px 50px 50px;
+    display: flex;
+
+    align-items: end;
+  }
+}
+.quota-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  height: 72px;
-  width: 196px;
-  margin-left: 48px;
-  margin-bottom: 32px;
-}*/
+  color: #f6f6f6;
+
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  height: 48px;
+  width: 141px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 768px) {
+  .quota-list {
+    display: flex;
+    flex-wrap: wrap;
+    color: #f6f6f6;
+
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    height: 72px;
+    width: 196px;
+    margin-left: 20px;
+    margin-bottom: 64px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .quota-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    height: 72px;
+    width: 196px;
+    margin-left: 48px;
+    margin-bottom: 32px;
+  }
+}

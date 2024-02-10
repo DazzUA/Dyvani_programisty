@@ -1,0 +1,38 @@
+<section class="favorites-section section">
+  <h2 class="favorites-title">Favorites</h2>
+  <div class="div-favorites-section">
+    <!----------- IF NOT FAVORITES EXERCISE -------------->
+    <div class="message-favorites">
+      <div class="message-favorites-block">
+        <img
+          class="dumbbell-favorites"
+          srcset="
+            ../../img/mob/favorites/dumbbell.mob.png    1x,
+            ../../img/mob/favorites/dumbbell.mob@2x.png 2x
+          "
+          src="../../img/mob/favorites/dumbbell.mob.png"
+          alt="dumbbell"
+        />
+        <p class="text-favorites">
+          It appears that you haven't added any exercises to your favorites yet.
+          To get started, you can add exercises that you like to your favorites
+          for easier access in the future.
+        </p>
+      </div>
+    </div>
+
+    <!---------- Favorite Card ------------>
+    <ul class="favorites-list"></ul>
+
+    <!----------- Pagination for mobile------------------>
+    <div class="favorites-pagination-block">
+      <button class="active-btn" aria-label="first-page" type="button">
+        1
+      </button>
+      <button aria-label="second-page" type="button">2</button>
+      <button aria-label="third-page" type="button">3</button>
+    </div>
+
+    <button class="add-favorites">Add to favorites</button>
+  </div>
+</section>

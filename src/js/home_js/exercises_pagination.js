@@ -178,6 +178,11 @@ async function onBtnClick(event) {
     const data = await getExercise(filterValue);
     // передаємо аргументом значення дата атрибута кнопки на яку клікнули
     exerciseFiltersList.innerHTML = markupExercise(data);
+    const titleExercises = document.querySelector('.title-exercises');
+    titleExercises.innerHTML = 'Exercises';
+    const ExercisesForm = document.querySelector('.ExercisesForm');
+    ExercisesForm.remove();
+    console.log(titleExercises);
   } catch (error) {
     console.log(error);
   }

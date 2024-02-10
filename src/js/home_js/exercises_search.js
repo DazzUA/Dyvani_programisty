@@ -7,7 +7,6 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import Pagination from 'tui-pagination';
 
 import { createMarkUp } from './exercises_filters.js';
 

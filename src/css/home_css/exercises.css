@@ -1,25 +1,10 @@
-.Exercises {
-  width: 335px;
+.exercises {
   border-radius: 30px;
   padding: 40px 20px;
   background: rgb(232, 232, 232);
 }
 
-@media screen and (min-width: 768px) {
-  .Exercises {
-    width: 736px;
-
-    padding: 64px 48px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .Exercises {
-    width: 1408px;
-  }
-}
-
-.TitleExercises {
+.title-exercises {
   color: rgb(27, 27, 27);
   font-family: DM Sans;
   font-size: 32px;
@@ -29,31 +14,23 @@
   margin-bottom: 20px;
 }
 
-@media screen and (min-width: 768px) {
-  .TitleExercises {
-    font-size: 44px;
-    line-height: 48px;
-    margin-bottom: 32px;
-  }
+.exercise-filters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
 }
 
-.ListExercises {
+.list-exercises {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
-@media screen and (min-width: 768px) {
-  .ListExercises {
-    gap: 8px;
-    margin-bottom: 32px;
-  }
-}
-
-.ItemExercises {
+.item-exercises {
   padding: 7px 14px;
   color: rgb(27, 27, 27);
   font-family: DM Sans;
@@ -66,63 +43,19 @@
   background: rgb(246, 246, 246);
 }
 
-@media screen and (min-width: 768px) {
-  .ItemExercises {
-    font-size: 16px;
-    line-height: 24px;
-  }
-}
-
-.ButtonIsActive {
-  background: #7e847f;
-  border-color: #7e847f;
-  color: #f6f6f6;
-}
-
-.ExerciseFiltersList {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-@media screen and (min-width: 768px) {
-  .ExerciseFiltersList {
-    width: 100%;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 32px;
-  }
-}
-
-.FilterList {
+.filter-list {
   position: relative;
   cursor: pointer;
 }
 
-.ImgExercises {
-  width: 295px;
-  height: 232px;
+.img-exercises {
   border: 1px solid rgba(246, 246, 246, 0.3);
   border-radius: 12px;
 
   background: lightgray;
 }
 
-@media screen and (min-width: 768px) {
-  .ImgExercises {
-    width: 313px;
-    height: 250px;
-  }
-}
-
-.FilterText {
+.filter-text {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -142,7 +75,7 @@
   );
 }
 
-.FilterExercises {
+.filter-exercises {
   color: rgb(246, 246, 246);
   font-family: DM Sans;
   font-size: 20px;
@@ -152,52 +85,11 @@
   text-transform: capitalize;
 }
 
-@media screen and (min-width: 768px) {
-  .FilterExercises {
-    font-size: 24px;
-    line-height: 24px;
-  }
-}
-
-.FilterName {
+.filter-name {
   color: rgba(246, 246, 246, 0.4);
   font-family: DM Sans;
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
   letter-spacing: 0px;
-}
-
-.Pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-.PaginationBtn {
-  width: 32px;
-  height: 32px;
-  color: rgba(27, 27, 27, 0.4);
-  font-family: DM Sans;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 32px;
-  letter-spacing: 0.02em;
-  text-align: left;
-  border: none;
-  background-color: transparent;
-}
-
-@media screen and (min-width: 768px) {
-  .PaginationBtn {
-    font-size: 24px;
-  }
-}
-
-.PaginationBtnIsActive {
-  color: #1b1b1b;
-  text-align: center;
-  border: 1px solid rgb(27, 27, 27);
-  border-radius: 18px;
 }

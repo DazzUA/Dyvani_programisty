@@ -4,7 +4,13 @@
   background-size: cover;
   max-width: 335px;
   height: 269px;
-  background-image: url(../img/mob/basement/women.bas.mob.png);
+  background-image: url(/img/mob/basement/women.bas.mob.png);
+}
+.H4Text {
+  font-weight: 500;
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 2px;
 }
 .daily_norm_div {
   display: flex;
@@ -32,7 +38,6 @@
   margin: 40px 20px 40px 70px;
 }
 .daily_norm_info {
-  font-family: 'DM Sans';
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -44,7 +49,7 @@
 /*media*/
 @media only screen and (min-resolution: 192dpi) and (min-width: 375px) {
   .DailyNormBackgroundImage {
-    background-image: url(../img/mob/basement/women.bas.mob@2x.png);
+    background-image: url(/img/mob/basement/women.bas.mob@2x.png);
   }
 }
 @media screen and (min-width: 375px) {
@@ -54,7 +59,7 @@
 }
 @media only screen and (min-resolution: 192dpi) and (min-width: 768px) {
   .DailyNormBackgroundImage {
-    background-image: url(../img/tablet/basament/women.bas.tab@2x.png);
+    background-image: url(/img/tablet/basament/women.bas.tab@2x.png);
   }
 }
 @media screen and (min-width: 768px) {
@@ -64,7 +69,7 @@
   .DailyNormBackgroundImage {
     max-width: 736px;
     height: 302px;
-    background-image: url(../img/tablet/basament/women.bas.tab.png);
+    background-image: url(/img/tablet/basament/women.bas.tab.png);
   }
   .daily_norm_icon {
     margin-top: 65px;
@@ -76,7 +81,7 @@
 }
 @media only screen and (min-resolution: 192dpi) and (min-width: 1440px) {
   .DailyNormBackgroundImage {
-    background-image: url(../img/desktop/basament/women.bas@2x.png);
+    background-image: url(/img/desktop/basament/women.bas@2x.png);
   }
 }
 @media screen and (min-width: 1440px) {
@@ -88,9 +93,9 @@
     width: 704px;
   }
   .DailyNormBackgroundImage {
-    max-width: 704px;
+    width: 704px;
     height: 302px;
-    background-image: url(../img/desktop/basament/women.bas.png);
+    background-image: url(/img/desktop/basament/women.bas.png);
   }
   .daily_norm_div_info {
     margin-right: 64px;

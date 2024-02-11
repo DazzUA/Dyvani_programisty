@@ -5,8 +5,6 @@
 // В случае отсутствия результатов поиска выводится соответствующее уведомление.
 
 import axios from 'axios';
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 
 import { createMarkUp } from './exercises_subcategories';
 
@@ -72,9 +70,9 @@ export async function onFormSubmit(query) {
     handleError(error); // Вывод ошибки в консоль при возникновении ошибки запроса
   }
 }
-// Определяем функцию renderExercises. Функция принимает массив упражнений. Если массив пустой, вызывается функция showNoResultsToast. Если нет - создаются элементы списка 'li' с названиями упражнений и добавляются в список результатов поиска.
+// Определяем функцию createMarkUp. Функция принимает массив упражнений. Если массив пустой, вызывается функция showNoResultsToast. Если нет - создаются элементы списка 'li' с названиями упражнений и добавляются в список результатов поиска.
 
-function renderExercises(exercises) {
+function createMarkUp(exercises) {
   if (exercises.length === 0) {
     showNoResultsToast(); // Вызов функции showNoResultsToast при отсутствии результатов поиска
   } else {
@@ -86,15 +84,19 @@ function renderExercises(exercises) {
       refs.searchList.appendChild(exerciseItem);
     });
   }
-}
 
-// Функция для вывода всплывающего уведомления с сообщением о отсутствии результатов поиска
-function showNoResultsToast() {
-  iziToast.error({
-    title: 'No Results',
-    message:
-      'Unfortunately, no results were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs',
-  });
-}
+  // Функция для вывода всплывающего уведомления с сообщением о отсутствии результатов поиска
+  function showNoResultsToast() {
+    const noResultsMessageContainer = document.createElement('div'); // контейнер для оформления сообщения
+    noResultsMessageContainer.classList.add('NoResultsMessageContainer'); // добавил класс для контейнера
 
+    const NoResultsMessage = document.createElement('div'); // контейнер для текста
+    NoResultsMessage.classList.add('NoResultsMessage'); // добавил класс для сообщения
+    NoResultsMessage.innerHTML =
+      'Unfortunately, <span class="highlight">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.';
+
+    noResultsMessageContainer.appendChild(NoResultsMessage); // добавил сообщение внутрь контейнера для этого сообщения
+    document.body.appendChild(noResultsMessageContainer); // добавил контейнер с сообщением на страницу внутрь <body>, чтобы показать всплывающее уведомление
+  }
+}
 //--------------------------------------Пагинация------------------------------------//

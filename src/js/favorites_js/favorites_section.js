@@ -88,6 +88,10 @@ if (result === '/page-2.html') {
           ? 8
           : favoritesList.children.length;
 
+      const totalPages = Math.ceil(
+        favoritesList.children.length / itemsPerPage
+      );
+
       // Show all items if screen width is greater than 767px
       if (window.innerWidth > 767 && isFavoritesListVisible()) {
         for (let i = 0; i < favoritesList.children.length; i++) {
@@ -95,10 +99,6 @@ if (result === '/page-2.html') {
         }
         return;
       }
-
-      const totalPages = Math.ceil(
-        favoritesList.children.length / itemsPerPage
-      );
 
       let currentPage = 1;
 
@@ -125,22 +125,38 @@ if (result === '/page-2.html') {
       // Show the first page initially
       showPage(currentPage);
 
-      // Event listeners for pagination buttons
-      paginationBlock.addEventListener('click', function (event) {
-        if (event.target.tagName === 'BUTTON') {
-          // Remove active class from all buttons
-          const buttons = paginationBlock.querySelectorAll('button');
-          buttons.forEach(button => button.classList.remove('active-btn'));
-
-          // Add active class to the clicked button
-          event.target.classList.add('active-btn');
-
-          // Show the corresponding page
-          currentPage = parseInt(event.target.textContent);
+      // Generate pagination buttons
+      paginationBlock.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.addEventListener('click', function () {
+          currentPage = i;
           showPage(currentPage);
-        }
-      });
+          updateActiveButton(currentPage);
+        });
+        paginationBlock.appendChild(button);
+      }
+
+      // Function to update active button
+      function updateActiveButton(currentPage) {
+        const buttons = paginationBlock.querySelectorAll('button');
+        buttons.forEach((button, index) => {
+          if (index === currentPage - 1) {
+            button.classList.add('active-btn');
+          } else {
+            button.classList.remove('active-btn');
+          }
+        });
+      }
+      updateActiveButton(currentPage);
     }
+
+    // Call paginate initially
+    paginate();
+
+    // Event listener for window resize
+    window.addEventListener('resize', paginate);
 
     // Function to handle scroll behavior
     function checkScroll() {
@@ -195,7 +211,7 @@ function toggleFavorite() {
       gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0067.gif', //gif.src
       name: 'barbell one arm snatch', //name.textContent
       rating: '3.67', //rating.textContent
-      target: 'delts', //target.textContent
+      target: 'cardiovascular system', //target.textContent
       popular: '5548', //popular.textContent
       bodyPart: 'shoulders', //bodyPart.textContent
       equipment: 'barbell', //equipment.textContent
@@ -306,7 +322,7 @@ function createFavoriteCardMarkup(elem) {
                 <li class="favorites-card-footer-item">
                     <div class="favorites-card-footer-wrapper">
                         <h4 class="favorites-card-footer-title">Burned calories:</h4>
-                        <p class="favorites-card-footer-block">${elem.burnedCalories}</p>
+                        <p class="favorites-card-footer-block">${elem.burnedCalories}/3min</p>
                     </div>
                     <div class="favorites-card-footer-wrapper">
                         <h4 class="favorites-card-footer-title">Body part:</h4>
@@ -321,3 +337,5 @@ function createFavoriteCardMarkup(elem) {
         </div>
     </li>`;
 }
+
+export { toggleFavorite };

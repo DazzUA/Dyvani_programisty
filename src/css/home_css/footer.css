@@ -1,135 +1,254 @@
-.footerSection {
-  border: 1px solid black;
+.FooterSection {
+  /* width: 335px; */
+  width: 100%;
   margin: 20px;
+  padding: 40px 20px 20px;
   border-radius: 30px;
-  background-image: url('../img/mob/basement/women.footer.jpg');
+  border: 1px solid black;
+  background-image: url(/img/mob/basement/women.footer.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  /* font-family: DM Sans, sans-serif; */
+  margin: auto;
+  margin-top: 20px;
+  margin: 0 16px;
 }
-.footLogo {
-  /* width: 150px;
-  height: 28px; */
-  color: black;
-  /* color: rgb(246, 246, 246); */
+@media only screen and (min-resolution: 192dpi) and (min-width: 375px) {
+  .FooterSection {
+    background-image: url(/img/mob/basement/women.footer@2x.jpg);
+  }
+}
 
+.FootLogo {
+  color: rgb(246, 246, 246);
   font-weight: 700;
   font-size: 16px;
   line-height: 1;
   letter-spacing: -0.02em;
-  margin-bottom: 9px;
   text-align: left;
-  /* padding: 40px; */
 }
-.footerH {
+
+.FooterH {
   font-weight: 400;
   font-size: 32px;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: black;
-  max-width: 279px;
   margin-bottom: 20px;
-  /* color: #f6f6f6; */
+  color: #f6f6f6;
   text-align: left;
+  font-family: DM Sans, sans-serif;
+  /* width: 279px; */
+  width: 100%;
+  height: 64px;
 }
-.accent {
-  font-style: italic;
-  color: red;
-  /* color: rgba(246, 246, 246, 0.3); */
-}
-.footerUl {
+
+.FooterUl {
   display: flex;
   gap: 12px;
   margin-top: 9px;
   margin-bottom: 40px;
 }
-/* .foot-p{
-  display: block;
-  gap: 40px;
-} */
-.footerP {
+
+.FooterP {
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.2;
-  color: black;
-  /* color: #f6f6f6; */
+  line-height: 1.3;
+  color: #f6f6f6;
+  width: 268px;
   margin-bottom: 20px;
 }
-.footerSocialList {
+
+.FooterSocialList {
   box-sizing: border-box;
-  /* border: 1px solid rgba(246, 246, 246, 0.2); */
-  border: 1px solid black;
+  border: 1px solid rgba(246, 246, 246, 0.2);
   padding: 8px;
   border-radius: 10px;
 }
-.footerSocialList:hover,
-.footerSocialList:focus {
+.FooterSocialList:hover,
+.FooterSocialList:focus {
   border: 1px solid rgb(95, 101, 96);
 }
-.footerInput {
+
+.FormInput {
   width: 295px;
   height: 42px;
   border-radius: 30px;
-  border: 1px solid #000000;
+  border: 1px solid var(--light-grey-color);
   outline: none;
   padding: 12px 14px;
   margin-bottom: 12px;
   box-sizing: border-box;
+  outline: none;
+  background-color: transparent;
 }
-.footerInput:hover,
-.footerInput:focus {
-  border: 1px solid red;
-  /* border: 1px solid rgb(27, 27, 27); */
+.FormInput:hover,
+.FormInput:focus {
+  border: 1px solid var(--light-grey-color);
 }
-.footerSvg {
-  fill: rgb(126, 132, 127);
+.FormInput::placeholder {
+  color: rgba(246, 246, 246, 0.6);
+}
+
+.FormInput[type='email'] {
+  color: var(--light-grey-color);
+}
+
+.FooterSvg {
+  fill: var(--light-grey-color);
   display: block;
   align-items: center;
   justify-content: center;
+  width: 20px;
+  height: 20px;
 }
-.footerSvg:hover,
-.footerSvg:focus {
+
+.FooterSvg:hover,
+.FooterSvg:focus {
   fill: rgb(95, 101, 96);
 }
 
-.modalButton {
+.ModalButton {
   width: 295px;
   height: 42px;
   color: #fff;
   font-weight: 400;
   letter-spacing: 0.04em;
-
   border-radius: 30px;
-
-  background: rgb(126, 132, 127);
-  /* background-color: #0138ff; */
+  background: var(--dark-grey-color);
   border: none;
   padding: 0;
   margin-bottom: 60px;
 }
-.modalButton:hover,
-.modalButton:focus {
+.ModalButton:hover,
+.ModalButton:focus {
   background: rgb(95, 101, 96);
 }
 
-.footerText {
-  /* color: rgb(246, 246, 246); */
-  color: #000000;
+.FooterText {
+  color: var(--light-grey-color);
   font-size: 12px;
   font-weight: 400;
-  line-height: 1;
+  line-height: 0.8;
   letter-spacing: 0.02em;
   text-align: left;
 }
 
-.footerPrivacy {
-  padding-bottom: 10px;
+.FooterPrivacy {
+  margin-bottom: 8px;
 }
-.last {
-  display: flex;
-  gap: 8px;
+.accent {
+  font-style: italic;
+  color: rgba(246, 246, 246, 0.3);
+}
+.slesh {
+  margin: 0 8px;
 }
 
+/* tablet */
+@media screen and (min-width: 768px) {
+  .FooterSection {
+    /* width: 736px; */
+    width: 100%;
+    padding: 64px 48px 32px;
+    border: none;
+    box-shadow: none;
+    border-radius: 50px;
+    margin-top: 16px;
+
+    background-image: url(/img/tablet/basament/women.footer.jpg);
+  }
+  .FootVibe {
+    display: flex;
+    gap: 139px;
+  }
+  .FootLogo {
+    font-size: 28px;
+  }
+  .FooterH {
+    font-size: 54px;
+    line-height: 0.96;
+    letter-spacing: -0.02em;
+    margin-bottom: 39px;
+    /* width: 345px; */
+    width: 100%;
+    height: 150px;
+  }
+  .FooterUl {
+    margin-top: 30px;
+  }
+  .FooterP {
+    font-size: 18px;
+    /* width: 345px; */
+    /* max-width: 345px; */
+    width: 100%;
+  }
+  .FormInput {
+    width: 352px;
+    height: 48px;
+  }
+  .FooterSvg {
+    width: 28px;
+    height: 28px;
+  }
+  .ModalButton {
+    margin-bottom: 120px;
+    /* width: 352px; */
+    max-width: 352px;
+    width: 100%;
+    height: 48px;
+  }
+  .FooterText {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+}
+@media only screen and (min-resolution: 192dpi) and (min-width: 768px) {
+  .FooterSection {
+    background-image: url(/img/tablet/basament/women.footer@2x.jpg);
+  }
+}
+/* desktop */
+@media screen and (min-width: 1440px) {
+  .FooterSection {
+    /* width: 1408px; */
+    width: 100%;
+    padding: 64px 48px 26px;
+    background-image: url(/img/desktop/basament/women.footer.jpg);
+  }
+  .FootVibe {
+    display: flex;
+    gap: 160px;
+  }
+  .FooterForm {
+    width: 352px;
+  }
+  .FooterH {
+    width: 488px;
+    height: 186px;
+    font-size: 64px;
+  }
+  .FooterSlogo {
+    display: flex;
+    gap: 160px;
+  }
+  .ModalButton {
+    margin-bottom: 186px;
+  }
+  .FooterP {
+    width: 345px;
+  }
+}
+
+@media only screen and (min-resolution: 192dpi) and (min-width: 1440px) {
+  .FooterSection {
+    background-image: url(/img/desktop/basament/women.footer@2x.jpg);
+  }
+}
 /* loader */
 .lodDiv {
   display: flex;

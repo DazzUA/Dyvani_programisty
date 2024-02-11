@@ -29,44 +29,26 @@ async function onCardClick(event) {
 
   try {
     ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue); // оновлюємо хедер секції Exercises
+    const MusclesBtn = document.querySelector('#MusclesBtn');
+    console.log(MusclesBtn);
+    if (filterValue === 'Muscles') {
+      MusclesBtn.classList.add('FilterBtnIsActive');
+    } else if (filterValue === 'Body Part') {
+      const BodyPartBtn = document.querySelector('#BodyPartBtn');
+      BodyPartBtn.classList.add('FilterBtnIsActive');
+    } else {
+      const EquipmentBtn = document.querySelector('#EquipmentBtn');
+      EquipmentBtn.classList.add('FilterBtnIsActive');
+    }
     const { page, totalPages, results } = await getExercisesByFilter(
       filterValue,
       nameValue
     );
     exerciseFiltersList.innerHTML = createMarkUp(results); // це буде масив об'єктів
-    const StartBtn = document.querySelector('.StartBtn');
-    // треба імпортувати функцію onStartBtnClick -------
-    // StartBtn.addEventListener('click', onStartBtnClick)
-
-    // ------------------------------new КОД ДЛЯ ДЕНИСА --- ПОМИЛКА--- ПОКИ КОМЕНТУЮ---------------------------------------
-    // const ExercisesForm = document.querySelector('.ExercisesForm');
-    // ExercisesForm.addEventListener(
-    //   'submit',
-    //   onFormSubmit(filterValue, nameValue)
-    // );
-
-    // // Определяем асинхронную функцию onFormSubmit. Функция принимает объект запроса query
-    // async function onFormSubmit(query) {
-    //   try {
-    //     // Выполняем GET-запрос к API с передачей параметров запроса. Результат запроса сохраняем в переменной response
-    //     const response = await axios.get(`${BASE_URL}`, {
-    //       params: {
-    //         bodypart: '',
-    //         muscles: '',
-    //         equipment: '',
-    //         keyword: query.query, // эти значения из queryParams
-    //         page: query.page,
-    //         limit: 9,
-    //       },
-    //     });
-    //     // Вызываем функцию renderExercises с передачей массива упражнений из ответа
-    //     renderExercises(response.data.results);
-    //   } catch (error) {
-    //     handleError(error); // Вывод ошибки в консоль при возникновении ошибки запроса
-    //   }
-    // }
-
-    // -------------------------------new  КОД ДЛЯ ДЕНИСА --- ПОМИЛКА--- ПОКИ КОМЕНТУЮ--------------------------------------
+    // const StartBtn = document.querySelectorAll('.StartBtn');
+    // console.log(StartBtn);
+    // // треба імпортувати функцію onStartBtnClick -------
+    // StartBtn.addEventListener('click', onStartBtnClick);
 
     const FilterBtn = document.querySelector('#FilterBtn'); // додаємо на три кнопки фільтрів слухача по кліку
     FilterBtn.addEventListener('click', onBtnClick);
@@ -193,6 +175,11 @@ function updateExercisesHeaderMarkup(nameValue) {
 // це виклик функції Данила. Треба щоб він зробив експорт
 // функція, яка спрацьовує коли ми клікаємо по фільтру (Muscle, Body Part, Equipment) і повертаємось назад
 async function onBtnClick(event) {
+  const filtersBtnArray = document.querySelectorAll('.ItemExercises');
+  console.log(filtersBtnArray);
+  filtersBtnArray.forEach(btn => {
+    btn.classList.remove('FilterBtnIsActive');
+  });
   exerciseFiltersList.addEventListener('click', onCardClick);
   exerciseFiltersList.classList.remove('ExerciseCategoryList');
   exerciseFiltersList.classList.add('ExerciseFiltersList');
@@ -306,6 +293,11 @@ async function onPaginationPagesbyFilter(e) {
   }
 }
 
-export { createMarkUp };
-
 // Импорт необходимых библиотек
+
+// function onStartBtnClick(event) {
+//   divEl = event.target.closest('.StartBtn');
+//   console.log(divEl);
+//   // idValue = divEl.dataset.id;
+//   // console.log(idValue);
+// }

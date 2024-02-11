@@ -16,13 +16,13 @@ exerciseFiltersList.addEventListener('click', onCardClick);
 
 async function onCardClick(event) {
   exerciseFiltersList.removeEventListener('click', onCardClick);
-  exerciseFiltersList.classList.add('ExerciseCategoryList');
   pagination.removeEventListener('click', onPaginationFilterPages);
   pagination.removeEventListener('click', onPaginationPagesbyFilter);
   if (event.target === event.currentTarget) {
     return;
   }
   exerciseFiltersList.classList.add('ExerciseCategoryList'); // при кліку на картку додаємо клас до ul (бо він має інші стилі)
+  exerciseFiltersList.classList.remove('ExerciseFiltersList');
   const liEl = event.target.closest('.ExercisesItem'); // при кліку на картку шукаємо найближчий елемент у якого буде заданий селектор (це li)
   filterValue = liEl.dataset.filter; //Muscles   // тепер можемо отримати li дата-атрибути
   nameValue = liEl.dataset.name; // abductors
@@ -172,7 +172,7 @@ function updateExercisesHeaderMarkup(nameValue) {
   return `<div>
   <h2 class="TitleExercises">Exercises / <span class="NameValue"> ${nameValue}</span></h2>
   <div class="ExercisesHeared">
-  <div class="ListExercises FilterButtons" id='FilterBtn'>
+  <div id='FilterBtn'>
     <button class="ItemExercises" data-filter="Muscles" id='MusclesBtn'>Muscles</button>
     <button class="ItemExercises" data-filter="Body parts" id='BodyPartBtn'>Body parts</button>
     <button class="ItemExercises" data-filter="Equipment" id='EquipmentBtn'>Equipment</button>
@@ -195,6 +195,7 @@ function updateExercisesHeaderMarkup(nameValue) {
 async function onBtnClick(event) {
   exerciseFiltersList.addEventListener('click', onCardClick);
   exerciseFiltersList.classList.remove('ExerciseCategoryList');
+  exerciseFiltersList.classList.add('ExerciseFiltersList');
   currentPage = 1; // робимо поточну сторінку першою
   pagination.removeEventListener('click', onPaginationSubcategoriesPage); // видаляємо з нумерації сторінок слухача попереднього
   Array.from(event.currentTarget.children).map(item => {

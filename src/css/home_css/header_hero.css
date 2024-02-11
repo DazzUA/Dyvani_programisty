@@ -306,7 +306,6 @@
 
 .hero-photo {
   position: relative;
-
   width: 335px;
   height: 387px;
   flex-shrink: 0;
@@ -317,6 +316,7 @@
   background-size: cover;
   background-image: url('../../img/mob/hero/women.hero.mob.png');
   border-radius: 30px;
+  margin-bottom: 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -386,6 +386,7 @@
   font-weight: 400;
   line-height: 0.89;
   letter-spacing: -1.12px;
+  width: 295px;
 }
 @media screen and (min-width: 768px) {
   .hero-text-main {
@@ -441,6 +442,25 @@
   }
 }
 .legend {
+  position: absolute;
+  left: 10px;
+  bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .legend {
+    position: absolute;
+    left: 20px;
+    bottom: 104px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .legend {
+    position: absolute;
+    left: 48px;
+    bottom: 32px;
+  }
 }
 /* same for others breackpoints */
 .legend-list {
@@ -454,7 +474,8 @@
 
 .legend-item {
   border-radius: 30px;
-  border: 1px solid #000;
+  border: 1px solid rgba(246, 246, 246, 0.3);
+
   display: flex;
   padding: 4px 10px;
   justify-content: center;
@@ -463,7 +484,7 @@
 }
 
 .legend-text {
-  color: #0c0c0c;
+  color: #f6f6f6;
   font-family: 'DM Sans';
   font-size: 12px;
   font-style: normal;

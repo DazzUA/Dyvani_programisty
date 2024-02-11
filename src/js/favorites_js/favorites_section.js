@@ -3,18 +3,19 @@ const fullUrl = window.location.pathname;
 const lastSlashIndex = fullUrl.lastIndexOf('/');
 const result = '/page-2.html'; //fullUrl.substring(lastSlashIndex);
 
-let storage = 'favorites';
-let storageItem = localStorage.getItem(storage);
-// Перевірка, чи є дані для ключа 'favorites' в локальному сховищі
-if (!storageItem) {
-  // Якщо немає даних, додати порожній масив за замовчуванням
-  localStorage.setItem(storage, JSON.stringify([]));
-  // Перевизначити змінну storageItem з порожнім масивом
-  storageItem = '[]';
+function checkLocalStorageData(key) {
+  let storageItem = localStorage.getItem(key);
+  if (!storageItem) {
+    localStorage.setItem(key, JSON.stringify([]));
+    storageItem = '[]';
+  }
+  return storageItem;
 }
 
-// Перетворити рядок JSON на об'єкт або масив
-let parsedItem = JSON.parse(storageItem);
+let storage = 'favorites'; // ключ для localStorage
+let storageItem = checkLocalStorageData(storage); // виклик функції з переданим ключем
+let parsedItem = JSON.parse(storageItem); // Перетворити рядок JSON на об'єкт або масив
+
 const favorites = document.querySelector('.add-favorites');
 const favoritesList = document.querySelector('.favorites-list');
 let id = '';
@@ -24,66 +25,26 @@ const paginationBlock = document.querySelector('.favorites-pagination-block');
 const favoritesContainerBlock = document.querySelector(
   '.div-favorites-section'
 );
-const ul = document.querySelector('.favorites-list');
 const deleteCards = document.querySelectorAll('.favorites-list-item');
 
-/**перевіряє чи є в локалсторідж запис і якщо є, то малює картки, інакше показує повідомлення */
+// Функція для створення карти збережених улюблених елементів
+function createFavoriteCard(elem) {
+  const markup = createFavoriteCardMarkup(elem);
+
+  // Вставити створену карту в список улюблених
+  favoritesList.insertAdjacentHTML('beforeend', markup);
+}
+
+///**перевіряє чи є в локалсторідж запис і якщо є, то малює картки, інакше показує повідомлення */
 if (result === '/page-2.html') {
   if (!storageItem || parsedItem.length == 0) {
     messageInfo.classList.add('is-open-message-favorites');
     paginationBlock.classList.add('close');
   } else if (storageItem) {
     try {
+      // Пройтися по кожному елементу і створити відповідну карту
       parsedItem.forEach(elem => {
-        const markup = `<li class="favorites-list-item" id="${elem.id}">
-            <div class="favorites-card-header">
-                <div class="favorites-workout">
-                    <p>WORKOUT</p>
-                </div>
-                <button class="favorites-btn-trash" aria-label="trash" type="button">
-                    <svg class="favorites-icon-delete" width="16" height="16" fill="none">
-                        <use class="favorites-icon-delete-use" href="${sprite}#icon-trash"></use>
-                    </svg>
-                </button>
-                <button
-                    data-id="${elem.id}"
-                    class="favorites-btn-arrow"
-                    aria-label="start"
-                    type="button">Start
-                        <svg class="favorites-icon-arrow" width="14" height="14" stroke="#1B1B1B">
-                            <use class="favorites-icon-arrow-use" href="${sprite}#icon-arrow"></use>
-                        </svg>
-                </button>
-                </div>
-                <div class="favorites-main-container">
-
-                <div class="favorite-icon-run-man">
-                <svg width="14" height="14">
-          <use href="${sprite}#icon-running"></use>
-        </svg></div>                  
-                    <h3 class="favorites-name-part">${elem.name}</h3>
-                </div>
-                <div class="favorites-card-footer">
-                <ul class="favorites-card-footer-list">
-                    <li class="favorites-card-footer-item">
-                        <div class="favorites-card-footer-wrapper">
-                            <h4 class="favorites-card-footer-title">Burned calories:</h4>
-                            <p class="favorites-card-footer-block">${elem.burnedCalories}</p>
-                        </div>
-                        <div class="favorites-card-footer-wrapper">
-                            <h4 class="favorites-card-footer-title">Body part:</h4>
-                            <p class="favorites-card-footer-block">${elem.bodyPart}</p>
-                        </div>
-                        <div class="favorites-card-footer-wrapper">
-                            <h4 class="favorites-card-footer-title">Target:</h4>
-                            <p class="favorites-card-footer-block">${elem.target}</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </li>`;
-
-        favoritesList.insertAdjacentHTML('beforeend', markup);
+        createFavoriteCard(elem);
       });
     } catch (error) {
       console.log(error.name);
@@ -92,38 +53,12 @@ if (result === '/page-2.html') {
   }
 }
 
-if (result === '/page-2.html') {
-  ul.addEventListener('click', event => {
-    if (
-      event.target.classList.contains('favorites-btn-trash') ||
-      event.target.classList.contains('favorites-icon-delete') ||
-      event.target.classList.contains('favorites-icon-delete-use')
-    ) {
-      id = event.currentTarget.id;
-      const index = parsedItem.findIndex(item => item.id == id);
-      parsedItem.splice(index, 1);
-      localStorage.setItem(storage, JSON.stringify(parsedItem));
-      deleteCards.forEach(elem => {
-        if (elem.id == id) cardForDelete = elem;
-      });
-      if (cardForDelete) {
-        ul.removeChild(cardForDelete);
-      }
-      if (!storageItem || parsedItem.length == 0) {
-        messageInfo.classList.add('is-open-message-info');
-        paginationBlock.classList.add('close');
-      }
-    }
-    location.reload();
-  });
-}
-
+/**пагінація */
 if (result === '/page-2.html') {
   document.addEventListener('DOMContentLoaded', function () {
     // Функція для відображення пагінації залежно від ширини екрану.
     function togglePagination() {
       const currentPage = window.location.pathname; // Отримання поточного шляху сторінки
-
       // Перевірка, чи поточна сторінка - '/page-2.html', і ширина екрану менше або дорівнює 767px.
       if (
         window.innerWidth <= 767 &&
@@ -150,7 +85,7 @@ if (result === '/page-2.html') {
       // Define items per page based on screen width and visibility of favorites list
       const itemsPerPage =
         window.innerWidth <= 767 && isFavoritesListVisible()
-          ? 6
+          ? 8
           : favoritesList.children.length;
 
       // Show all items if screen width is greater than 767px
@@ -220,15 +155,23 @@ if (result === '/page-2.html') {
       } else {
         favoritesContainerBlock.style.maxHeight = 'none';
       }
+
+      // Зробити скролінг менш інтенсивним і більш плавним
+      const scrollOptions = {
+        behavior: 'smooth',
+        block: 'start', // Налаштування скролінгу починається від верхнього краю елементу
+      };
+
+      window.scrollBy(0, 10); // Змінити значення, яке ви вважаєте відповідним
     }
 
-    // Check scroll behavior on initial load
+    // Перевірка поведінки прокрутки при першому завантаженні
     checkScroll();
 
     // Check pagination visibility on initial load
     togglePagination();
 
-    // Check pagination visibility and initialize pagination on window resize
+    // Перевірка видимості пагінації та ініціалізація пагінації під час зміни розміру вікна
     window.addEventListener('resize', function () {
       togglePagination();
       paginate();
@@ -236,7 +179,7 @@ if (result === '/page-2.html') {
     });
 
     // Initialize pagination if needed
-    if (isFavoritesListVisible() && favoritesList.children.length >= 6) {
+    if (isFavoritesListVisible() && favoritesList.children.length >= 8) {
       paginate();
     }
   });
@@ -244,9 +187,9 @@ if (result === '/page-2.html') {
 
 //**Ігорю на кнопку*/
 
-favorites.addEventListener('click', evt => {
-  evt.preventDefault();
-  if (favorites.textContent.trim() == 'Add to favorites') {
+const favoritesButton = document.querySelector('.add-favorites');
+function toggleFavorite() {
+  if (favoritesButton.textContent.trim() == 'Add to favorites') {
     parsedItem.push({
       id: '64f389465ae26083f39b17df', //id
       gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0067.gif', //gif.src
@@ -261,16 +204,16 @@ favorites.addEventListener('click', evt => {
         'Located at the shoulders, deltoids have three heads: anterior, lateral, and posterior. They are involved in various arm movements like lifting and rotating. Exercises include shoulder press, lateral raises, and front raises.', //description.textContent
     });
     localStorage.setItem(storage, JSON.stringify(parsedItem));
-    favorites.textContent = `Delete from favorites`;
-    favorites.innerHTML = `Delete from favorites`;
+    favoritesButton.textContent = `Delete from favorites`;
+    //favoritesButton.innerHTML = `Delete from favorites`;
   } else {
     const index = parsedItem.findIndex(item => item.id == id);
     parsedItem.splice(index, 1);
     localStorage.setItem(storage, JSON.stringify(parsedItem));
     const fullCards = document.querySelectorAll('.favorites-list-item');
 
-    favorites.textContent = `Add to favorities`;
-    //favorites.innerHTML = `Add to favorities ${heartIcon}`;
+    favoritesButton.textContent = `Add to favorities`;
+    //favoritesButton.innerHTML = `Add to favorities ${heartIcon}`;
     if (document.querySelector(`.favorites-list-item[id="${id}"]`)) {
       fullCards.forEach(elem => {
         if (elem.id == id) cardForDelete = elem;
@@ -282,5 +225,99 @@ favorites.addEventListener('click', evt => {
       }
     }
   }
-  location.reload();
-});
+}
+
+favoritesButton.addEventListener('click', toggleFavorite);
+
+function handleFavoritesListClick(event) {
+  if (
+    event.target.classList.contains('favorites-btn-trash') ||
+    event.target.classList.contains('favorites-icon-delete') ||
+    event.target.classList.contains('favorites-icon-delete-use')
+  ) {
+    const id = event.currentTarget.id;
+    deleteCard(id);
+  }
+}
+
+if (result === '/page-2.html') {
+  favoritesList.addEventListener('click', handleFavoritesListClick);
+}
+
+function deleteCard(id) {
+  const index = parsedItem.findIndex(item => item.id == id);
+  parsedItem.splice(index, 1);
+  localStorage.setItem(storage, JSON.stringify(parsedItem));
+  deleteCards.forEach(elem => {
+    if (elem.id == id) cardForDelete = elem;
+  });
+  if (cardForDelete) {
+    favoritesList.removeChild(cardForDelete);
+  }
+  if (!storageItem || parsedItem.length == 0) {
+    messageInfo.classList.add('is-open-message-info');
+    paginationBlock.classList.add('close');
+  }
+  renderFavoriteCards();
+}
+
+function renderFavoriteCards() {
+  // Очищаємо поточні карточки зі списку
+  favoritesList.innerHTML = '';
+  // Рендеримо кожну карточку у списку
+  parsedItem.forEach(elem => {
+    const markup = createFavoriteCardMarkup(elem);
+    // Вставляємо розмітку карточки у список улюблених елементів
+    favoritesList.insertAdjacentHTML('beforeend', markup);
+  });
+}
+
+function createFavoriteCardMarkup(elem) {
+  return `<li class="favorites-list-item" id="${elem.id}">
+        <div class="favorites-card-header">
+            <div class="favorites-workout">
+                <p>WORKOUT</p>
+            </div>
+            <button class="favorites-btn-trash" aria-label="trash" type="button">
+                <svg class="favorites-icon-delete" width="16" height="16" fill="none">
+                    <use class="favorites-icon-delete-use" href="${sprite}#icon-trash"></use>
+                </svg>
+            </button>
+            <button
+                data-id="${elem.id}"
+                class="favorites-btn-arrow"
+                aria-label="start"
+                type="button">Start
+                    <svg class="favorites-icon-arrow" width="14" height="14" stroke="#1B1B1B">
+                        <use class="favorites-icon-arrow-use" href="${sprite}#icon-arrow"></use>
+                    </svg>
+            </button>
+            </div>
+            <div class="favorites-main-container">
+    
+            <div class="favorite-icon-run-man">
+            <svg width="14" height="14">
+      <use href="${sprite}#icon-running"></use>
+    </svg></div>                  
+                <h3 class="favorites-name-part">${elem.name}</h3>
+            </div>
+            <div class="favorites-card-footer">
+            <ul class="favorites-card-footer-list">
+                <li class="favorites-card-footer-item">
+                    <div class="favorites-card-footer-wrapper">
+                        <h4 class="favorites-card-footer-title">Burned calories:</h4>
+                        <p class="favorites-card-footer-block">${elem.burnedCalories}</p>
+                    </div>
+                    <div class="favorites-card-footer-wrapper">
+                        <h4 class="favorites-card-footer-title">Body part:</h4>
+                        <p class="favorites-card-footer-block">${elem.bodyPart}</p>
+                    </div>
+                    <div class="favorites-card-footer-wrapper">
+                        <h4 class="favorites-card-footer-title">Target:</h4>
+                        <p class="favorites-card-footer-block">${elem.target}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>`;
+}

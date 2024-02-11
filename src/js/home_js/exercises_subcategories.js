@@ -34,9 +34,10 @@ async function onCardClick(event) {
       nameValue
     );
     exerciseFiltersList.innerHTML = createMarkUp(results); // це буде масив об'єктів
-    const StartBtn = document.querySelector('.StartBtn');
-    // треба імпортувати функцію onStartBtnClick -------
-    // StartBtn.addEventListener('click', onStartBtnClick)
+    // const StartBtn = document.querySelectorAll('.StartBtn');
+    // console.log(StartBtn);
+    // // треба імпортувати функцію onStartBtnClick -------
+    // StartBtn.addEventListener('click', onStartBtnClick);
 
     // ------------------------------new КОД ДЛЯ ДЕНИСА --- ПОМИЛКА--- ПОКИ КОМЕНТУЮ---------------------------------------
     // const ExercisesForm = document.querySelector('.ExercisesForm');
@@ -306,6 +307,13 @@ async function onPaginationPagesbyFilter(e) {
   }
 }
 
-export { createMarkUp };
-
 // Импорт необходимых библиотек
+
+// function onStartBtnClick(event) {
+//   divEl = event.target.closest('.StartBtn');
+//   console.log(divEl);
+//   // idValue = divEl.dataset.id;
+//   // console.log(idValue);
+// }
+
+// export { createMarkUp };

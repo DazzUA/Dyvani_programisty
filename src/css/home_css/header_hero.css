@@ -355,8 +355,7 @@
 }
 @media screen and (min-width: 768px) {
   .hero-container {
-    width: auto;
-    max-width: 464px;
+    width: 488px;
     height: 900px;
     flex-shrink: 0;
     margin: 0;
@@ -379,6 +378,8 @@
 @media screen and (min-width: 768px) {
   .hero-position {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 .hero-text-main {

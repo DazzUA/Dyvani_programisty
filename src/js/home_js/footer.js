@@ -34,6 +34,7 @@ async function searchForm(event) {
     createMessage(
       JSON.stringify(JSON.parse(error.request.responseText).message)
     );
+
     refs.input.value = '';
   }
 }

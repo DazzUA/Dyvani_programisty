@@ -10,9 +10,9 @@ const addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
 const openClass = 'IsOpen';
 let cardObj = {};
 
-button.addEventListener('click', onStartBtnClick);
+button.addEventListener('click', modalCard);
 
-async function onStartBtnClick() {
+async function modalCard() {
   try {
     cardObj = await fetchImages();
     showModal();
@@ -46,7 +46,7 @@ async function fetchImages() {
 function displayImages(cardObj) {
   card.innerHTML = ` <button class="ModalClose" type="button">
           <svg class="CloseModalIcon" width="8" height="8">
-            <use href="../img/symbol-defs.svg#icon-close"></use>
+            <use href="./img/symbol-defs.svg#icon-close"></use>
           </svg>
         </button>
   <div class="ModalImage">     
@@ -81,4 +81,4 @@ function hideModal() {
   modalBackdrop.classList.remove(openClass);
 }
 
-export { onStartBtnClick };
+export { modalCard };

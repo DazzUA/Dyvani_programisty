@@ -345,33 +345,6 @@
     background-size: cover;
   }
 }
-.hero-container {
-  width: 335px;
-  height: 365px;
-  flex-shrink: 0;
-  margin: 0 auto;
-  border-radius: 30px;
-  background: #fff;
-}
-@media screen and (min-width: 768px) {
-  .hero-container {
-    width: 488px;
-    height: 900px;
-    flex-shrink: 0;
-    margin: 0;
-    border-radius: 0px 50px 50px 50px;
-    background: #fff;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .hero-container {
-    height: 884px;
-    width: 50%;
-    flex-shrink: 0;
-    border-radius: 0px 50px 50px 50px;
-    background: #fff;
-  }
-}
 
 @media screen and (min-width: 768px) {
   .hero-position {
@@ -386,13 +359,14 @@
   font-weight: 400;
   line-height: 0.89;
   letter-spacing: -1.12px;
-  width: 295px;
+  margin-bottom: 20px;
 }
 @media screen and (min-width: 768px) {
   .hero-text-main {
     font-size: 98px;
     line-height: 0.97;
     letter-spacing: -1.96px;
+    margin-bottom: 32px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -400,6 +374,7 @@
     font-size: 120px;
     line-height: 0.96;
     letter-spacing: -2.4px;
+    margin-bottom: 25px;
   }
 }
 .hero-word {
@@ -465,7 +440,7 @@
 /* same for others breackpoints */
 .legend-list {
   display: flex;
-  width: 137px;
+  width: 141px;
   align-items: center;
   align-content: center;
   gap: 4px;
@@ -490,6 +465,36 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1.17;
+}
+.hero-container {
+  width: 335px;
+  height: 365px;
+  flex-shrink: 0;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: #fff;
+  padding: 60px 20px 20px;
+}
+@media screen and (min-width: 768px) {
+  .hero-container {
+    width: 488px;
+    height: 900px;
+    flex-shrink: 0;
+    margin: 0;
+    border-radius: 0px 50px 50px 50px;
+    background: #fff;
+    padding: 231px 32px 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-container {
+    height: 884px;
+    width: 50%;
+    flex-shrink: 0;
+    border-radius: 0px 50px 50px 50px;
+    background: #fff;
+    padding: 225px 32px 32px;
+  }
 }
 
 /* 

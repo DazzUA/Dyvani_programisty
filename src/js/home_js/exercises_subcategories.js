@@ -39,36 +39,6 @@ async function onCardClick(event) {
     // // треба імпортувати функцію onStartBtnClick -------
     // StartBtn.addEventListener('click', onStartBtnClick);
 
-    // ------------------------------new КОД ДЛЯ ДЕНИСА --- ПОМИЛКА--- ПОКИ КОМЕНТУЮ---------------------------------------
-    // const ExercisesForm = document.querySelector('.ExercisesForm');
-    // ExercisesForm.addEventListener(
-    //   'submit',
-    //   onFormSubmit(filterValue, nameValue)
-    // );
-
-    // // Определяем асинхронную функцию onFormSubmit. Функция принимает объект запроса query
-    // async function onFormSubmit(query) {
-    //   try {
-    //     // Выполняем GET-запрос к API с передачей параметров запроса. Результат запроса сохраняем в переменной response
-    //     const response = await axios.get(`${BASE_URL}`, {
-    //       params: {
-    //         bodypart: '',
-    //         muscles: '',
-    //         equipment: '',
-    //         keyword: query.query, // эти значения из queryParams
-    //         page: query.page,
-    //         limit: 9,
-    //       },
-    //     });
-    //     // Вызываем функцию renderExercises с передачей массива упражнений из ответа
-    //     renderExercises(response.data.results);
-    //   } catch (error) {
-    //     handleError(error); // Вывод ошибки в консоль при возникновении ошибки запроса
-    //   }
-    // }
-
-    // -------------------------------new  КОД ДЛЯ ДЕНИСА --- ПОМИЛКА--- ПОКИ КОМЕНТУЮ--------------------------------------
-
     const FilterBtn = document.querySelector('#FilterBtn'); // додаємо на три кнопки фільтрів слухача по кліку
     FilterBtn.addEventListener('click', onBtnClick);
     FilterBtn.addEventListener('click', onBtnClickForFormDelete);
@@ -315,5 +285,3 @@ async function onPaginationPagesbyFilter(e) {
 //   // idValue = divEl.dataset.id;
 //   // console.log(idValue);
 // }
-
-export { createMarkUp };

@@ -16,7 +16,6 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.7",
-    "izimodal": "^1.6.1",
     "izitoast": "^1.4.0",
     "tui-pagination": "^3.4.1",
     "vite-plugin-full-reload": "^1.0.5",

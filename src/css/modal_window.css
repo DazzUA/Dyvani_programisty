@@ -1,0 +1,147 @@
+.Backdrop {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #2E2F4266;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.Backdrop.IsOpen {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.Modal {
+    position: absolute;
+    top: 100px;
+    max-width: 335px;
+    border-radius: 20px;
+    background-color: #FCFCFC;
+    border-radius: 4px;
+    padding: 72px 16px 24px;
+    overflow: auto;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 1px 3px rgba(0, 0, 0, 0.12),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ModalClose {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 24px;
+    right: 24px;
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0;
+    border-radius: 50%;
+    background-color: #E7E9FC;
+    cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ModalClose:hover,
+.ModalClose:focus {
+    background-color: #404bbf;
+    border: none;
+}
+
+/* .CloseModalIcon {
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+} */
+
+/* .ModalClose:hover .CloseModalIcon,
+.ModalClose:focus .CloseModalIcon {
+    fill: #ffffff;
+    
+} */
+
+.ModalImage {
+    border-radius: 12px;
+    background-color: rgba(27, 27, 27, 0.2);
+    background-blend-mode: multiply;
+}
+
+.ImageGif {
+    width: 295px;
+    height: 258px;
+    border-radius: 12px;
+    opacity: 0.6;
+}
+
+.ModalTitle {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    color: #1b1b1b;
+}
+
+.ModalTitle::first-letter {
+    text-transform: uppercase;
+}
+
+/* .ModalRating{} */
+
+.NumberRating {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #1b1b1b;
+}
+
+/* .StarRating{} */
+
+
+.ModalList {
+    width: 295px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.ModalListItem {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.Description {
+    width: 295px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: rgba(27, 27, 27, 0.6);
+}
+
+
+.AddRemoveFavorites {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 9px;
+    border-radius: 30px;
+    padding: 12px 83px;
+    width: 295px;
+    height: 42px;
+    background: #7e847f;
+    border: none;
+}

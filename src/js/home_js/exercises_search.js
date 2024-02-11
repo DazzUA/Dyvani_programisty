@@ -1,11 +1,12 @@
 // Что реализовано в коде:
 // Пользователь может вводить поисковый запрос и отправлять его на сервер;
 // После получения ответа от сервера, результаты поиска отображаются на странице;
+// Созданы элементы списка с названиями упражнений и добавляены в список результатов поиска.
 // В случае отсутствия результатов поиска выводится соответствующее уведомление.
 
 import axios from 'axios';
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+
+import { createMarkUp } from './exercises_subcategories';
 
 // базовый URL для отправки запросов к API
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
@@ -22,9 +23,6 @@ const queryParams = {
   query: '', // строка запроса для поиска
   page: 1, // по умолчанию отображается первая страница результатов
 };
-
-// повесили слушателя события submit на форму поиска, который вызывает функцию handleSearch при отправке формы.
-refs.searchForm.addEventListener('submit', handleSearch);
 
 // Определяем асинхронную функцию handleSearch. Функция принимает событие в качестве аргумента
 
@@ -44,50 +42,51 @@ async function handleSearch(event) {
   }
 
   // Вызываем функция onFormSubmit с передачей параметров запроса.
-  await onFormSubmit(queryParams);
+  try {
+    const card = await onFormSubmit(query);
+    renderExercises(card); // передаем массив упражнений из объекта card.data
+  } catch (error) {}
 }
 
 // Определяем асинхронную функцию onFormSubmit. Функция принимает объект запроса query
-async function onFormSubmit(query) {
+async function onFormSubmit(data, query) {
   try {
     // Выполняем GET-запрос к API с передачей параметров запроса. Результат запроса сохраняем в переменной response
-    const response = await axios.get(`${BASE_URL}`, {
+    const response = await axios.get(BASE_URL, {
       params: {
-        bodypart: '',
-        muscles: '',
-        equipment: '',
-        keyword: query.query, // эти значения из queryParams
-        page: query.page,
+        bodypart: data,
+        keyword: query, // передаем значение из свойства query объекта query, которое содержит строку ключевого слова для поиска
+        page: queryParams.page, // передаем значение из свойства page объекта queryParams, которое содержит номер страницы
         limit: 9,
       },
     });
-    // Вызываем функцию renderExercises с передачей массива упражнений из ответа
-    renderExercises(response.data.results);
+    return response.data;
   } catch (error) {
     handleError(error); // Вывод ошибки в консоль при возникновении ошибки запроса
   }
 }
-// Определяем функцию renderExercises. Функция принимает массив упражнений. Если массив пустой, вызывается функция showNoResultsToast. Если нет - создаются элементы списка 'li' с названиями упражнений и добавляются в список результатов поиска.
+// Определяем функцию createMarkUp. Функция принимает массив упражнений. Если массив пустой, вызывается функция showNoResultsToast. Если нет - создаются элементы списка 'li' с названиями упражнений и добавляются в список результатов поиска.
 
 function renderExercises(exercises) {
   if (exercises.length === 0) {
     showNoResultsToast(); // Вызов функции showNoResultsToast при отсутствии результатов поиска
   } else {
-    exercises.forEach(exercise => {
-      const exerciseItem = document.createElement('li');
-      exerciseItem.textContent = exercise.name;
+    createMarkUp(exercises);
+  }
 
-      // Используем refs для доступа к searchList
-      refs.searchList.appendChild(exerciseItem);
-    });
+  // Функция для вывода всплывающего уведомления с сообщением о отсутствии результатов поиска
+  function showNoResultsToast() {
+    const noResultsMessageContainer = document.createElement('div'); // контейнер для оформления сообщения
+    noResultsMessageContainer.classList.add('NoResultsMessageContainer'); // добавил класс для контейнера
+
+    const noResultsMessage = document.createElement('div'); // контейнер для текста
+    noResultsMessageo.classList.add('NoResultsMessage'); // добавил класс для сообщения
+    noResultsMessageo.innerHTML =
+      'Unfortunately, <span class="highlight">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.';
+
+    noResultsMessageContainer.appendChild(noResultsMessage); // добавил сообщение внутрь контейнера для этого сообщения
+    document.body.appendChild(noResultsMessageContainer); // добавил контейнер с сообщением на страницу внутрь <body>, чтобы показать всплывающее уведомление
   }
 }
-
-// Функция для вывода всплывающего уведомления с сообщением о отсутствии результатов поиска
-function showNoResultsToast() {
-  iziToast.error({
-    title: 'No Results',
-    message:
-      'Unfortunately, no results were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs',
-  });
-}
+export { handleSearch };
+//--------------------------------------Пагинация------------------------------------//

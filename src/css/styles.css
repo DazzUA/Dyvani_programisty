@@ -5,6 +5,7 @@
   |============================
 */
 @import url('./reset.css');
+@import url('./container.css');
 /**/
 @import url('./home_css/header_hero.css');
 @import url('./home_css/quote_of_the_day.css');
@@ -18,6 +19,17 @@
 @import url('./favorites_css/favorites_section.css');
 /**/
 @import url('./modal_window.css');
+/*font*/
+@font-face {
+  font-family: 'DM Sans';
+  src: url('./fonts/DMSans-Bold.ttf') format('truetype'),
+    url('./fonts/DMSans-BoldItalic.ttf') format('truetype'),
+    url('./fonts/DMSans-Italic.ttf') format('truetype'),
+    url('./fonts/DMSans-Medium.ttf') format('truetype'),
+    url('./fonts/DMSans-MediumItalic.ttf') format('truetype'),
+    url('./fonts/DMSans-Regular.ttf') format('truetype');
+}
+
 /*base_styles*/
 :root {
   --white-bg-color: rgb(246, 246, 246);
@@ -34,7 +46,7 @@ html {
 
 body {
   font-family: 'DM Sans', sans-serif;
-  color: var(--light-grey-color);
+  /*color: var(--light-grey-color);*/
   background-color: var(--white-bg-color);
 }
 

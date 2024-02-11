@@ -1,0 +1,506 @@
+.Exercises {
+  border-radius: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: rgb(232, 232, 232);
+}
+.TitleExercises {
+  color: rgb(27, 27, 27);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: #1b1b1b;
+}
+.NameValue {
+  color: rgba(27, 27, 27, 0.5);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.ExercisesHeared {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.ItemExercises {
+  padding: 7px 10px;
+  color: rgb(27, 27, 27);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: 0px;
+  border: none;
+  border-radius: 30px;
+  background: rgb(246, 246, 246);
+  height: 32px;
+  min-width: 88px;
+}
+.ExercisesForm {
+  border-radius: 30px;
+  background: #f6f6f6;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  min-width: 280px;
+}
+
+.ExercisesForm .SearchInput::placeholder {
+  color: #1b1b1b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+}
+.ListExercises {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.ExerciseCategoryList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.WorkoutCard {
+  flex-basis: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  padding: 16px;
+  height: 185px;
+}
+#FilterBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.MainPartName {
+  color: #1b1b1b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.CardMainPart {
+  display: flex;
+  margin-bottom: 12px;
+  align-items: center;
+  gap: 16px;
+}
+
+@media screen and (min-width: 375px) {
+  .ItemExercises {
+    padding: 7px 14px;
+  }
+  .ExercisesForm {
+    min-width: 295px;
+  }
+}
+
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+  .Exercises {
+    padding: 64px;
+  }
+  .TitleExercises {
+    font-size: 44px;
+    line-height: 48px;
+    margin-bottom: 32px;
+  }
+  .ExercisesHeared {
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ListExercises {
+    margin-bottom: 0px;
+  }
+  .ExercisesForm .SearchInput::placeholder {
+    color: #1b1b1b;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .ExercisesForm {
+    height: 48px;
+    min-width: 246px;
+  }
+  .ItemExercises {
+    padding: 10px 20px;
+  }
+  .ExerciseCategoryList {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .WorkoutCard {
+    flex-basis: calc((100% - 14px) / 2);
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 16px;
+    height: 185px;
+  }
+  .MainPartName {
+    color: #1b1b1b;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    line-height: 1.33;
+  }
+
+  #FilterBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 0px;
+  }
+  .ListExercises {
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1440px) {
+  .WorkoutCard {
+    flex-basis: calc((100% - 40px) / 3);
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 16px;
+    height: 185px;
+  }
+  .ExercisesForm {
+    min-width: 273px;
+  }
+  .ItemExercises {
+    height: 44px;
+  }
+  .NameValue {
+    font-size: 24px;
+    line-height: 1.33;
+    letter-spacing: -0.02em;
+  }
+  .ExerciseCategoryList {
+    row-gap: 28px;
+    column-gap: 20px;
+  }
+  .CardMainPart {
+    margin-bottom: 24px;
+  }
+}
+
+/* .ItemExercises {
+  padding: 7px 14px;
+  color: rgb(27, 27, 27);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+  border: none;
+  border-radius: 30px;
+  background: rgb(246, 246, 246);
+} */
+
+@media screen and (min-width: 768px) {
+  .ItemExercises {
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.ButtonIsActive {
+  background: #7e847f;
+  border-color: #7e847f;
+  color: #f6f6f6;
+}
+
+.ExerciseFiltersList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .ExerciseFiltersList {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+}
+
+.FilterList {
+  position: relative;
+  cursor: pointer;
+}
+
+.ImgExercises {
+  width: 295px;
+  height: 232px;
+  border: 1px solid rgba(246, 246, 246, 0.3);
+  border-radius: 12px;
+
+  background: lightgray;
+}
+
+@media screen and (min-width: 768px) {
+  .ImgExercises {
+    width: 313px;
+    height: 250px;
+  }
+}
+
+.FilterText {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    0deg,
+    rgba(16, 16, 16, 0.7) 0%,
+    rgba(16, 16, 16, 0.7) 100%
+  );
+}
+
+.FilterExercises {
+  color: rgb(246, 246, 246);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-transform: capitalize;
+}
+
+@media screen and (min-width: 768px) {
+  .FilterExercises {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+.FilterName {
+  color: rgba(246, 246, 246, 0.4);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+}
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.PaginationBtn {
+  width: 32px;
+  height: 32px;
+  color: rgba(27, 27, 27, 0.4);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .PaginationBtn {
+    font-size: 24px;
+  }
+}
+
+.PaginationBtnIsActive {
+  color: #1b1b1b;
+  text-align: center;
+  border: 1px solid rgb(27, 27, 27);
+  border-radius: 18px;
+}
+
+/* ТУТ ПОЧИНАЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises.subcategories.js */
+
+.CardHeader {
+  display: flex;
+  margin-bottom: 29px;
+  justify-content: space-between;
+}
+
+.CardFooter {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.StartBtn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #1b1b1b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  stroke: #1b1b1b;
+  fill: white;
+}
+.WorkoutWrapper {
+  display: flex;
+}
+.CardFooterTextDescr {
+  color: rgba(27, 27, 27, 0.4);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.CardFooterTextValue {
+  color: #1b1b1b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  text-transform: capitalize;
+}
+.RunIconWrapper {
+  width: 24px;
+  height: 24px;
+  fill: #f6f6f6;
+  background-color: #7e847f;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.MainPartName::first-letter {
+  text-transform: uppercase;
+}
+
+.Workout {
+  border-radius: 15px;
+  background-color: #7e847f;
+  padding: 5px 8px;
+  text-transform: uppercase;
+  color: #f6f6f6;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  margin-right: 16px;
+}
+.RatingWrapper {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  color: #1b1b1b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  fill: #eea10c;
+}
+
+.TitleExercises {
+  text-transform: capitalize;
+}
+.IconSearch {
+  stroke: black;
+  fill: #f6f6f6;
+}
+.SearchButton {
+  border: none;
+  background-color: #f6f6f6;
+}
+
+.SearchInput {
+  border: none;
+  background-color: #f6f6f6;
+  color: #1b1b1b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  outline: none;
+}
+
+.IsActive {
+  background-color: #7e847f;
+}
+
+/* ТУТ ЗАКІНЧУЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises.subcategories.js */
+
+/* стили для сообщения об отсутствии результатов поиска в файле exercises_search.js */
+
+.NoResultsMessageContainer {
+  width: 295px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -0.01;
+}
+
+.NoResultsMessage {
+  color: #1b1b1b;
+}
+
+.NoResultsMessageAccent {
+  color: #7e847f; /* Цвет для выделенной части текста "no results" */
+}
+
+@media screen and (min-width: 768px) {
+  .NoResultsMessageContainer {
+    width: 536px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .NoResultsMessageContainer {
+    width: 684px;
+  }
+}
+/* Тут закончились стили для сообщения об отсутствии результатов поиска в файле exercises_search.js */

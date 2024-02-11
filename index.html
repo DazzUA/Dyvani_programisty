@@ -1,43 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/Dyvani_programisty/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EnergyFlow</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+    />
+    
+    <script type="module" crossorigin src="/Dyvani_programisty/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/Dyvani_programisty/assets/vendor-db25513e.js">
+    <link rel="stylesheet" href="/Dyvani_programisty/assets/vendor-e5212ee8.css">
+    <link rel="stylesheet" href="/Dyvani_programisty/assets/index-34e2cd0f.css">
+  </head>
+  <body>
+    <header class="header-main">
+    <div class="container header-inern">
+        <a class="header-logo" href="./index.html">energy.flow</a>
+        <nav class="header-nav">
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/Dyvani_programisty/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EnergyFlow</title>
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css" />
-  
-  <script type="module" crossorigin src="/Dyvani_programisty/commonHelpers.js"></script>
-  <link rel="modulepreload" crossorigin href="/Dyvani_programisty/assets/vendor-86291ea8.js">
-  <link rel="stylesheet" href="/Dyvani_programisty/assets/vendor-e5212ee8.css">
-  <link rel="stylesheet" href="/Dyvani_programisty/assets/index-34e2cd0f.css">
-</head>
+            <ul class="header-menu">
+                <li><a class="header-link current" href="../../index.html">Home</a></li>
+                <li><a class="header-link favorites" href="">Favorites</a></li>
+            </ul>
+        </nav>
 
-<body>
-  ENOENT: no such file or directory, open '/home/runner/work/Dyvani_programisty/Dyvani_programisty/src/partials /home/header_hero.html'
-  ENOENT: no such file or directory, open '/home/runner/work/Dyvani_programisty/Dyvani_programisty/src/partials /home/quote_of_the_day.html'
-  ENOENT: no such file or directory, open '/home/runner/work/Dyvani_programisty/Dyvani_programisty/src/partials /home/exercises.html'
-  ENOENT: no such file or directory, open '/home/runner/work/Dyvani_programisty/Dyvani_programisty/src/partials /home/110_min.html'
-  ENOENT: no such file or directory, open '/home/runner/work/Dyvani_programisty/Dyvani_programisty/src/partials /home/footer.html'
-  ENOENT: no such file or directory, open '/home/runner/work/Dyvani_programisty/Dyvani_programisty/src/partials /favorites/header_favorites.html'
-  ENOENT: no such file or directory, open '/home/runner/work/Dyvani_programisty/Dyvani_programisty/src/partials /favorites/quote_of_the_day_favorives.html'
-  ENOENT: no such file or directory, open '/home/runner/work/Dyvani_programisty/Dyvani_programisty/src/partials /favorites/110_min_favorites.html'
-  ENOENT: no such file or directory, open '/home/runner/work/Dyvani_programisty/Dyvani_programisty/src/partials /favorites/favorites_section.html'
-  ENOENT: no such file or directory, open '/home/runner/work/Dyvani_programisty/Dyvani_programisty/src/partials /modal_window.html'
+        <ul class="mobile-icons">
+            <li class="mobile-icons-list">
+                <a href="https://www.instagram.com/goitclub/" target="_blank" class="mobile-icons-link">
+                    <svg class="mobile-fill" width="24" height="24">
+                        <use href="../../img/symbol-defs.svg#icon-instagram"></use>
+                    </svg>
+                </a>
+            </li>
+            <li class="mobile-icons-list">
+                <a href="https://www.youtube.com/c/GoIT" target="_blank" class="mobile-icons-link">
+                    <svg class="mobile-fill" width="24" height="24">
+                        <use href="../../img/symbol-defs.svg#icon-youtube"></use>
+                    </svg>
+                </a>
+            </li>
+            <li class="mobile-icons-list">
+                <a href="https://www.facebook.com/goITclub/" target="_blank" class="mobile-icons-link">
+                    <svg class="mobile-fill" width="24" height="24">
+                        <use href="../../img/symbol-defs.svg#icon-facebook"></use>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+        <button class="mobil-button-menu" type="button">
+            <svg class="mobil-button-menu-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="16"
+                viewBox="0 0 32 16" fill="none">
+                <path d="M28 10.3333H4" stroke="#7E847F" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M28 5H4" stroke="#7E847F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+</header>
 
-  
-  
-  <script src="./js/home_js/quote_of_the_day.js"></script>
-  <script src="./js/home_js/exercises_filters.js"></script>
-  <script src="./js/home_js/exercises_pagination.js"></script>
-  <script src="./js/home_js/exercises_searth.js"></script>
-  <script src="./js/home_js/footer.js"></script>
-  <script src="./js/favorites_js/header_favorites.js"></script>
-  <script src="./js/favorites_js/quote_of_the_day_favorives.js"></script>
-  <script src="./js/favorites_js/favorites_section.js"></script>
-  <script src="./js/modal_window.js"></script>
-</body>
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-position">
+            <div class="hero-photo">
+            </div>
 
+            <div class="hero-container">
+                <h1 class="hero-text-main">Get <span class="hero-word">Body</span> in shape, Stay healthy</h1>
+                <p class="hero-text">Transform your physique and embrace a healthier lifestyle with our comprehensive
+                    fitness and nutrition support..</p>
+            </div>
+        </div>
+        <div class="legend">
+            <ul class="legend-list">
+                <li class="legend-item">#Sport</li>
+                <li class="legend-item">#Healthy</li>
+                <li class="legend-item">#Workout</li>
+                <li class="legend-item">#Diet</li>
+            </ul>
+        </div>
+    </div>
+
+
+</section>
+<!-- <section class="container ">
+    <div class="hero-double">
+        <div class="small-quota">
+            <ul class="quota-list">
+                <li class="quota-item">#Sport</li>
+                <li class="quota-item">#Healthy</li>
+                <li class="quota-item">#Workout</li>
+                <li class="quota-item">#Diet</li>
+            </ul>
+        </div>
+        <div class="container hero-container">
+            <h1 class="hero-text-main">Get <span class="hero-word">Body</span> in shape, Stay healthy</h1>
+            <p class="hero-text">Transform your physique and embrace a healthier lifestyle with our comprehensive
+                fitness and nutrition support..</p>
+        </div>
+
+    </div>
+
+</section> -->
+    
+    <section class="Exercises container">
+  <div class="ExercisesHead">
+    <h2 class="TitleExercises">Exercises</h2>
+    <div class="ListExercises FilterButtons">
+      <button class="ItemExercises ButtonIsActive" data-filter="Muscles">
+        Muscles
+      </button>
+      <button class="ItemExercises" data-filter="Body parts">Body parts</button>
+      <button class="ItemExercises" data-filter="Equipment">Equipment</button>
+    </div>
+  </div>
+  <ul class="ExerciseFiltersList"></ul>
+  <div class="Pagination"></div>
+</section>
+
+    <section class="daily_norm">
+  <div class="container DailyNormContainer">
+    <div class="DailyNormBackgroundImage"></div>
+    <div class="daily_norm_div">
+      <div class="daily_norm_icon">
+        <svg class="daily_norm_svg" width="20" height="20">
+          <use href="/Dyvani_programisty/assets/symbol-defs-2d4054da.svg#icon-dumbbell"></use>
+        </svg>
+      </div>
+      <div class="daily_norm_div_info">
+        <h4 class="H4Text">110 min</h4>
+        <p>Daily norm of sports</p>
+        <p class="daily_norm_info">
+          The World Health Organization recommends at least 150 minutes of
+          moderate-intensity aerobic physical activity throughout the week for
+          adults aged 18-64. However, what happens if we adjust that number to
+          110 minutes every day?
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="footerSection">
+  <div class="container footP">
+    <div class="footInner">
+      <a class="footLogo" href="./index.html">energy.flow</a>
+      <ul class="footerUl">
+        <li class="footerSocialList">
+          <a
+            class="footerSocialItem"
+            href="https://www.facebook.com/goITclub/"
+            target="_blank"
+          >
+            <svg class="footerSvg" width="40" height="40">
+              <use href="/Dyvani_programisty/assets/symbol-defs-2d4054da.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="footerSocialList">
+          <a
+            class="footerSocialItem"
+            href="https://www.instagram.com/goitclub/"
+            target="_blank"
+          >
+            <svg class="footerSvg" width="40" height="40">
+              <use href="/Dyvani_programisty/assets/symbol-defs-2d4054da.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="footerSocialList">
+          <a
+            class="footerSocialItem"
+            href="https://www.youtube.com/c/GoIT"
+            target="_blank"
+          >
+            <svg class="footerSvg" width="40" height="40">
+              <use href="/Dyvani_programisty/assets/symbol-defs-2d4054da.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="fotterSlogo">
+      <h2 class="footerH">
+        Transforming your <span class="accent">body</span> shape with us
+      </h2>
+      <p class="footerP">Subscribe and learn about new exercises!</p>
+      <form class="footerForm">
+        <label class="footerLabel" for="modal-footer">
+          <input
+            class="formInput"
+            type="email"
+            pattern="^[\\w\-]+(\\.[\\w\-]+)*@([\\w\-]+\\.)+[a-zA-Z]{2,7}$"
+            id="modal-footer"
+            name="modal-footer"
+            placeholder="Email"
+            required
+          />
+        </label>
+        <button class="modalButton" type="submit">Send</button>
+      </form>
+      <div class="footerText">
+        <p class="footerPrivacy">Energy Flow. All rights reserved.</p>
+        <div class="last">
+          <p class="footerPrivacy">Privacy Policy</p>
+          <p class="footerPrivacy">/</p>
+          <p class="footerPrivacy">Terms of Service</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- loader -->
+  <div class="lodDiv">
+    <span class="loader"></span>
+  </div>
+</section>
+
+    
+    
+    
+    <section class="favorites-section section">
+  <h2 class="favorites-title">Favorites</h2>
+  <div class="div-favorites-section">
+    <!----------- IF NOT FAVORITES EXERCISE -------------->
+    <div class="message-favorites">
+      <div class="message-favorites-block">
+        <img
+          class="dumbbell-favorites"
+          srcset="/Dyvani_programisty/assets/dumbbell.mob-2220e55e.png 1x, /Dyvani_programisty/assets/dumbbell.mob@2x-18df4368.png 2x"
+          src="/Dyvani_programisty/assets/dumbbell.mob-2220e55e.png"
+          alt="dumbbell"
+        />
+        <p class="text-favorites">
+          It appears that you haven't added any exercises to your favorites yet.
+          To get started, you can add exercises that you like to your favorites
+          for easier access in the future.
+        </p>
+      </div>
+    </div>
+
+    <!---------- Favorite Card ------------>
+    <ul class="favorites-list"></ul>
+
+    <!----------- Pagination for mobile------------------>
+    <div class="favorites-pagination-block">
+      <button class="active-btn" aria-label="first-page" type="button">
+        1
+      </button>
+      <button aria-label="second-page" type="button">2</button>
+      <button aria-label="third-page" type="button">3</button>
+    </div>
+
+    <button class="add-favorites">Add to favorites</button>
+  </div>
+</section>
+
+    <!-- <button class="SearchButton" type="button">Search</button> -->
+<div class="Backdrop">
+  <div class="Modal"></div>
+</div>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </body>
 </html>

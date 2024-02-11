@@ -26,17 +26,17 @@ async function onCardClick(event) {
   const liEl = event.target.closest('.ExercisesItem'); // при кліку на картку шукаємо найближчий елемент у якого буде заданий селектор (це li)
   filterValue = liEl.dataset.filter; //Muscles   // тепер можемо отримати li дата-атрибути
   nameValue = liEl.dataset.name; // abductors
-
+  console.log(filterValue);
   try {
     ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue); // оновлюємо хедер секції Exercises
     const MusclesBtn = document.querySelector('#MusclesBtn');
     console.log(MusclesBtn);
     if (filterValue === 'Muscles') {
       MusclesBtn.classList.add('FilterBtnIsActive');
-    } else if (filterValue === 'Body Part') {
+    } else if (filterValue === 'Body parts') {
       const BodyPartBtn = document.querySelector('#BodyPartBtn');
       BodyPartBtn.classList.add('FilterBtnIsActive');
-    } else {
+    } else if (filterValue === 'Equipment') {
       const EquipmentBtn = document.querySelector('#EquipmentBtn');
       EquipmentBtn.classList.add('FilterBtnIsActive');
     }

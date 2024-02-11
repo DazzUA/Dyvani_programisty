@@ -6,7 +6,8 @@
 
 .favorites-section {
   width: 335px;
-  height: 450px;
+  min-height: 450px;
+  max-width: 1644px;
   border-radius: 30px;
   background-color: #e8e8e8;
   color: #1b1b1b;
@@ -105,7 +106,7 @@
 @media screen and (min-width: 768px) {
   .favorites-section {
     width: 736px;
-    height: 928px;
+    height: 1091px;
     border-radius: 50px;
     margin: auto;
     margin-top: 16px;
@@ -256,16 +257,19 @@
   flex-shrink: 0;
 }
 
-.favorites-name-part.favorites-name-part {
+.favorites-name-part {
   color: #1b1b1b;
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 20px;
   font-weight: 400;
   line-height: 1;
   text-overflow: ellipsis;
-  text-transform: capitalize;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.favorites-name-part::first-letter {
+  text-transform: uppercase;
 }
 
 .favorites-card-footer {

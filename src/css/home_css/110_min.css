@@ -88,7 +88,7 @@
     width: 704px;
   }
   .DailyNormBackgroundImage {
-    max-width: 704px;
+    width: 704px;
     height: 302px;
     background-image: url(../img/desktop/basament/women.bas.png);
   }

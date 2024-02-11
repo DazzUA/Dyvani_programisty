@@ -322,12 +322,11 @@
 @media screen and (min-width: 768px) {
   .hero-photo {
     height: 884px;
-    width: 248px;
+    width: 288px;
     border-radius: 50px 0px 50px 50px;
-    background-position: left;
     margin: 0;
     background-color: lightgray;
-    background-size: contain;
+    background-size: cover;
 
     background-image: url('../../img/tablet/hero/women.full.tab.png');
   }
@@ -352,6 +351,7 @@
   margin: 0 auto;
   border-radius: 30px;
   background: #fff;
+  padding: 60px 20px 20px;
 }
 @media screen and (min-width: 768px) {
   .hero-container {
@@ -361,6 +361,7 @@
     margin: 0;
     border-radius: 0px 50px 50px 50px;
     background: #fff;
+    padding: 231px 32px 32px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -370,12 +371,15 @@
     flex-shrink: 0;
     border-radius: 0px 50px 50px 50px;
     background: #fff;
+    padding: 225px 32px 32px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .hero-position {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 .hero-text-main {
@@ -386,13 +390,15 @@
   font-weight: 400;
   line-height: 0.89;
   letter-spacing: -1.12px;
-  width: 295px;
+
+  margin-bottom: 20px;
 }
 @media screen and (min-width: 768px) {
   .hero-text-main {
     font-size: 98px;
     line-height: 0.97;
     letter-spacing: -1.96px;
+    margin-bottom: 25px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -465,7 +471,7 @@
 /* same for others breackpoints */
 .legend-list {
   display: flex;
-  width: 137px;
+  width: 146px;
   align-items: center;
   align-content: center;
   gap: 4px;
@@ -475,7 +481,6 @@
 .legend-item {
   border-radius: 30px;
   border: 1px solid rgba(246, 246, 246, 0.3);
-
   display: flex;
   padding: 4px 10px;
   justify-content: center;
@@ -484,87 +489,15 @@
 }
 
 .legend-text {
-  color: #f6f6f6;
-  font-family: 'DM Sans';
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.17;
-}
-
-/* 
-@media screen and (min-width: 768px); /*.hero-text-main {
-  color: #1b1b1b;
-
-  font-family: 'DM Sans';
-  font-size: 120px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 115px; 
-  letter-spacing: -2.4px;
-  padding: 225px 33px 25px;
-}*/
-
-/*.hero-word {
-  color: #7e847f;
-  font-family: 'DM Sans';
-  font-size: 120px;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 115px;
-  letter-spacing: -2.4px;
-}*/
-/*.hero-container {
-  border-radius: 0px 50px 50px 50px;
-  background: #fff;
-}*/
-/*.hero-double {
   display: flex;
-}*/
-/*.hero-text {
-  color: #1b1b1b;
-  font-family: 'DM Sans';
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; 
-  letter-spacing: -0.18px;
-  width: 528px;
-  padding-left: 33px;
-}*/
-
-/*.quota-item {
-  color: #f6f6f6;
-  font-family: 'DM Sans';
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
-  display: flex;
-  padding: 4px 16px;
+  padding: 4px 10px;
+  justify-content: center;
   align-items: center;
   gap: 10px;
-  border-radius: 30px;
-  border: 1px solid rgba(246, 246, 246, 0.3);
-}*/
-
-/*.small-quota {
-  width: 704px;
-  height: 884px;
-  background-image: url('../../img/desktop/hero/women.desk.png');
-  background-repeat: no-repeat;
-  border-radius: 50px 0px 50px 50px;
-  display: flex;
-
-  align-items: end;
 }
-*/
-/*.quota-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  height: 72px;
-  width: 196px;
-  margin-left: 48px;
-  margin-bottom: 32px;
-}*/
+.legend-item-text {
+  color: #f6f6f6;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 1.17;
+}

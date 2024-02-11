@@ -21,11 +21,29 @@
   .container {
   }
 }
+.header-main {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  width: 335px;
+  margin: 20px auto 0;
+}
+@media screen and (min-width: 768px) {
+  .header-main {
+    width: 736px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .header-main {
+    width: 1408px;
+  }
+}
 .header-inern {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 20px;
 }
 @media screen and (min-width: 768px) {
   .header-inern {
@@ -303,6 +321,9 @@
 }
 
 /* -----------new code */
+
+.hero-section {
+}
 
 .hero-photo {
   position: relative;

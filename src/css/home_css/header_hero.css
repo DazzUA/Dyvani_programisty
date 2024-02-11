@@ -301,6 +301,80 @@
     line-height: 24px;
   }
 }
+
+/* -----------new code */
+
+.hero-photo {
+  width: 335px;
+  height: 387px;
+  flex-shrink: 0;
+  margin: 0 auto;
+  background-color: lightgray;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url('../../img/mob/hero/women.hero.mob.png');
+  border-radius: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .hero-photo {
+    height: 884px;
+    width: 248px;
+    border-radius: 50px 0px 50px 50px;
+    background-position: left;
+    margin: 0;
+    background-color: lightgray;
+    background-size: contain;
+
+    background-image: url('../../img/tablet/hero/women.full.tab.png');
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .hero-photo {
+    border-radius: 50px 0px 50px 50px;
+    width: 50%;
+    height: 884px;
+    flex-shrink: 0;
+    background-color: lightgray;
+    background-image: url('../../img/desktop/hero/women.desk.png');
+    background-position: center;
+    background-size: cover;
+  }
+}
+.hero-container {
+  width: 335px;
+  height: 365px;
+  flex-shrink: 0;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: #fff;
+}
+@media screen and (min-width: 768px) {
+  .hero-container {
+    width: 488px;
+    height: 900px;
+    flex-shrink: 0;
+    margin: 0;
+    border-radius: 0px 50px 50px 50px;
+    background: #fff;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-container {
+    height: 884px;
+    width: 50%;
+    flex-shrink: 0;
+    border-radius: 0px 50px 50px 50px;
+    background: #fff;
+  }
+}
+@media screen and (min-width: 768px) {
+  .hero-position {
+    display: flex;
+  }
+}
 /*.hero-text-main {
   color: #1b1b1b;
 

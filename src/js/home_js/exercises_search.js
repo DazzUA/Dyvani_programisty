@@ -6,8 +6,6 @@
 
 import axios from 'axios';
 
-import { createMarkUp } from './exercises_subcategories';
-
 // базовый URL для отправки запросов к API
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 
@@ -89,6 +87,48 @@ function renderExercises(exercises) {
     noResultsMessageContainer.appendChild(noResultsMessage); // добавил сообщение внутрь контейнера, в котором это сообщение находится
     document.body.appendChild(noResultsMessageContainer); // добавил контейнер с сообщением на страницу внутрь <body>, чтобы показать всплывающее уведомление
   }
+}
+function createMarkUp(array) {
+  const markup = array
+    .map(({ rating, name, burnedCalories, time, bodyPart, target, _id }) => {
+      return `<li class="WorkoutCard">
+      <div class='CardHeader'>
+        <div class='WorkoutWrapper'>
+          <p class='Workout'>workout</p>
+          <div class='RatingWrapper'><p>${rating}</p>
+          <svg class='StarIcon' width='13' height='13'>
+          <use href='./img/symbol-defs.svg#icon-star'></use>
+        </svg></div>
+        </div>
+        <div class='StartBtn' data-id='${_id}'>
+          <p>Start</p>
+          <svg width='13' height='13'>
+          <use href='./img/symbol-defs.svg#icon-arrow'></use>
+        </svg>
+        </div>
+      </div>
+      <div class='CardMainPart'>
+      <div class='RunIconWrapper'><svg width='14' height='14'>
+          <use href='./img/symbol-defs.svg#icon-running'></use>
+        </svg></div>
+        <p class='MainPartName'>${name}</p>
+      </div>
+      <ul class="CardFooter">
+        <li>
+          <p class='CardFooterTextDescr'>Burned calories: <span class='CardFooterTextValue'>${burnedCalories} / ${time} min</span></p>
+        </li>
+        <li>
+          <p class='CardFooterTextDescr'>Body part: <span class='CardFooterTextValue'>${bodyPart}</span></p>
+        </li>
+        <li>
+          <p class='CardFooterTextDescr'>Target: <span class='CardFooterTextValue'>${target}</span></p>
+        </li>
+      </ul>
+
+    </li>`;
+    })
+    .join('');
+  return markup;
 }
 export { handleSearch };
 //--------------------------------------Пагинация------------------------------------//

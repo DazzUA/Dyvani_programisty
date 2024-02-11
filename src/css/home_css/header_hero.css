@@ -322,12 +322,11 @@
 @media screen and (min-width: 768px) {
   .hero-photo {
     height: 884px;
-    width: 248px;
+    width: 288px;
     border-radius: 50px 0px 50px 50px;
-    background-position: left;
     margin: 0;
     background-color: lightgray;
-    background-size: contain;
+    background-size: cover;
 
     background-image: url('../../img/tablet/hero/women.full.tab.png');
   }
@@ -356,7 +355,8 @@
 }
 @media screen and (min-width: 768px) {
   .hero-container {
-    width: 488px;
+    width: auto;
+    max-width: 464px;
     height: 900px;
     flex-shrink: 0;
     margin: 0;

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 import { onPaginationFilterPages } from './exercises_filters';
 import { paginationPages } from './exercises_filters';
 import { markupExercises } from './exercises_filters';
@@ -26,17 +28,15 @@ async function onCardClick(event) {
   const liEl = event.target.closest('.ExercisesItem'); // при кліку на картку шукаємо найближчий елемент у якого буде заданий селектор (це li)
   filterValue = liEl.dataset.filter; //Muscles   // тепер можемо отримати li дата-атрибути
   nameValue = liEl.dataset.name; // abductors
-
   try {
     ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue); // оновлюємо хедер секції Exercises
     const MusclesBtn = document.querySelector('#MusclesBtn');
-    console.log(MusclesBtn);
     if (filterValue === 'Muscles') {
       MusclesBtn.classList.add('FilterBtnIsActive');
-    } else if (filterValue === 'Body Part') {
+    } else if (filterValue === 'Body parts') {
       const BodyPartBtn = document.querySelector('#BodyPartBtn');
       BodyPartBtn.classList.add('FilterBtnIsActive');
-    } else {
+    } else if (filterValue === 'Equipment') {
       const EquipmentBtn = document.querySelector('#EquipmentBtn');
       EquipmentBtn.classList.add('FilterBtnIsActive');
     }
@@ -60,7 +60,7 @@ async function onCardClick(event) {
     }
     pagination.addEventListener('click', onPaginationSubcategoriesPage); // вішаємо на дів з кнопками нумерації сторінок слухача подій при кліку
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
@@ -103,7 +103,7 @@ async function getExercisesByFilter(filterValue, nameValue, currentPage) {
       return response.data;
     }
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
@@ -176,7 +176,6 @@ function updateExercisesHeaderMarkup(nameValue) {
 // функція, яка спрацьовує коли ми клікаємо по фільтру (Muscle, Body Part, Equipment) і повертаємось назад
 async function onBtnClick(event) {
   const filtersBtnArray = document.querySelectorAll('.ItemExercises');
-  console.log(filtersBtnArray);
   filtersBtnArray.forEach(btn => {
     btn.classList.remove('FilterBtnIsActive');
   });
@@ -211,7 +210,7 @@ async function onBtnClick(event) {
     titleExercises.innerHTML = 'Exercises';
     // ------------------------------------------
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
@@ -226,7 +225,7 @@ async function getExercise(filter = filterValueDefault) {
     });
     return response.data;
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 /!Цю функцію я імпортував у себе/;
@@ -276,7 +275,7 @@ async function onPaginationSubcategoriesPage(e) {
     );
     exerciseFiltersList.innerHTML = createMarkUp(results); // робимо розмітку підкатегорій відповідно до номеру сторінки
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
@@ -289,7 +288,7 @@ async function onPaginationPagesbyFilter(e) {
     const { results } = await getExercise(filterValue, currentPage);
     exerciseFiltersList.innerHTML = markupExercises(results);
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
@@ -301,3 +300,15 @@ async function onPaginationPagesbyFilter(e) {
 //   // idValue = divEl.dataset.id;
 //   // console.log(idValue);
 // }
+function createIziToastError(notification) {
+  iziToast.error({
+    message: notification,
+    messageColor: '#FAFAFB',
+    messageLineHeight: '24px',
+    messageSize: '16px',
+    position: 'topRight',
+    backgroundColor: '#EF4040',
+    maxWidth: '350px',
+    timeout: false,
+  });
+}

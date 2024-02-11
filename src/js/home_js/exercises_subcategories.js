@@ -316,4 +316,4 @@ async function onPaginationPagesbyFilter(e) {
 //   // console.log(idValue);
 // }
 
-// export { createMarkUp };
+export { createMarkUp };

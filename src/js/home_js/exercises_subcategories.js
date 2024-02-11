@@ -29,6 +29,17 @@ async function onCardClick(event) {
 
   try {
     ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue); // оновлюємо хедер секції Exercises
+    const MusclesBtn = document.querySelector('#MusclesBtn');
+    console.log(MusclesBtn);
+    if (filterValue === 'Muscles') {
+      MusclesBtn.classList.add('FilterBtnIsActive');
+    } else if (filterValue === 'Body Part') {
+      const BodyPartBtn = document.querySelector('#BodyPartBtn');
+      BodyPartBtn.classList.add('FilterBtnIsActive');
+    } else {
+      const EquipmentBtn = document.querySelector('#EquipmentBtn');
+      EquipmentBtn.classList.add('FilterBtnIsActive');
+    }
     const { page, totalPages, results } = await getExercisesByFilter(
       filterValue,
       nameValue
@@ -164,6 +175,11 @@ function updateExercisesHeaderMarkup(nameValue) {
 // це виклик функції Данила. Треба щоб він зробив експорт
 // функція, яка спрацьовує коли ми клікаємо по фільтру (Muscle, Body Part, Equipment) і повертаємось назад
 async function onBtnClick(event) {
+  const filtersBtnArray = document.querySelectorAll('.ItemExercises');
+  console.log(filtersBtnArray);
+  filtersBtnArray.forEach(btn => {
+    btn.classList.remove('FilterBtnIsActive');
+  });
   exerciseFiltersList.addEventListener('click', onCardClick);
   exerciseFiltersList.classList.remove('ExerciseCategoryList');
   exerciseFiltersList.classList.add('ExerciseFiltersList');

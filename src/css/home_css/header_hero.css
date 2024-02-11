@@ -305,6 +305,8 @@
 /* -----------new code */
 
 .hero-photo {
+  position: relative;
+
   width: 335px;
   height: 387px;
   flex-shrink: 0;
@@ -422,8 +424,55 @@
     letter-spacing: -2.4px;
   }
 }
+.hero-text {
+  color: #1b1b1b;
+  font-family: 'DM Sans';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29;
+  letter-spacing: -0.14px;
+}
+@media screen and (min-width: 768px) {
+  .hero-text {
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.18px;
+  }
+}
+.legend {
+}
+/* same for others breackpoints */
+.legend-list {
+  display: flex;
+  width: 137px;
+  align-items: center;
+  align-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
 
-/*.hero-text-main {
+.legend-item {
+  border-radius: 30px;
+  border: 1px solid #000;
+  display: flex;
+  padding: 4px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-text {
+  color: #0c0c0c;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.17;
+}
+
+/* 
+@media screen and (min-width: 768px); /*.hero-text-main {
   color: #1b1b1b;
 
   font-family: 'DM Sans';

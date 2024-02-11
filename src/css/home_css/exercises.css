@@ -470,7 +470,11 @@
 .IsActive {
   background-color: #7e847f;
 }
-
+.FilterBtnIsActive {
+  background: #7e847f;
+  border-color: #7e847f;
+  color: #f6f6f6;
+}
 /* ТУТ ЗАКІНЧУЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises.subcategories.js */
 
 /* стили для сообщения об отсутствии результатов поиска в файле exercises_search.js */

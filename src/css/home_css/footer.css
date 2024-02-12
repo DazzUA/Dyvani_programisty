@@ -1,7 +1,6 @@
 .FooterSection {
   /* width: 335px; */
   width: 100%;
-  margin: 20px;
   padding: 40px 20px 20px;
   border-radius: 30px;
   border: 1px solid black;
@@ -11,11 +10,13 @@
   background-size: cover;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   /* font-family: DM Sans, sans-serif; */
-  margin: auto;
+  margin: 0auto;
   margin-top: 20px;
   margin: 0 16px;
 }
-@media only screen and (min-resolution: 192dpi) and (min-width: 375px) {
+@media screen and (min-resolution: 192dpi) and (max-width: 767px),
+  screen and (min-resolution: 2dppx) and (max-width: 767px),
+  screen and (min-device-pixel-ratio: 2) and (max-width: 767px) {
   .FooterSection {
     background-image: url(/img/mob/basement/women.footer@2x.jpg);
   }
@@ -56,7 +57,7 @@
   font-size: 14px;
   line-height: 1.3;
   color: #f6f6f6;
-  width: 268px;
+  /* width: 268px; */
   margin-bottom: 20px;
 }
 
@@ -69,6 +70,14 @@
 .FooterSocialList:hover,
 .FooterSocialList:focus {
   border: 1px solid rgb(95, 101, 96);
+  animation: pulse 1s infinite;
+  transition: 0.3s;
+}
+.footer-link:hover,
+.footer-link:focus {
+  animation: pulse 1s infinite;
+  transition: 0.3s;
+  color: #7e847f;
 }
 
 .FormInput {
@@ -120,43 +129,57 @@
   border: none;
   padding: 0;
   margin-bottom: 60px;
+  transition: background-color 700ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .ModalButton:hover,
 .ModalButton:focus {
   background: rgb(95, 101, 96);
-}
-
-.FooterText {
-  color: var(--light-grey-color);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 0.8;
-  letter-spacing: 0.02em;
-  text-align: left;
+  transform: scale(1.03);
+  transition: 0.8s;
 }
 
 .FooterPrivacy {
-  margin-bottom: 8px;
+  color: #f6f6f6;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 0.83;
+  letter-spacing: -0.02em;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+.regulations {
+  display: flex;
+  gap: 8px;
+}
+.policy {
+  color: #f6f6f6;
+  text-align: right;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.83;
+  letter-spacing: -0.02em;
+}
+.FooterPolice:hover,
+.FooterPolice:focus {
+  animation: pulse 1s infinite;
+  transition: 0.3s;
+  color: #7e847f;
 }
 .accent {
   font-style: italic;
   color: rgba(246, 246, 246, 0.3);
 }
-.slesh {
-  margin: 0 8px;
-}
-
 /* tablet */
 @media screen and (min-width: 768px) {
   .FooterSection {
-    /* width: 736px; */
-    width: 100%;
+    width: 736px;
     padding: 64px 48px 32px;
     border: none;
     box-shadow: none;
     border-radius: 50px;
     margin-top: 16px;
-
     background-image: url(/img/tablet/basament/women.footer.jpg);
   }
   .FootVibe {
@@ -171,8 +194,8 @@
     line-height: 0.96;
     letter-spacing: -0.02em;
     margin-bottom: 39px;
-    /* width: 345px; */
-    width: 100%;
+    width: 345px;
+
     height: 150px;
   }
   .FooterUl {
@@ -180,8 +203,6 @@
   }
   .FooterP {
     font-size: 18px;
-    /* width: 345px; */
-    /* max-width: 345px; */
     width: 100%;
   }
   .FormInput {
@@ -194,7 +215,6 @@
   }
   .ModalButton {
     margin-bottom: 120px;
-    /* width: 352px; */
     max-width: 352px;
     width: 100%;
     height: 48px;
@@ -207,7 +227,9 @@
     line-height: 1.2;
   }
 }
-@media only screen and (min-resolution: 192dpi) and (min-width: 768px) {
+@media screen and (min-resolution: 192dpi) and (min-width: 768px),
+  screen and (min-resolution: 2dppx) and (min-width: 768px),
+  screen and (min-device-pixel-ratio: 2) and (min-width: 768px) {
   .FooterSection {
     background-image: url(/img/tablet/basament/women.footer@2x.jpg);
   }
@@ -215,14 +237,14 @@
 /* desktop */
 @media screen and (min-width: 1440px) {
   .FooterSection {
-    /* width: 1408px; */
-    width: 100%;
+    width: 1408px;
+
     padding: 64px 48px 26px;
+    position: relative;
     background-image: url(/img/desktop/basament/women.footer.jpg);
   }
   .FootVibe {
     display: flex;
-    gap: 160px;
   }
   .FooterForm {
     width: 352px;
@@ -240,11 +262,39 @@
     margin-bottom: 186px;
   }
   .FooterP {
-    width: 345px;
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  .FooterText {
+    display: flex;
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+  .FooterPrivacy {
+    font-size: 14px;
+    line-height: 1.28;
+  }
+  .upper {
+    margin-right: 32px;
+  }
+  .policy {
+    color: #f6f6f6;
+    text-align: right;
+    font-family: 'DM Sans';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.28;
+    letter-spacing: -0.02em;
   }
 }
 
-@media only screen and (min-resolution: 192dpi) and (min-width: 1440px) {
+@media screen and (min-resolution: 192dpi) and (min-width: 1280px),
+  screen and (min-resolution: 2dppx) and (min-width: 1280px),
+  screen and (min-device-pixel-ratio: 2) and (min-width: 1280px) {
   .FooterSection {
     background-image: url(/img/desktop/basament/women.footer@2x.jpg);
   }
@@ -274,5 +324,73 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+/* scroll up */
+.ScrollUp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  border-radius: 50px;
+  bottom: 20px;
+  width: 40px;
+  height: 40px;
+  right: 20px;
+  z-index: 888;
+  transition: background-color 0.4s;
+  background-color: #7e847f;
+  opacity: 0.7;
+}
+
+.ScrollUp:hover,
+.ScrollUp:focus {
+  transition: 0.3s;
+  animation: pulse 1s infinite;
+  opacity: 0.9;
+}
+
+.ScrollUpButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}
+
+.tablet,
+.decktop {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .ScrollUp {
+    transition: opacity 700ms;
+    width: 50px;
+    height: 50px;
+  }
+
+  .mobile,
+  .decktop {
+    display: none;
+  }
+
+  .tablet {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .ScrollUp {
+    width: 100px;
+    height: 100px;
+  }
+
+  .mobile,
+  .tablet {
+    display: none;
+  }
+  .decktop {
+    display: block;
   }
 }

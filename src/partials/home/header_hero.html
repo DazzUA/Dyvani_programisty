@@ -5,7 +5,7 @@
 
             <ul class="header-menu">
                 <li><a class="header-link current" href="./index.html">Home</a></li>
-                <li><a class="header-link favorites" href="./favorites.html">Favorites</a></li> 
+                <li><a class="header-link favorites" href="./favorites.html">Favorites</a></li>
             </ul>
         </nav>
 
@@ -32,12 +32,11 @@
                 </a>
             </li>
         </ul>
-        <button class="mobil-button-menu" type="button">
-            <svg class="mobil-button-menu-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="16"
-                viewBox="0 0 32 16" fill="none">
-                <path d="M28 10.3333H4" stroke="#7E847F" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M28 5H4" stroke="#7E847F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <button class="mobil-button-menu open-mobile-menu" type="button">
+            <svg class="mobil-button-menu-svg open-mobile-menu-btn js-open-menu" width="32" height="16"
+                aria-label="mobile menu open icon">
+                <use href="../../img/symbol-defs.svg#icon-mobile-menu"></use>
+
             </svg>
         </button>
 </header>
@@ -75,22 +74,53 @@
 
 
 </section>
-<!-- <section class="container ">
-    <div class="hero-double">
-        <div class="small-quota">
-            <ul class="quota-list">
-                <li class="quota-item">#Sport</li>
-                <li class="quota-item">#Healthy</li>
-                <li class="quota-item">#Workout</li>
-                <li class="quota-item">#Diet</li>
-            </ul>
-        </div>
-        <div class="container hero-container">
-            <h1 class="hero-text-main">Get <span class="hero-word">Body</span> in shape, Stay healthy</h1>
-            <p class="hero-text">Transform your physique and embrace a healthier lifestyle with our comprehensive
-                fitness and nutrition support..</p>
-        </div>
+<!-- mobile window -->
+<div class="mobile-menu js-menu">
+    <div class="mobile-menu-header">
+        <a class="mobile-menu-logo" href="./index.html">energy.flow</a>
 
+        <button class="mobile-menu-close-button js-close-menu" type="button">
+            <svg class="mobile-close-icon" aria-label="mobile menu close icon" width="20" height="20">
+                <use href="../../img/symbol-defs.svg#icon-close"></use>
+            </svg>
+        </button>
     </div>
 
-</section> -->
+    <div class="mobile-menu-content">
+        <nav class="mobile-menu-nav">
+            <ul class="mobile-menu-list list">
+                <li class="mobile-menu-item header-link current">
+                    <a class="header-menu-link link " href="./index.html">Home</a>
+                </li>
+                <li class="mobile-menu-item header-link favorites">
+                    <a class="header-menu-link link" href="./favorites.html">Favorites</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <ul class="mobile-menu-social-list list">
+        <li class="mobile-menu-social-list-item">
+            <a class="mobile-menu-social-link link" href="https://www.facebook.com/goITclub/" target="_blank">
+                <svg class="mobile-fill-modal" width="25" height="25" aria-label="facebook icon">
+                    <use href="../../img/symbol-defs.svg#icon-facebook"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="mobile-menu-social-list-item">
+            <a class="mobile-menu-social-link link" href="https://www.instagram.com/goitclub/" target="_blank">
+                <svg class="mobile-fill-modal" width="25" height="25" aria-label="instagram icon">
+                    <use href="../../img/symbol-defs.svg#icon-instagram"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="mobile-menu-social-list-item">
+            <a class="mobile-menu-social-link link" href="https://www.youtube.com/c/GoIT" target="_blank">
+                <svg class="mobile-fill-modal" width="25" height="25" aria-label="youtube icon">
+                    <use href="../../img/symbol-defs.svg#icon-youtube"></use>
+                </svg>
+            </a>
+        </li>
+    </ul>
+</div>

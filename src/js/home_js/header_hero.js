@@ -1,20 +1,21 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+const mobileMenu = document.querySelector('.js-menu');
+const openMenu = document.querySelector('.js-open-menu');
+const closeMenu = document.querySelector('.js-close-menu');
 
-// const homeEl = document.querySelector('.Home');
-// const favoritesEl = document.querySelector('.Favorites');
+const toggleMenu = function () {
+  const isMenuOpen = mobileMenu.classList.toggle('is-open');
+  document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+};
 
-// favoritesEl.addEventListener('click', onClickHandleFavorites);
+openMenu.addEventListener('click', toggleMenu);
+closeMenu.addEventListener('click', toggleMenu);
 
-// function onClickHandleFavorites() {
-//   homeEl.classList.toggle('current');
-//   favoritesEl.classList.remove('favorites');
-//   favoritesEl.classList.add('current');
-// }
+window
+  .matchMedia('(min-width: 335px)')
+  .addEventListener('change', onMatchMedia);
 
-// homeEl.addEventListener('click', onClickHandleHome);
-
-// function onClickHandleHome() {
-//   homeEl.classList.add('current');
-//   favoritesEl.classList.remove('current');
-// }
+function onMatchMedia(event) {
+  if (!event.matches) return;
+  mobileMenu.classList.remove('is-open');
+  document.body.style.overflow = '';
+}

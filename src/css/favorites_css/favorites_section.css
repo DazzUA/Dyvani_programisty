@@ -23,13 +23,13 @@
   letter-spacing: -0.02em;
   color: #1b1b1b;
   padding-top: 40px;
-  padding-left: 40px;
+  padding-left: 20px;
+  padding-bottom: 20px;
 }
 
 .div-favorites-section {
   margin: 0 auto;
   text-align: center;
-  padding-top: 20px;
 }
 
 .message-favorites {
@@ -106,7 +106,7 @@
 @media screen and (min-width: 768px) {
   .favorites-section {
     width: 736px;
-    height: 1091px;
+    height: 928px;
     border-radius: 50px;
     margin: auto;
     margin-top: 16px;
@@ -115,11 +115,9 @@
   .favorites-title {
     font-size: 44px;
     line-height: 1.09;
-    padding-top: 60px;
-  }
-
-  .div-favorites-section {
-    padding-top: 32px;
+    padding-top: 64px;
+    padding-left: 48px;
+    padding-bottom: 32px;
   }
 
   .message-favorites-block {
@@ -155,7 +153,7 @@
   .favorites-title {
     font-size: 44px;
     line-height: 1.09;
-    padding-top: 60px;
+    padding-top: 64px;
   }
 
   .text-favorites {
@@ -286,6 +284,7 @@
   column-gap: 16px;
   row-gap: 8px;
   font-size: 12px;
+  white-space: nowrap;
 }
 
 .favorites-card-footer-wrapper {
@@ -311,6 +310,7 @@
   font-weight: 400;
   line-height: 1.5;
   margin: 0;
+  text-transform: capitalize;
 }
 
 /*List Card Tablet*/
@@ -319,15 +319,16 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     column-gap: 14px;
     row-gap: 20px;
-    max-height: 740px;
+    max-height: 720px;
+    padding-left: 48px;
   }
 
   .favorites-list-item {
-    height: 165px;
+    height: 166px;
     width: 313px;
     border-radius: 15px;
     background: #fff;
@@ -342,6 +343,7 @@
 
   .favorites-card-header {
     margin-bottom: 0;
+    padding-bottom: 25px;
   }
   .favorites-btn-trash {
     display: inline-block;
@@ -388,7 +390,8 @@
   .favorites-main-container {
     display: flex;
     align-items: center;
-    margin-top: 25px;
+
+    margin: 0;
   }
 
   .favorite-icon-man {
@@ -419,6 +422,7 @@
     flex-wrap: wrap;
     column-gap: 16px;
     row-gap: 8px;
+    white-space: nowrap;
   }
 
   .favorites-card-footer-title {
@@ -438,6 +442,7 @@
     font-weight: 400;
     line-height: 1.5;
     margin: 0;
+    text-transform: capitalize;
   }
 }
 
@@ -450,9 +455,25 @@
   }
 
   .favorites-list-item {
-    box-sizing: border-box;
+    display: flex;
+    width: 424px;
+    height: 141px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .favorites-card-header {
+    display: flex;
+    align-items: center;
+
+    padding-top: 0;
   }
 
+  .favorites-btn-arrow {
+    margin-left: 231px;
+  }
   .favorites-card-footer-list {
     display: flex;
     gap: 8px;
@@ -461,5 +482,13 @@
   .favorites-card-footer {
     margin-top: 8px;
     margin-bottom: 16px;
+  }
+  .favorites-card-footer-block {
+    white-space: nowrap; /* Запобігає переносу тексту на новий рядок */
+    overflow: hidden; /* Приховує зайвий текст */
+    text-overflow: ellipsis;
+  }
+  .favorites-card-footer-item {
+    row-gap: 0;
   }
 }

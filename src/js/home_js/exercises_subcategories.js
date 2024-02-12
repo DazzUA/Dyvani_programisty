@@ -1,4 +1,6 @@
 import axios from 'axios';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 import { onPaginationFilterPages } from './exercises_filters';
 import { paginationPages } from './exercises_filters';
 import { markupExercises } from './exercises_filters';
@@ -16,57 +18,37 @@ exerciseFiltersList.addEventListener('click', onCardClick);
 
 async function onCardClick(event) {
   exerciseFiltersList.removeEventListener('click', onCardClick);
-  exerciseFiltersList.classList.add('ExerciseCategoryList');
   pagination.removeEventListener('click', onPaginationFilterPages);
   pagination.removeEventListener('click', onPaginationPagesbyFilter);
   if (event.target === event.currentTarget) {
     return;
   }
   exerciseFiltersList.classList.add('ExerciseCategoryList'); // при кліку на картку додаємо клас до ul (бо він має інші стилі)
+  exerciseFiltersList.classList.remove('ExerciseFiltersList');
   const liEl = event.target.closest('.ExercisesItem'); // при кліку на картку шукаємо найближчий елемент у якого буде заданий селектор (це li)
   filterValue = liEl.dataset.filter; //Muscles   // тепер можемо отримати li дата-атрибути
   nameValue = liEl.dataset.name; // abductors
-
   try {
     ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue); // оновлюємо хедер секції Exercises
+    const MusclesBtn = document.querySelector('#MusclesBtn');
+    if (filterValue === 'Muscles') {
+      MusclesBtn.classList.add('FilterBtnIsActive');
+    } else if (filterValue === 'Body parts') {
+      const BodyPartBtn = document.querySelector('#BodyPartBtn');
+      BodyPartBtn.classList.add('FilterBtnIsActive');
+    } else if (filterValue === 'Equipment') {
+      const EquipmentBtn = document.querySelector('#EquipmentBtn');
+      EquipmentBtn.classList.add('FilterBtnIsActive');
+    }
     const { page, totalPages, results } = await getExercisesByFilter(
       filterValue,
       nameValue
     );
     exerciseFiltersList.innerHTML = createMarkUp(results); // це буде масив об'єктів
-    const StartBtn = document.querySelector('.StartBtn');
-    // треба імпортувати функцію onStartBtnClick -------
-    // StartBtn.addEventListener('click', onStartBtnClick)
-
-    // ------------------------------new КОД ДЛЯ ДЕНИСА --- ПОМИЛКА--- ПОКИ КОМЕНТУЮ---------------------------------------
-    // const ExercisesForm = document.querySelector('.ExercisesForm');
-    // ExercisesForm.addEventListener(
-    //   'submit',
-    //   onFormSubmit(filterValue, nameValue)
-    // );
-
-    // // Определяем асинхронную функцию onFormSubmit. Функция принимает объект запроса query
-    // async function onFormSubmit(query) {
-    //   try {
-    //     // Выполняем GET-запрос к API с передачей параметров запроса. Результат запроса сохраняем в переменной response
-    //     const response = await axios.get(`${BASE_URL}`, {
-    //       params: {
-    //         bodypart: '',
-    //         muscles: '',
-    //         equipment: '',
-    //         keyword: query.query, // эти значения из queryParams
-    //         page: query.page,
-    //         limit: 9,
-    //       },
-    //     });
-    //     // Вызываем функцию renderExercises с передачей массива упражнений из ответа
-    //     renderExercises(response.data.results);
-    //   } catch (error) {
-    //     handleError(error); // Вывод ошибки в консоль при возникновении ошибки запроса
-    //   }
-    // }
-
-    // -------------------------------new  КОД ДЛЯ ДЕНИСА --- ПОМИЛКА--- ПОКИ КОМЕНТУЮ--------------------------------------
+    // const StartBtn = document.querySelectorAll('.StartBtn');
+    // console.log(StartBtn);
+    // // треба імпортувати функцію onStartBtnClick -------
+    // StartBtn.addEventListener('click', onStartBtnClick);
 
     const FilterBtn = document.querySelector('#FilterBtn'); // додаємо на три кнопки фільтрів слухача по кліку
     FilterBtn.addEventListener('click', onBtnClick);
@@ -78,7 +60,7 @@ async function onCardClick(event) {
     }
     pagination.addEventListener('click', onPaginationSubcategoriesPage); // вішаємо на дів з кнопками нумерації сторінок слухача подій при кліку
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
@@ -121,7 +103,7 @@ async function getExercisesByFilter(filterValue, nameValue, currentPage) {
       return response.data;
     }
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
@@ -172,7 +154,7 @@ function updateExercisesHeaderMarkup(nameValue) {
   return `<div>
   <h2 class="TitleExercises">Exercises / <span class="NameValue"> ${nameValue}</span></h2>
   <div class="ExercisesHeared">
-  <div class="ListExercises FilterButtons" id='FilterBtn'>
+  <div id='FilterBtn'>
     <button class="ItemExercises" data-filter="Muscles" id='MusclesBtn'>Muscles</button>
     <button class="ItemExercises" data-filter="Body parts" id='BodyPartBtn'>Body parts</button>
     <button class="ItemExercises" data-filter="Equipment" id='EquipmentBtn'>Equipment</button>
@@ -193,8 +175,13 @@ function updateExercisesHeaderMarkup(nameValue) {
 // це виклик функції Данила. Треба щоб він зробив експорт
 // функція, яка спрацьовує коли ми клікаємо по фільтру (Muscle, Body Part, Equipment) і повертаємось назад
 async function onBtnClick(event) {
+  const filtersBtnArray = document.querySelectorAll('.ItemExercises');
+  filtersBtnArray.forEach(btn => {
+    btn.classList.remove('FilterBtnIsActive');
+  });
   exerciseFiltersList.addEventListener('click', onCardClick);
   exerciseFiltersList.classList.remove('ExerciseCategoryList');
+  exerciseFiltersList.classList.add('ExerciseFiltersList');
   currentPage = 1; // робимо поточну сторінку першою
   pagination.removeEventListener('click', onPaginationSubcategoriesPage); // видаляємо з нумерації сторінок слухача попереднього
   Array.from(event.currentTarget.children).map(item => {
@@ -223,7 +210,7 @@ async function onBtnClick(event) {
     titleExercises.innerHTML = 'Exercises';
     // ------------------------------------------
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
@@ -238,7 +225,7 @@ async function getExercise(filter = filterValueDefault) {
     });
     return response.data;
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 /!Цю функцію я імпортував у себе/;
@@ -288,7 +275,7 @@ async function onPaginationSubcategoriesPage(e) {
     );
     exerciseFiltersList.innerHTML = createMarkUp(results); // робимо розмітку підкатегорій відповідно до номеру сторінки
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
@@ -301,10 +288,27 @@ async function onPaginationPagesbyFilter(e) {
     const { results } = await getExercise(filterValue, currentPage);
     exerciseFiltersList.innerHTML = markupExercises(results);
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
-export { createMarkUp };
-
 // Импорт необходимых библиотек
+
+// function onStartBtnClick(event) {
+//   divEl = event.target.closest('.StartBtn');
+//   console.log(divEl);
+//   // idValue = divEl.dataset.id;
+//   // console.log(idValue);
+// }
+function createIziToastError(notification) {
+  iziToast.error({
+    message: notification,
+    messageColor: '#FAFAFB',
+    messageLineHeight: '24px',
+    messageSize: '16px',
+    position: 'topRight',
+    backgroundColor: '#EF4040',
+    maxWidth: '350px',
+    timeout: false,
+  });
+}

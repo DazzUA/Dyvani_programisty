@@ -1,17 +1,21 @@
-/*const homeEl = document.querySelector('.Home');
-const favoritesEl = document.querySelector('.Favorites');
+const mobileMenu = document.querySelector('.js-menu');
+const openMenu = document.querySelector('.js-open-menu');
+const closeMenu = document.querySelector('.js-close-menu');
 
-favoritesEl.addEventListener('click', onClickHandleFavorites);
+const toggleMenu = function () {
+  const isMenuOpen = mobileMenu.classList.toggle('is-open');
+  document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+};
 
-function onClickHandleFavorites() {
-  homeEl.classList.toggle('current');
-  favoritesEl.classList.remove('favorites');
-  favoritesEl.classList.add('current');
+openMenu.addEventListener('click', toggleMenu);
+closeMenu.addEventListener('click', toggleMenu);
+
+window
+  .matchMedia('(min-width: 335px)')
+  .addEventListener('change', onMatchMedia);
+
+function onMatchMedia(event) {
+  if (!event.matches) return;
+  mobileMenu.classList.remove('is-open');
+  document.body.style.overflow = '';
 }
-
-homeEl.addEventListener('click', onClickHandleHome);
-
-function onClickHandleHome() {
-  homeEl.classList.add('current');
-  favoritesEl.classList.remove('current');
-}*/

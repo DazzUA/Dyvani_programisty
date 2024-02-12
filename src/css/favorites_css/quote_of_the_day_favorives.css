@@ -1,0 +1,198 @@
+.containerQuoteFavorites {
+    display: grid;
+    place-items: center;
+}
+
+.QuoteFavoritesIconDivOne {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 32px;
+    background: rgba(246, 246, 246, 0.10);
+}
+
+.QuoteFavoriteTitle {
+    color: #F6F6F6;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px; 
+    margin-bottom: 14px;
+}
+
+.QuoteFavoritesText {
+    color: rgba(246, 246, 246, 0.60);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; 
+    margin-bottom: 25px;
+}
+
+.QuoteFavoritesAuthor {
+    color: #F6F6F6;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; 
+}
+
+.QuoteFavoritesIconDivOne {
+    display: grid;
+    place-items: center;
+}
+
+/* .QuoteFavoritesIconDivTwo {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    bottom: 32px;
+} */
+
+.QuoteFavoritesIcon {
+    fill: #f6f6f6;
+}
+
+.QuoteFavoritesIconTwo {
+    margin-bottom: 15px;
+}
+
+.FavoritesQuote {
+    color: #1B1B1B;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+    padding-bottom: 6px;
+}
+
+.FavoritesQuoteText {
+    color: rgba(27, 27, 27, 0.60);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+@media screen and (min-width: 375px) {
+
+    .QuoteFavorites {
+        padding-top: 20px;
+    }
+
+    .QuoteFavoritesOne {
+        border-radius: 30px;
+        width: 335px;
+        height: 272px;
+        background: #7e847f;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 40px;
+        display: flex;
+        gap: 12px;
+    }
+
+    .QuoteFavoritesImg {
+        border-radius: 30px;
+        width: 335px;
+        height: 272px;
+        background-image: url(/img/mob/favorites/women.fav.mob.png);
+    }
+
+    .FavoritesQuoteDiv {
+        border-radius: 30px;
+        width: 335px;
+        height: 272px;
+        background: #FFF;
+    }
+
+    .QuoteFavoritesIconDivThree {
+        padding-left: 102px;
+        padding-top: 96px;
+        padding-right: 101px;
+    }
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+@media screen and (min-width: 768px) {
+
+    .QuoteFavorites {
+        padding-top: 16px;
+    }
+
+    .QuoteFavoritesOne {
+        border-radius: 50px;
+        width: 736px;
+        height: 302px;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 64px;
+        gap: 16px;
+    }
+
+    .QuoteFavoritesImg {
+        border-radius: 50px;
+        width: 368px;
+        height: 302px;
+        background-image: url(/img/tablet/favorites/women.fav.tab.png);
+    }
+
+    .QuoteFavoritesTwo {
+        display: flex;
+    }
+
+    .FavoritesQuoteDiv {
+        border-radius: 50px;
+        width: 368px;
+        height: 302px;
+    }
+
+    .QuoteFavoritesIconDivThree {
+        padding-left: 118px;
+        padding-top: 106px;
+        padding-right: 118px;
+    }
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+@media screen and (min-width: 1440px) {
+
+    .QuoteFavorites {
+        display: flex;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .QuoteFavoritesOne {
+        border-radius: 50px;
+        width: 704px;
+        height: 302px;
+        padding-left: 64px;
+        padding-right: 64px;
+    }
+
+    .QuoteFavoritesImg {
+        width: 352px;
+    }
+
+    .FavoritesQuoteDiv {
+        width: 352px;
+    }
+
+    .QuoteFavoritesIconDivThree {
+        padding-left: 110px;
+        padding-top: 106px;
+        padding-right: 110px;
+    }
+}

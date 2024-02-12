@@ -9,6 +9,13 @@ import icons from '/img/symbol-defs.svg';
 const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
 const ExercisesHead = document.querySelector('.ExercisesHead');
 const pagination = document.querySelector('.Pagination');
+const PaginationSubcategories = document.querySelector(
+  '.PaginationSubcategories'
+);
+const ExerciseFiltersListSubcategories = document.querySelector(
+  '.ExerciseFiltersListSubcategories'
+);
+const form = document.querySelector('.ExercisesForm');
 
 const BASE_URL = 'https://energyflow.b.goit.study/api';
 let currentPage = 1;
@@ -18,48 +25,40 @@ let nameValue;
 exerciseFiltersList.addEventListener('click', onCardClick);
 
 async function onCardClick(event) {
-  exerciseFiltersList.removeEventListener('click', onCardClick);
+  form.classList.remove('visually-hidden');
+  pagination.innerHTML = '';
+  exerciseFiltersList.classList.add('visually-hidden');
+  ExerciseFiltersListSubcategories.classList.remove('visually-hidden');
+  // exerciseFiltersList.removeEventListener('click', onCardClick);
   pagination.removeEventListener('click', onPaginationFilterPages);
   pagination.removeEventListener('click', onPaginationPagesbyFilter);
   if (event.target === event.currentTarget) {
     return;
   }
-  exerciseFiltersList.classList.add('ExerciseCategoryList'); // при кліку на картку додаємо клас до ul (бо він має інші стилі)
-  exerciseFiltersList.classList.remove('ExerciseFiltersList');
+
   const liEl = event.target.closest('.ExercisesItem'); // при кліку на картку шукаємо найближчий елемент у якого буде заданий селектор (це li)
   filterValue = liEl.dataset.filter; //Muscles   // тепер можемо отримати li дата-атрибути
   nameValue = liEl.dataset.name; // abductors
   try {
-    ExercisesHead.innerHTML = updateExercisesHeaderMarkup(nameValue); // оновлюємо хедер секції Exercises
-    const MusclesBtn = document.querySelector('#MusclesBtn');
-    if (filterValue === 'Muscles') {
-      MusclesBtn.classList.add('FilterBtnIsActive');
-    } else if (filterValue === 'Body parts') {
-      const BodyPartBtn = document.querySelector('#BodyPartBtn');
-      BodyPartBtn.classList.add('FilterBtnIsActive');
-    } else if (filterValue === 'Equipment') {
-      const EquipmentBtn = document.querySelector('#EquipmentBtn');
-      EquipmentBtn.classList.add('FilterBtnIsActive');
-    }
     const { page, totalPages, results } = await getExercisesByFilter(
       filterValue,
       nameValue
     );
-    exerciseFiltersList.innerHTML = createMarkUp(results); // це буде масив об'єктів
-    // const StartBtn = document.querySelectorAll('.StartBtn');
-    // console.log(StartBtn);
-    // // треба імпортувати функцію onStartBtnClick -------
-    // StartBtn.addEventListener('click', onStartBtnClick);
+    ExerciseFiltersListSubcategories.innerHTML = createMarkUp(results); // це буде масив об'єктів
 
-    const FilterBtn = document.querySelector('#FilterBtn'); // додаємо на три кнопки фільтрів слухача по кліку
-    FilterBtn.addEventListener('click', onBtnClick);
-    FilterBtn.addEventListener('click', onBtnClickForFormDelete);
+    // const FilterBtn = document.querySelector('#FilterBtn'); // додаємо на три кнопки фільтрів слухача по кліку
+    // FilterBtn.addEventListener('click', onBtnClick);
+    // FilterBtn.addEventListener('click', onBtnClickForFormDelete);
     pagination.innerHTML = ''; // пагінація
     if (totalPages > 1) {
-      const pag = paginationPages(page, totalPages); // const pag це буде рядок розмітки кнопок(нумерація сторінок)
-      pagination.innerHTML = pag; // додаємо в div розмітку сторінок
+      const pag = paginationPages(page, totalPages);
+      PaginationSubcategories.innerHTML = pag; // додаємо в div розмітку сторінок
     }
-    pagination.addEventListener('click', onPaginationSubcategoriesPage); // вішаємо на дів з кнопками нумерації сторінок слухача подій при кліку
+    PaginationSubcategories.addEventListener(
+      'click',
+      onPaginationSubcategoriesPage
+    );
+    // pagination.addEventListener('click', onPaginationSubcategoriesPage); // вішаємо на дів з кнопками нумерації сторінок слухача подій при кліку
   } catch (error) {
     createIziToastError('Error');
   }
@@ -68,7 +67,7 @@ async function onCardClick(event) {
 function onBtnClickForFormDelete() {
   const ExercisesForm = document.querySelector('.ExercisesForm');
   // ???vформа видаляється при першому кліку, а при другому знову хоче видалити, а її вже нема
-  ExercisesForm.remove();
+  // ExercisesForm.remove();
   FilterBtn.removeEventListener('click', onBtnClickForFormDelete);
 }
 
@@ -111,7 +110,7 @@ async function getExercisesByFilter(filterValue, nameValue, currentPage) {
 function createMarkUp(array) {
   const markup = array
     .map(({ rating, name, burnedCalories, time, bodyPart, target, _id }) => {
-      return `<li class="WorkoutCard id ='${_id}">
+      return `<li class="WorkoutCard ExerciseCategoryList id ='${_id}">
       <div class='CardHeader'>
         <div class='WorkoutWrapper'>
           <p class='Workout'>workout</p>
@@ -152,31 +151,14 @@ function createMarkUp(array) {
   return markup;
 }
 
-function updateExercisesHeaderMarkup(nameValue) {
-  return `<div>
-  <h2 class="TitleExercises">Exercises / <span class="NameValue"> ${nameValue}</span></h2>
-  <div class="ExercisesHeared">
-  <div id='FilterBtn'>
-    <button class="ItemExercises" data-filter="Muscles" id='MusclesBtn'>Muscles</button>
-    <button class="ItemExercises" data-filter="Body parts" id='BodyPartBtn'>Body parts</button>
-    <button class="ItemExercises" data-filter="Equipment" id='EquipmentBtn'>Equipment</button>
-  </div>
-    <form action="" class="ExercisesForm">
-      <label for="#search" class="visually-hidden">Search</label>
-      <input class='SearchInput' name="search" placeholder="Search" type="search" id="search" />
-      <button class='SearchButton' type="submit">
-        <svg class='IconSearch' width='18' height='18'>
-          <use href='${icons}#icon-search'></use>
-        </svg>
-      </button>
-    </form></div>
-</div>
-`;
-}
-
 // це виклик функції Данила. Треба щоб він зробив експорт
 // функція, яка спрацьовує коли ми клікаємо по фільтру (Muscle, Body Part, Equipment) і повертаємось назад
 async function onBtnClick(event) {
+  exerciseFiltersList.classList.re('visually-hidden');
+
+  ExerciseFiltersListSubcategories.innerHTML = '';
+  exerciseFiltersList.classList.remove('visually-hidden');
+  // ExerciseFiltersListSubcategories.classList.add('visually-hidden');
   const filtersBtnArray = document.querySelectorAll('.ItemExercises');
   filtersBtnArray.forEach(btn => {
     btn.classList.remove('FilterBtnIsActive');
@@ -185,7 +167,7 @@ async function onBtnClick(event) {
   exerciseFiltersList.classList.remove('ExerciseCategoryList');
   exerciseFiltersList.classList.add('ExerciseFiltersList');
   currentPage = 1; // робимо поточну сторінку першою
-  pagination.removeEventListener('click', onPaginationSubcategoriesPage); // видаляємо з нумерації сторінок слухача попереднього
+  // pagination.removeEventListener('click', onPaginationSubcategoriesPage); // видаляємо з нумерації сторінок слухача попереднього
   Array.from(event.currentTarget.children).map(item => {
     if (item.textContent !== event.target.textContent) {
       item.classList.remove('ButtonIsActive');
@@ -202,11 +184,14 @@ async function onBtnClick(event) {
     exerciseFiltersList.innerHTML = markupExercises(results); // робимо розмітку всередині ul по фільтру починаюxи з першої сторінки
     if (totalPages > 1) {
       const pag = paginationPages(page, totalPages);
-      pagination.innerHTML = pag;
+      PaginationSubcategories.innerHTML = pag;
     } else {
-      pagination.innerHTML = '';
+      PaginationSubcategories.innerHTML = '';
     }
-    pagination.addEventListener('click', onPaginationPagesbyFilter);
+    PaginationSubcategories.addEventListener(
+      'click',
+      onPaginationPagesbyFilter
+    );
     // тут видалення тексту після слеша та форми
     const titleExercises = document.querySelector('.TitleExercises');
     titleExercises.innerHTML = 'Exercises';
@@ -275,7 +260,7 @@ async function onPaginationSubcategoriesPage(e) {
       nameValue,
       currentPage
     );
-    exerciseFiltersList.innerHTML = createMarkUp(results); // робимо розмітку підкатегорій відповідно до номеру сторінки
+    ExerciseFiltersListSubcategories.innerHTML = createMarkUp(results); // робимо розмітку підкатегорій відповідно до номеру сторінки
   } catch (error) {
     createIziToastError('Error');
   }

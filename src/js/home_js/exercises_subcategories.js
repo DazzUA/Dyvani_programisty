@@ -4,6 +4,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 import { onPaginationFilterPages } from './exercises_filters';
 import { paginationPages } from './exercises_filters';
 import { markupExercises } from './exercises_filters';
+import icons from '/img/symbol-defs.svg';
 
 const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
 const ExercisesHead = document.querySelector('.ExercisesHead');
@@ -110,25 +111,26 @@ async function getExercisesByFilter(filterValue, nameValue, currentPage) {
 function createMarkUp(array) {
   const markup = array
     .map(({ rating, name, burnedCalories, time, bodyPart, target, _id }) => {
-      return `<li class="WorkoutCard">
+      return `<li class="WorkoutCard id ='${_id}">
       <div class='CardHeader'>
         <div class='WorkoutWrapper'>
           <p class='Workout'>workout</p>
           <div class='RatingWrapper'><p>${rating}</p>
           <svg class='StarIcon' width='13' height='13'>
-          <use href='./img/symbol-defs.svg#icon-star'></use>
+          <use href='${icons}#icon-star'></use>
         </svg></div>
         </div>
-        <div class='StartBtn' data-id='${_id}'>
-          <p>Start</p>
-          <svg width='13' height='13'>
-          <use href='./img/symbol-defs.svg#icon-arrow'></use>
+        
+          <button type="button" class="StartBtn">
+  START<svg width='13' height='13'>
+          <use href='${icons}#icon-arrow'></use>
         </svg>
-        </div>
+</button>
+        
       </div>
       <div class='CardMainPart'>
       <div class='RunIconWrapper'><svg width='14' height='14'>
-          <use href='./img/symbol-defs.svg#icon-running'></use>
+          <use href='${icons}#icon-running'></use>
         </svg></div>
         <p class='MainPartName'>${name}</p>
       </div>
@@ -164,7 +166,7 @@ function updateExercisesHeaderMarkup(nameValue) {
       <input class='SearchInput' name="search" placeholder="Search" type="search" id="search" />
       <button class='SearchButton' type="submit">
         <svg class='IconSearch' width='18' height='18'>
-          <use href='./img/symbol-defs.svg#icon-search'></use>
+          <use href='${icons}#icon-search'></use>
         </svg>
       </button>
     </form></div>

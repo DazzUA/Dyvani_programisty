@@ -395,6 +395,8 @@
   line-height: 1.5;
   stroke: #1b1b1b;
   fill: white;
+  border: none;
+  background-color: transparent;
 }
 .WorkoutWrapper {
   display: flex;

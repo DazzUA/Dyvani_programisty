@@ -69,7 +69,7 @@ window.onscroll = async () => {
 };
 
 async function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0 });
 }
 
 async function backToTopButton() {

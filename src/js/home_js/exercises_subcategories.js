@@ -4,6 +4,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 import { onPaginationFilterPages } from './exercises_filters';
 import { paginationPages } from './exercises_filters';
 import { markupExercises } from './exercises_filters';
+import icons from '/img/symbol-defs.svg';
 
 const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
 const ExercisesHead = document.querySelector('.ExercisesHead');
@@ -110,7 +111,7 @@ async function getExercisesByFilter(filterValue, nameValue, currentPage) {
 function createMarkUp(array) {
   const markup = array
     .map(({ rating, name, burnedCalories, time, bodyPart, target, _id }) => {
-      return `<li class="WorkoutCard">
+      return `<li class="WorkoutCard id ='${_id}">
       <div class='CardHeader'>
         <div class='WorkoutWrapper'>
           <p class='Workout'>workout</p>
@@ -119,12 +120,13 @@ function createMarkUp(array) {
           <use href='./img/symbol-defs.svg#icon-star'></use>
         </svg></div>
         </div>
-        <div class='StartBtn' data-id='${_id}'>
-          <p>Start</p>
-          <svg width='13' height='13'>
-          <use href='./img/symbol-defs.svg#icon-arrow'></use>
+        
+          <button type="button" class="StartBtn">
+  START<svg width='13' height='13'>
+          <use href='${icons}#icon-arrow'></use>
         </svg>
-        </div>
+</button>
+        
       </div>
       <div class='CardMainPart'>
       <div class='RunIconWrapper'><svg width='14' height='14'>

@@ -1,3 +1,15 @@
+.ExerciseFiltersListSubcategories {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  column-gap: 14px;
+  margin-bottom: 32px;
+}
+
 .Exercises {
   width: 335px;
   border-radius: 30px;
@@ -42,6 +54,7 @@
   min-width: 88px;
 }
 .ExercisesForm {
+  margin-left: auto;
   border-radius: 30px;
   background: #f6f6f6;
   padding: 12px;
@@ -335,6 +348,14 @@
 }
 
 .Pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.PaginationSubcategories {
   display: flex;
   justify-content: center;
   align-items: center;

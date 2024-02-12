@@ -35,4 +35,4 @@ import{a as p}from"./vendor-db25513e.js";(function(){const s=document.createElem
           </div>
   </div>
   </div> `;n.innerHTML=s}function L(){toggleFavorite(l),c.innerText="Remove from"}function C(){n.classList.add(d)}function T(){n.classList.remove(d)}function $(){b(),q()}function b(){u=document.querySelector(".RatingActive"),m=document.querySelector(".NumberRating")}function q(t=m.innerHTML){const s=t/.05;u.style.width=`${s}%`}export{g as i};
-//# sourceMappingURL=modal_window-e8fa3cae.js.map
+//# sourceMappingURL=modal_window-1b84df15.js.map

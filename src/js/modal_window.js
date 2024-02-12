@@ -1,25 +1,33 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
+import icons from '/img/symbol-defs.svg';
 // import { toggleFavorite } from './favorites_js/favorites_section';
 
 const modalBackdrop = document.querySelector('.Backdrop');
 const card = document.querySelector('.Modal');
-const button = document.querySelector('.SearchButton');
+const button = document.querySelector('.ExerciseFiltersList');
 const modalClose = document.querySelector('.ModalClose');
 const addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
 
 const openClass = 'IsOpen';
 let cardObj = {};
 let id = '64f389465ae26083f39b17a4';
+let ratingActive, ratingValue;
 
 button.addEventListener('click', modalCard);
 
-async function modalCard() {
+async function modalCard(event) {
+  if (event.target.nodeName !== 'BUTTON') {
+    return;
+  }
+  const res = event.target.closest('li').id;
+
   try {
-    cardObj = await fetchImages(id);
+    cardObj = await fetchImages(res);
     showModal();
     displayImages(cardObj);
+    initRating();
     document.querySelectorAll('span').forEach(function (span) {
       span.textContent =
         span.textContent.charAt(0).toUpperCase() + span.textContent.slice(1);
@@ -39,7 +47,7 @@ function modalCloseFunc(event) {
   }
 }
 
-async function fetchImages(id) {
+async function fetchImages() {
   const url = `https://energyflow.b.goit.study/api/exercises/${id}`;
 
   try {
@@ -50,10 +58,10 @@ async function fetchImages(id) {
 }
 
 function displayImages(cardObj) {
-  card.innerHTML = `
+  const markup = `<div class="Modal">
    <button class="ModalClose" type="button">
           <svg class="CloseModalIcon" width="8" height="8">
-            <use href="./img/symbol-defs.svg#icon-close"></use>
+            <use href="${icons}#icon-close"></use>
           </svg>
         </button>
   <div class="ModalImage">     
@@ -64,7 +72,7 @@ function displayImages(cardObj) {
   <div class="NumberRating">${cardObj.rating}</div>
   <div class="RatingBody">
     <div class="RatingActive"></div>
-    <div class="RatingItem">
+    <div class="RatingItems">
       <input type="radio" class="RatingItem" value="1" name="Rating" />
       <input type="radio" class="RatingItem" value="2" name="Rating" />
       <input type="radio" class="RatingItem" value="3" name="Rating" />
@@ -85,12 +93,14 @@ function displayImages(cardObj) {
             <use href="./img/symbol-defs.svg#icon-heart"></use>
           </svg></button>
           </div>
-  </div>  `;
+  </div>
+  </div> `;
+  modalBackdrop.innerHTML = markup;
 }
 
 function addFavorites() {
   toggleFavorite(cardObj);
-  const messageInfo = document.querySelector('.message-favorites');
+  // const messageInfo = document.querySelector('.message-favorites');
   addRemoveFavorites.innerText = 'Remove from';
 }
 
@@ -102,4 +112,17 @@ function hideModal() {
   modalBackdrop.classList.remove(openClass);
 }
 
-export { modalCard };
+function initRating() {
+  initRatingVars();
+  setRatingActiveWidth();
+}
+
+function initRatingVars() {
+  ratingActive = document.querySelector('.RatingActive');
+  ratingValue = document.querySelector('.NumberRating');
+}
+
+function setRatingActiveWidth(index = ratingValue.innerHTML) {
+  const ratingActiveWidth = index / 0.05;
+  ratingActive.style.width = `${ratingActiveWidth}%`;
+}

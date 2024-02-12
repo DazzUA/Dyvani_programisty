@@ -105,14 +105,56 @@
 .NumberRating {
     font-family: var(--font-family);
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.5;
     color: #1b1b1b;
 }
 
-.RatingBody {}
+.RatingBody {
+    position: relative;
+}
 
-.RatingActive {}
+.RatingBody::before {
+    font-size: 20px;
+    content: "★★★★★";
+    display: block;
+    color: rgba(27, 27, 27, 0.2);
+}
+
+.RatingActive {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.RatingActive::before {
+    font-size: 20px;
+    content: "★★★★★";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: #ffd300;
+}
+
+.RatingItems {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.RatingItem {
+    flex: 0 0 20%;
+    height: 100;
+    opacity: 0;
+}
 
 
 .ModalList {

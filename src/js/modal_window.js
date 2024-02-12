@@ -1,7 +1,7 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
-// import {toggleFavorite}
+import { toggleFavorite } from './favorites_js/favorites_section';
 
 const modalBackdrop = document.querySelector('.Backdrop');
 const card = document.querySelector('.Modal');
@@ -50,7 +50,8 @@ async function fetchImages(id) {
 }
 
 function displayImages(cardObj) {
-  card.innerHTML = ` <button class="ModalClose" type="button">
+  card.innerHTML = `
+   <button class="ModalClose" type="button">
           <svg class="CloseModalIcon" width="8" height="8">
             <use href="./img/symbol-defs.svg#icon-close"></use>
           </svg>
@@ -89,6 +90,7 @@ function displayImages(cardObj) {
 }
 
 function addFavorites() {
+  const messageInfo = document.querySelector('.message-favorites');
   toggleFavorite(cardObj);
   addRemoveFavorites.innerText = 'Remove from';
 }

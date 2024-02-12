@@ -45,7 +45,7 @@ function createMessage(message) {
     maxWidth: '352',
     messageColor: '#fff',
     messageSize: '15px',
-    backgroundColor: 'rgba(27, 27, 27, 0.7)',
+    backgroundColor: 'rgba(27, 27, 27)',
     close: false,
     closeOnClick: true,
   });
@@ -57,3 +57,28 @@ function createMessage(message) {
 //   refs.loaderForm.style.display = !state ? 'none' : 'inline-block';
 //   filterButtons.disabled = state;
 // }
+// scroll up
+const buttonBackToTopEl = document.querySelector('.ScrollUp');
+
+buttonBackToTopEl.addEventListener('click', async () => {
+  await scrollToTop();
+});
+
+window.onscroll = async () => {
+  await backToTopButton();
+};
+
+async function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function backToTopButton() {
+  const scrollPosition =
+    document.body.scrollTop || document.documentElement.scrollTop;
+
+  if (scrollPosition > 20) {
+    buttonBackToTopEl.classList.remove('visually-hidden');
+  } else {
+    buttonBackToTopEl.classList.add('visually-hidden');
+  }
+}

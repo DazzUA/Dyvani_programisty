@@ -1,5 +1,6 @@
-<section class="FooterSection container">
-  <div class="FootVibe">
+
+    <footer class="FooterSection container">
+  <div class="FootVibe ">
     <div class="FootInner">
       <a class="FootLogo" href="./index.html">energy.flow</a>
       <ul class="FooterUl">
@@ -8,6 +9,8 @@
             class="FooterSocialItem"
             href="https://www.facebook.com/goITclub/"
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow us on Facebook"
           >
             <svg class="FooterSvg" width="20" height="20">
               <use href="/img/symbol-defs.svg#icon-facebook"></use>
@@ -40,14 +43,14 @@
       </ul>
     </div>
 
-    <div class="FooterSlogo">
+    <div class="FooterSlogo"> 
       <h2 class="FooterH">
         Transforming your <span class="accent">body</span> shape with us
       </h2>
-      <div class="input">
+      <div class="input-subs">
       <p class="FooterP">Subscribe and learn about new exercises!</p>
       <form class="FooterForm">
-        <label class="FooterLabel" for="modal-footer">
+        <label class="FooterLabel" for="modal-footer"  aria-label="modal-footer">
           <input
             class="FormInput"
             type="email"
@@ -64,13 +67,46 @@
     </div>
   </div>
   <div class="FooterText ">
-    <p class="FooterPrivacy">Energy Flow. All rights reserved.</p>
-      <p class="FooterPrivacy ">Privacy Policy <span class="slesh">/</span> Terms of Service</p>
+    <p class="FooterPrivacy upper">Energy Flow. All rights reserved.</p>
+      <div class="regulations">
+      <a
+          class="FooterPolice policy"
+          href="#"
+          target="_blank"
+          >Privacy Policy</a
+        >
+        <p class="policy">/</p>
+        <a
+          class="FooterPolice policy"
+          href="#"
+          target="_blank"
+          >Terms of Service</a
+        >
+    </div>
+
   </div>
 
   </div>
+  </footer>
   <!-- loader -->
   <div class="lodDiv">
     <span class="loader"></span>
   </div>
-</section>
+
+<!-- scroll up -->
+<div class="ScrollUp visually-hidden">
+  <button class="ScrollUpButton">
+    <svg class="ScrollUpSvg mobile" width="20" height="20">
+      <use href="/img/symbol-defs.svg#icon-arrow-scrollup"></use>
+    </svg>
+
+    <svg class="ScrollUpSvg tablet" width="40" height="40">
+      <use href="/img/symbol-defs.svg#icon-arrow-scrollup"></use>
+    </svg>
+
+    <svg class="ScrollUpSvg decktop" width="50" height="50">
+      <use href="/img/symbol-defs.svg#icon-arrow-scrollup"></use>
+    </svg>
+  </button>
+</div>
+

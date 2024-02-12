@@ -185,7 +185,7 @@
 
 .favorites-card-header {
   display: inline-block;
-  margin-bottom: 29px;
+  padding-bottom: 27px;
 }
 
 .favorites-workout {
@@ -198,7 +198,6 @@
 
 .favorites-workout p {
   border-radius: 15px;
-  background-color: #7e847f;
   padding: 5px 8px;
   text-transform: uppercase;
   color: #f6f6f6;
@@ -238,9 +237,9 @@
 
 .favorites-main-container {
   display: flex;
-  margin-bottom: 12px;
   align-items: center;
   gap: 16px;
+  padding-bottom: 18px;
 }
 
 .favorite-icon-run-man {
@@ -270,10 +269,6 @@
   text-transform: uppercase;
 }
 
-.favorites-card-footer {
-  margin-top: 18px;
-}
-
 .favorites-card-footer-list {
   padding: 0;
 }
@@ -282,7 +277,7 @@
   display: flex;
   flex-wrap: wrap;
   column-gap: 16px;
-  row-gap: 8px;
+  row-gap: 6px;
   font-size: 12px;
   white-space: nowrap;
 }
@@ -298,7 +293,7 @@
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.5;
+  /*line-height: 1.5;*/
   margin-right: 4px;
   margin: 0;
 }
@@ -308,7 +303,7 @@
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.5;
+  /*line-height: 1.5;*/
   margin: 0;
   text-transform: capitalize;
 }

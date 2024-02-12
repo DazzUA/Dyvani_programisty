@@ -1,7 +1,7 @@
 import sprite from '../../img/symbol-defs.svg';
 const fullUrl = window.location.pathname;
 const lastSlashIndex = fullUrl.lastIndexOf('/');
-const result = '/page-2.html'; //fullUrl.substring(lastSlashIndex);
+const result = fullUrl.substring(lastSlashIndex);
 
 function checkLocalStorageData(key) {
   let storageItem = localStorage.getItem(key);
@@ -36,7 +36,7 @@ function createFavoriteCard(elem) {
 }
 
 ///**перевіряє чи є в локалсторідж запис і якщо є, то малює картки, інакше показує повідомлення */
-if (result === '/page-2.html') {
+if (result === '/favorites.html') {
   if (!storageItem || parsedItem.length == 0) {
     messageInfo.classList.add('is-open-message-favorites');
     paginationBlock.classList.add('close');
@@ -54,18 +54,18 @@ if (result === '/page-2.html') {
 }
 
 /**пагінація */
-if (result === '/page-2.html') {
+if (result === '/favorites.html') {
   document.addEventListener('DOMContentLoaded', function () {
     // Функція для відображення пагінації залежно від ширини екрану.
     function togglePagination() {
       const currentPage = window.location.pathname; // Отримання поточного шляху сторінки
-      // Перевірка, чи поточна сторінка - '/page-2.html', і ширина екрану менше або дорівнює 767px.
+      // Перевірка, чи поточна сторінка - '/favorites.html', і ширина екрану менше або дорівнює 767px.
       if (
-        window.innerWidth <= 767 &&
-        isFavoritesListVisible()
-        /*currentPage === '/fitnes-app/page-2.html' &&
-        window.innerWidth <= 767 &&
+        /*window.innerWidth <= 767 &&
         isFavoritesListVisible()*/
+        currentPage === '/Dyvani_programisty/favorites.html' &&
+        window.innerWidth <= 767 &&
+        isFavoritesListVisibl
       ) {
         // Відображення пагінації для невеликих екранів на сторінці 2.
         paginationBlock.style.display = 'flex';
@@ -211,7 +211,7 @@ function toggleFavorite() {
       gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0067.gif', //gif.src
       name: 'barbell one arm snatch', //name.textContent
       rating: '3.67', //rating.textContent
-      target: 'cardiovascular system', //target.textContent
+      target: 'cardiovascular', //target.textContent
       popular: '5548', //popular.textContent
       bodyPart: 'shoulders', //bodyPart.textContent
       equipment: 'barbell', //equipment.textContent
@@ -257,7 +257,7 @@ function handleFavoritesListClick(event) {
   }
 }
 
-if (result === '/page-2.html') {
+if (result === '/favorites.html') {
   favoritesList.addEventListener('click', handleFavoritesListClick);
 }
 

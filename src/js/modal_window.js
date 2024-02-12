@@ -1,7 +1,7 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
-import { toggleFavorite } from './favorites_js/favorites_section';
+// import { toggleFavorite } from './favorites_js/favorites_section';
 
 const modalBackdrop = document.querySelector('.Backdrop');
 const card = document.querySelector('.Modal');
@@ -61,18 +61,17 @@ function displayImages(cardObj) {
   </div><div>
   <h3 class="ModalTitle">${cardObj.name}</h3>
   <div class="ModalRating">
-  <p class="NumberRating">${cardObj.rating}</p>
-  <div class="StarRating"><svg class="StarModalIcon" width="18" height="18">
-            <use href="./img/symbol-defs.svg#icon-star"></use>
-          </svg><svg class="StarModalIcon" width="18" height="18">
-            <use href="./img/symbol-defs.svg#icon-star"></use>
-          </svg><svg class="StarModalIcon" width="18" height="18">
-            <use href="./img/symbol-defs.svg#icon-star"></use>
-          </svg><svg class="StarModalIcon" width="18" height="18">
-            <use href="./img/symbol-defs.svg#icon-star"></use>
-          </svg><svg class="StarModalIcon" width="18" height="18">
-            <use href="./img/symbol-defs.svg#icon-star"></use>
-          </svg></div>
+  <div class="NumberRating">${cardObj.rating}</div>
+  <div class="RatingBody">
+    <div class="RatingActive"></div>
+    <div class="RatingItem">
+      <input type="radio" class="RatingItem" value="1" name="Rating" />
+      <input type="radio" class="RatingItem" value="2" name="Rating" />
+      <input type="radio" class="RatingItem" value="3" name="Rating" />
+      <input type="radio" class="RatingItem" value="4" name="Rating" />
+      <input type="radio" class="RatingItem" value="5" name="Rating" />
+    </div>
+  </div>
   </div>
   <ul class="ModalList">
   <li class="ModalListItem"><span class="ItemTitle">Target</span> <span class="ItemData">${cardObj.target}</span></li>
@@ -90,8 +89,8 @@ function displayImages(cardObj) {
 }
 
 function addFavorites() {
-  const messageInfo = document.querySelector('.message-favorites');
   toggleFavorite(cardObj);
+  const messageInfo = document.querySelector('.message-favorites');
   addRemoveFavorites.innerText = 'Remove from';
 }
 

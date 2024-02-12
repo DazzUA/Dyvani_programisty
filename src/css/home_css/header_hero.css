@@ -1,4 +1,4 @@
-.container {
+/* .container {
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
@@ -20,7 +20,7 @@
 @media screen and (min-width: 1440px) {
   .container {
   }
-}
+} */
 .header-main {
   position: absolute;
   left: 0;
@@ -44,6 +44,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media screen and (min-width: 768px) {
   .header-inern {
@@ -376,7 +381,7 @@
 }
 @media screen and (min-width: 768px) {
   .hero-container {
-    width: 488px;
+    width: 448px;
     height: 900px;
     flex-shrink: 0;
     margin: 0;

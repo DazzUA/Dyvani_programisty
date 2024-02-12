@@ -21,4 +21,4 @@ import{a as m}from"./vendor-db25513e.js";(function(){const s=document.createElem
   <p class="Description">${t.description}</p>
   <button class="AddRemoveFavorites" type="button">Add to favorites</button>
   </div>  `}function v(){c.innerText="Remove from"}function h(){a.classList.add(d)}function L(){a.classList.remove(d)}
-//# sourceMappingURL=modal_window-8d58ddc0.js.map
+//# sourceMappingURL=modal_window-c98614f0.js.map

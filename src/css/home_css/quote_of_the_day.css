@@ -1,0 +1,140 @@
+.containerQuote {
+    display: grid;
+    place-items: center;
+}
+
+.QuoteIconDivOne {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 32px;
+    background: rgba(246, 246, 246, 0.10);
+}
+
+.QuoteTitle {
+    color: #F6F6F6;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px; 
+    margin-bottom: 14px;
+}
+
+.QuoteText {
+    color: rgba(246, 246, 246, 0.60);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; 
+    margin-bottom: 25px;
+}
+
+.QuoteAuthor {
+    color: #F6F6F6;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; 
+}
+
+.QuoteIconDivOne {
+    display: grid;
+    place-items: center;
+}
+
+/* .QuoteIconDivTwo {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    bottom: 32px;
+} */
+
+.QuoteIcon {
+    fill: #f6f6f6;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+@media screen and (min-width: 375px) {
+
+    .Quote {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .QuoteOne {
+        border-radius: 30px;
+        width: 335px;
+        height: 272px;
+        background: #7e847f;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 40px;
+        display: flex;
+        gap: 12px;
+    }
+
+    .QuoteImg {
+        border-radius: 30px;
+        width: 335px;
+        height: 272px;
+        background-image: url(/img/mob/quote/women.torso.mob.png);
+    }
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+@media screen and (min-width: 768px) {
+
+    .Quote {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .QuoteOne {
+        border-radius: 50px;
+        width: 736px;
+        height: 302px;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 64px;
+        gap: 16px;
+    }
+
+    .QuoteImg {
+        border-radius: 50px;
+        width: 736px;
+        height: 302px;
+        background-image: url(/img/tablet/quote/women.torso.tab.png);
+    }
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+@media screen and (min-width: 1440px) {
+
+    .Quote {
+        display: flex;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .QuoteOne {
+        border-radius: 50px;
+        width: 704px;
+        height: 302px;
+        padding-left: 64px;
+        padding-right: 64px;
+    }
+
+    .QuoteImg {
+        border-radius: 50px;
+        width: 704px;
+        height: 302px;
+        background-image: url(/img/desktop/quote/women.torso.png);
+    }
+}

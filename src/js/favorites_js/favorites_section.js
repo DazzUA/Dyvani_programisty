@@ -222,7 +222,8 @@ function toggleFavorite() {
     localStorage.setItem(storage, JSON.stringify(parsedItem));
     favoritesButton.textContent = `Delete from favorites`;
     //favoritesButton.innerHTML = `Delete from favorites`;
-  } else {
+  }
+  /*else {
     const index = parsedItem.findIndex(item => item.id == id);
     parsedItem.splice(index, 1);
     localStorage.setItem(storage, JSON.stringify(parsedItem));
@@ -240,7 +241,7 @@ function toggleFavorite() {
         paginationBlock.classList.add('close');
       }
     }
-  }
+  }*/
 }
 
 favoritesButton.addEventListener('click', toggleFavorite);

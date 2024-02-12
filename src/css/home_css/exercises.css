@@ -1,4 +1,5 @@
 .Exercises {
+  width: 335px;
   border-radius: 30px;
   padding-top: 40px;
   padding-bottom: 40px;
@@ -46,7 +47,7 @@
   padding: 12px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 42px;
   min-width: 280px;
 }
@@ -62,7 +63,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 6px;
+  gap: 4px;
   margin-bottom: 20px;
 }
 .ExerciseCategoryList {
@@ -85,7 +86,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 6px;
+  gap: 4px;
   margin-bottom: 20px;
 }
 .MainPartName {
@@ -115,7 +116,8 @@
 
 @media screen and (min-width: 768px) {
   .Exercises {
-    padding: 64px;
+    width: 736px;
+    padding: 64px 48px;
   }
   .TitleExercises {
     font-size: 44px;
@@ -184,6 +186,9 @@
 /* Desktop */
 
 @media screen and (min-width: 1440px) {
+  .Exercises {
+    width: 1408px;
+  }
   .WorkoutCard {
     flex-basis: calc((100% - 40px) / 3);
     background-color: rgb(255, 255, 255);

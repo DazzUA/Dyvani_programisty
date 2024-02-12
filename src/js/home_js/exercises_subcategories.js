@@ -117,7 +117,7 @@ function createMarkUp(array) {
           <p class='Workout'>workout</p>
           <div class='RatingWrapper'><p>${rating}</p>
           <svg class='StarIcon' width='13' height='13'>
-          <use href='./img/symbol-defs.svg#icon-star'></use>
+          <use href='${icons}#icon-star'></use>
         </svg></div>
         </div>
         
@@ -130,7 +130,7 @@ function createMarkUp(array) {
       </div>
       <div class='CardMainPart'>
       <div class='RunIconWrapper'><svg width='14' height='14'>
-          <use href='./img/symbol-defs.svg#icon-running'></use>
+          <use href='${icons}#icon-running'></use>
         </svg></div>
         <p class='MainPartName'>${name}</p>
       </div>
@@ -166,7 +166,7 @@ function updateExercisesHeaderMarkup(nameValue) {
       <input class='SearchInput' name="search" placeholder="Search" type="search" id="search" />
       <button class='SearchButton' type="submit">
         <svg class='IconSearch' width='18' height='18'>
-          <use href='./img/symbol-defs.svg#icon-search'></use>
+          <use href='${icons}#icon-search'></use>
         </svg>
       </button>
     </form></div>

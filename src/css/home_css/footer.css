@@ -1,6 +1,6 @@
 .FooterSection {
-  /* width: 335px; */
-  width: 100%;
+  width: 335px;
+  /* width: 100%; */
   padding: 40px 20px 20px;
   border-radius: 30px;
   border: 1px solid black;
@@ -10,9 +10,8 @@
   background-size: cover;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   /* font-family: DM Sans, sans-serif; */
-  margin: 0auto;
+  margin: 0 auto;
   margin-top: 20px;
-  margin: 0 16px;
 }
 @media screen and (min-resolution: 192dpi) and (max-width: 767px),
   screen and (min-resolution: 2dppx) and (max-width: 767px),
@@ -171,6 +170,7 @@
   font-style: italic;
   color: rgba(246, 246, 246, 0.3);
 }
+
 /* tablet */
 @media screen and (min-width: 768px) {
   .FooterSection {

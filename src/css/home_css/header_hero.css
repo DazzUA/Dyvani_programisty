@@ -155,6 +155,7 @@
   }
 }
 .mobil-button-menu {
+  background-color: #e8e8e8;
   border: none;
 }
 @media screen and (min-width: 768px) {
@@ -169,10 +170,9 @@
 }
 
 .mobil-button-menu-svg {
-  width: 32px;
-  height: 16px;
   fill: #7e847f;
-  background-color: #e8e8e8;
+
+  scale: 2;
 }
 @media screen and (min-width: 768px) {
   .mobil-button-menu-svg {

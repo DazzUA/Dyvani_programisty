@@ -6,9 +6,10 @@ import icons from '/img/symbol-defs.svg';
 
 const modalBackdrop = document.querySelector('.Backdrop');
 const card = document.querySelector('.Modal');
-const button = document.querySelector('.ExerciseFiltersList');
+const button = document.querySelector('.ExerciseFiltersListSubcategories');
 const modalClose = document.querySelector('.ModalClose');
-const addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
+// const addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
+// const buttonFavorite = document.querySelector('.favorites-btn-arrow');
 
 const openClass = 'IsOpen';
 let cardObj = {};
@@ -16,13 +17,14 @@ let id = '64f389465ae26083f39b17a4';
 let ratingActive, ratingValue;
 
 button.addEventListener('click', modalCard);
+// buttonFavorite.addEventListener('click', modalCard);
 
 async function modalCard(event) {
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }
   const res = event.target.closest('li').id;
-
+  console.log(res);
   try {
     cardObj = await fetchImages(res);
     showModal();
@@ -33,7 +35,7 @@ async function modalCard(event) {
         span.textContent.charAt(0).toUpperCase() + span.textContent.slice(1);
     });
     modalBackdrop.addEventListener('click', modalCloseFunc);
-    addRemoveFavorites.addEventListener('submit', addFavorites);
+    // addRemoveFavorites.addEventListener('submit', addFavorites);
   } catch (error) {}
 }
 
@@ -60,7 +62,7 @@ async function fetchImages() {
 function displayImages(cardObj) {
   const markup = `<div class="Modal">
    <button class="ModalClose" type="button">
-          <svg class="CloseModalIcon" width="8" height="8">
+          <svg class="CloseModalIcon" width="25" height="25">
             <use href="${icons}#icon-close"></use>
           </svg>
         </button>
@@ -90,7 +92,7 @@ function displayImages(cardObj) {
   </ul>
   <p class="Description">${cardObj.description}</p>
   <button class="AddRemoveFavorites" type="button">Add to favorites</svg><svg class="HeartModalIcon" width="18" height="18">
-            <use href="./img/symbol-defs.svg#icon-heart"></use>
+            <use href="${icons}#icon-heart"></use>
           </svg></button>
           </div>
   </div>
@@ -98,11 +100,9 @@ function displayImages(cardObj) {
   modalBackdrop.innerHTML = markup;
 }
 
-function addFavorites() {
-  toggleFavorite(cardObj);
-  // const messageInfo = document.querySelector('.message-favorites');
-  addRemoveFavorites.innerText = 'Remove from';
-}
+// function addFavorites() {
+//   toggleFavorite(cardObj);
+// }
 
 function showModal() {
   modalBackdrop.classList.add(openClass);

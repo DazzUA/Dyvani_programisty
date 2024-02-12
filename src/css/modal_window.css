@@ -20,16 +20,16 @@
 
 .Modal {
     position: absolute;
-    top: 100px;
-    max-width: 335px;
+    top: 40px;
+    max-width: 100%;
     border-radius: 20px;
+    border: none;
     background-color: #FCFCFC;
-    border-radius: 4px;
-    padding: 72px 16px 24px;
+    padding: 40px 20px;
     overflow: auto;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+    /* box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 1px 3px rgba(0, 0, 0, 0.12),
-        0px 2px 1px rgba(0, 0, 0, 0.2);
+        0px 2px 1px rgba(0, 0, 0, 0.2); */
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -38,11 +38,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 24px;
-    right: 24px;
+    top: 14px;
+    right: 14px;
     width: 24px;
     height: 24px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: none;
     padding: 0;
     border-radius: 50%;
     background-color: #E7E9FC;
@@ -50,11 +50,11 @@
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.ModalClose:hover,
+/* .ModalClose:hover,
 .ModalClose:focus {
     background-color: #404bbf;
     border: none;
-}
+} */
 
 /* .CloseModalIcon {
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -70,6 +70,7 @@
     border-radius: 12px;
     background-color: rgba(27, 27, 27, 0.2);
     background-blend-mode: multiply;
+    margin-bottom: 20px;
 }
 
 .ImageGif {
@@ -85,18 +86,26 @@
     font-size: 20px;
     line-height: 100%;
     color: #1b1b1b;
+    margin-bottom: 10px;
 }
 
 .ModalTitle::first-letter {
     text-transform: uppercase;
 }
 
-/* .ModalRating{} */
+.ModalRating {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 2px;
+    margin-bottom: 20px;
+}
 
 .NumberRating {
     font-family: var(--font-family);
     font-weight: 400;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
     color: #1b1b1b;
 }
@@ -122,6 +131,34 @@
     gap: 4px;
 }
 
+
+.ItemTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 8px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(27, 27, 27, 0.4);
+}
+
+.ItemData {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 4px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #1b1b1b;
+}
+
+
 .Description {
     width: 295px;
     font-family: "DM Sans", sans-serif;
@@ -129,6 +166,7 @@
     font-size: 14px;
     line-height: 1.28571;
     color: rgba(27, 27, 27, 0.6);
+    margin-bottom: 40px;
 }
 
 
@@ -145,3 +183,44 @@
     background: #7e847f;
     border: none;
 }
+
+.HeartModalIcon {
+    fill: #FCFCFC;
+}
+
+
+@media screen and (min-width: 375px) {
+    .Modal {
+
+        max-width: 335px;
+
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .Modal {
+
+        display: flex;
+        max-width: 716px;
+        padding: 40px 40px;
+        border-radius: 20px;
+
+    }
+
+    .ModalImage {
+        width: 270px;
+        height: 259px;
+        margin-right: 25px;
+    }
+
+    .ImageGif {
+        width: 270px;
+        height: 259px;
+    }
+
+
+}
+
+
+@media screen and (min-width: 1440px) {}

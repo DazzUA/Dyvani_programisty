@@ -1,25 +1,31 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
+// import {toggleFavorite}
 
 const modalBackdrop = document.querySelector('.Backdrop');
 const card = document.querySelector('.Modal');
 const button = document.querySelector('.SearchButton');
 const modalClose = document.querySelector('.ModalClose');
 const addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
+
 const openClass = 'IsOpen';
 let cardObj = {};
+let id = '64f389465ae26083f39b17a4';
 
 button.addEventListener('click', modalCard);
 
 async function modalCard() {
   try {
-    cardObj = await fetchImages();
+    cardObj = await fetchImages(id);
     showModal();
     displayImages(cardObj);
+    document.querySelectorAll('span').forEach(function (span) {
+      span.textContent =
+        span.textContent.charAt(0).toUpperCase() + span.textContent.slice(1);
+    });
+    modalBackdrop.addEventListener('click', modalCloseFunc);
     addRemoveFavorites.addEventListener('submit', addFavorites);
-
-    card.addEventListener('click', hideModal);
   } catch (error) {}
 }
 
@@ -33,8 +39,8 @@ function modalCloseFunc(event) {
   }
 }
 
-async function fetchImages() {
-  const url = `https://energyflow.b.goit.study/api/exercises/64f389465ae26083f39b17a4`;
+async function fetchImages(id) {
+  const url = `https://energyflow.b.goit.study/api/exercises/${id}`;
 
   try {
     const response = await axios.get(url);
@@ -51,25 +57,39 @@ function displayImages(cardObj) {
         </button>
   <div class="ModalImage">     
   <img class="ImageGif" src="${cardObj.gifUrl}" alt="imagegif"/>
-  </div>
+  </div><div>
   <h3 class="ModalTitle">${cardObj.name}</h3>
   <div class="ModalRating">
   <p class="NumberRating">${cardObj.rating}</p>
-  <div class="StarRating"></div>
+  <div class="StarRating"><svg class="StarModalIcon" width="18" height="18">
+            <use href="./img/symbol-defs.svg#icon-star"></use>
+          </svg><svg class="StarModalIcon" width="18" height="18">
+            <use href="./img/symbol-defs.svg#icon-star"></use>
+          </svg><svg class="StarModalIcon" width="18" height="18">
+            <use href="./img/symbol-defs.svg#icon-star"></use>
+          </svg><svg class="StarModalIcon" width="18" height="18">
+            <use href="./img/symbol-defs.svg#icon-star"></use>
+          </svg><svg class="StarModalIcon" width="18" height="18">
+            <use href="./img/symbol-defs.svg#icon-star"></use>
+          </svg></div>
   </div>
   <ul class="ModalList">
-  <li class="ModalListItem">Target ${cardObj.target}</li>
-  <li class="ModalListItem">Body Part ${cardObj.bodyPart}</li>
-  <li class="ModalListItem">Equipment${cardObj.equipment}</li>
-  <li class="ModalListItem">Popular${cardObj.popularity}</li>
-  <li class="ModalListItem">Burned Calories${cardObj.burnedCalories}/${cardObj.time} min</li>
+  <li class="ModalListItem"><span class="ItemTitle">Target</span> <span class="ItemData">${cardObj.target}</span></li>
+  <li class="ModalListItem"><span class="ItemTitle">Body Part</span> <span class="ItemData">${cardObj.bodyPart}</span></li>
+  <li class="ModalListItem"><span class="ItemTitle">Equipment</span><span class="ItemData">${cardObj.equipment}</span></li>
+  <li class="ModalListItem"><span class="ItemTitle">Popular</span><span class="ItemData">${cardObj.popularity}</span></li>
+  <li class="ModalListItem"><span class="ItemTitle">Burned Calories</span><span class="ItemData">${cardObj.burnedCalories}/${cardObj.time} min</span></li>
   </ul>
   <p class="Description">${cardObj.description}</p>
-  <button class="AddRemoveFavorites" type="button">Add to favorites</button>
+  <button class="AddRemoveFavorites" type="button">Add to favorites</svg><svg class="HeartModalIcon" width="18" height="18">
+            <use href="./img/symbol-defs.svg#icon-heart"></use>
+          </svg></button>
+          </div>
   </div>  `;
 }
 
 function addFavorites() {
+  toggleFavorite(cardObj);
   addRemoveFavorites.innerText = 'Remove from';
 }
 

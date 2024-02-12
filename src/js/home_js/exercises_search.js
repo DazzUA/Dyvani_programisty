@@ -16,6 +16,7 @@ const refs = {
   searchBtn: document.querySelector('.SearchButton'), // кнопку
   searchIcon: document.querySelector('.IconSearch'), // иконку
   searchLable: document.querySelector('#search'), // элемент формы <lable>
+  searchList: document.querySelector('.SearchList'), // добавляем элемент searchList
 };
 
 // передаем параметры запроса при выполнении запроса к API. Задаем начальные параметры для поиска.
@@ -42,10 +43,16 @@ async function handleSearch(event) {
   }
 
   try {
-    const card = await onFormSubmit(query);
+    const card = await onFormSubmit(queryParams.query);
     renderExercises(card); // передаем массив упражнений из объекта card
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
+// Добавляем слушатель события submit на форму поиска (searchForm) и вызывает функцию handleSearch при отправке формы
+
+refs.searchForm.addEventListener('submit', handleSearch);
+console.log(refs.searchForm);
 
 // Определяем асинхронную функцию onFormSubmit
 

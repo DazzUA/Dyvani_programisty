@@ -9,13 +9,14 @@ import axios from 'axios';
 // базовый URL для отправки запросов к API
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 
-// объект с ссылками на:
+// объект с ссылками на элементы формы поиска
 const refs = {
   searchForm: document.querySelector('.ExercisesForm'), // форму поиска
   searchInput: document.querySelector('.SearchInput'), // поле ввода,
   searchBtn: document.querySelector('.SearchButton'), // кнопку
   searchIcon: document.querySelector('.IconSearch'), // иконку
   searchLable: document.querySelector('#search'), // элемент формы <lable>
+  searchList: document.querySelector('.SearchList'), // добавляем элемент searchList
 };
 
 // передаем параметры запроса при выполнении запроса к API. Задаем начальные параметры для поиска.
@@ -24,7 +25,7 @@ const queryParams = {
   page: 1, // по умолчанию отображается первая страница результатов
 };
 
-// Определяем асинхронную функцию handleSearch. Функция принимает событие в качестве аргумента
+// Обрабатываем событие отправки формы поиска в функции handleSearch. Очищаем список результатов поиска, обновляем параметроы запроса и вызываем функцию onFormSubmit.
 
 async function handleSearch(event) {
   event.preventDefault(); // Предотвращаем стандартное поведение формы
@@ -41,20 +42,26 @@ async function handleSearch(event) {
     return;
   }
 
-  // Вызываем функция onFormSubmit с передачей параметров запроса.
   try {
-    const card = await onFormSubmit(query);
-    renderExercises(card); // передаем массив упражнений из объекта card.data
-  } catch (error) {}
+    const card = await onFormSubmit(queryParams.query);
+    renderExercises(card); // передаем массив упражнений из объекта card
+  } catch (error) {
+    console.log(error);
+  }
 }
+// Добавляем слушатель события submit на форму поиска (searchForm) и вызывает функцию handleSearch при отправке формы
 
-// Определяем асинхронную функцию onFormSubmit. Функция принимает объект запроса query
+refs.searchForm.addEventListener('submit', handleSearch);
+console.log(refs.searchForm);
+
+// Определяем асинхронную функцию onFormSubmit
+
 async function onFormSubmit(data, query) {
   try {
     // Выполняем GET-запрос к API с передачей параметров запроса. Результат запроса сохраняем в переменной response
     const response = await axios.get(BASE_URL, {
       params: {
-        bodypart: data,
+        filter: data,
         keyword: query, // передаем значение из свойства query объекта queryParams, которое содержит строку ключевого слова для поиска
         page: queryParams.page, // передаем значение из свойства page объекта queryParams, которое содержит номер страницы
         limit: 9,
@@ -65,7 +72,7 @@ async function onFormSubmit(data, query) {
     handleError(error); // Вывод ошибки в консоль при возникновении ошибки запроса
   }
 }
-// Определяем функцию renderExercises. Функция принимает массив упражнений. Если массив пустой, вызывается функция showNoResultsToast. Если нет - создаются элементы списка 'li' с названиями упражнений и добавляются в список результатов поиска.
+// Определяем функцию renderExercises. Функция принимает массив упражнений. Если массив пустой, вызывается функция showNoResultsToast. Если нет - создаются элементы списка 'li' с названиями упражнений и добавляются в список результатов поиска
 
 function renderExercises(exercises) {
   if (exercises.length === 0) {
@@ -80,14 +87,16 @@ function renderExercises(exercises) {
     noResultsMessageContainer.classList.add('NoResultsMessageContainer'); // добавил класс для контейнера
 
     const noResultsMessage = document.createElement('div'); // контейнер для текста
-    noResultsMessageo.classList.add('NoResultsMessage'); // добавил класс для сообщения
-    noResultsMessageo.innerHTML =
+    noResultsMessage.classList.add('NoResultsMessage'); // добавил класс для сообщения
+    noResultsMessage.innerHTML =
       'Unfortunately, <span class="NoResultsMessageAccent">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.';
 
     noResultsMessageContainer.appendChild(noResultsMessage); // добавил сообщение внутрь контейнера, в котором это сообщение находится
     document.body.appendChild(noResultsMessageContainer); // добавил контейнер с сообщением на страницу внутрь <body>, чтобы показать всплывающее уведомление
   }
 }
+// Создаем разметку карточек упражнений по фильтрам и ключевому слову
+
 function createMarkUp(array) {
   const markup = array
     .map(({ rating, name, burnedCalories, time, bodyPart, target, _id }) => {
@@ -131,4 +140,3 @@ function createMarkUp(array) {
   return markup;
 }
 export { handleSearch };
-//--------------------------------------Пагинация------------------------------------//

@@ -11,9 +11,9 @@
     />
     
     <script type="module" crossorigin src="/Dyvani_programisty/assets/vendor-db25513e.js"></script>
-    <script type="module" crossorigin src="/Dyvani_programisty/assets/modal_window-88d353a1.js"></script>
-    <script type="module" crossorigin src="/Dyvani_programisty/assets/footer-5ff2816a.js"></script>
-    <link rel="stylesheet" href="/Dyvani_programisty/assets/modal_window-52f0fc9e.css">
+    <script type="module" crossorigin src="/Dyvani_programisty/assets/modal_window-a11e8f1a.js"></script>
+    <script type="module" crossorigin src="/Dyvani_programisty/assets/footer-a90e7559.js"></script>
+    <link rel="stylesheet" href="/Dyvani_programisty/assets/modal_window-9d60af6d.css">
     <link rel="stylesheet" href="/Dyvani_programisty/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -175,8 +175,9 @@
   </div>
 </section>
 
-    <section class="FooterSection container">
-  <div class="FootVibe">
+    
+    <footer class="FooterSection container">
+  <div class="FootVibe ">
     <div class="FootInner">
       <a class="FootLogo" href="./index.html">energy.flow</a>
       <ul class="FooterUl">
@@ -185,6 +186,8 @@
             class="FooterSocialItem"
             href="https://www.facebook.com/goITclub/"
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow us on Facebook"
           >
             <svg class="FooterSvg" width="20" height="20">
               <use href="/Dyvani_programisty/assets/symbol-defs-940e27cf.svg#icon-facebook"></use>
@@ -217,14 +220,14 @@
       </ul>
     </div>
 
-    <div class="FooterSlogo">
+    <div class="FooterSlogo"> 
       <h2 class="FooterH">
         Transforming your <span class="accent">body</span> shape with us
       </h2>
-      <div class="input">
+      <div class="input-subs">
       <p class="FooterP">Subscribe and learn about new exercises!</p>
       <form class="FooterForm">
-        <label class="FooterLabel" for="modal-footer">
+        <label class="FooterLabel" for="modal-footer"  aria-label="modal-footer">
           <input
             class="FormInput"
             type="email"
@@ -241,16 +244,49 @@
     </div>
   </div>
   <div class="FooterText ">
-    <p class="FooterPrivacy">Energy Flow. All rights reserved.</p>
-      <p class="FooterPrivacy ">Privacy Policy <span class="slesh">/</span> Terms of Service</p>
+    <p class="FooterPrivacy upper">Energy Flow. All rights reserved.</p>
+      <div class="regulations">
+      <a
+          class="FooterPolice policy"
+          href="#"
+          target="_blank"
+          >Privacy Policy</a
+        >
+        <p class="policy">/</p>
+        <a
+          class="FooterPolice policy"
+          href="#"
+          target="_blank"
+          >Terms of Service</a
+        >
+    </div>
+
   </div>
 
   </div>
+  </footer>
   <!-- loader -->
   <div class="lodDiv">
     <span class="loader"></span>
   </div>
-</section>
+
+<!-- scroll up -->
+<div class="ScrollUp visually-hidden">
+  <button class="ScrollUpButton">
+    <svg class="ScrollUpSvg mobile" width="20" height="20">
+      <use href="/Dyvani_programisty/assets/symbol-defs-940e27cf.svg#icon-arrow-scrollup"></use>
+    </svg>
+
+    <svg class="ScrollUpSvg tablet" width="40" height="40">
+      <use href="/Dyvani_programisty/assets/symbol-defs-940e27cf.svg#icon-arrow-scrollup"></use>
+    </svg>
+
+    <svg class="ScrollUpSvg decktop" width="50" height="50">
+      <use href="/Dyvani_programisty/assets/symbol-defs-940e27cf.svg#icon-arrow-scrollup"></use>
+    </svg>
+  </button>
+</div>
+
 
     <div class="Backdrop"></div>
 

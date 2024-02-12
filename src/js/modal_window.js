@@ -34,20 +34,37 @@ async function modalCard(event) {
       span.textContent =
         span.textContent.charAt(0).toUpperCase() + span.textContent.slice(1);
     });
-    modalBackdrop.addEventListener('click', modalCloseFunc);
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        hideModal();
+      }
+    });
+    modalBackdrop.addEventListener('click', function (event) {
+      if (event.target === modalBackdrop) {
+        hideModal();
+      }
+    });
+    modalClose.addEventListener('click', function (event) {
+      if (event.target === modalClose) {
+        hideModal();
+      }
+    });
     // addRemoveFavorites.addEventListener('submit', addFavorites);
   } catch (error) {}
 }
 
-function modalCloseFunc(event) {
-  if (
-    event.currentTarget === modalClose ||
-    event.key === 'Escape' ||
-    event.target === modalBackdrop
-  ) {
-    hideModal();
-  }
-}
+// function modalCloseFunc(event) {
+//   if (
+//     event.currentTarget === modalClose ||
+//     event.key === 'Escape' ||
+//     event.target === modalBackdrop
+//   ) {
+//     hideModal();
+//     modalClose.addEventListener('click', hideModal);
+//     document.addEventListener('keydown', hideModal);
+//   }
+// }
 
 async function fetchImages() {
   const url = `https://energyflow.b.goit.study/api/exercises/${id}`;
@@ -83,6 +100,9 @@ function displayImages(cardObj) {
     </div>
   </div>
   </div>
+  <svg class="vector" width="25" height="2">
+            <use href="${icons}#icon-vector"></use>
+          </svg>
   <ul class="ModalList">
   <li class="ModalListItem"><span class="ItemTitle">Target</span> <span class="ItemData">${cardObj.target}</span></li>
   <li class="ModalListItem"><span class="ItemTitle">Body Part</span> <span class="ItemData">${cardObj.bodyPart}</span></li>
@@ -90,6 +110,9 @@ function displayImages(cardObj) {
   <li class="ModalListItem"><span class="ItemTitle">Popular</span><span class="ItemData">${cardObj.popularity}</span></li>
   <li class="ModalListItem"><span class="ItemTitle">Burned Calories</span><span class="ItemData">${cardObj.burnedCalories}/${cardObj.time} min</span></li>
   </ul>
+  <svg class="vector" width="25" height="2">
+            <use href="${icons}#icon-vector"></use>
+          </svg>
   <p class="Description">${cardObj.description}</p>
   <button class="AddRemoveFavorites" type="button">Add to favorites</svg><svg class="HeartModalIcon" width="18" height="18">
             <use href="${icons}#icon-heart"></use>

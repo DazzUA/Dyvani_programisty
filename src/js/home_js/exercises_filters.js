@@ -3,6 +3,13 @@ import axios from 'axios';
 const filterButtons = document.querySelector('.FilterButtons');
 const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
 const pagination = document.querySelector('.Pagination');
+const form = document.querySelector('.ExercisesForm');
+const ExerciseFiltersListSubcategories = document.querySelector(
+  '.ExerciseFiltersListSubcategories'
+);
+const PaginationSubcategories = document.querySelector(
+  '.PaginationSubcategories'
+);
 
 const BASE_URL = 'https://energyflow.b.goit.study/api';
 let filterValueDefault = 'Muscles';
@@ -63,7 +70,15 @@ fetchDefaultApiUrl();
 
 //-----------------------------------------Функція фільтрів Muscles, Body parts, Equipment--------------------------------------------
 async function filterBtnClick(event) {
+  if (event.target.tagName !== 'BUTTON') {
+    return;
+  }
   event.preventDefault();
+  form.classList.add('visually-hidden');
+  ExerciseFiltersListSubcategories.classList.add('visually-hidden');
+  exerciseFiltersList.classList.remove('visually-hidden');
+  pagination.innerHTML = '';
+  PaginationSubcategories.innerHTML = '';
 
   currentPage = 1;
   const filterValue = event.target;
@@ -99,6 +114,9 @@ async function filterBtnClick(event) {
 //-----------------------------------------Функція перехід по сторінкам------------------------------------------------------
 
 async function onPaginationFilterPages(e) {
+  if (e.target.tagName !== 'BUTTON') {
+    return;
+  }
   currentPage = e.target.textContent;
   Array.from(e.currentTarget.children).map(item => {
     if (item.textContent !== currentPage) {

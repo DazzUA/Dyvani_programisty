@@ -12,12 +12,74 @@
     
     <script type="module" crossorigin src="/Dyvani_programisty/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/Dyvani_programisty/assets/vendor-8cce9181.js">
-    <link rel="modulepreload" crossorigin href="/Dyvani_programisty/assets/modal_window-d2413290.js">
+    <link rel="modulepreload" crossorigin href="/Dyvani_programisty/assets/modal_window-14a9a5d3.js">
     <link rel="stylesheet" href="/Dyvani_programisty/assets/vendor-e5212ee8.css">
-    <link rel="stylesheet" href="/Dyvani_programisty/assets/modal_window-ed97ecc8.css">
+    <link rel="stylesheet" href="/Dyvani_programisty/assets/modal_window-085eedf2.css">
   </head>
-  <body>
-    
+  <body class="body-container">
+    <header class="header-main-favorites">
+  <div class="container header-container-favorites">
+    <a class="header-logo" href="./index.html">energy.flow</a>
+    <nav class="header-nav">
+      <ul class="header-menu">
+        <li><a class="header-link current" href="./index.html">Home</a></li>
+        <li>
+          <a class="header-link favorites" href="./favorites.html">Favorites</a>
+        </li>
+      </ul>
+    </nav>
+
+    <ul class="mobile-icons">
+      <li class="mobile-icons-list">
+        <a
+          href="https://www.instagram.com/goitclub/"
+          target="_blank"
+          class="mobile-icons-link"
+        >
+          <svg class="mobile-fill" width="24" height="24">
+            <use href="/Dyvani_programisty/assets/symbol-defs-de218909.svg#icon-instagram"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="mobile-icons-list">
+        <a
+          href="https://www.youtube.com/c/GoIT"
+          target="_blank"
+          class="mobile-icons-link"
+        >
+          <svg class="mobile-fill" width="24" height="24">
+            <use href="/Dyvani_programisty/assets/symbol-defs-de218909.svg#icon-youtube"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="mobile-icons-list">
+        <a
+          href="https://www.facebook.com/goITclub/"
+          target="_blank"
+          class="mobile-icons-link"
+        >
+          <svg class="mobile-fill" width="24" height="24">
+            <use href="/Dyvani_programisty/assets/symbol-defs-de218909.svg#icon-facebook"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+    <button
+      class="mobil-button-menu open-mobile-menu mobil-button-menu-favorites"
+      type="button"
+    >
+      <svg
+        class="mobil-button-menu-svg open-mobile-menu-btn js-open-menu"
+        width="32"
+        height="16"
+        aria-label="mobile menu open icon"
+      >
+        <use href="/Dyvani_programisty/assets/symbol-defs-de218909.svg#icon-mobile-menu"></use>
+      </svg>
+    </button>
+  </div>
+</header>
+
     <section class="container">
   <div class="quote-favorites">
     <div class="quotefavorites-icon-div-two">
@@ -55,7 +117,7 @@
     </div>
   </div>
 </section>
-    <!--   Це тут не потрібно --> 
+    <!--   Це тут не потрібно -->
     <section class="favorites-section section">
   <h2 class="favorites-title">Favorites</h2>
   <div class="div-favorites-section">

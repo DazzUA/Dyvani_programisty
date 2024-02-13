@@ -5,141 +5,174 @@
 // В случае отсутствия результатов поиска выводится соответствующее уведомление (функция showNoResultsToast).
 
 import axios from 'axios';
+import {
+  filterValue,
+  nameValue,
+  createMarkUp,
+} from './exercises_subcategories';
+import { paginationPages } from './exercises_filters';
 
 // базовый URL для отправки запросов к API
-const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
+const BASE_URL = 'https://energyflow.b.goit.study/api';
 
 // объект с ссылками на элементы формы поиска
-const refs = {
-  searchForm: document.querySelector('.ExercisesForm'), // форму поиска
-  searchInput: document.querySelector('.SearchInput'), // поле ввода,
-  searchBtn: document.querySelector('.SearchButton'), // кнопку
-  searchIcon: document.querySelector('.IconSearch'), // иконку
-  searchLable: document.querySelector('#search'), // элемент формы <lable>
-  searchList: document.querySelector('.SearchList'), // добавляем элемент searchList
-};
+const exercisesFilterSection = document.querySelector(
+  '.ExerciseFiltersListSubcategories'
+);
+const searchContainer = document.querySelector('.search-container');
+const searchListEl = document.querySelector('.search-list');
+const formEl = document.querySelector('.ExercisesForm');
+const noResultsText = document.querySelector('.no-results');
+const PaginationSubcategories = document.querySelector(
+  '.PaginationSubcategories'
+);
+const searchPagination = document.querySelector('.search-pagination');
+let query;
+let resultsArray;
+let page = 1;
+formEl.addEventListener('submit', onSearch);
 
-// передаем параметры запроса при выполнении запроса к API. Задаем начальные параметры для поиска.
-const queryParams = {
-  query: '', // строка запроса для поиска
-  page: 1, // по умолчанию отображается первая страница результатов
-};
-
-// Обрабатываем событие отправки формы поиска в функции handleSearch. Очищаем список результатов поиска, обновляем параметроы запроса и вызываем функцию onFormSubmit.
-
-async function handleSearch(event) {
-  event.preventDefault(); // Предотвращаем стандартное поведение формы
-
-  // Очищаем список результатов поиска перед новым запросом
-  refs.searchList.innerHTML = '';
-
-  // Обновляем параметры запроса queryParams.
-  queryParams.page = 1;
-  const form = event.currentTarget;
-  queryParams.query = form.elements.query.value.trim();
-
-  if (!queryParams.query) {
-    return;
-  }
-
+// bodypart запит
+async function bodyPart(group, query, page = 1, limit = 9) {
   try {
-    const card = await onFormSubmit(queryParams);
-    createMarkUp(card); // передаем массив упражнений из объекта card
+    const response = await axios.get(`${BASE_URL}/exercises`, {
+      params: {
+        bodypart: group,
+        keyword: query,
+        page,
+        limit,
+      },
+    });
+
+    return response.data;
   } catch (error) {
     console.log(error);
   }
 }
-// Добавляем слушатель события submit на форму поиска (searchForm) и вызывает функцию handleSearch при отправке формы
 
-refs.searchForm.addEventListener('submit', handleSearch);
-
-// Определяем асинхронную функцию onFormSubmit
-
-async function onFormSubmit(queryParams) {
+// muscles запит
+async function muscles(group, query, page = 1, limit = 9) {
   try {
-    // Выполняем GET-запрос к API с передачей параметров запроса. Результат запроса сохраняем в переменной response
-    const response = await axios.get(BASE_URL, {
+    const response = await axios.get(`${BASE_URL}/exercises`, {
       params: {
-        filter: queryParams.query,
-        keyword: queryParams.query, // передаем значение из свойства query объекта queryParams, которое содержит строку ключевого слова для поиска
-        page: queryParams.page, // передаем значение из свойства page объекта queryParams, которое содержит номер страницы
-        limit: 9,
+        muscles: group,
+        keyword: query,
+        page,
+        limit,
       },
     });
+
     return response.data;
   } catch (error) {
-    console.log(error); // Вывод ошибки в консоль при возникновении ошибки запроса
+    console.log(error);
   }
 }
-// Определяем функцию createMarkUp. Функция принимает массив упражнений. Если массив пустой, вызывается функция showNoResultsToast. Если нет - создаются элементы списка 'li' с названиями упражнений и добавляются в список результатов поиска
 
-// Функция для вывода всплывающего уведомления с сообщением об отсутствии результатов поиска
-function showNoResultsToast() {
-  const noResultsMessageContainer = document.createElement('div'); // контейнер для оформления сообщения
-  noResultsMessageContainer.classList.add('NoResultsMessageContainer'); // добавил класс для контейнера
+// equipment запит
+async function equipment(group, query, page = 1, limit = 9) {
+  try {
+    const response = await axios.get(`${BASE_URL}/exercises`, {
+      params: {
+        equipment: group,
+        keyword: query,
+        page,
+        limit,
+      },
+    });
 
-  const noResultsMessage = document.createElement('div'); // контейнер для текста
-  noResultsMessage.classList.add('NoResultsMessage'); // добавил класс для сообщения
-  noResultsMessage.innerHTML =
-    'Unfortunately, <span class="SearchNoResult">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.';
-
-  noResultsMessageContainer.appendChild(noResultsMessage); // добавил сообщение внутрь контейнера, в котором это сообщение находится
-  document.body.appendChild(noResultsMessageContainer); // добавил контейнер с сообщением на страницу внутрь <body>, чтобы показать всплывающее уведомление
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-// Создаем разметку карточек упражнений по фильтрам и ключевому слову
+async function onSearch(event) {
+  event.preventDefault();
+  PaginationSubcategories.classList.add('visually-hidden');
+  query = event.currentTarget.elements['search'].value.trim();
+  console.log(query);
+  let data;
 
-function createMarkUp(array) {
-  if (exercises.length === 0) {
-    if (typeof showNoResultsToast === 'function') {
-      showNoResultsToast(); // Вызов функции showNoResultsToast при отсутствии результатов поиска
-    } else {
-      exercises.forEach(exercise => {
-        const exerciseItem = document.createElement('li');
-        exerciseItem.textContent = exercise.name;
-        refs.searchList.appendChild(exerciseItem);
-      });
+  try {
+    if (filterValue === 'Body parts') {
+      data = await bodyPart(nameValue, query);
+    } else if (filterValue === 'Muscles') {
+      data = await muscles(nameValue, query);
+    } else if (filterValue === 'Equipment') {
+      data = await equipment(nameValue, query);
     }
-    const markup = array
-      .map(({ rating, name, burnedCalories, time, bodyPart, target, _id }) => {
-        return `<li class="WorkoutCard">
-      <div class='CardHeader'>
-        <div class='WorkoutWrapper'>
-          <p class='Workout'>workout</p>
-          <div class='RatingWrapper'><p>${rating}</p>
-          <svg class='StarIcon' width='13' height='13'>
-          <use href='./img/symbol-defs.svg#icon-star'></use>
-        </svg></div>
-        </div>
-        <div class='StartBtn' data-id='${_id}'>
-          <p>Start</p>
-          <svg width='13' height='13'>
-          <use href='./img/symbol-defs.svg#icon-arrow'></use>
-        </svg>
-        </div>
-      </div>
-      <div class='CardMainPart'>
-      <div class='RunIconWrapper'><svg width='14' height='14'>
-          <use href='./img/symbol-defs.svg#icon-running'></use>
-        </svg></div>
-        <p class='MainPartName'>${name}</p>
-      </div>
-      <ul class="CardFooter">
-        <li>
-          <p class='CardFooterTextDescr'>Burned calories: <span class='CardFooterTextValue'>${burnedCalories} / ${time} min</span></p>
-        </li>
-        <li>
-          <p class='CardFooterTextDescr'>Body part: <span class='CardFooterTextValue'>${bodyPart}</span></p>
-        </li>
-        <li>
-          <p class='CardFooterTextDescr'>Target: <span class='CardFooterTextValue'>${target}</span></p>
-        </li>
-      </ul>
+    console.log(event.target);
 
-    </li>`;
-      })
-      .join('');
-    return markup;
+    const { totalPages, page, results } = data;
+    const array = data.results;
+    // console.log(array);
+    console.log(totalPages);
+    console.log(page);
+
+    if (totalPages > 1) {
+      const pag = paginationPages(page, totalPages);
+      searchPagination.innerHTML = pag;
+    } else {
+      searchPagination.innerHTML = '';
+    }
+
+    if (totalPages === null) {
+      searchContainer.classList.remove('visually-hidden');
+      noResultsText.classList.remove('visually-hidden');
+      exercisesFilterSection.classList.add('visually-hidden');
+      searchListEl.classList.add('visually-hidden');
+    } else {
+      // const {
+      //   results: [
+      //     { bodyPart, target, name, burnedCalories, rating, time, _id },
+      //   ],
+      // } = data;
+      searchContainer.classList.remove('visually-hidden');
+      searchListEl.classList.remove('visually-hidden');
+      noResultsText.classList.add('visually-hidden');
+      exercisesFilterSection.classList.add('visually-hidden');
+
+      resultsArray = data.results;
+      console.log(resultsArray);
+
+      // console.log('TODO: малюэмо розмітку');
+
+      searchListEl.innerHTML = createMarkUp(resultsArray);
+    }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    // console.log('блок finally');
+    formEl.reset();
   }
 }
-export { handleSearch }; // нужно проверить импорт у Юли
+
+async function onPaginationFilterPages(e) {
+  if (e.target.tagName !== 'BUTTON') {
+    return;
+  }
+  console.log(e.target);
+  page = e.target.textContent;
+  console.log(page);
+  searchListEl.innerHTML = '';
+  try {
+    console.log(filterValue);
+    if (filterValue === 'Body parts') {
+      const { results, page, totalPages } = await bodyPart(nameValue, query);
+      searchListEl.innerHTML = createMarkUp(results);
+      console.log(results);
+    } else if (filterValue === 'Muscles') {
+      const { results } = await muscles(nameValue, query);
+      searchListEl.innerHTML = createMarkUp(results);
+      console.log(results);
+    } else if (filterValue === 'Equipment') {
+      const { results } = await equipment(nameValue, query);
+      searchListEl.innerHTML = createMarkUp(results);
+      console.log(results);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+searchPagination.addEventListener('click', onPaginationFilterPages);

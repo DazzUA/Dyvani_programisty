@@ -544,3 +544,24 @@
   }
 }
 /* Тут закончились стили для сообщения об отсутствии результатов поиска в файле exercises_search.js */
+/* ТУТ ПОЧИНАЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises_search.js */
+
+.search-list {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  column-gap: 14px;
+  margin-bottom: 32px;
+}
+
+.search-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}

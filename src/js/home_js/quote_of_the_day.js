@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-let quoteTextEl = document.querySelector('.QuoteText');
-let authorEl = document.querySelector('.QuoteAuthor');
+let quoteTextEl = document.querySelector('.quoteText');
+let authorEl = document.querySelector('.quoteAuthor');
 
 window.addEventListener('DOMContentLoaded', async function () {
     try {

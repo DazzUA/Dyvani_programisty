@@ -1,9 +1,4 @@
-.containerQuoteFavorites {
-    display: grid;
-    place-items: center;
-}
-
-.QuoteFavoritesIconDivOne {
+.quote-favorites-icon-div-one {
     width: 32px;
     height: 32px;
     flex-shrink: 0;
@@ -11,7 +6,7 @@
     background: rgba(246, 246, 246, 0.10);
 }
 
-.QuoteFavoriteTitle {
+.quote-favorite-title {
     color: #F6F6F6;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: "DM Sans";
@@ -22,7 +17,7 @@
     margin-bottom: 14px;
 }
 
-.QuoteFavoritesText {
+.quoteFavoritesText {
     color: rgba(246, 246, 246, 0.60);
     font-family: "DM Sans";
     font-size: 16px;
@@ -32,7 +27,7 @@
     margin-bottom: 25px;
 }
 
-.QuoteFavoritesAuthor {
+.quoteFavoritesAuthor {
     color: #F6F6F6;
     font-family: "DM Sans";
     font-size: 16px;
@@ -41,27 +36,20 @@
     line-height: 24px; 
 }
 
-.QuoteFavoritesIconDivOne {
+.quote-favorites-icon-div-one {
     display: grid;
     place-items: center;
 }
 
-/* .QuoteFavoritesIconDivTwo {
-    width: 48px;
-    height: 48px;
-    position: relative;
-    bottom: 32px;
-} */
-
-.QuoteFavoritesIcon {
+.quote-favorites-icon {
     fill: #f6f6f6;
 }
 
-.QuoteFavoritesIconTwo {
+.quote-favorites-icon-two {
     margin-bottom: 15px;
 }
 
-.FavoritesQuote {
+.favorites-quote {
     color: #1B1B1B;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: "DM Sans";
@@ -72,7 +60,7 @@
     padding-bottom: 6px;
 }
 
-.FavoritesQuoteText {
+.favorites-quote-text {
     color: rgba(27, 27, 27, 0.60);
     font-family: "DM Sans";
     font-size: 14px;
@@ -85,11 +73,11 @@
 
 @media screen and (min-width: 375px) {
 
-    .QuoteFavorites {
+    .quote-favorites {
         padding-top: 20px;
     }
 
-    .QuoteFavoritesOne {
+    .quote-favorites-one {
         border-radius: 30px;
         width: 335px;
         height: 272px;
@@ -101,21 +89,33 @@
         gap: 12px;
     }
 
-    .QuoteFavoritesImg {
+    .quotefavorites-icon-div-two {
+        position: absolute;
+        padding-top: 40px;
+        padding-left: 287px;
+    }
+
+    .quote-favorites-icon-two {
+        fill: #f6f6f6;
+        width: 28px;
+        height: 28px;
+    }
+
+    .quote-favorites-img {
         border-radius: 30px;
         width: 335px;
         height: 272px;
         background-image: url(/img/mob/favorites/women.fav.mob.png);
     }
 
-    .FavoritesQuoteDiv {
+    .favorites-quote-div {
         border-radius: 30px;
         width: 335px;
         height: 272px;
         background: #FFF;
     }
 
-    .QuoteFavoritesIconDivThree {
+    .quote-favorites-icon-div-three {
         padding-left: 102px;
         padding-top: 96px;
         padding-right: 101px;
@@ -126,11 +126,11 @@
 
 @media screen and (min-width: 768px) {
 
-    .QuoteFavorites {
+    .quote-favorites {
         padding-top: 16px;
     }
 
-    .QuoteFavoritesOne {
+    .quote-favorites-one {
         border-radius: 50px;
         width: 736px;
         height: 302px;
@@ -140,24 +140,34 @@
         gap: 16px;
     }
 
-    .QuoteFavoritesImg {
+    .quotefavorites-icon-div-two {
+        padding-top: 32px;
+        padding-left: 608px;
+    }
+
+    .quote-favorites-icon-two {
+        width: 48px;
+        height: 48px;
+    }
+
+    .quote-favorites-img {
         border-radius: 50px;
         width: 368px;
         height: 302px;
         background-image: url(/img/tablet/favorites/women.fav.tab.png);
     }
 
-    .QuoteFavoritesTwo {
+    .quote-favorites-two {
         display: flex;
     }
 
-    .FavoritesQuoteDiv {
+    .favorites-quote-div {
         border-radius: 50px;
         width: 368px;
         height: 302px;
     }
 
-    .QuoteFavoritesIconDivThree {
+    .quote-favorites-icon-div-three {
         padding-left: 118px;
         padding-top: 106px;
         padding-right: 118px;
@@ -168,13 +178,13 @@
 
 @media screen and (min-width: 1440px) {
 
-    .QuoteFavorites {
+    .quote-favorites {
         display: flex;
         padding-top: 16px;
         padding-bottom: 16px;
     }
 
-    .QuoteFavoritesOne {
+    .quote-favorites-one {
         border-radius: 50px;
         width: 704px;
         height: 302px;
@@ -182,15 +192,19 @@
         padding-right: 64px;
     }
 
-    .QuoteFavoritesImg {
+    .quotefavorites-icon-div-two {
+        padding-left: 592px;
+    }
+
+    .quote-favorites-img {
         width: 352px;
     }
 
-    .FavoritesQuoteDiv {
+    .favorites-quote-div {
         width: 352px;
     }
 
-    .QuoteFavoritesIconDivThree {
+    .quote-favorites-icon-div-three {
         padding-left: 110px;
         padding-top: 106px;
         padding-right: 110px;

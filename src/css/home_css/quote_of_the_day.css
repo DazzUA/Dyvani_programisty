@@ -1,9 +1,4 @@
-.containerQuote {
-    display: grid;
-    place-items: center;
-}
-
-.QuoteIconDivOne {
+.quote-icon-div-one {
     width: 32px;
     height: 32px;
     flex-shrink: 0;
@@ -11,7 +6,7 @@
     background: rgba(246, 246, 246, 0.10);
 }
 
-.QuoteTitle {
+.quote-title {
     color: #F6F6F6;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: "DM Sans";
@@ -22,7 +17,7 @@
     margin-bottom: 14px;
 }
 
-.QuoteText {
+.quoteText {
     color: rgba(246, 246, 246, 0.60);
     font-family: "DM Sans";
     font-size: 16px;
@@ -32,7 +27,7 @@
     margin-bottom: 25px;
 }
 
-.QuoteAuthor {
+.quoteAuthor {
     color: #F6F6F6;
     font-family: "DM Sans";
     font-size: 16px;
@@ -41,32 +36,45 @@
     line-height: 24px; 
 }
 
-.QuoteIconDivOne {
+.quote-icon-div-one {
     display: grid;
     place-items: center;
 }
 
-/* .QuoteIconDivTwo {
-    width: 48px;
-    height: 48px;
-    position: relative;
-    bottom: 32px;
-} */
-
-.QuoteIcon {
+.quote-icon {
     fill: #f6f6f6;
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+@media only screen and (min-resolution: 192dpi) and (min-width: 375px) {
+    .quote-img {
+      background-image: url(/img/mob/quote/women.torso.mob@2x.png);
+    }
+}
+  
+@media only screen and (min-resolution: 192dpi) and (min-width: 768px) {
+    .quote-img {
+      background-image: url(/img/tablet/quote/women.torso.tab@2x.png);
+    }
+}
+
+@media only screen and (min-resolution: 192dpi) and (min-width: 1440px) {
+    .quote-img {
+      background-image: url(/img/desktop/quote/women.torso@2x.png);
+    }
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
 @media screen and (min-width: 375px) {
 
-    .Quote {
+    .quote {
         padding-top: 20px;
         padding-bottom: 20px;
     }
 
-    .QuoteOne {
+    .quote-one {
         border-radius: 30px;
         width: 335px;
         height: 272px;
@@ -78,7 +86,19 @@
         gap: 12px;
     }
 
-    .QuoteImg {
+    .quote-icon-div-two {
+        position: absolute;
+        padding-top: 40px;
+        padding-left: 287px;
+    }
+    
+    .quote-icon-two {
+        fill: #f6f6f6;
+        width: 28px;
+        height: 28px;
+    }
+
+    .quote-img {
         border-radius: 30px;
         width: 335px;
         height: 272px;
@@ -90,12 +110,12 @@
 
 @media screen and (min-width: 768px) {
 
-    .Quote {
+    .quote {
         padding-top: 16px;
         padding-bottom: 16px;
     }
 
-    .QuoteOne {
+    .quote-one {
         border-radius: 50px;
         width: 736px;
         height: 302px;
@@ -105,7 +125,17 @@
         gap: 16px;
     }
 
-    .QuoteImg {
+    .quote-icon-div-two {
+        padding-top: 32px;
+        padding-left: 608px;
+    }
+    
+    .quote-icon-two {
+        width: 48px;
+        height: 48px;
+    }
+
+    .quote-img {
         border-radius: 50px;
         width: 736px;
         height: 302px;
@@ -117,13 +147,13 @@
 
 @media screen and (min-width: 1440px) {
 
-    .Quote {
+    .quote {
         display: flex;
         padding-top: 16px;
         padding-bottom: 16px;
     }
 
-    .QuoteOne {
+    .quote-one {
         border-radius: 50px;
         width: 704px;
         height: 302px;
@@ -131,7 +161,11 @@
         padding-right: 64px;
     }
 
-    .QuoteImg {
+    .quote-icon-div-two {
+        padding-left: 592px;
+    }
+
+    .quote-img {
         border-radius: 50px;
         width: 704px;
         height: 302px;

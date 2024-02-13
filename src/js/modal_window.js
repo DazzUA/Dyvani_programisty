@@ -2,7 +2,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
 import icons from '/img/symbol-defs.svg';
-import { toggleFavorite } from './favorites_js/favorites_section';
+// import { toggleFavorite } from './favorites_js/favorites_section';
 
 const modalBackdrop = document.querySelector('.Backdrop');
 const card = document.querySelector('.Modal');
@@ -13,14 +13,12 @@ const modalClose = document.querySelector('.ModalClose');
 
 const openClass = 'IsOpen';
 let cardObj = {};
-let id = '64f389465ae26083f39b17a4';
+// let id = '64f389465ae26083f39b17a4';
 let ratingActive, ratingValue;
 
-// https://dazzua.github.io/Dyvani_programisty/index.html
+// if (window.location.href === 'http://localhost:5173/index.html') {
+button.addEventListener('click', modalCard);
 
-if (window.location.href === 'http://localhost:5173/index.html') {
-  button.addEventListener('click', modalCard);
-}
 // buttonFavorite.addEventListener('click', modalCard);
 
 async function modalCard(event) {
@@ -70,7 +68,7 @@ async function modalCard(event) {
 //   }
 // }
 
-async function fetchImages() {
+async function fetchImages(id) {
   const url = `https://energyflow.b.goit.study/api/exercises/${id}`;
 
   try {

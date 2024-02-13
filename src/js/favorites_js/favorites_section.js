@@ -295,40 +295,14 @@ function toggleFavorite() {
   if (favoritesButton.textContent.trim() == 'Add to favorites') {
     parsedItem.push({
       id: '64f389465ae26083f39b17df', //id
-      //gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0067.gif', //gif.src
       name: 'barbell one arm snatch', //name.textContent
-      //rating: '3.67', //rating.textContent
       target: 'cardiovascular', //target.textContent
-      //popular: '5548', //popular.textContent
       time: '3', //time.textContent,
       bodyPart: 'shoulders', //bodyPart.textContent
-      //equipment: 'barbell', //equipment.textContent
       burnedCalories: '345', //burnedCalories.textContent
-      //description:'Located at the shoulders, deltoids have three heads: anterior, lateral, and posterior. They are involved in various arm movements like lifting and rotating. Exercises include shoulder press, lateral raises, and front raises.', //description.textContent
     });
     localStorage.setItem(storage, JSON.stringify(parsedItem));
-    favoritesButton.textContent = `Delete from favorites`;
-    //favoritesButton.innerHTML = `Delete from favorites`;
   }
-  /*else {
-    const index = parsedItem.findIndex(item => item.id == id);
-    parsedItem.splice(index, 1);
-    localStorage.setItem(storage, JSON.stringify(parsedItem));
-    const fullCards = document.querySelectorAll('.favorites-list-item');
-
-    favoritesButton.textContent = `Add to favorities`;
-    //favoritesButton.innerHTML = `Add to favorities ${heartIcon}`;
-    if (document.querySelector(`.favorites-list-item[id="${id}"]`)) {
-      fullCards.forEach(elem => {
-        if (elem.id == id) cardForDelete = elem;
-      });
-      list.removeChild(cardForDelete);
-      if (!storageItem || parsedItem.length == 0) {
-        messageInfo.classList.add('is-open-message-info');
-        paginationBlock.classList.add('close');
-      }
-    }
-  }*/
 }
 
 favoritesButton.addEventListener('click', toggleFavorite);

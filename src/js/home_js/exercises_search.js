@@ -43,8 +43,8 @@ async function handleSearch(event) {
   }
 
   try {
-    const card = await onFormSubmit(queryParams.query);
-    renderExercises(card); // передаем массив упражнений из объекта card
+    const card = await onFormSubmit(queryParams);
+    createMarkUp(card); // передаем массив упражнений из объекта card
   } catch (error) {
     console.log(error);
   }
@@ -52,55 +52,57 @@ async function handleSearch(event) {
 // Добавляем слушатель события submit на форму поиска (searchForm) и вызывает функцию handleSearch при отправке формы
 
 refs.searchForm.addEventListener('submit', handleSearch);
-console.log(refs.searchForm);
 
 // Определяем асинхронную функцию onFormSubmit
 
-async function onFormSubmit(data, query) {
+async function onFormSubmit(queryParams) {
   try {
     // Выполняем GET-запрос к API с передачей параметров запроса. Результат запроса сохраняем в переменной response
     const response = await axios.get(BASE_URL, {
       params: {
-        filter: data,
-        keyword: query, // передаем значение из свойства query объекта queryParams, которое содержит строку ключевого слова для поиска
+        filter: queryParams.query,
+        keyword: queryParams.query, // передаем значение из свойства query объекта queryParams, которое содержит строку ключевого слова для поиска
         page: queryParams.page, // передаем значение из свойства page объекта queryParams, которое содержит номер страницы
         limit: 9,
       },
     });
     return response.data;
   } catch (error) {
-    handleError(error); // Вывод ошибки в консоль при возникновении ошибки запроса
+    console.log(error); // Вывод ошибки в консоль при возникновении ошибки запроса
   }
 }
-// Определяем функцию renderExercises. Функция принимает массив упражнений. Если массив пустой, вызывается функция showNoResultsToast. Если нет - создаются элементы списка 'li' с названиями упражнений и добавляются в список результатов поиска
+// Определяем функцию createMarkUp. Функция принимает массив упражнений. Если массив пустой, вызывается функция showNoResultsToast. Если нет - создаются элементы списка 'li' с названиями упражнений и добавляются в список результатов поиска
 
-function renderExercises(exercises) {
-  if (exercises.length === 0) {
-    showNoResultsToast(); // Вызов функции showNoResultsToast при отсутствии результатов поиска
-  } else {
-    createMarkUp(exercises);
-  }
+// Функция для вывода всплывающего уведомления с сообщением об отсутствии результатов поиска
+function showNoResultsToast() {
+  const noResultsMessageContainer = document.createElement('div'); // контейнер для оформления сообщения
+  noResultsMessageContainer.classList.add('NoResultsMessageContainer'); // добавил класс для контейнера
 
-  // Функция для вывода всплывающего уведомления с сообщением об отсутствии результатов поиска
-  function showNoResultsToast() {
-    const noResultsMessageContainer = document.createElement('div'); // контейнер для оформления сообщения
-    noResultsMessageContainer.classList.add('NoResultsMessageContainer'); // добавил класс для контейнера
+  const noResultsMessage = document.createElement('div'); // контейнер для текста
+  noResultsMessage.classList.add('NoResultsMessage'); // добавил класс для сообщения
+  noResultsMessage.innerHTML =
+    'Unfortunately, <span class="SearchNoResult">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.';
 
-    const noResultsMessage = document.createElement('div'); // контейнер для текста
-    noResultsMessage.classList.add('NoResultsMessage'); // добавил класс для сообщения
-    noResultsMessage.innerHTML =
-      'Unfortunately, <span class="NoResultsMessageAccent">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.';
-
-    noResultsMessageContainer.appendChild(noResultsMessage); // добавил сообщение внутрь контейнера, в котором это сообщение находится
-    document.body.appendChild(noResultsMessageContainer); // добавил контейнер с сообщением на страницу внутрь <body>, чтобы показать всплывающее уведомление
-  }
+  noResultsMessageContainer.appendChild(noResultsMessage); // добавил сообщение внутрь контейнера, в котором это сообщение находится
+  document.body.appendChild(noResultsMessageContainer); // добавил контейнер с сообщением на страницу внутрь <body>, чтобы показать всплывающее уведомление
 }
+
 // Создаем разметку карточек упражнений по фильтрам и ключевому слову
 
 function createMarkUp(array) {
-  const markup = array
-    .map(({ rating, name, burnedCalories, time, bodyPart, target, _id }) => {
-      return `<li class="WorkoutCard">
+  if (exercises.length === 0) {
+    if (typeof showNoResultsToast === 'function') {
+      showNoResultsToast(); // Вызов функции showNoResultsToast при отсутствии результатов поиска
+    } else {
+      exercises.forEach(exercise => {
+        const exerciseItem = document.createElement('li');
+        exerciseItem.textContent = exercise.name;
+        refs.searchList.appendChild(exerciseItem);
+      });
+    }
+    const markup = array
+      .map(({ rating, name, burnedCalories, time, bodyPart, target, _id }) => {
+        return `<li class="WorkoutCard">
       <div class='CardHeader'>
         <div class='WorkoutWrapper'>
           <p class='Workout'>workout</p>
@@ -135,8 +137,9 @@ function createMarkUp(array) {
       </ul>
 
     </li>`;
-    })
-    .join('');
-  return markup;
+      })
+      .join('');
+    return markup;
+  }
 }
-export { handleSearch };
+export { handleSearch }; // нужно проверить импорт у Юли

@@ -13,10 +13,12 @@ const modalClose = document.querySelector('.ModalClose');
 
 const openClass = 'IsOpen';
 let cardObj = {};
-let id = '64f389465ae26083f39b17a4';
+// let id = '64f389465ae26083f39b17a4';
 let ratingActive, ratingValue;
 
+// if (window.location.href === 'http://localhost:5173/index.html') {
 button.addEventListener('click', modalCard);
+
 // buttonFavorite.addEventListener('click', modalCard);
 
 async function modalCard(event) {
@@ -66,7 +68,7 @@ async function modalCard(event) {
 //   }
 // }
 
-async function fetchImages() {
+async function fetchImages(id) {
   const url = `https://energyflow.b.goit.study/api/exercises/${id}`;
 
   try {

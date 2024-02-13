@@ -102,7 +102,7 @@ async function getExercisesByFilter(filterValue, nameValue, currentPage) {
 function createMarkUp(array) {
   const markup = array
     .map(({ rating, name, burnedCalories, time, bodyPart, target, _id }) => {
-      return `<li class="WorkoutCard ExerciseCategoryList id ='${_id}">
+      return `<li class="WorkoutCard ExerciseCategoryList" id ='${_id}'>
       <div class='CardHeader'>
         <div class='WorkoutWrapper'>
           <p class='Workout'>workout</p>

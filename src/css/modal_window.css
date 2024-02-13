@@ -48,6 +48,7 @@
     background-color: #E7E9FC;
     cursor: pointer;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 /* .ModalClose:hover,
@@ -65,6 +66,12 @@
     fill: #ffffff;
     
 } */
+
+.CloseModalIcon {
+    stroke: black;
+    border-radius: 50%;
+
+}
 
 .ModalImage {
     border-radius: 12px;
@@ -98,8 +105,8 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
-    gap: 2px;
-    margin-bottom: 20px;
+    gap: 8px;
+    margin-bottom: 16px;
 }
 
 .NumberRating {
@@ -210,6 +217,7 @@
     font-size: 14px;
     line-height: 1.28571;
     color: rgba(27, 27, 27, 0.6);
+    margin-top: 16px;
     margin-bottom: 40px;
 }
 
@@ -224,12 +232,21 @@
     padding: 12px 83px;
     width: 295px;
     height: 42px;
-    background: #7e847f;
+    background-color: #7e847f;
+    color: #f6f6f6;
     border: none;
 }
 
 .HeartModalIcon {
-    fill: #FCFCFC;
+    stroke: red;
+    fill: #f6f6f6;
+
+}
+
+.vector {
+    stroke: #7e847f;
+    width: 280px;
+
 }
 
 
@@ -244,12 +261,13 @@
 
 @media screen and (min-width: 768px) {
     .Modal {
-
         display: flex;
         max-width: 716px;
         padding: 40px 40px;
         border-radius: 20px;
-
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .ModalImage {

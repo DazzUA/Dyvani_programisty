@@ -71,11 +71,17 @@
   font-size: 14px;
   line-height: 1.3;
 }
+
+.buttons-container {
+  display: flex;
+  gap: 4px;
+}
+
 .ListExercises {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   gap: 4px;
   margin-bottom: 20px;
 }
@@ -83,8 +89,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  row-gap: 20px;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 20px;
 }
 .WorkoutCard {
@@ -125,6 +130,12 @@
   }
 }
 
+@media only screen and (min-width: 320px) and (max-width: 767.98px) {
+  .ExercisesForm {
+    margin-top: 20px;
+  }
+}
+
 /* Tablet */
 
 @media screen and (min-width: 768px) {
@@ -142,6 +153,7 @@
     align-items: center;
   }
   .ListExercises {
+    flex-direction: row;
     margin-bottom: 0px;
   }
   .ExercisesForm .SearchInput::placeholder {
@@ -161,9 +173,7 @@
     width: 100%;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
     flex-wrap: wrap;
-    row-gap: 20px;
     column-gap: 14px;
     margin-bottom: 32px;
   }
@@ -221,7 +231,7 @@
     letter-spacing: -0.02em;
   }
   .ExerciseCategoryList {
-    row-gap: 28px;
+    flex-direction: column;
     column-gap: 20px;
   }
   .CardMainPart {
@@ -403,7 +413,7 @@
 
 .CardFooter {
   display: flex;
-  gap: 8px;
+  gap: 7px;
   flex-wrap: wrap;
 }
 .StartBtn {
@@ -417,6 +427,7 @@
   stroke: #1b1b1b;
   fill: white;
   border: none;
+  margin-left: 50px;
   background-color: transparent;
 }
 .WorkoutWrapper {

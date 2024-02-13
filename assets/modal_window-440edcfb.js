@@ -41,4 +41,4 @@ import{a as f}from"./vendor-8cce9181.js";(function(){const i=document.createElem
           </div>
   </div>
   </div> `;n.innerHTML=i}function R(){n.classList.add(p)}function c(){n.classList.remove(p)}function L(){M(),$()}function M(){m=document.querySelector(".RatingActive"),g=document.querySelector(".NumberRating")}function $(t=g.innerHTML){const i=t/.05;m.style.width=`${i}%`}export{o as i};
-//# sourceMappingURL=modal_window-14a9a5d3.js.map
+//# sourceMappingURL=modal_window-440edcfb.js.map

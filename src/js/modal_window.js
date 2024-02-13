@@ -2,7 +2,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
 import icons from '/img/symbol-defs.svg';
-// import { toggleFavorite } from './favorites_js/favorites_section';
+import { toggleFavorite } from './favorites_js/favorites_section';
 
 const modalBackdrop = document.querySelector('.Backdrop');
 const card = document.querySelector('.Modal');
@@ -16,7 +16,11 @@ let cardObj = {};
 let id = '64f389465ae26083f39b17a4';
 let ratingActive, ratingValue;
 
-button.addEventListener('click', modalCard);
+// https://dazzua.github.io/Dyvani_programisty/index.html
+
+if (window.location.href === 'http://localhost:5173/index.html') {
+  button.addEventListener('click', modalCard);
+}
 // buttonFavorite.addEventListener('click', modalCard);
 
 async function modalCard(event) {

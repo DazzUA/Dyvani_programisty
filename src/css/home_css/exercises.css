@@ -507,33 +507,29 @@
 
 /* стили для сообщения об отсутствии результатов поиска в файле exercises_search.js */
 
-.NoResultsMessageContainer {
-  width: 295px;
-  text-align: center;
+.SearchNoResult {
+  padding-top: 164px;
+  padding-bottom: 320px;
   font-size: 14px;
-  font-weight: 400;
-  line-height: 1.28;
-  letter-spacing: -0.01;
-}
-
-.NoResultsMessage {
-  color: #1b1b1b;
-}
-
-.NoResultsMessageAccent {
-  color: #7e847f; /* Цвет для выделенной части текста "no results" */
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
-  .NoResultsMessageContainer {
-    width: 536px;
+  .SearchNoResult {
+    padding-top: 222px;
+    padding-bottom: 585px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 }
-
-@media screen and (min-width: 1280px) {
-  .NoResultsMessageContainer {
-    width: 684px;
+@media screen and (min-width: 1440px) {
+  .SearchNoResult {
+    padding-top: 217px;
+    padding-bottom: 350px;
+    padding-left: 340px;
+    padding-right: 340px;
   }
 }
-
 /* Тут закончились стили для сообщения об отсутствии результатов поиска в файле exercises_search.js */

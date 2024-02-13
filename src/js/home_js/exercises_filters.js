@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { filterValue } from './exercises_subcategories';
 
 const filterButtons = document.querySelector('.FilterButtons');
 const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
@@ -10,6 +11,9 @@ const ExerciseFiltersListSubcategories = document.querySelector(
 const PaginationSubcategories = document.querySelector(
   '.PaginationSubcategories'
 );
+const searchList = document.querySelector('.search-list'); // ok
+const searchPagination = document.querySelector('.search-pagination');
+const noResultsText = document.querySelector('.no-results');
 
 const BASE_URL = 'https://energyflow.b.goit.study/api';
 let filterValueDefault = 'Muscles';
@@ -73,19 +77,23 @@ async function filterBtnClick(event) {
   if (event.target.tagName !== 'BUTTON') {
     return;
   }
+  searchList.innerHTML = '';
+  searchPagination.innerHTML = '';
   event.preventDefault();
   form.classList.add('visually-hidden');
+  noResultsText.classList.add('visually-hidden');
   ExerciseFiltersListSubcategories.classList.add('visually-hidden');
   exerciseFiltersList.classList.remove('visually-hidden');
   pagination.innerHTML = '';
   PaginationSubcategories.innerHTML = '';
-
+  PaginationSubcategories.classList.remove('visually-hidden');
   currentPage = 1;
   const filterValue = event.target;
   const qwer = filterValue.dataset.filter;
   filterValueDefault = qwer;
   exerciseFiltersList.innerHTML = '';
-  Array.from(event.currentTarget.children).map(item => {
+
+  Array.from(event.target.children).map(item => {
     if (item.textContent !== event.target.textContent) {
       item.classList.remove('ButtonIsActive');
     } else {
@@ -164,7 +172,7 @@ function paginationPages(page, totalPages) {
   let paginationHtml = '';
 
   for (let i = 1; i <= totalPages; i += 1) {
-    paginationHtml += `<button class="PaginationBtn PaginationBtnIsActive" type="button">${i}</button>`;
+    paginationHtml += `<button class="PaginationBtn PaginationBtnIsActive" type="button" value="${i}">${i}</button>`;
   }
   return paginationHtml;
 }

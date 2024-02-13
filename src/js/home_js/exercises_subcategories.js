@@ -1,7 +1,6 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import { onPaginationFilterPages } from './exercises_filters';
 import { paginationPages } from './exercises_filters';
 import { markupExercises } from './exercises_filters';
 import icons from '/img/symbol-defs.svg';
@@ -30,15 +29,18 @@ async function onCardClick(event) {
   exerciseFiltersList.classList.add('visually-hidden');
   ExerciseFiltersListSubcategories.classList.remove('visually-hidden');
   // exerciseFiltersList.removeEventListener('click', onCardClick);
-  pagination.removeEventListener('click', onPaginationFilterPages);
+  // pagination.removeEventListener('click', onPaginationFilterPages);
   pagination.removeEventListener('click', onPaginationPagesbyFilter);
   if (event.target === event.currentTarget) {
     return;
   }
 
   const liEl = event.target.closest('.ExercisesItem'); // при кліку на картку шукаємо найближчий елемент у якого буде заданий селектор (це li)
-  filterValue = liEl.dataset.filter; //Muscles   // тепер можемо отримати li дата-атрибути
-  nameValue = liEl.dataset.name; // abductors
+  const { filter, name } = liEl.dataset;
+
+  filterValue = filter; //Muscles   // тепер можемо отримати li дата-атрибути
+  nameValue = name; // abductors
+
   try {
     const { page, totalPages, results } = await getExercisesByFilter(
       filterValue,
@@ -215,39 +217,7 @@ async function getExercise(filter = filterValueDefault) {
     createIziToastError('Error');
   }
 }
-/!Цю функцію я імпортував у себе/;
-// function markupExercise(results) {
-//   const markup = results
-//     .map(
-//       ({
-//         name,
-//         filter,
-//         imgUrl,
-//       }) => ` <li class='FilterList ExercisesItem' data-filter='${filter}' data-name='${name}'>
-//         <img class="ImgExercises" src="${imgUrl}" alt="${filter}">
-//         <div class="FilterText">
-//           <p class="FilterExercises">${name}</p>
-//           <p class="FilterName">${filter}</p>
-//         </div>
-//       </li>`
-//     )
-//     .join('');
-//   return markup;
-// }
-// ---------------------------------------------------ПАГІНАЦІЯ------------------------------------------------------------
 
-/!Цю функцію я імпортував у себе/;
-// function paginationPages(totalPages) {
-//   let paginationHtml = '';
-//   for (let i = 1; i <= totalPages; i += 1) {
-//     paginationHtml += `<button class="pagination-btn" type="button">${i}</button>`;
-//   }
-
-//   return paginationHtml; // в залежності від к-ті сторінок повертає таку кількість кнопок в розмітці
-// }
-
-/! В цій функції я змінив назву, була onPaginationPage/;
-//----
 async function onPaginationSubcategoriesPage(e) {
   if (e.target.tagName !== 'BUTTON') {
     return;
@@ -299,3 +269,5 @@ function createIziToastError(notification) {
     timeout: false,
   });
 }
+
+export { filterValue, nameValue, createMarkUp };

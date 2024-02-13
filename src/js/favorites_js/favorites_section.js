@@ -1,4 +1,4 @@
-import sprite from '../../img/symbol-defs.svg';
+import sprite from '/img/symbol-defs.svg';
 const fullUrl = window.location.pathname;
 const lastSlashIndex = fullUrl.lastIndexOf('/');
 const result = fullUrl.substring(lastSlashIndex);
@@ -201,51 +201,6 @@ if (result === '/favorites.html') {
   });
 }
 
-//**Ігорю на кнопку*/
-
-const favoritesButton = document.querySelector('.add-favorites');
-function toggleFavorite() {
-  if (favoritesButton.textContent.trim() == 'Add to favorites') {
-    parsedItem.push({
-      id: '64f389465ae26083f39b17df', //id
-      gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0067.gif', //gif.src
-      name: 'barbell one arm snatch', //name.textContent
-      rating: '3.67', //rating.textContent
-      target: 'cardiovascular', //target.textContent
-      popular: '5548', //popular.textContent
-      bodyPart: 'shoulders', //bodyPart.textContent
-      equipment: 'barbell', //equipment.textContent
-      burnedCalories: '345', //burnedCalories.textContent
-      description:
-        'Located at the shoulders, deltoids have three heads: anterior, lateral, and posterior. They are involved in various arm movements like lifting and rotating. Exercises include shoulder press, lateral raises, and front raises.', //description.textContent
-    });
-    localStorage.setItem(storage, JSON.stringify(parsedItem));
-    favoritesButton.textContent = `Delete from favorites`;
-    //favoritesButton.innerHTML = `Delete from favorites`;
-  }
-  /*else {
-    const index = parsedItem.findIndex(item => item.id == id);
-    parsedItem.splice(index, 1);
-    localStorage.setItem(storage, JSON.stringify(parsedItem));
-    const fullCards = document.querySelectorAll('.favorites-list-item');
-
-    favoritesButton.textContent = `Add to favorities`;
-    //favoritesButton.innerHTML = `Add to favorities ${heartIcon}`;
-    if (document.querySelector(`.favorites-list-item[id="${id}"]`)) {
-      fullCards.forEach(elem => {
-        if (elem.id == id) cardForDelete = elem;
-      });
-      list.removeChild(cardForDelete);
-      if (!storageItem || parsedItem.length == 0) {
-        messageInfo.classList.add('is-open-message-info');
-        paginationBlock.classList.add('close');
-      }
-    }
-  }*/
-}
-
-favoritesButton.addEventListener('click', toggleFavorite);
-
 function handleFavoritesListClick(event) {
   if (
     event.target.classList.contains('favorites-btn-trash') ||
@@ -290,53 +245,92 @@ function renderFavoriteCards() {
 }
 
 function createFavoriteCardMarkup(elem) {
-  return `<li class="favorites-list-item" id="${elem.id}">
-        <div class="favorites-card-header">
-            <div class="favorites-workout">
-                <p>WORKOUT</p>
-            </div>
-            <button class="favorites-btn-trash" aria-label="trash" type="button">
-                <svg class="favorites-icon-delete" width="16" height="16" fill="none">
-                    <use class="favorites-icon-delete-use" href="${sprite}#icon-trash"></use>
-                </svg>
-            </button>
-            <button
-                data-id="${elem.id}"
-                class="favorites-btn-arrow"
-                aria-label="start"
-                type="button">Start
-                    <svg class="favorites-icon-arrow" width="14" height="14" stroke="#1B1B1B">
-                        <use class="favorites-icon-arrow-use" href="${sprite}#icon-arrow"></use>
-                    </svg>
-            </button>
-            </div>
-            <div class="favorites-main-container">
-    
-            <div class="favorite-icon-run-man">
-            <svg width="14" height="14">
-      <use href="${sprite}#icon-running"></use>
-    </svg></div>                  
-                <h3 class="favorites-name-part">${elem.name}</h3>
-            </div>
-            <div class="favorites-card-footer">
-            <ul class="favorites-card-footer-list">
-                <li class="favorites-card-footer-item">
-                    <div class="favorites-card-footer-wrapper">
-                        <h4 class="favorites-card-footer-title">Burned calories:</h4>
-                        <p class="favorites-card-footer-block">${elem.burnedCalories}/3min</p>
-                    </div>
-                    <div class="favorites-card-footer-wrapper">
-                        <h4 class="favorites-card-footer-title">Body part:</h4>
-                        <p class="favorites-card-footer-block">${elem.bodyPart}</p>
-                    </div>
-                    <div class="favorites-card-footer-wrapper">
-                        <h4 class="favorites-card-footer-title">Target:</h4>
-                        <p class="favorites-card-footer-block">${elem.target}</p>
-                    </div>
-                </li>
-            </ul>
+  return `<li class="favorites-card favorites-list-item" id ='${elem.id}'>
+      <div class='favorites-card-header'>
+        <div class='favorites-workout'>
+          <p class='workout-p'>workout</p>
+
+          <button class='favorites-btn-trash' type="button">
+          <svg class='favorites-icon-delete' width='16' height='16' fill="none">
+              <use class='favorites-icon-delete-use' href='${sprite}#icon-trash'></use>
+            </svg>
+          </button>
         </div>
+        
+          <button class="favorites-btn-arrow" type="button" >Start
+            <svg width='14' height='14'>
+              <use href='${sprite}#icon-arrow'></use>
+            </svg>
+          </button>
+      </div>
+
+      <div class='favorites-main-container'>
+        <div class='favorites-icon-run-man'>
+          <svg width='14' height='14'>
+            <use href='${sprite}#icon-running'></use>
+          </svg>
+        </div>
+        <p class='favorites-name-part'>${elem.name}</p>
+      </div>
+
+      <ul class="favorites-card-footer-list">
+        <li>
+          <p class='favorites-card-footer-title'>Burned calories: <span class='favorites-footer-text-value'>${elem.burnedCalories} / ${elem.time} min</span></p>
+        </li>
+        <li>
+          <p class='favorites-card-footer-title'>Body part: <span class='favorites-footer-text-value'>${elem.bodyPart}</span></p>
+        </li>
+        <li>
+          <p class='favorites-card-footer-title'>Target: <span class='favorites-footer-text-value'>${elem.target}</span></p>
+        </li>
+      </ul>
+
     </li>`;
 }
+
+//**Ігорю на кнопку*/
+
+const favoritesButton = document.querySelector('.add-favorites');
+function toggleFavorite() {
+  if (favoritesButton.textContent.trim() == 'Add to favorites') {
+    parsedItem.push({
+      id: '64f389465ae26083f39b17df', //id
+      //gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0067.gif', //gif.src
+      name: 'barbell one arm snatch', //name.textContent
+      //rating: '3.67', //rating.textContent
+      target: 'cardiovascular', //target.textContent
+      //popular: '5548', //popular.textContent
+      time: '3', //time.textContent,
+      bodyPart: 'shoulders', //bodyPart.textContent
+      //equipment: 'barbell', //equipment.textContent
+      burnedCalories: '345', //burnedCalories.textContent
+      //description:'Located at the shoulders, deltoids have three heads: anterior, lateral, and posterior. They are involved in various arm movements like lifting and rotating. Exercises include shoulder press, lateral raises, and front raises.', //description.textContent
+    });
+    localStorage.setItem(storage, JSON.stringify(parsedItem));
+    favoritesButton.textContent = `Delete from favorites`;
+    //favoritesButton.innerHTML = `Delete from favorites`;
+  }
+  /*else {
+    const index = parsedItem.findIndex(item => item.id == id);
+    parsedItem.splice(index, 1);
+    localStorage.setItem(storage, JSON.stringify(parsedItem));
+    const fullCards = document.querySelectorAll('.favorites-list-item');
+
+    favoritesButton.textContent = `Add to favorities`;
+    //favoritesButton.innerHTML = `Add to favorities ${heartIcon}`;
+    if (document.querySelector(`.favorites-list-item[id="${id}"]`)) {
+      fullCards.forEach(elem => {
+        if (elem.id == id) cardForDelete = elem;
+      });
+      list.removeChild(cardForDelete);
+      if (!storageItem || parsedItem.length == 0) {
+        messageInfo.classList.add('is-open-message-info');
+        paginationBlock.classList.add('close');
+      }
+    }
+  }*/
+}
+
+favoritesButton.addEventListener('click', toggleFavorite);
 
 export { toggleFavorite };

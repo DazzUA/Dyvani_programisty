@@ -10,7 +10,7 @@ import {
   nameValue,
   createMarkUp,
 } from './exercises_subcategories';
-import { paginationPages } from './exercises_filters';
+import { paginationPages, onScroll } from './exercises_filters';
 
 // базовый URL для отправки запросов к API
 const BASE_URL = 'https://energyflow.b.goit.study/api';
@@ -133,7 +133,7 @@ searchPagination.addEventListener('click', onPaginationFilterPages);
 
 async function onPaginationFilterPages(event) {
   event.preventDefault();
-
+  onScroll();
   if (event.target.tagName !== 'BUTTON') {
     return;
   }

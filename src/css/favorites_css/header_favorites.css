@@ -1,0 +1,37 @@
+/* -----------------------------------------------------------------------------стилі
+  до
+  хедера-favorites */
+.body-container {
+  padding: 96px 0 0;
+}
+
+@media screen and (min-width: 768px) {
+  .body-container {
+    padding: 180px 0 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .body-container {
+    padding: 156px 0 0;
+  }
+}
+
+.header-main-favorites {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  z-index: 2;
+}
+
+.mobil-button-menu-favorites {
+  margin-right: 20px;
+  border: none;
+  background-color: transparent;
+}
+
+.header-container-favorites {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

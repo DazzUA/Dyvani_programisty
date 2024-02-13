@@ -3,6 +3,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { paginationPages } from './exercises_filters';
 import { markupExercises } from './exercises_filters';
+import { onScroll } from './exercises_filters';
 import icons from '/img/symbol-defs.svg';
 
 const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
@@ -28,8 +29,7 @@ async function onCardClick(event) {
   pagination.innerHTML = '';
   exerciseFiltersList.classList.add('visually-hidden');
   ExerciseFiltersListSubcategories.classList.remove('visually-hidden');
-  // exerciseFiltersList.removeEventListener('click', onCardClick);
-  // pagination.removeEventListener('click', onPaginationFilterPages);
+
   pagination.removeEventListener('click', onPaginationPagesbyFilter);
   if (event.target === event.currentTarget) {
     return;
@@ -48,9 +48,6 @@ async function onCardClick(event) {
     );
     ExerciseFiltersListSubcategories.innerHTML = createMarkUp(results); // це буде масив об'єктів
 
-    // const FilterBtn = document.querySelector('#FilterBtn'); // додаємо на три кнопки фільтрів слухача по кліку
-    // FilterBtn.addEventListener('click', onBtnClick);
-    // FilterBtn.addEventListener('click', onBtnClickForFormDelete);
     pagination.innerHTML = ''; // пагінація
     if (totalPages > 1) {
       const pag = paginationPages(page, totalPages);
@@ -64,13 +61,6 @@ async function onCardClick(event) {
   } catch (error) {
     createIziToastError('Error');
   }
-}
-
-function onBtnClickForFormDelete() {
-  const ExercisesForm = document.querySelector('.ExercisesForm');
-  // ???vформа видаляється при першому кліку, а при другому знову хоче видалити, а її вже нема
-  // ExercisesForm.remove();
-  FilterBtn.removeEventListener('click', onBtnClickForFormDelete);
 }
 
 async function getExercisesByFilter(filterValue, nameValue, currentPage) {
@@ -153,56 +143,6 @@ function createMarkUp(array) {
   return markup;
 }
 
-// це виклик функції Данила. Треба щоб він зробив експорт
-// функція, яка спрацьовує коли ми клікаємо по фільтру (Muscle, Body Part, Equipment) і повертаємось назад
-async function onBtnClick(event) {
-  exerciseFiltersList.classList.re('visually-hidden');
-
-  ExerciseFiltersListSubcategories.innerHTML = '';
-  exerciseFiltersList.classList.remove('visually-hidden');
-  // ExerciseFiltersListSubcategories.classList.add('visually-hidden');
-  const filtersBtnArray = document.querySelectorAll('.ItemExercises');
-  filtersBtnArray.forEach(btn => {
-    btn.classList.remove('FilterBtnIsActive');
-  });
-  exerciseFiltersList.addEventListener('click', onCardClick);
-  exerciseFiltersList.classList.remove('ExerciseCategoryList');
-  exerciseFiltersList.classList.add('ExerciseFiltersList');
-  currentPage = 1; // робимо поточну сторінку першою
-  // pagination.removeEventListener('click', onPaginationSubcategoriesPage); // видаляємо з нумерації сторінок слухача попереднього
-  Array.from(event.currentTarget.children).map(item => {
-    if (item.textContent !== event.target.textContent) {
-      item.classList.remove('ButtonIsActive');
-    } else {
-      event.target.classList.add('ButtonIsActive');
-    }
-  });
-  if (event.target === event.currentTarget) {
-    return;
-  }
-  filterValue = event.target.dataset.filter; // дістаємо значення дата-атрибута елемента, на який клацнули
-  try {
-    const { page, totalPages, results } = await getExercise(filterValue);
-    exerciseFiltersList.innerHTML = markupExercises(results); // робимо розмітку всередині ul по фільтру починаюxи з першої сторінки
-    if (totalPages > 1) {
-      const pag = paginationPages(page, totalPages);
-      PaginationSubcategories.innerHTML = pag;
-    } else {
-      PaginationSubcategories.innerHTML = '';
-    }
-    PaginationSubcategories.addEventListener(
-      'click',
-      onPaginationPagesbyFilter
-    );
-    // тут видалення тексту після слеша та форми
-    const titleExercises = document.querySelector('.TitleExercises');
-    titleExercises.innerHTML = 'Exercises';
-    // ------------------------------------------
-  } catch (error) {
-    createIziToastError('Error');
-  }
-}
-
 async function getExercise(filter = filterValueDefault) {
   try {
     const response = await axios.get(`${BASE_URL}/filters`, {
@@ -222,6 +162,7 @@ async function onPaginationSubcategoriesPage(e) {
   if (e.target.tagName !== 'BUTTON') {
     return;
   }
+  onScroll();
   currentPage = e.target.textContent; // при кліку на цифру сторінки будемо діставати цифру (текст-контент кнопки: 1, 4, 7...)
   try {
     // запит на картки по фільтру
@@ -249,14 +190,6 @@ async function onPaginationPagesbyFilter(e) {
   }
 }
 
-// Импорт необходимых библиотек
-
-// function onStartBtnClick(event) {
-//   divEl = event.target.closest('.StartBtn');
-//   console.log(divEl);
-//   // idValue = divEl.dataset.id;
-//   // console.log(idValue);
-// }
 function createIziToastError(notification) {
   iziToast.error({
     message: notification,

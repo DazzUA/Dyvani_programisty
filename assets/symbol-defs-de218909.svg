@@ -43,6 +43,9 @@
 <symbol id="icon-trash" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.6" d="M10.666 8v-1.067c0-1.493 0-2.24 0.291-2.811 0.255-0.502 0.664-0.91 1.165-1.165 0.571-0.291 1.317-0.291 2.811-0.291h2.134c1.493 0 2.24 0 2.811 0.291 0.502 0.256 0.91 0.664 1.165 1.165 0.291 0.57 0.291 1.317 0.291 2.811v1.067M13.334 15.333v6.667M18.666 15.333v6.667M4 8h24M25.333 8v14.933c0 2.24 0 3.36-0.436 4.216-0.384 0.753-0.996 1.365-1.748 1.748-0.856 0.436-1.976 0.436-4.216 0.436h-5.866c-2.24 0-3.36 0-4.216-0.436-0.752-0.384-1.364-0.995-1.748-1.748-0.436-0.856-0.436-1.976-0.436-4.216v-14.933"></path>
 </symbol>
+<symbol id="icon-vector" viewBox="0 0 5472 32">
+<path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="16" d="M0 16h5472"></path>
+</symbol>
 <symbol id="icon-close" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.2857" d="M22.667 9.333l-13.333 13.333M9.334 9.333l13.333 13.333"></path>
 </symbol>

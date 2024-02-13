@@ -14,6 +14,7 @@ const PaginationSubcategories = document.querySelector(
 const searchList = document.querySelector('.search-list'); // ok
 const searchPagination = document.querySelector('.search-pagination');
 const noResultsText = document.querySelector('.no-results');
+const home = document.querySelector('.Exercises');
 
 const BASE_URL = 'https://energyflow.b.goit.study/api';
 let filterValueDefault = 'Muscles';
@@ -77,6 +78,7 @@ async function filterBtnClick(event) {
   if (event.target.tagName !== 'BUTTON') {
     return;
   }
+  onScroll();
   searchList.innerHTML = '';
   searchPagination.innerHTML = '';
   event.preventDefault();
@@ -125,6 +127,8 @@ async function onPaginationFilterPages(e) {
   if (e.target.tagName !== 'BUTTON') {
     return;
   }
+  e.preventDefault();
+  onScroll();
   currentPage = e.target.textContent;
   Array.from(e.currentTarget.children).map(item => {
     if (item.textContent !== currentPage) {
@@ -176,7 +180,11 @@ function paginationPages(page, totalPages) {
   }
   return paginationHtml;
 }
+function onScroll() {
+  home.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
+export { onScroll };
 export { onPaginationFilterPages };
 export { paginationPages };
 export { markupExercises };

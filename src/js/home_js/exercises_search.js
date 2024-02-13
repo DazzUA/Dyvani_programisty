@@ -30,34 +30,32 @@ const searchPagination = document.querySelector('.search-pagination');
 let query;
 let resultsArray;
 let page = 1;
+
 formEl.addEventListener('submit', onSearch);
 
-// bodypart запит
-async function bodyPart(group, query, page = 1, limit = 9) {
+async function bodyPart(group, query, page, limit = 9) {
   try {
     const response = await axios.get(`${BASE_URL}/exercises`, {
       params: {
         bodypart: group,
         keyword: query,
-        page,
+        page: page,
         limit,
       },
     });
-
     return response.data;
   } catch (error) {
     console.log(error);
   }
 }
 
-// muscles запит
-async function muscles(group, query, page = 1, limit = 9) {
+async function muscles(group, query, page, limit = 9) {
   try {
     const response = await axios.get(`${BASE_URL}/exercises`, {
       params: {
         muscles: group,
         keyword: query,
-        page,
+        page: page,
         limit,
       },
     });
@@ -68,14 +66,13 @@ async function muscles(group, query, page = 1, limit = 9) {
   }
 }
 
-// equipment запит
-async function equipment(group, query, page = 1, limit = 9) {
+async function equipment(group, query, page, limit = 9) {
   try {
     const response = await axios.get(`${BASE_URL}/exercises`, {
       params: {
         equipment: group,
         keyword: query,
-        page,
+        page: page,
         limit,
       },
     });
@@ -90,7 +87,6 @@ async function onSearch(event) {
   event.preventDefault();
   PaginationSubcategories.classList.add('visually-hidden');
   query = event.currentTarget.elements['search'].value.trim();
-  console.log(query);
   let data;
 
   try {
@@ -101,13 +97,9 @@ async function onSearch(event) {
     } else if (filterValue === 'Equipment') {
       data = await equipment(nameValue, query);
     }
-    console.log(event.target);
 
     const { totalPages, page, results } = data;
     const array = data.results;
-    // console.log(array);
-    console.log(totalPages);
-    console.log(page);
 
     if (totalPages > 1) {
       const pag = paginationPages(page, totalPages);
@@ -122,57 +114,43 @@ async function onSearch(event) {
       exercisesFilterSection.classList.add('visually-hidden');
       searchListEl.classList.add('visually-hidden');
     } else {
-      // const {
-      //   results: [
-      //     { bodyPart, target, name, burnedCalories, rating, time, _id },
-      //   ],
-      // } = data;
       searchContainer.classList.remove('visually-hidden');
       searchListEl.classList.remove('visually-hidden');
       noResultsText.classList.add('visually-hidden');
       exercisesFilterSection.classList.add('visually-hidden');
 
       resultsArray = data.results;
-      console.log(resultsArray);
-
-      // console.log('TODO: малюэмо розмітку');
 
       searchListEl.innerHTML = createMarkUp(resultsArray);
     }
   } catch (error) {
     console.log(error);
   } finally {
-    // console.log('блок finally');
     formEl.reset();
   }
 }
+searchPagination.addEventListener('click', onPaginationFilterPages);
 
-async function onPaginationFilterPages(e) {
-  if (e.target.tagName !== 'BUTTON') {
+async function onPaginationFilterPages(event) {
+  event.preventDefault();
+
+  if (event.target.tagName !== 'BUTTON') {
     return;
   }
-  console.log(e.target);
-  page = e.target.textContent;
-  console.log(page);
+  page = event.target.textContent;
   searchListEl.innerHTML = '';
   try {
-    console.log(filterValue);
     if (filterValue === 'Body parts') {
-      const { results, page, totalPages } = await bodyPart(nameValue, query);
+      const { results } = await bodyPart(nameValue, query, page);
       searchListEl.innerHTML = createMarkUp(results);
-      console.log(results);
     } else if (filterValue === 'Muscles') {
-      const { results } = await muscles(nameValue, query);
+      const { results } = await muscles(nameValue, query, page);
       searchListEl.innerHTML = createMarkUp(results);
-      console.log(results);
     } else if (filterValue === 'Equipment') {
-      const { results } = await equipment(nameValue, query);
+      const { results } = await equipment(nameValue, query, page);
       searchListEl.innerHTML = createMarkUp(results);
-      console.log(results);
     }
   } catch (error) {
     console.log(error);
   }
 }
-
-searchPagination.addEventListener('click', onPaginationFilterPages);

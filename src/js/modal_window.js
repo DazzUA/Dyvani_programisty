@@ -7,53 +7,67 @@ import icons from '/img/symbol-defs.svg';
 const modalBackdrop = document.querySelector('.Backdrop');
 const card = document.querySelector('.Modal');
 const button = document.querySelector('.ExerciseFiltersListSubcategories');
-const modalClose = document.querySelector('.ModalClose');
-// const addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
-// const buttonFavorite = document.querySelector('.favorites-btn-arrow');
+const buttonSearch = document.querySelector('.search-list');
+const body = document.querySelector('body');
+const buttonFavorite = document.querySelector('.favorites-list');
 
 const openClass = 'IsOpen';
 let cardObj = {};
-// let id = '64f389465ae26083f39b17a4';
 let ratingActive, ratingValue;
+let addRemoveFavorites;
+let scrollPosition = 0;
 
-// if (window.location.href === 'http://localhost:5173/index.html') {
-button.addEventListener('click', modalCard);
-
-// buttonFavorite.addEventListener('click', modalCard);
+if (body.classList.contains('home-style')) {
+  button.addEventListener('click', modalCard);
+  buttonSearch.addEventListener('click', modalCard);
+}
+if (body.classList.contains('favorites-style')) {
+  buttonFavorite.addEventListener('click', favoriteDeleteCard);
+}
 
 async function modalCard(event) {
-  if (event.target.nodeName !== 'BUTTON') {
-    return;
-  }
+  // if (event.target.nodeName !== 'BUTTON') {
+  //   return;
+  // }
   const res = event.target.closest('li').id;
-  console.log(res);
+
   try {
     cardObj = await fetchImages(res);
     showModal();
     displayImages(cardObj);
     initRating();
+    disableScroll();
+    addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
     document.querySelectorAll('span').forEach(function (span) {
       span.textContent =
         span.textContent.charAt(0).toUpperCase() + span.textContent.slice(1);
     });
 
+    const modalClose = document.querySelector('.CloseModalIcon');
+
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         hideModal();
+        enableScroll();
       }
     });
     modalBackdrop.addEventListener('click', function (event) {
       if (event.target === modalBackdrop) {
         hideModal();
+        enableScroll();
       }
     });
     modalClose.addEventListener('click', function (event) {
       if (event.target === modalClose) {
         hideModal();
+        enableScroll();
       }
     });
+
     // addRemoveFavorites.addEventListener('submit', addFavorites);
-  } catch (error) {}
+  } finally {
+    // catch (error) { }
+  }
 }
 
 // function modalCloseFunc(event) {
@@ -129,6 +143,49 @@ function displayImages(cardObj) {
 //   toggleFavorite(cardObj);
 // }
 
+async function favoriteDeleteCard(event) {
+  const res = event.target.closest('li').id;
+
+  try {
+    cardObj = await fetchImages(res);
+    showModal();
+    displayImages(cardObj);
+    initRating();
+    disableScroll();
+    addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
+    document.querySelectorAll('span').forEach(function (span) {
+      span.textContent =
+        span.textContent.charAt(0).toUpperCase() + span.textContent.slice(1);
+    });
+
+    const modalClose = document.querySelector('.CloseModalIcon');
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        hideModal();
+        enableScroll();
+      }
+    });
+    modalBackdrop.addEventListener('click', function (event) {
+      if (event.target === modalBackdrop) {
+        hideModal();
+        enableScroll();
+      }
+    });
+    modalClose.addEventListener('click', function (event) {
+      if (event.target === modalClose) {
+        hideModal();
+        enableScroll();
+      }
+    });
+
+    // addRemoveFavorites.addEventListener('submit', addFavorites);
+  } finally {
+    // catch (error) { }
+  }
+  addRemoveFavorites.innerText = 'Remove from';
+}
+
 function showModal() {
   modalBackdrop.classList.add(openClass);
 }
@@ -150,4 +207,22 @@ function initRatingVars() {
 function setRatingActiveWidth(index = ratingValue.innerHTML) {
   const ratingActiveWidth = index / 0.05;
   ratingActive.style.width = `${ratingActiveWidth}%`;
+}
+
+function disableScroll() {
+  scrollPosition = window.scrollY;
+  const bodyStyle = window.getComputedStyle(document.body).overflow;
+
+  document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${scrollPosition}px`;
+}
+
+function enableScroll() {
+  document.body.style.overflow = '';
+  document.body.style.position = '';
+  document.body.style.top = '';
+
+  const scrollY = document.body.style.top;
+  window.scrollTo(0, scrollPosition);
 }

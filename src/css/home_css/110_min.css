@@ -1,4 +1,5 @@
 .DailyNormContainer {
+  padding-top: 20px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -67,6 +68,9 @@
   }
 }
 @media screen and (min-width: 768px) {
+  .DailyNormContainer {
+    padding-top: 16px;
+  }
   .DailyNormDiv {
     width: 736px;
   }

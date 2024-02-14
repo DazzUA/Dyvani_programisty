@@ -10,6 +10,7 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 @media screen and (min-resolution: 192dpi) and (max-width: 767px),
   screen and (min-resolution: 2dppx) and (max-width: 767px),
@@ -177,6 +178,7 @@
     border-radius: 50px;
     margin-top: 16px;
     background-image: url(/img/tablet/basament/women.footer.jpg);
+    margin-bottom: 16px;
   }
   .FootVibe {
     display: flex;

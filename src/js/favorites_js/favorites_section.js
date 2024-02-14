@@ -207,7 +207,7 @@ function handleFavoritesListClick(event) {
     event.target.classList.contains('favorites-icon-delete') ||
     event.target.classList.contains('favorites-icon-delete-use')
   ) {
-    const id = event.currentTarget.id;
+    const id = event.target.closest('li').id;
     deleteCard(id);
   }
 }
@@ -217,11 +217,11 @@ if (result === '/favorites.html') {
 }
 
 function deleteCard(id) {
-  const index = parsedItem.findIndex(item => item.id == id);
+  const index = parsedItem.findIndex(item => item._id == id);
   parsedItem.splice(index, 1);
   localStorage.setItem(storage, JSON.stringify(parsedItem));
   deleteCards.forEach(elem => {
-    if (elem.id == id) cardForDelete = elem;
+    if (elem._id == id) cardForDelete = elem;
   });
   if (cardForDelete) {
     favoritesList.removeChild(cardForDelete);
@@ -245,7 +245,7 @@ function renderFavoriteCards() {
 }
 
 function createFavoriteCardMarkup(elem) {
-  return `<li class="favorites-card favorites-list-item" id ='${elem.id}'>
+  return `<li class="favorites-card favorites-list-item" id ='${elem._id}'>
       <div class='favorites-card-header'>
         <div class='favorites-workout'>
           <p class='workout-p'>workout</p>
@@ -290,21 +290,20 @@ function createFavoriteCardMarkup(elem) {
 
 //**Ігорю на кнопку*/
 
-const favoritesButton = document.querySelector('.add-favorites');
-function toggleFavorite() {
-  if (favoritesButton.textContent.trim() == 'Add to favorites') {
-    parsedItem.push({
-      id: '64f389465ae26083f39b17df', //id
-      name: 'barbell one arm snatch', //name.textContent
-      target: 'cardiovascular', //target.textContent
-      time: '3', //time.textContent,
-      bodyPart: 'shoulders', //bodyPart.textContent
-      burnedCalories: '345', //burnedCalories.textContent
-    });
-    localStorage.setItem(storage, JSON.stringify(parsedItem));
-  }
+// const favoritesButton = document.querySelector('.add-favorites');
+function toggleFavorite(obj) {
+  parsedItem.push(obj);
+
+  // id: '64f389465ae26083f39b17df', //id
+  // name: 'barbell one arm snatch', //name.textContent
+  // target: 'cardiovascular', //target.textContent
+  // time: '3', //time.textContent,
+  // bodyPart: 'shoulders', //bodyPart.textContent
+  // burnedCalories: '345', //burnedCalories.textContent
+  // ();
+  localStorage.setItem(storage, JSON.stringify(parsedItem));
 }
 
-favoritesButton.addEventListener('click', toggleFavorite);
+// favoritesButton.addEventListener('click', toggleFavorite);
 
-export { toggleFavorite };
+export { toggleFavorite, deleteCard };

@@ -13,8 +13,9 @@ const openClass = 'IsOpen';
 let cardObj = {};
 let ratingActive, ratingValue;
 let addRemoveFavorites;
-let scrollPosition = 0;
+let scrollPosition;
 let textBtn;
+// const test = 'Add to favorites';
 
 if (body.classList.contains('home-style')) {
   button.addEventListener('click', modalCard);
@@ -43,9 +44,9 @@ async function modalCard(event) {
         span.textContent.charAt(0).toUpperCase() + span.textContent.slice(1);
     });
     addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
-    const textBtn = addRemoveFavorites.textContent;
+    textBtn = addRemoveFavorites.textContent;
 
-    addRemoveFavorites.addEventListener('click', addFavorites);
+    addRemoveFavorites.addEventListener('click', addRemoveFavoritesFunc);
     const modalClose = document.querySelector('.CloseModalIcon');
 
     document.addEventListener('keydown', function (event) {
@@ -72,17 +73,18 @@ async function modalCard(event) {
   }
 }
 
-// function addRemoveFavoritesFunc() {
-//   if (textBtn == 'Add to favorites') {
-//     toggleFavorite(cardObj);
-//     addRemoveFavorites.innerText = ' Remove from ';
-//   } else if (textBtn == 'Remove from') {
-//     deleteCard(cardObj._id);
-//     addRemoveFavorites.innerText = ' Add to favorites ';
-//   } else {
-//     console.log('fack');
-//   }
-// }
+function addRemoveFavoritesFunc() {
+  console.log(textBtn);
+  if (textBtn == 'Add to favorites') {
+    toggleFavorite(cardObj);
+    addRemoveFavorites.innerText = ' Remove from ';
+  } else if (textBtn == 'Remove from') {
+    deleteCard(cardObj._id);
+    addRemoveFavorites.innerText = ' Add to favorites ';
+  } else {
+    console.log('fack');
+  }
+}
 
 function addFavorites() {
   toggleFavorite(cardObj);
@@ -227,14 +229,16 @@ function setRatingActiveWidth(index = ratingValue.innerHTML) {
 
 function disableScroll() {
   scrollPosition = window.scrollY;
+  document.body.style.position = 'absolute';
+  document.body.style.width = '100%';
   document.body.style.overflow = 'hidden';
-  document.body.style.position = 'fixed';
   document.body.style.top = `-${scrollPosition}px`;
 }
 
 function enableScroll() {
   document.body.style.overflow = '';
   document.body.style.position = '';
+  document.body.style.width = '';
   document.body.style.top = '';
   window.scrollTo(0, scrollPosition);
 }

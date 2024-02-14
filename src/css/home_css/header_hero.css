@@ -178,7 +178,6 @@
 
 .mobil-button-menu-svg {
   fill: #7e847f;
-
   scale: 2;
 }
 @media screen and (min-width: 768px) {
@@ -662,4 +661,36 @@
 
 .mobile-fill-modal {
   fill: #f6f6f6;
+}
+
+/* -------------- */
+/* ------2x images------- */
+
+/* mobile */
+
+@media screen and (min-resolution: 192dpi) and (max-width: 767px),
+  screen and (min-resolution: 2dppx) and (max-width: 767px),
+  screen and (min-device-pixel-ratio: 2) and (max-width: 767px) {
+  .hero-bg-img {
+    background-image: url('/img/mob/hero/women.hero.mob@2x.png');
+  }
+}
+
+/* tablet */
+
+@media screen and (min-resolution: 192dpi) and (min-width: 768px),
+  screen and (min-resolution: 2dppx) and (min-width: 768px),
+  screen and (min-device-pixel-ratio: 2) and (min-width: 768px) {
+  .hero-bg-img {
+    background-image: url('/img/tablet/hero/women.full.tab@2x.png');
+  }
+}
+
+/* desktop */
+@media screen and (min-resolution: 192dpi) and (min-width: 1280px),
+  screen and (min-resolution: 2dppx) and (min-width: 1280px),
+  screen and (min-device-pixel-ratio: 2) and (min-width: 1280px) {
+  .hero-bg-img {
+    background-image: url('/img/desktop/hero/women.desk@2x.png');
+  }
 }

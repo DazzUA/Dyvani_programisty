@@ -1,5 +1,3 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
 import icons from '/img/symbol-defs.svg';
 // import { toggleFavorite } from './favorites_js/favorites_section';
@@ -26,17 +24,18 @@ if (body.classList.contains('favorites-style')) {
 }
 
 async function modalCard(event) {
-  // if (event.target.nodeName !== 'BUTTON') {
-  //   return;
-  // }
   const res = event.target.closest('li').id;
 
   try {
-    cardObj = await fetchImages(res);
-    showModal();
-    displayImages(cardObj);
-    initRating();
-    disableScroll();
+    if (event.target.nodeName !== 'BUTTON') {
+      return;
+    } else {
+      cardObj = await fetchImages(res);
+      showModal();
+      displayImages(cardObj);
+      initRating();
+      disableScroll();
+    }
     addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
     document.querySelectorAll('span').forEach(function (span) {
       span.textContent =
@@ -65,8 +64,8 @@ async function modalCard(event) {
     });
 
     // addRemoveFavorites.addEventListener('submit', addFavorites);
+  } catch (error) {
   } finally {
-    // catch (error) { }
   }
 }
 
@@ -130,9 +129,9 @@ function displayImages(cardObj) {
             <use href="${icons}#icon-vector"></use>
           </svg>
   <p class="Description">${cardObj.description}</p>
-  <button class="AddRemoveFavorites" type="button">Add to favorites</svg><svg class="HeartModalIcon" width="18" height="18">
+  <button class="AddRemoveFavorites" type="button">Add to favorites<svg class="HeartModalIcon" width="18" height="18">
             <use href="${icons}#icon-heart"></use>
-          </svg></button>
+          </svg>   </button>
           </div>
   </div>
   </div> `;
@@ -147,11 +146,15 @@ async function favoriteDeleteCard(event) {
   const res = event.target.closest('li').id;
 
   try {
-    cardObj = await fetchImages(res);
-    showModal();
-    displayImages(cardObj);
-    initRating();
-    disableScroll();
+    if (event.target.nodeName !== 'BUTTON') {
+      return;
+    } else {
+      cardObj = await fetchImages(res);
+      showModal();
+      displayImages(cardObj);
+      initRating();
+      disableScroll();
+    }
     addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
     document.querySelectorAll('span').forEach(function (span) {
       span.textContent =
@@ -159,7 +162,7 @@ async function favoriteDeleteCard(event) {
     });
 
     const modalClose = document.querySelector('.CloseModalIcon');
-
+    addRemoveFavorites.innerText = ' Remove from ';
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         hideModal();
@@ -180,10 +183,9 @@ async function favoriteDeleteCard(event) {
     });
 
     // addRemoveFavorites.addEventListener('submit', addFavorites);
+  } catch (error) {
   } finally {
-    // catch (error) { }
   }
-  addRemoveFavorites.innerText = 'Remove from';
 }
 
 function showModal() {
@@ -211,8 +213,7 @@ function setRatingActiveWidth(index = ratingValue.innerHTML) {
 
 function disableScroll() {
   scrollPosition = window.scrollY;
-  const bodyStyle = window.getComputedStyle(document.body).overflow;
-
+  // const bodyStyle = window.getComputedStyle(document.body).overflow;
   document.body.style.overflow = 'hidden';
   document.body.style.position = 'fixed';
   document.body.style.top = `-${scrollPosition}px`;
@@ -222,7 +223,5 @@ function enableScroll() {
   document.body.style.overflow = '';
   document.body.style.position = '';
   document.body.style.top = '';
-
-  const scrollY = document.body.style.top;
   window.scrollTo(0, scrollPosition);
 }

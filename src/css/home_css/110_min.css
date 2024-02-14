@@ -1,9 +1,9 @@
-.DailyNormContainer {
+.daily-norm-container {
   padding-top: 20px;
   margin-left: auto;
   margin-right: auto;
 }
-.DailyNormBackgroundImage {
+.daily-norm-background-image {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11,20 +11,20 @@
   height: 269px;
   background-image: url(/img/mob/basement/women.bas.mob.png);
 }
-.H4Text {
+.h4-text {
   font-weight: 500;
   font-size: 24px;
   text-align: left;
   margin-bottom: 2px;
 }
-.DailyNormDiv {
+.daily-norm-div {
   display: flex;
   border-radius: 30px;
   background: rgb(27, 27, 27);
   color: rgba(246, 246, 246, 0.6);
   width: 100%;
 }
-.DailyNormIcon {
+.daily-norm-icon {
   position: absolute;
   width: 32px;
   height: 32px;
@@ -36,13 +36,13 @@
   margin-top: 40px;
   margin-left: 20px;
 }
-.DailyNormSvg {
+.daily-norm-svg {
   fill: rgb(246, 246, 246);
 }
-.DailyNormDivInfo {
+.daily-norm-div-info {
   margin: 40px 20px 40px 70px;
 }
-.DailyNormInfo {
+.daily-norm-info {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -53,62 +53,62 @@
 
 /*media*/
 @media only screen and (min-resolution: 192dpi) and (min-width: 375px) {
-  .DailyNormBackgroundImage {
+  .daily-norm-background-image {
     background-image: url(/img/mob/basement/women.bas.mob@2x.png);
   }
 }
 @media screen and (min-width: 375px) {
-  .DailyNormDiv {
+  .daily-norm-div {
     width: 335px;
   }
 }
 @media only screen and (min-resolution: 192dpi) and (min-width: 768px) {
-  .DailyNormBackgroundImage {
+  .daily-norm-background-image {
     background-image: url(/img/tablet/basament/women.bas.tab@2x.png);
   }
 }
 @media screen and (min-width: 768px) {
-  .DailyNormContainer {
+  .daily-norm-container {
     padding-top: 16px;
   }
-  .DailyNormDiv {
+  .daily-norm-div {
     width: 736px;
   }
-  .DailyNormBackgroundImage {
+  .daily-norm-background-image {
     max-width: 736px;
     height: 302px;
     background-image: url(/img/tablet/basament/women.bas.tab.png);
   }
-  .DailyNormIcon {
+  .daily-norm-icon {
     margin-top: 65px;
     margin-left: 64px;
   }
-  .DailyNormInfo {
+  .daily-norm-info {
     margin-top: 25px;
   }
-  .DailyNormDivInfo {
+  .daily-norm-div-info {
     margin: 64px 96px 64px 114px;
   }
 }
 @media only screen and (min-resolution: 192dpi) and (min-width: 1440px) {
-  .DailyNormBackgroundImage {
+  .daily-norm-background-image {
     background-image: url(/img/desktop/basament/women.bas@2x.png);
   }
 }
 @media screen and (min-width: 1440px) {
-  .DailyNormContainer {
+  .daily-norm-container {
     display: flex;
   }
 
-  .DailyNormDiv {
+  .daily-norm-div {
     width: 704px;
   }
-  .DailyNormBackgroundImage {
+  .daily-norm-background-image {
     width: 704px;
     height: 302px;
     background-image: url(/img/desktop/basament/women.bas.png);
   }
-  .DailyNormDivInfo {
+  .daily-norm-div-info {
     margin-right: 64px;
   }
 }

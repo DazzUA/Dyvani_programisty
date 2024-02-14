@@ -5,6 +5,8 @@ const filterButtons = document.querySelector('.FilterButtons');
 const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
 const pagination = document.querySelector('.Pagination');
 const form = document.querySelector('.ExercisesForm');
+const Exercises = document.querySelector('.Exercises ');
+
 const ExerciseFiltersListSubcategories = document.querySelector(
   '.ExerciseFiltersListSubcategories'
 );
@@ -94,14 +96,11 @@ async function filterBtnClick(event) {
   const qwer = filterValue.dataset.filter;
   filterValueDefault = qwer;
   exerciseFiltersList.innerHTML = '';
+  const prevBtn = Exercises.querySelector('.ButtonIsActive');
+  const nextBtn = event.target;
+  prevBtn.classList.remove('ButtonIsActive');
+  nextBtn.classList.add('ButtonIsActive');
 
-  Array.from(event.target.children).map(item => {
-    if (item.textContent !== event.target.textContent) {
-      item.classList.remove('ButtonIsActive');
-    } else {
-      event.target.classList.add('ButtonIsActive');
-    }
-  });
   if (event.target.tagName !== 'BUTTON') {
     return;
   }

@@ -80,7 +80,8 @@
     .quote-favorites-one {
         border-radius: 30px;
         width: 335px;
-        height: 272px;
+        min-height: 272px;
+        height: auto;
         background: #7e847f;
         padding-left: 20px;
         padding-right: 20px;

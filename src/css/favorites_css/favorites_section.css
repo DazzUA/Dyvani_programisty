@@ -12,7 +12,14 @@
   background-color: #e8e8e8;
   color: #1b1b1b;
   margin: auto;
-  margin-top: 20px;
+}
+
+.favorites-section {
+  width: 335px;
+  border-radius: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: rgb(232, 232, 232);
 }
 
 .favorites-title {
@@ -109,7 +116,6 @@
     height: 928px;
     border-radius: 50px;
     margin: auto;
-    margin-top: 16px;
   }
 
   .favorites-title {
@@ -165,43 +171,50 @@
 }
 
 /*List Card*/
-
 .favorites-list {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  column-gap: 14px;
+  margin-bottom: 32px;
 }
 
 .favorites-list-item {
-  width: 295px;
-  height: 165px;
-  border-radius: 15px;
-  background: #fff;
-  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 20px;
 }
 
+.favorites-card {
+  flex-basis: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  padding: 16px;
+  height: 185px;
+}
 .favorites-card-header {
-  display: inline-block;
-  padding-bottom: 27px;
+  display: flex;
+  margin-bottom: 29px;
+  justify-content: space-between;
 }
 
 .favorites-workout {
-  display: inline-block;
-  width: 75px;
-  height: 25px;
-  background-color: #7e847f;
-  border-radius: 15px;
+  display: flex;
 }
 
-.favorites-workout p {
+.workout-p {
   border-radius: 15px;
+  background-color: #7e847f;
   padding: 5px 8px;
   text-transform: uppercase;
   color: #f6f6f6;
-  font-family: DM Sans, sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: normal;
@@ -220,29 +233,28 @@
 }
 
 .favorites-btn-arrow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
   color: #1b1b1b;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.28;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  stroke: #1b1b1b;
+  fill: white;
   border: none;
-  padding: 0;
-  background: none;
-  margin-left: 100px;
-}
-
-.favorites-icon-arrow {
-  display: inline-block;
-  margin-left: 8px;
+  margin-left: 50px;
+  background-color: transparent;
 }
 
 .favorites-main-container {
   display: flex;
+  margin-bottom: 12px;
   align-items: center;
   gap: 16px;
-  padding-bottom: 18px;
 }
 
-.favorite-icon-run-man {
+.favorites-icon-run-man {
   width: 24px;
   height: 24px;
   fill: #f6f6f6;
@@ -256,13 +268,9 @@
 
 .favorites-name-part {
   color: #1b1b1b;
-  font-feature-settings: 'clig' off, 'liga' off;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.33;
 }
 
 .favorites-name-part::first-letter {
@@ -270,220 +278,58 @@
 }
 
 .favorites-card-footer-list {
-  padding: 0;
-}
-
-.favorites-card-footer-item {
   display: flex;
+  gap: 7px;
   flex-wrap: wrap;
-  column-gap: 16px;
-  row-gap: 6px;
-  font-size: 12px;
-  white-space: nowrap;
-}
-
-.favorites-card-footer-wrapper {
-  display: flex;
-  gap: 4px;
-  font-size: 12px;
 }
 
 .favorites-card-footer-title {
   color: rgba(27, 27, 27, 0.4);
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: 'DM Sans', sans-serif;
   font-size: 12px;
-  font-weight: 400;
-  /*line-height: 1.5;*/
-  margin-right: 4px;
-  margin: 0;
+  line-height: 1.5;
 }
-
-.favorites-card-footer-block {
+.favorites-footer-text-value {
   color: #1b1b1b;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: 'DM Sans', sans-serif;
   font-size: 12px;
-  font-weight: 400;
-  /*line-height: 1.5;*/
-  margin: 0;
+  line-height: 1.5;
   text-transform: capitalize;
 }
-
 /*List Card Tablet*/
 @media (min-width: 768px) {
-  .favorites-list {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    column-gap: 14px;
-    row-gap: 20px;
-    max-height: 720px;
-    padding-left: 48px;
-  }
-
-  .favorites-list-item {
-    height: 166px;
-    width: 313px;
+  .favorites-card {
+    flex-basis: calc((100% - 14px) / 2);
+    background-color: rgb(255, 255, 255);
     border-radius: 15px;
-    background: #fff;
     padding: 16px;
-  }
-
-  .favorites-list-item:hover,
-  .favorites-list-item:focus {
-    transform: scale(0.95);
-    transition: transform 0.25s var(--transition-animation);
-  }
-
-  .favorites-card-header {
-    margin-bottom: 0;
-    padding-bottom: 25px;
-  }
-  .favorites-btn-trash {
-    display: inline-block;
-    stroke: #1b1b1b;
-    margin-left: 5px;
-    border: none;
-    padding: 0;
-    background: none;
-    box-sizing: border-box;
-    vertical-align: middle;
-  }
-
-  .favorites-btn-trash:hover,
-  .favorites-btn-trash:focus {
-    transform: scale(0.95);
-    transition: transform 0.25s var(--transition-animation);
-  }
-
-  .favorites-btn-arrow {
-    color: #1b1b1b;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.28;
-    border: none;
-    border-radius: 8px;
-    padding: 2px 8px;
-    background: none;
-    margin-left: 100px;
-    transition: box-shadow 250ms ease-in-out;
-  }
-
-  .favorites-btn-arrow:hover,
-  .favorites-btn-arrow:focus {
-    transform: scale(1.1);
-    transition: transform 0.25s var(--transition-animation);
-    box-shadow: 4px 4px 8px 4px #61646232;
-  }
-
-  .favorites-icon-arrow {
-    display: inline-block;
-    margin-left: 8px;
-  }
-
-  .favorites-main-container {
-    display: flex;
-    align-items: center;
-
-    margin: 0;
-  }
-
-  .favorite-icon-man {
-    margin-right: 16px;
+    height: 185px;
   }
 
   .favorites-name-part {
     color: #1b1b1b;
-    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: 'DM Sans', sans-serif;
     font-size: 20px;
-    font-weight: 400;
-    line-height: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .favorites-card-footer {
-    margin-top: 18px;
-  }
-
-  .favorites-card-footer-list {
-    padding: 0;
-  }
-
-  .favorites-card-footer-item {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 16px;
-    row-gap: 8px;
-    white-space: nowrap;
-  }
-
-  .favorites-card-footer-title {
-    color: rgba(27, 27, 27, 0.4);
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.5;
-    margin-right: 4px;
-    margin: 0;
-  }
-
-  .favorites-card-footer-block {
-    color: #1b1b1b;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.5;
-    margin: 0;
-    text-transform: capitalize;
+    line-height: 1.33;
   }
 }
 
 /*List Card Desktop*/
 @media (min-width: 1440px) {
-  .favorites-list {
-    column-gap: 20px;
-    row-gap: 28px;
-    overflow-y: auto;
+  .favorites-card {
+    flex-basis: calc((100% - 40px) / 3);
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 16px;
+    height: 185px;
   }
 
   .favorites-list-item {
-    display: flex;
-    width: 424px;
-    height: 141px;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 32px;
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-  .favorites-card-header {
-    display: flex;
-    align-items: center;
-
-    padding-top: 0;
+    flex-direction: column;
+    column-gap: 20px;
   }
 
-  .favorites-btn-arrow {
-    margin-left: 231px;
-  }
-  .favorites-card-footer-list {
-    display: flex;
-    gap: 8px;
-  }
-
-  .favorites-card-footer {
-    margin-top: 8px;
-    margin-bottom: 16px;
-  }
-  .favorites-card-footer-block {
-    white-space: nowrap; /* Запобігає переносу тексту на новий рядок */
-    overflow: hidden; /* Приховує зайвий текст */
-    text-overflow: ellipsis;
-  }
-  .favorites-card-footer-item {
-    row-gap: 0;
+  .favorites-main-container {
+    margin-bottom: 24px;
   }
 }

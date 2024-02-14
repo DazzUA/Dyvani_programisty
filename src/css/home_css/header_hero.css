@@ -1,3 +1,12 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .header-main {
   position: absolute;
   left: 0;
@@ -359,6 +368,10 @@
   background: #fff;
   padding: 60px 20px 20px;
 }
+.hero-text-main,
+.hero-text {
+  animation: fadeIn 2s ease-in 1;
+}
 @media screen and (min-width: 768px) {
   .hero-container {
     width: 448px;
@@ -447,6 +460,7 @@
   line-height: 1.29;
   letter-spacing: -0.14px;
 }
+
 @media screen and (min-width: 768px) {
   .hero-text {
     font-size: 18px;

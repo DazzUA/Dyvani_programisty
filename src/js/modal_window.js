@@ -1,8 +1,6 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
 import icons from '/img/symbol-defs.svg';
-// import { toggleFavorite } from './favorites_js/favorites_section';
+import { toggleFavorite, deleteCard } from './favorites_js/favorites_section';
 
 const modalBackdrop = document.querySelector('.Backdrop');
 const card = document.querySelector('.Modal');
@@ -16,6 +14,7 @@ let cardObj = {};
 let ratingActive, ratingValue;
 let addRemoveFavorites;
 let scrollPosition = 0;
+let textBtn;
 
 if (body.classList.contains('home-style')) {
   button.addEventListener('click', modalCard);
@@ -26,23 +25,27 @@ if (body.classList.contains('favorites-style')) {
 }
 
 async function modalCard(event) {
-  // if (event.target.nodeName !== 'BUTTON') {
-  //   return;
-  // }
   const res = event.target.closest('li').id;
 
   try {
-    cardObj = await fetchImages(res);
-    showModal();
-    displayImages(cardObj);
-    initRating();
-    disableScroll();
-    addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
+    if (event.target.nodeName !== 'BUTTON') {
+      return;
+    } else {
+      cardObj = await fetchImages(res);
+      showModal();
+      displayImages(cardObj);
+      initRating();
+      disableScroll();
+    }
+
     document.querySelectorAll('span').forEach(function (span) {
       span.textContent =
         span.textContent.charAt(0).toUpperCase() + span.textContent.slice(1);
     });
+    addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
+    const textBtn = addRemoveFavorites.textContent;
 
+    addRemoveFavorites.addEventListener('click', addFavorites);
     const modalClose = document.querySelector('.CloseModalIcon');
 
     document.addEventListener('keydown', function (event) {
@@ -63,24 +66,34 @@ async function modalCard(event) {
         enableScroll();
       }
     });
-
-    // addRemoveFavorites.addEventListener('submit', addFavorites);
   } finally {
-    // catch (error) { }
+    // catch (error) {
+    // }
   }
 }
 
-// function modalCloseFunc(event) {
-//   if (
-//     event.currentTarget === modalClose ||
-//     event.key === 'Escape' ||
-//     event.target === modalBackdrop
-//   ) {
-//     hideModal();
-//     modalClose.addEventListener('click', hideModal);
-//     document.addEventListener('keydown', hideModal);
+// function addRemoveFavoritesFunc() {
+//   if (textBtn == 'Add to favorites') {
+//     toggleFavorite(cardObj);
+//     addRemoveFavorites.innerText = ' Remove from ';
+//   } else if (textBtn == 'Remove from') {
+//     deleteCard(cardObj._id);
+//     addRemoveFavorites.innerText = ' Add to favorites ';
+//   } else {
+//     console.log('fack');
 //   }
 // }
+
+function addFavorites() {
+  toggleFavorite(cardObj);
+  addRemoveFavorites.innerText = ' Remove from ';
+}
+
+function removeFavorites() {
+  deleteCard(cardObj._id);
+  console.log(cardObj._id);
+  addRemoveFavorites.innerText = ' Add to favorites ';
+}
 
 async function fetchImages(id) {
   const url = `https://energyflow.b.goit.study/api/exercises/${id}`;
@@ -130,36 +143,41 @@ function displayImages(cardObj) {
             <use href="${icons}#icon-vector"></use>
           </svg>
   <p class="Description">${cardObj.description}</p>
-  <button class="AddRemoveFavorites" type="button">Add to favorites</svg><svg class="HeartModalIcon" width="18" height="18">
+  <button class="AddRemoveFavorites" type="button">Add to favorites
+  <svg class="HeartModalIcon" width="18" height="18">
             <use href="${icons}#icon-heart"></use>
-          </svg></button>
+          </svg>   
+          </button>
           </div>
   </div>
   </div> `;
   modalBackdrop.innerHTML = markup;
 }
 
-// function addFavorites() {
-//   toggleFavorite(cardObj);
-// }
-
 async function favoriteDeleteCard(event) {
   const res = event.target.closest('li').id;
 
   try {
-    cardObj = await fetchImages(res);
-    showModal();
-    displayImages(cardObj);
-    initRating();
-    disableScroll();
-    addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
+    if (event.target.nodeName !== 'BUTTON') {
+      return;
+    } else {
+      cardObj = await fetchImages(res);
+      showModal();
+      displayImages(cardObj);
+      initRating();
+      disableScroll();
+    }
+
     document.querySelectorAll('span').forEach(function (span) {
       span.textContent =
         span.textContent.charAt(0).toUpperCase() + span.textContent.slice(1);
     });
 
-    const modalClose = document.querySelector('.CloseModalIcon');
+    addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
+    addRemoveFavorites.addEventListener('click', removeFavorites);
 
+    const modalClose = document.querySelector('.CloseModalIcon');
+    addRemoveFavorites.innerText = ' Remove from ';
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         hideModal();
@@ -178,12 +196,10 @@ async function favoriteDeleteCard(event) {
         enableScroll();
       }
     });
-
-    // addRemoveFavorites.addEventListener('submit', addFavorites);
   } finally {
-    // catch (error) { }
+    // catch (error) {
+    // }
   }
-  addRemoveFavorites.innerText = 'Remove from';
 }
 
 function showModal() {
@@ -211,8 +227,6 @@ function setRatingActiveWidth(index = ratingValue.innerHTML) {
 
 function disableScroll() {
   scrollPosition = window.scrollY;
-  const bodyStyle = window.getComputedStyle(document.body).overflow;
-
   document.body.style.overflow = 'hidden';
   document.body.style.position = 'fixed';
   document.body.style.top = `-${scrollPosition}px`;
@@ -222,7 +236,5 @@ function enableScroll() {
   document.body.style.overflow = '';
   document.body.style.position = '';
   document.body.style.top = '';
-
-  const scrollY = document.body.style.top;
   window.scrollTo(0, scrollPosition);
 }

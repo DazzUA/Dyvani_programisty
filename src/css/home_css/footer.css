@@ -1,4 +1,4 @@
-.FooterSection {
+.footer-section {
   width: 335px;
   padding: 40px 20px 20px;
   border-radius: 30px;
@@ -15,12 +15,12 @@
 @media screen and (min-resolution: 192dpi) and (max-width: 767px),
   screen and (min-resolution: 2dppx) and (max-width: 767px),
   screen and (min-device-pixel-ratio: 2) and (max-width: 767px) {
-  .FooterSection {
+  .footer-section {
     background-image: url(/img/mob/basement/women.footer@2x.jpg);
   }
 }
 
-.FootLogo {
+.foot-logo {
   color: var(--light-grey-color);
   font-weight: 700;
   font-size: 16px;
@@ -29,7 +29,7 @@
   text-align: left;
 }
 
-.FooterH {
+.footer-h {
   font-weight: 400;
   font-size: 32px;
   line-height: 1;
@@ -42,14 +42,14 @@
   height: 64px;
 }
 
-.FooterUl {
+.footer-ul {
   display: flex;
   gap: 12px;
   margin-top: 9px;
   margin-bottom: 40px;
 }
 
-.FooterP {
+.footer-p {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.3;
@@ -57,26 +57,20 @@
   margin-bottom: 20px;
 }
 
-.FooterSocialList {
+.footer-social-list {
   box-sizing: border-box;
   border: 1px solid rgba(246, 246, 246, 0.2);
   padding: 8px;
   border-radius: 10px;
 }
-.FooterSocialList:hover,
-.FooterSocialList:focus {
+.footer-social-list:hover,
+.footer-social-list:focus {
   border: 1px solid rgb(95, 101, 96);
   animation: pulse 1s infinite;
   transition: 0.3s;
 }
-.footer-link:hover,
-.footer-link:focus {
-  animation: pulse 1s infinite;
-  transition: 0.3s;
-  color: #7e847f;
-}
 
-.FormInput {
+.form-input {
   width: 295px;
   height: 42px;
   border-radius: 30px;
@@ -88,19 +82,19 @@
   outline: none;
   background-color: transparent;
 }
-.FormInput:hover,
-.FormInput:focus {
+.form-input:hover,
+.form-input:focus {
   border: 1px solid var(--light-grey-color);
 }
-.FormInput::placeholder {
+.form-input::placeholder {
   color: rgba(246, 246, 246, 0.6);
 }
 
-.FormInput[type='email'] {
+.form-input[type='email'] {
   color: var(--light-grey-color);
 }
 
-.FooterSvg {
+.footer-svg {
   fill: var(--light-grey-color);
   display: block;
   align-items: center;
@@ -109,12 +103,12 @@
   height: 20px;
 }
 
-.FooterSvg:hover,
-.FooterSvg:focus {
+.footer-svg:hover,
+.footer-svg:focus {
   fill: rgb(95, 101, 96);
 }
 
-.ModalButton {
+.modal-button {
   width: 295px;
   height: 42px;
   color: #fff;
@@ -127,14 +121,14 @@
   margin-bottom: 60px;
   transition: background-color 700ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.ModalButton:hover,
-.ModalButton:focus {
+.modal-button:hover,
+.modal-button:focus {
   background: rgb(95, 101, 96);
   transform: scale(1.03);
   transition: 0.8s;
 }
 
-.FooterPrivacy {
+.footer-privacy {
   color: #f6f6f6;
   font-size: 12px;
   font-weight: 400;
@@ -157,8 +151,8 @@
   line-height: 0.83;
   letter-spacing: -0.02em;
 }
-.FooterPolice:hover,
-.FooterPolice:focus {
+.footer-police:hover,
+.footer-police:focus {
   animation: pulse 1s infinite;
   transition: 0.3s;
   color: #7e847f;
@@ -170,7 +164,7 @@
 
 /* tablet */
 @media screen and (min-width: 768px) {
-  .FooterSection {
+  .footer-section {
     width: 736px;
     padding: 64px 48px 32px;
     border: none;
@@ -180,14 +174,14 @@
     background-image: url(/img/tablet/basament/women.footer.jpg);
     margin-bottom: 16px;
   }
-  .FootVibe {
+  .foot-vibe {
     display: flex;
     gap: 139px;
   }
-  .FootLogo {
+  .foot-logo {
     font-size: 28px;
   }
-  .FooterH {
+  .footer-h {
     font-size: 54px;
     line-height: 0.96;
     letter-spacing: -0.02em;
@@ -196,28 +190,28 @@
 
     height: 150px;
   }
-  .FooterUl {
+  .footer-ul {
     margin-top: 30px;
   }
-  .FooterP {
+  .footer-p {
     font-size: 18px;
     width: 100%;
   }
-  .FormInput {
+  .form-input {
     width: 352px;
     height: 48px;
   }
-  .FooterSvg {
+  .footer-svg {
     width: 28px;
     height: 28px;
   }
-  .ModalButton {
+  .modal-button {
     margin-bottom: 120px;
     max-width: 352px;
     width: 100%;
     height: 48px;
   }
-  .FooterText {
+  .footer-text {
     display: flex;
     gap: 32px;
     justify-content: center;
@@ -228,50 +222,50 @@
 @media screen and (min-resolution: 192dpi) and (min-width: 768px),
   screen and (min-resolution: 2dppx) and (min-width: 768px),
   screen and (min-device-pixel-ratio: 2) and (min-width: 768px) {
-  .FooterSection {
+  .footer-section {
     background-image: url(/img/tablet/basament/women.footer@2x.jpg);
   }
 }
 /* desktop */
 @media screen and (min-width: 1440px) {
-  .FooterSection {
+  .footer-section {
     width: 1408px;
 
     padding: 64px 48px 26px;
     position: relative;
     background-image: url(/img/desktop/basament/women.footer.jpg);
   }
-  .FootVibe {
+  .foot-vibe {
     display: flex;
   }
-  .FooterForm {
+  .footer-form {
     width: 352px;
   }
-  .FooterH {
+  .footer-h {
     width: 488px;
     height: 186px;
     font-size: 64px;
   }
-  .FooterSlogo {
+  .footer-slogo {
     display: flex;
     gap: 160px;
   }
-  .ModalButton {
+  .modal-button {
     margin-bottom: 186px;
   }
-  .FooterP {
+  .footer-p {
     width: 100%;
     font-size: 18px;
     line-height: 1.33;
   }
-  .FooterText {
+  .footer-text {
     display: flex;
     position: absolute;
     bottom: 32px;
     left: 50%;
     transform: translate(-50%, 50%);
   }
-  .FooterPrivacy {
+  .footer-privacy {
     font-size: 14px;
     line-height: 1.28;
   }
@@ -289,15 +283,15 @@
   }
 }
 
-@media screen and (min-resolution: 192dpi) and (min-width: 1280px),
-  screen and (min-resolution: 2dppx) and (min-width: 1280px),
-  screen and (min-device-pixel-ratio: 2) and (min-width: 1280px) {
-  .FooterSection {
+@media screen and (min-resolution: 192dpi) and (min-width: 1440px),
+  screen and (min-resolution: 2dppx) and (min-width: 1440px),
+  screen and (min-device-pixel-ratio: 2) and (min-width: 1440px) {
+  .footer-section {
     background-image: url(/img/desktop/basament/women.footer@2x.jpg);
   }
 }
 /* loader */
-.lodDiv {
+/* .lodDiv {
   display: flex;
   justify-content: center;
 }
@@ -322,9 +316,9 @@
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 /* scroll up */
-.ScrollUp {
+.scroll-up {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -340,14 +334,14 @@
   opacity: 0.7;
 }
 
-.ScrollUp:hover,
-.ScrollUp:focus {
+.scroll-up:hover,
+.scroll-up:focus {
   transition: 0.3s;
   animation: pulse 1s infinite;
   opacity: 0.9;
 }
 
-.ScrollUpButton {
+.scroll-up-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -361,7 +355,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .ScrollUp {
+  .scroll-up {
     transition: opacity 700ms;
     width: 50px;
     height: 50px;
@@ -378,7 +372,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .ScrollUp {
+  .scroll-up {
     width: 100px;
     height: 100px;
   }

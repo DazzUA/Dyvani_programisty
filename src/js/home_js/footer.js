@@ -4,9 +4,9 @@ import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
 
 const refs = {
-  form: document.querySelector('.FooterForm'),
-  input: document.querySelector('.FormInput'),
-  submit: document.querySelector('.ModalButton'),
+  form: document.querySelector('.footer-form'),
+  input: document.querySelector('.form-input'),
+  submit: document.querySelector('.modal-button'),
 };
 const BASE_URL = 'https://energyflow.b.goit.study/api/subscription';
 const localStorageKey = 'feedback-form-state';
@@ -58,7 +58,7 @@ function createMessage(message) {
 //   filterButtons.disabled = state;
 // }
 // scroll up
-const buttonBackToTopEl = document.querySelector('.ScrollUp');
+const buttonBackToTopEl = document.querySelector('.scroll-up');
 
 buttonBackToTopEl.addEventListener('click', async () => {
   await scrollToTop();

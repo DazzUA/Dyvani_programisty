@@ -112,15 +112,19 @@
   display: flex;
   padding: 8px;
   align-items: center;
+
   gap: 8px;
   border-radius: 10px;
   border: 1px solid rgba(126, 132, 127, 0.2);
 }
 @media screen and (min-width: 768px) {
   .mobile-icons-list {
+    width: 44px;
+    height: 44px;
     display: flex;
     padding: 8px;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     border-radius: 10px;
     border: 1px solid rgba(126, 132, 127, 0.2);
@@ -131,16 +135,20 @@
     display: flex;
     padding: 8px;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     border-radius: 10px;
     border: 1px solid rgba(126, 132, 127, 0.2);
   }
 }
+
 .mobile-fill {
   fill: #7e847f;
 }
 @media screen and (min-width: 768px) {
   .mobile-fill {
+    width: 28px;
+    height: 28px;
     fill: #7e847f;
   }
 }
@@ -148,6 +156,10 @@
   .mobile-fill {
     fill: #7e847f;
   }
+}
+.mobile-fill:hover,
+.mobile-fill:focus {
+  fill: #5f6560;
 }
 .mobil-button-menu {
   background-color: #e8e8e8;
@@ -317,6 +329,12 @@
 /* -----------new code */
 
 .hero-section {
+  margin-top: 20px;
+}
+@media screen and (min-width: 768px) {
+  .hero-section {
+    margin-top: 16px;
+  }
 }
 
 .hero-photo {

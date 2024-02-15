@@ -307,6 +307,16 @@ function toggleFavorite(obj) {
   }
 }
 
-// favoritesButton.addEventListener('click', toggleFavorite);
+function deleteLocalStorageId(id) {
+  const index = parsedItem.findIndex(item => item._id == id);
+  parsedItem.splice(index, 1);
+  localStorage.setItem(storage, JSON.stringify(parsedItem));
+  deleteCards.forEach(elem => {
+    if (elem._id == id) cardForDelete = elem;
+  });
+  if (cardForDelete) {
+    favoritesList.removeChild(cardForDelete);
+  }
+}
 
-export { toggleFavorite, deleteCard };
+export { toggleFavorite, deleteCard, deleteLocalStorageId };

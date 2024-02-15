@@ -1,6 +1,10 @@
 import axios from 'axios';
 import icons from '/img/symbol-defs.svg';
-import { toggleFavorite, deleteCard } from './favorites_js/favorites_section';
+import {
+  toggleFavorite,
+  deleteCard,
+  deleteLocalStorageId,
+} from './favorites_js/favorites_section';
 
 const modalBackdrop = document.querySelector('.Backdrop');
 const card = document.querySelector('.Modal');
@@ -88,7 +92,7 @@ function addRemoveFavoritesFunc() {
     addRemoveFavorites.textContent = ' Add to favorites ';
     textBtn = addRemoveFavorites.textContent;
     console.log(cardObj._id);
-    deleteCard(cardObj._id);
+    deleteLocalStorageId(cardObj._id);
   }
 }
 
@@ -184,7 +188,7 @@ async function favoriteDeleteCard(event) {
     addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
     addRemoveFavorites.textContent = ' Remove from ';
     textBtn = addRemoveFavorites.textContent;
-    addRemoveFavorites.addEventListener('click', addRemoveFavoritesFunc);
+    addRemoveFavorites.addEventListener('click', removeFavoritesFunc);
 
     const modalClose = document.querySelector('.CloseModalIcon');
 
@@ -209,6 +213,22 @@ async function favoriteDeleteCard(event) {
   } finally {
     // catch (error) {
     // }
+  }
+}
+
+function removeFavoritesFunc() {
+  console.log(textBtn);
+  if (textBtn.trim().toLowerCase() == 'add to favorites') {
+    console.log('add');
+    addRemoveFavorites.textContent = ' Remove from ';
+    textBtn = addRemoveFavorites.textContent;
+    toggleFavorite(cardObj);
+  } else if (textBtn.trim().toLowerCase() == 'remove from') {
+    console.log('remove');
+    addRemoveFavorites.textContent = ' Add to favorites ';
+    textBtn = addRemoveFavorites.textContent;
+    console.log(cardObj._id);
+    deleteCard(cardObj._id);
   }
 }
 

@@ -6,16 +6,16 @@ import { markupExercises } from './exercises_filters';
 import { onScroll } from './exercises_filters';
 import icons from '/img/symbol-defs.svg';
 
-const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
-const ExercisesHead = document.querySelector('.ExercisesHead');
-const pagination = document.querySelector('.Pagination');
-const PaginationSubcategories = document.querySelector(
-  '.PaginationSubcategories'
+const exerciseFiltersList = document.querySelector('.exercise-filters-list');
+const exercisesHead = document.querySelector('.exercises-head');
+const pagination = document.querySelector('.pagination');
+const paginationSubcategories = document.querySelector(
+  '.pagination-subcategories'
 );
-const ExerciseFiltersListSubcategories = document.querySelector(
-  '.ExerciseFiltersListSubcategories'
+const exerciseFiltersListSubcategories = document.querySelector(
+  '.exercise-filters-list-subcategories'
 );
-const form = document.querySelector('.ExercisesForm');
+const form = document.querySelector('.exercises-form');
 
 const BASE_URL = 'https://energyflow.b.goit.study/api';
 let currentPage = 1;
@@ -28,14 +28,14 @@ async function onCardClick(event) {
   form.classList.remove('visually-hidden');
   pagination.innerHTML = '';
   exerciseFiltersList.classList.add('visually-hidden');
-  ExerciseFiltersListSubcategories.classList.remove('visually-hidden');
+  exerciseFiltersListSubcategories.classList.remove('visually-hidden');
 
   pagination.removeEventListener('click', onPaginationPagesbyFilter);
   if (event.target === event.currentTarget) {
     return;
   }
 
-  const liEl = event.target.closest('.ExercisesItem'); // при кліку на картку шукаємо найближчий елемент у якого буде заданий селектор (це li)
+  const liEl = event.target.closest('.exercises-item'); // при кліку на картку шукаємо найближчий елемент у якого буде заданий селектор (це li)
   const { filter, name } = liEl.dataset;
 
   filterValue = filter; //Muscles   // тепер можемо отримати li дата-атрибути
@@ -46,14 +46,14 @@ async function onCardClick(event) {
       filterValue,
       nameValue
     );
-    ExerciseFiltersListSubcategories.innerHTML = createMarkUp(results); // це буде масив об'єктів
+    exerciseFiltersListSubcategories.innerHTML = createMarkUp(results); // це буде масив об'єктів
 
     pagination.innerHTML = ''; // пагінація
     if (totalPages > 1) {
       const pag = paginationPages(page, totalPages);
-      PaginationSubcategories.innerHTML = pag; // додаємо в div розмітку сторінок
+      paginationSubcategories.innerHTML = pag; // додаємо в div розмітку сторінок
     }
-    PaginationSubcategories.addEventListener(
+    paginationSubcategories.addEventListener(
       'click',
       onPaginationSubcategoriesPage
     );
@@ -102,38 +102,38 @@ async function getExercisesByFilter(filterValue, nameValue, currentPage) {
 function createMarkUp(array) {
   const markup = array
     .map(({ rating, name, burnedCalories, time, bodyPart, target, _id }) => {
-      return `<li class="WorkoutCard ExerciseCategoryList" id ='${_id}'>
-      <div class='CardHeader'>
-        <div class='WorkoutWrapper'>
-          <p class='Workout'>workout</p>
-          <div class='RatingWrapper'><p>${rating}</p>
-          <svg class='StarIcon' width='13' height='13'>
+      return `<li class="workout-card exercise-category-list" id ='${_id}'>
+      <div class='card-header'>
+        <div class='workout-wrapper'>
+          <p class='workout'>workout</p>
+          <div class='rating-wrapper'><p>${rating}</p>
+          <svg class='star-icon' width='13' height='13'>
           <use href='${icons}#icon-star'></use>
         </svg></div>
         </div>
         
-          <button type="button" class="StartBtn">
+          <button type="button" class="start-btn">
   START<svg width='13' height='13'>
           <use href='${icons}#icon-arrow'></use>
         </svg>
 </button>
         
       </div>
-      <div class='CardMainPart'>
-      <div class='RunIconWrapper'><svg width='14' height='14'>
+      <div class='card-main-part'>
+      <div class='run-icon-wrapper'><svg width='14' height='14'>
           <use href='${icons}#icon-running'></use>
         </svg></div>
-        <p class='MainPartName'>${name}</p>
+        <p class='main-part-name'>${name}</p>
       </div>
-      <ul class="CardFooter">
+      <ul class="card-footer">
         <li>
-          <p class='CardFooterTextDescr'>Burned calories: <span class='CardFooterTextValue'>${burnedCalories} / ${time} min</span></p>
+          <p class='card-footer-text-descr'>Burned calories: <span class='card-footer-text-value'>${burnedCalories} / ${time} min</span></p>
         </li>
         <li>
-          <p class='CardFooterTextDescr'>Body part: <span class='CardFooterTextValue'>${bodyPart}</span></p>
+          <p class='card-footer-text-descr'>Body part: <span class='card-footer-text-value'>${bodyPart}</span></p>
         </li>
         <li>
-          <p class='CardFooterTextDescr'>Target: <span class='CardFooterTextValue'>${target}</span></p>
+          <p class='card-footer-text-descr'>Target: <span class='card-footer-text-value'>${target}</span></p>
         </li>
       </ul>
 
@@ -171,7 +171,7 @@ async function onPaginationSubcategoriesPage(e) {
       nameValue,
       currentPage
     );
-    ExerciseFiltersListSubcategories.innerHTML = createMarkUp(results); // робимо розмітку підкатегорій відповідно до номеру сторінки
+    exerciseFiltersListSubcategories.innerHTML = createMarkUp(results); // робимо розмітку підкатегорій відповідно до номеру сторінки
   } catch (error) {
     createIziToastError('Error');
   }
@@ -203,4 +203,4 @@ function createIziToastError(notification) {
   });
 }
 
-export { filterValue, nameValue, createMarkUp };
+export { filterValue, nameValue, createMarkUp, createIziToastError };

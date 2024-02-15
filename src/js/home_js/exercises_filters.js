@@ -1,22 +1,24 @@
 import axios from 'axios';
-import { filterValue } from './exercises_subcategories';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+import { createIziToastError } from './exercises_subcategories';
 
-const filterButtons = document.querySelector('.FilterButtons');
-const exerciseFiltersList = document.querySelector('.ExerciseFiltersList');
-const pagination = document.querySelector('.Pagination');
-const form = document.querySelector('.ExercisesForm');
-const Exercises = document.querySelector('.Exercises ');
+const filterButtons = document.querySelector('.filter-buttons');
+const exerciseFiltersList = document.querySelector('.exercise-filters-list');
+const pagination = document.querySelector('.pagination');
+const form = document.querySelector('.exercises-form');
+const exercises = document.querySelector('.exercises ');
 
-const ExerciseFiltersListSubcategories = document.querySelector(
-  '.ExerciseFiltersListSubcategories'
+const exerciseFiltersListSubcategories = document.querySelector(
+  '.exercise-filters-list-subcategories'
 );
-const PaginationSubcategories = document.querySelector(
-  '.PaginationSubcategories'
+const paginationSubcategories = document.querySelector(
+  '.pagination-subcategories'
 );
 const searchList = document.querySelector('.search-list'); // ok
 const searchPagination = document.querySelector('.search-pagination');
 const noResultsText = document.querySelector('.no-results');
-const home = document.querySelector('.Exercises');
+const home = document.querySelector('.exercises');
 
 const BASE_URL = 'https://energyflow.b.goit.study/api';
 let filterValueDefault = 'Muscles';
@@ -47,7 +49,7 @@ async function getExercises() {
 
     return response.data;
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
@@ -67,7 +69,7 @@ async function fetchDefaultApiUrl() {
       }
     });
   } catch (error) {
-    console.error('Error fetching exercises:', error);
+    createIziToastError('Error');
   }
 }
 
@@ -86,20 +88,20 @@ async function filterBtnClick(event) {
   event.preventDefault();
   form.classList.add('visually-hidden');
   noResultsText.classList.add('visually-hidden');
-  ExerciseFiltersListSubcategories.classList.add('visually-hidden');
+  exerciseFiltersListSubcategories.classList.add('visually-hidden');
   exerciseFiltersList.classList.remove('visually-hidden');
   pagination.innerHTML = '';
-  PaginationSubcategories.innerHTML = '';
-  PaginationSubcategories.classList.remove('visually-hidden');
+  paginationSubcategories.innerHTML = '';
+  paginationSubcategories.classList.remove('visually-hidden');
   currentPage = 1;
   const filterValue = event.target;
   const qwer = filterValue.dataset.filter;
   filterValueDefault = qwer;
   exerciseFiltersList.innerHTML = '';
-  const prevBtn = Exercises.querySelector('.ButtonIsActive');
+  const prevBtn = exercises.querySelector('.button-is-active');
   const nextBtn = event.target;
-  prevBtn.classList.remove('ButtonIsActive');
-  nextBtn.classList.add('ButtonIsActive');
+  prevBtn.classList.remove('button-is-active');
+  nextBtn.classList.add('button-is-active');
 
   if (event.target.tagName !== 'BUTTON') {
     return;
@@ -117,7 +119,7 @@ async function filterBtnClick(event) {
       }
     });
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 //-----------------------------------------Функція перехід по сторінкам------------------------------------------------------
@@ -131,9 +133,9 @@ async function onPaginationFilterPages(e) {
   currentPage = e.target.textContent;
   Array.from(e.currentTarget.children).map(item => {
     if (item.textContent !== currentPage) {
-      item.classList.remove('PaginationBtnIsActive');
+      item.classList.remove('pagination-btn-is-active');
     } else {
-      e.target.classList.add('PaginationBtnIsActive');
+      e.target.classList.add('pagination-btn-is-active');
     }
   });
   exerciseFiltersList.innerHTML = '';
@@ -145,7 +147,7 @@ async function onPaginationFilterPages(e) {
 
     exerciseFiltersList.innerHTML = markupExercises(results);
   } catch (error) {
-    console.log(error);
+    createIziToastError('Error');
   }
 }
 
@@ -158,11 +160,11 @@ function markupExercises(results) {
         name,
         filter,
         imgUrl,
-      }) => ` <li class='FilterList ExercisesItem' data-filter='${filter}' data-name='${name}'>
-        <img class="ImgExercises" src="${imgUrl}" alt="${filter}">
-        <div class="FilterText">
-          <p class="FilterExercises">${name}</p>
-          <p class="FilterName">${filter}</p>
+      }) => ` <li class='filter-list exercises-item' data-filter='${filter}' data-name='${name}'>
+        <img class="img-exercises" src="${imgUrl}" alt="${filter}">
+        <div class="filter-text">
+          <p class="filter-exercises">${name}</p>
+          <p class="filter-name">${filter}</p>
         </div>
       </li>`
     )
@@ -175,7 +177,7 @@ function paginationPages(page, totalPages) {
   let paginationHtml = '';
 
   for (let i = 1; i <= totalPages; i += 1) {
-    paginationHtml += `<button class="PaginationBtn PaginationBtnIsActive" type="button" value="${i}">${i}</button>`;
+    paginationHtml += `<button class="pagination-btn pagination-btn-is-active" type="button" value="${i}">${i}</button>`;
   }
   return paginationHtml;
 }

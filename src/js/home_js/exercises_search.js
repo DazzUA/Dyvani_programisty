@@ -17,14 +17,14 @@ const BASE_URL = 'https://energyflow.b.goit.study/api';
 
 // объект с ссылками на элементы формы поиска
 const exercisesFilterSection = document.querySelector(
-  '.ExerciseFiltersListSubcategories'
+  '.exercise-filters-list-subcategories'
 );
 const searchContainer = document.querySelector('.search-container');
 const searchListEl = document.querySelector('.search-list');
-const formEl = document.querySelector('.ExercisesForm');
+const formEl = document.querySelector('.exercises-form');
 const noResultsText = document.querySelector('.no-results');
-const PaginationSubcategories = document.querySelector(
-  '.PaginationSubcategories'
+const paginationSubcategories = document.querySelector(
+  '.pagination-subcategories'
 );
 const searchPagination = document.querySelector('.search-pagination');
 let query;
@@ -85,7 +85,7 @@ async function equipment(group, query, page, limit = 9) {
 
 async function onSearch(event) {
   event.preventDefault();
-  PaginationSubcategories.classList.add('visually-hidden');
+  paginationSubcategories.classList.add('visually-hidden');
   query = event.currentTarget.elements['search'].value.trim();
   let data;
 

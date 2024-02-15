@@ -161,11 +161,10 @@ if (result === '/favorites.html') {
 
     // Function to handle scroll behavior
     function checkScroll() {
-      if (window.matchMedia('(min-width: 768px)').matches) {
-        favoritesContainerBlock.style.overflowY = 'scroll';
-      } else {
-        favoritesContainerBlock.style.overflowY = 'visible';
-      }
+      const totalCardHeight = Array.from(favoritesList.children).reduce(
+        (acc, card) => acc + card.offsetHeight,
+        0
+      );
 
       if (window.matchMedia('(min-width: 1440px)').matches) {
         favoritesContainerBlock.style.maxHeight = '500px'; // Set maximum height if necessary
@@ -173,13 +172,18 @@ if (result === '/favorites.html') {
         favoritesContainerBlock.style.maxHeight = 'none';
       }
 
-      // Зробити скролінг менш інтенсивним і більш плавним
+      if (totalCardHeight > favoritesContainerBlock.offsetHeight) {
+        favoritesContainerBlock.style.overflowY = 'scroll';
+      } else {
+        favoritesContainerBlock.style.overflowY = 'visible';
+      }
+
       const scrollOptions = {
         behavior: 'smooth',
-        block: 'start', // Налаштування скролінгу починається від верхнього краю елементу
+        block: 'start',
       };
 
-      window.scrollBy(0, 10); // Змінити значення, яке ви вважаєте відповідним
+      window.scrollBy(0, 10);
     }
 
     // Перевірка поведінки прокрутки при першому завантаженні

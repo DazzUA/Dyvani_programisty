@@ -178,10 +178,6 @@
 }
 
 .favorites-list-item {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
   margin-top: 20px;
 }
 
@@ -335,11 +331,6 @@
     padding: 16px;
     height: 141px;
     width: 424px;
-  }
-
-  .favorites-list-item {
-    flex-direction: column;
-    column-gap: 20px;
   }
 
   .favorites-main-container {

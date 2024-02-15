@@ -1,9 +1,70 @@
+@media only screen and (min-resolution: 192dpi) and (min-width: 375px) {
+    .quote-img {
+      background-image: url(/img/mob/quote/women.torso.mob@2x.png);
+    }
+}
+
+@media only screen and (min-resolution: 192dpi) and (min-width: 768px) {
+    .quote-img {
+      background-image: url(/img/tablet/quote/women.torso.tab@2x.png);
+    }
+}
+
+@media only screen and (min-resolution: 192dpi) and (min-width: 1440px) {
+    .quote-img {
+      background-image: url(/img/desktop/quote/women.torso@2x.png);
+    }
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
 .quote-icon-div-one {
     width: 32px;
     height: 32px;
     flex-shrink: 0;
     border-radius: 32px;
     background: rgba(246, 246, 246, 0.10);
+}
+
+.quote {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.quote-one {
+    border-radius: 30px;
+    width: 335px;
+    min-height: 272px;
+    height: auto;
+    background: #7e847f;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    gap: 12px;
+}
+
+.quote-icon-div-two {
+    position: absolute;
+    padding-top: 40px;
+    padding-left: 287px;
+}
+
+.quote-icon-two {
+    fill: #f6f6f6;
+    width: 28px;
+    height: 28px;
+}
+
+.quote-img {
+    border-radius: 30px;
+    width: 335px;
+    height: 272px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(/img/mob/quote/women.torso.mob.png);
 }
 
 .quote-title {
@@ -43,69 +104,6 @@
 
 .quote-icon {
     fill: #f6f6f6;
-}
-
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-@media only screen and (min-resolution: 192dpi) and (min-width: 375px) {
-    .quote-img {
-      background-image: url(/img/mob/quote/women.torso.mob@2x.png);
-    }
-}
-  
-@media only screen and (min-resolution: 192dpi) and (min-width: 768px) {
-    .quote-img {
-      background-image: url(/img/tablet/quote/women.torso.tab@2x.png);
-    }
-}
-
-@media only screen and (min-resolution: 192dpi) and (min-width: 1440px) {
-    .quote-img {
-      background-image: url(/img/desktop/quote/women.torso@2x.png);
-    }
-}
-
-/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-@media screen and (min-width: 375px) {
-
-    .quote {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-
-    .quote-one {
-        border-radius: 30px;
-        width: 335px;
-        min-height: 272px;
-        height: auto;
-        background: #7e847f;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        display: flex;
-        gap: 12px;
-    }
-
-    .quote-icon-div-two {
-        position: absolute;
-        padding-top: 40px;
-        padding-left: 287px;
-    }
-    
-    .quote-icon-two {
-        fill: #f6f6f6;
-        width: 28px;
-        height: 28px;
-    }
-
-    .quote-img {
-        border-radius: 30px;
-        width: 335px;
-        height: 272px;
-        background-image: url(/img/mob/quote/women.torso.mob.png);
-    }
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -151,14 +149,10 @@
 
     .quote {
         display: flex;
-        padding-top: 16px;
-        padding-bottom: 16px;
     }
 
     .quote-one {
-        border-radius: 50px;
         width: 704px;
-        height: 302px;
         padding-left: 64px;
         padding-right: 64px;
     }
@@ -168,9 +162,7 @@
     }
 
     .quote-img {
-        border-radius: 50px;
         width: 704px;
-        height: 302px;
         background-image: url(/img/desktop/quote/women.torso.png);
     }
 }

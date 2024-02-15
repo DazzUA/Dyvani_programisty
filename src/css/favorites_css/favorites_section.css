@@ -11,14 +11,13 @@
   border-radius: 30px;
   background-color: #e8e8e8;
   color: #1b1b1b;
-  margin: auto;
+  margin-bottom: 20px;
 }
 
 .favorites-section {
   width: 335px;
   border-radius: 30px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 40px 20px;
   background: rgb(232, 232, 232);
 }
 
@@ -29,21 +28,17 @@
   line-height: 100%;
   letter-spacing: -0.02em;
   color: #1b1b1b;
-  padding-top: 40px;
-  padding-left: 20px;
-  padding-bottom: 20px;
 }
 
 .div-favorites-section {
   margin: 0 auto;
-  text-align: center;
 }
 
 .message-favorites {
   display: none;
   flex-direction: column;
   border-radius: 30px;
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 .message-favorites.is-open-message-favorites {
@@ -116,36 +111,39 @@
     height: 928px;
     border-radius: 50px;
     margin: auto;
+    padding: 64px 48px;
+    margin-bottom: 16px;
   }
 
   .favorites-title {
     font-size: 44px;
     line-height: 1.09;
-    padding-top: 64px;
-    padding-left: 48px;
-    padding-bottom: 32px;
   }
 
+  .div-favorites-section {
+    height: 740px;
+  }
+  .message-favorites {
+    margin-top: 208px;
+  }
   .message-favorites-block {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 28px;
-    padding-top: 172px;
   }
   .dumbbell-favorites {
     width: 115px;
     height: 71px;
   }
+
   .text-favorites {
-    width: 247px;
-    height: 90px;
-    color: #1b1b1b;
-    text-align: center;
-    font-size: 14px;
+    width: 554px;
+    height: 72px;
+    font-size: 18px;
     font-weight: 400;
-    line-height: 1.28;
+    line-height: 1.33;
   }
 }
 
@@ -159,14 +157,10 @@
   .favorites-title {
     font-size: 44px;
     line-height: 1.09;
-    padding-top: 64px;
   }
 
-  .text-favorites {
-    width: 554px;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.33;
+  .message-favorites {
+    margin-top: 146px;
   }
 }
 
@@ -178,17 +172,13 @@
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  row-gap: 20px;
+  /*row-gap: 20px;*/
   column-gap: 14px;
   margin-bottom: 32px;
 }
 
 .favorites-list-item {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .favorites-card {
@@ -197,6 +187,7 @@
   border-radius: 15px;
   padding: 16px;
   height: 185px;
+  width: 295px;
 }
 .favorites-card-header {
   display: flex;
@@ -271,6 +262,10 @@
   font-family: 'DM Sans', sans-serif;
   font-size: 18px;
   line-height: 1.33;
+  white-space: nowrap; /* текст не переноситься на новий рядок */
+  overflow: hidden; /* приховуємо текст, який не поміщається */
+  text-overflow: ellipsis; /* дописуємо ... якщо текст не поміщається */
+  width: 350px;
 }
 
 .favorites-name-part::first-letter {
@@ -303,14 +298,27 @@
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
     padding: 16px;
-    height: 185px;
+    height: 165px;
+    width: 313px;
   }
 
+  .favorites-card-header {
+    margin-bottom: 20px;
+  }
+
+  .favorites-main-container {
+    margin-bottom: 8px;
+  }
   .favorites-name-part {
     color: #1b1b1b;
     font-family: 'DM Sans', sans-serif;
     font-size: 20px;
     line-height: 1.33;
+    width: 239px;
+  }
+
+  .favorites-card-footer-list {
+    gap: 5px;
   }
 }
 
@@ -321,15 +329,15 @@
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
     padding: 16px;
-    height: 185px;
-  }
-
-  .favorites-list-item {
-    flex-direction: column;
-    column-gap: 20px;
+    height: 141px;
+    width: 424px;
   }
 
   .favorites-main-container {
     margin-bottom: 24px;
+  }
+
+  .favorites-name-part {
+    width: 223px;
   }
 }

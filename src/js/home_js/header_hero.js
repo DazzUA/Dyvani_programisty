@@ -19,3 +19,16 @@ function onMatchMedia(event) {
   mobileMenu.classList.remove('is-open');
   document.body.style.overflow = '';
 }
+// ---------------
+
+document.addEventListener('DOMContentLoaded', function () {
+  const heroText = document.querySelector('.hero-text');
+
+  if (heroText) {
+    heroText.style.display = 'none';
+
+    setTimeout(function () {
+      heroText.style.display = 'block';
+    }, 500);
+  }
+});

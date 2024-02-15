@@ -1,4 +1,4 @@
-.ExerciseFiltersListSubcategories {
+.exercise-filters-list-subcategories {
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -10,14 +10,14 @@
   margin-bottom: 32px;
 }
 
-.Exercises {
+.exercises {
   width: 335px;
   border-radius: 30px;
   padding-top: 40px;
   padding-bottom: 40px;
   background: rgb(232, 232, 232);
 }
-.TitleExercises {
+.title-exercises {
   color: rgb(27, 27, 27);
   font-family: 'DM Sans', sans-serif;
   font-size: 32px;
@@ -27,20 +27,8 @@
   margin-bottom: 20px;
   color: #1b1b1b;
 }
-.NameValue {
-  color: rgba(27, 27, 27, 0.5);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-.ExercisesHeared {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
 
-.ItemExercises {
+.item-exercises {
   padding: 7px 10px;
   color: rgb(27, 27, 27);
   font-family: 'DM Sans', sans-serif;
@@ -53,7 +41,7 @@
   height: 32px;
   min-width: 88px;
 }
-.ExercisesForm {
+.exercises-form {
   margin-left: auto;
   border-radius: 30px;
   background: #f6f6f6;
@@ -65,7 +53,7 @@
   min-width: 280px;
 }
 
-.ExercisesForm .SearchInput::placeholder {
+.exercises-form .search-input::placeholder {
   color: #1b1b1b;
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
@@ -77,7 +65,7 @@
   gap: 4px;
 }
 
-.ListExercises {
+.list-exercises {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -85,36 +73,29 @@
   gap: 4px;
   margin-bottom: 20px;
 }
-.ExerciseCategoryList {
+.exercise-category-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 20px;
 }
-.WorkoutCard {
+.workout-card {
   flex-basis: 100%;
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
   padding: 16px;
   height: 185px;
 }
-#FilterBtn {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 4px;
-  margin-bottom: 20px;
-}
-.MainPartName {
+
+.main-part-name {
   color: #1b1b1b;
   font-family: 'DM Sans', sans-serif;
   font-size: 18px;
   line-height: 1.33;
 }
 
-.CardMainPart {
+.card-main-part {
   display: flex;
   margin-bottom: 12px;
   align-items: center;
@@ -122,16 +103,16 @@
 }
 
 @media screen and (min-width: 375px) {
-  .ItemExercises {
+  .item-exercises {
     padding: 7px 14px;
   }
-  .ExercisesForm {
+  .exercises-form {
     min-width: 295px;
   }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767.98px) {
-  .ExercisesForm {
+  .exercises-form {
     margin-top: 20px;
   }
 }
@@ -139,37 +120,34 @@
 /* Tablet */
 
 @media screen and (min-width: 768px) {
-  .Exercises {
+  .exercises {
     width: 736px;
     padding: 64px 48px;
   }
-  .TitleExercises {
+  .title-exercises {
     font-size: 44px;
     line-height: 48px;
     margin-bottom: 32px;
   }
-  .ExercisesHeared {
-    justify-content: space-between;
-    align-items: center;
-  }
-  .ListExercises {
+
+  .list-exercises {
     flex-direction: row;
     margin-bottom: 0px;
   }
-  .ExercisesForm .SearchInput::placeholder {
+  .exercises-form .search-input::placeholder {
     color: #1b1b1b;
     font-family: 'DM Sans', sans-serif;
     font-size: 16px;
     line-height: 1.5;
   }
-  .ExercisesForm {
+  .exercises-form {
     height: 48px;
     min-width: 246px;
   }
-  .ItemExercises {
+  .item-exercises {
     padding: 10px 20px;
   }
-  .ExerciseCategoryList {
+  .exercise-category-list {
     width: 100%;
     flex-direction: row;
     justify-content: flex-start;
@@ -178,29 +156,21 @@
     margin-bottom: 32px;
   }
 
-  .WorkoutCard {
+  .workout-card {
     flex-basis: calc((100% - 14px) / 2);
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
     padding: 16px;
     height: 185px;
   }
-  .MainPartName {
+  .main-part-name {
     color: #1b1b1b;
     font-family: 'DM Sans', sans-serif;
     font-size: 20px;
     line-height: 1.33;
   }
 
-  #FilterBtn {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 6px;
-    margin-bottom: 0px;
-  }
-  .ListExercises {
+  .list-exercises {
     gap: 8px;
     margin-bottom: 32px;
   }
@@ -209,51 +179,34 @@
 /* Desktop */
 
 @media screen and (min-width: 1440px) {
-  .Exercises {
+  .exercises {
     width: 1408px;
   }
-  .WorkoutCard {
+  .workout-card {
     flex-basis: calc((100% - 40px) / 3);
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
     padding: 16px;
     height: 185px;
   }
-  .ExercisesForm {
+  .exercises-form {
     min-width: 273px;
   }
-  .ItemExercises {
+  .item-exercises {
     height: 44px;
   }
-  .NameValue {
-    font-size: 24px;
-    line-height: 1.33;
-    letter-spacing: -0.02em;
-  }
-  .ExerciseCategoryList {
+
+  .exercise-category-list {
     flex-direction: column;
     column-gap: 20px;
   }
-  .CardMainPart {
+  .card-main-part {
     margin-bottom: 24px;
   }
 }
 
-/* .ItemExercises {
-  padding: 7px 14px;
-  color: rgb(27, 27, 27);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 18px;
-  letter-spacing: 0px;
-  border: none;
-  border-radius: 30px;
-  background: rgb(246, 246, 246);
-} */
-
 @media screen and (min-width: 768px) {
-  .ItemExercises {
+  .item-exercises {
     font-size: 16px;
     line-height: 24px;
     display: flex;
@@ -262,13 +215,13 @@
   }
 }
 
-.ButtonIsActive {
+.button-is-active {
   background: #7e847f;
   border-color: #7e847f;
   color: #f6f6f6;
 }
 
-.ExerciseFiltersList {
+.exercise-filters-list {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -279,7 +232,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .ExerciseFiltersList {
+  .exercise-filters-list {
     width: 100%;
     flex-direction: row;
     justify-content: flex-start;
@@ -290,12 +243,12 @@
   }
 }
 
-.FilterList {
+.filter-list {
   position: relative;
   cursor: pointer;
 }
 
-.ImgExercises {
+.img-exercises {
   width: 295px;
   height: 232px;
   border: 1px solid rgba(246, 246, 246, 0.3);
@@ -305,13 +258,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .ImgExercises {
+  .img-exercises {
     width: 313px;
     height: 250px;
   }
 }
 
-.FilterText {
+.filter-text {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -331,7 +284,7 @@
   );
 }
 
-.FilterExercises {
+.filter-exercises {
   color: rgb(246, 246, 246);
   font-family: 'DM Sans', sans-serif;
   font-size: 20px;
@@ -342,13 +295,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .FilterExercises {
+  .filter-exercises {
     font-size: 24px;
     line-height: 24px;
   }
 }
 
-.FilterName {
+.filter-name {
   color: rgba(246, 246, 246, 0.4);
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
@@ -357,7 +310,7 @@
   letter-spacing: 0px;
 }
 
-.Pagination {
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -365,7 +318,7 @@
   flex-wrap: wrap;
 }
 
-.PaginationSubcategories {
+.pagination-subcategories {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -373,7 +326,7 @@
   flex-wrap: wrap;
 }
 
-.PaginationBtn {
+.pagination-btn {
   width: 32px;
   height: 32px;
   color: rgba(27, 27, 27, 0.4);
@@ -391,12 +344,12 @@
 }
 
 @media screen and (min-width: 768px) {
-  .PaginationBtn {
+  .pagination-btn {
     font-size: 24px;
   }
 }
 
-.PaginationBtnIsActive {
+.pagination-btn-is-active {
   color: #1b1b1b;
   text-align: center;
   border: 1px solid rgb(27, 27, 27);
@@ -405,18 +358,18 @@
 
 /* ТУТ ПОЧИНАЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises.subcategories.js */
 
-.CardHeader {
+.card-header {
   display: flex;
   margin-bottom: 29px;
   justify-content: space-between;
 }
 
-.CardFooter {
+.card-footer {
   display: flex;
   gap: 7px;
   flex-wrap: wrap;
 }
-.StartBtn {
+.start-btn {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -430,23 +383,23 @@
   margin-left: 50px;
   background-color: transparent;
 }
-.WorkoutWrapper {
+.workout-wrapper {
   display: flex;
 }
-.CardFooterTextDescr {
+.card-footer-text-descr {
   color: rgba(27, 27, 27, 0.4);
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
   line-height: 1.5;
 }
-.CardFooterTextValue {
+.card-footer-text-value {
   color: #1b1b1b;
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
   line-height: 1.5;
   text-transform: capitalize;
 }
-.RunIconWrapper {
+.run-icon-wrapper {
   width: 24px;
   height: 24px;
   fill: #f6f6f6;
@@ -457,11 +410,11 @@
   justify-content: center;
   flex-shrink: 0;
 }
-.MainPartName::first-letter {
+.main-part-name::first-letter {
   text-transform: uppercase;
 }
 
-.Workout {
+.workout {
   border-radius: 15px;
   background-color: #7e847f;
   padding: 5px 8px;
@@ -473,7 +426,7 @@
   line-height: normal;
   margin-right: 16px;
 }
-.RatingWrapper {
+.rating-wrapper {
   display: flex;
   gap: 2px;
   align-items: center;
@@ -484,19 +437,19 @@
   fill: #eea10c;
 }
 
-.TitleExercises {
+.title-exercises {
   text-transform: capitalize;
 }
-.IconSearch {
+.icon-search {
   stroke: black;
   fill: #f6f6f6;
 }
-.SearchButton {
+.search-button {
   border: none;
   background-color: #f6f6f6;
 }
 
-.SearchInput {
+.search-input {
   border: none;
   background-color: #f6f6f6;
   color: #1b1b1b;
@@ -506,14 +459,6 @@
   outline: none;
 }
 
-.IsActive {
-  background-color: #7e847f;
-}
-.FilterBtnIsActive {
-  background: #7e847f;
-  border-color: #7e847f;
-  color: #f6f6f6;
-}
 /* ТУТ ЗАКІНЧУЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises.subcategories.js */
 
 /* стили для сообщения об отсутствии результатов поиска в файле exercises_search.js */

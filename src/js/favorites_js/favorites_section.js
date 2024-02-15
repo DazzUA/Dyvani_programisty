@@ -298,16 +298,13 @@ function createFavoriteCardMarkup(elem) {
 
 // const favoritesButton = document.querySelector('.add-favorites');
 function toggleFavorite(obj) {
-  parsedItem.push(obj);
-
-  // id: '64f389465ae26083f39b17df', //id
-  // name: 'barbell one arm snatch', //name.textContent
-  // target: 'cardiovascular', //target.textContent
-  // time: '3', //time.textContent,
-  // bodyPart: 'shoulders', //bodyPart.textContent
-  // burnedCalories: '345', //burnedCalories.textContent
-  // ();
-  localStorage.setItem(storage, JSON.stringify(parsedItem));
+  let parsedItem = JSON.parse(localStorage.getItem(storage)) || [];
+  let existingIndex = parsedItem.findIndex(item => item._id === obj._id);
+  console.log(existingIndex);
+  if (existingIndex === -1) {
+    parsedItem.push(obj);
+    localStorage.setItem(storage, JSON.stringify(parsedItem));
+  }
 }
 
 // favoritesButton.addEventListener('click', toggleFavorite);

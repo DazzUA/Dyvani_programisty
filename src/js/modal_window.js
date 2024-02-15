@@ -9,6 +9,9 @@ const buttonSearch = document.querySelector('.search-list');
 const body = document.querySelector('body');
 const buttonFavorite = document.querySelector('.favorites-list');
 
+const messageInfo = document.querySelector('.message-favorites');
+const paginationBlock = document.querySelector('.favorites-pagination-block');
+
 const openClass = 'IsOpen';
 let cardObj = {};
 let ratingActive, ratingValue;
@@ -46,7 +49,7 @@ async function modalCard(event) {
     addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
     textBtn = addRemoveFavorites.textContent;
 
-    addRemoveFavorites.addEventListener('click', addFavorites);
+    addRemoveFavorites.addEventListener('click', addRemoveFavoritesFunc);
     const modalClose = document.querySelector('.CloseModalIcon');
 
     document.addEventListener('keydown', function (event) {
@@ -67,34 +70,38 @@ async function modalCard(event) {
         enableScroll();
       }
     });
-  } catch (error) {
   } finally {
+    // catch (error) {
+    // }
   }
 }
 
-// function addRemoveFavoritesFunc() {
-//   console.log(textBtn);
-//   if (textBtn == 'Add to favorites') {
-//     toggleFavorite(cardObj);
-//     addRemoveFavorites.innerText = ' Remove from ';
-//   } else if (textBtn == 'Remove from') {
-//     deleteCard(cardObj._id);
-//     addRemoveFavorites.innerText = ' Add to favorites ';
-//   } else {
-//     console.log('fack');
-//   }
+function addRemoveFavoritesFunc() {
+  console.log(textBtn);
+  if (textBtn.trim().toLowerCase() == 'add to favorites') {
+    console.log('add');
+    addRemoveFavorites.textContent = ' Remove from ';
+    textBtn = addRemoveFavorites.textContent;
+    toggleFavorite(cardObj);
+  } else if (textBtn.trim().toLowerCase() == 'remove from') {
+    console.log('remove');
+    addRemoveFavorites.textContent = ' Add to favorites ';
+    textBtn = addRemoveFavorites.textContent;
+    console.log(cardObj._id);
+    deleteCard(cardObj._id);
+  }
+}
+
+// function addFavorites() {
+//   toggleFavorite(cardObj);
+//   addRemoveFavorites.innerText = ' Remove from ';
 // }
 
-function addFavorites() {
-  toggleFavorite(cardObj);
-  addRemoveFavorites.innerText = ' Remove from ';
-}
-
-function removeFavorites() {
-  deleteCard(cardObj._id);
-  console.log(cardObj._id);
-  addRemoveFavorites.innerText = ' Add to favorites ';
-}
+// function removeFavorites() {
+//   deleteCard(cardObj._id);
+//   console.log(cardObj._id);
+//   addRemoveFavorites.innerText = ' Add to favorites ';
+// }
 
 async function fetchImages(id) {
   const url = `https://energyflow.b.goit.study/api/exercises/${id}`;
@@ -175,10 +182,12 @@ async function favoriteDeleteCard(event) {
     });
 
     addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
-    addRemoveFavorites.addEventListener('click', removeFavorites);
+    addRemoveFavorites.textContent = ' Remove from ';
+    textBtn = addRemoveFavorites.textContent;
+    addRemoveFavorites.addEventListener('click', addRemoveFavoritesFunc);
 
     const modalClose = document.querySelector('.CloseModalIcon');
-    addRemoveFavorites.innerText = ' Remove from ';
+
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         hideModal();

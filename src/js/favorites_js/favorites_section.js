@@ -28,12 +28,11 @@ const favoritesContainerBlock = document.querySelector(
 const deleteCards = document.querySelectorAll('.favorites-list-item');
 
 // Функція для створення карти збережених улюблених елементів
-function createFavoriteCard(elem) {
+/*function createFavoriteCard(elem) {
   const markup = createFavoriteCardMarkup(elem);
-
   // Вставити створену карту в список улюблених
   favoritesList.insertAdjacentHTML('beforeend', markup);
-}
+}*/
 
 ///**перевіряє чи є в локалсторідж запис і якщо є, то малює картки, інакше показує повідомлення */
 if (result === '/favorites.html') {
@@ -44,7 +43,7 @@ if (result === '/favorites.html') {
     try {
       // Пройтися по кожному елементу і створити відповідну карту
       parsedItem.forEach(elem => {
-        createFavoriteCard(elem);
+        renderFavoriteCards();
       });
     } catch (error) {
       console.log(error.name);
@@ -54,18 +53,20 @@ if (result === '/favorites.html') {
 }
 
 /**пагінація */
+
 if (result === '/favorites.html') {
   document.addEventListener('DOMContentLoaded', function () {
     // Функція для відображення пагінації залежно від ширини екрану.
     function togglePagination() {
       const currentPage = window.location.pathname; // Отримання поточного шляху сторінки
       // Перевірка, чи поточна сторінка - '/favorites.html', і ширина екрану менше або дорівнює 767px.
+
       if (
         /*window.innerWidth <= 767 &&
         isFavoritesListVisible()*/
-        currentPage === '/Dyvani_programisty/favorites.html' &&
+        currentPage === '/favorites.html' &&
         window.innerWidth <= 767 &&
-        isFavoritesListVisibl
+        isFavoritesListVisible()
       ) {
         // Відображення пагінації для невеликих екранів на сторінці 2.
         paginationBlock.style.display = 'flex';
@@ -167,7 +168,7 @@ if (result === '/favorites.html') {
       }
 
       if (window.matchMedia('(min-width: 1440px)').matches) {
-        favoritesContainerBlock.style.maxHeight = '480px'; // Set maximum height if necessary
+        favoritesContainerBlock.style.maxHeight = '500px'; // Set maximum height if necessary
       } else {
         favoritesContainerBlock.style.maxHeight = 'none';
       }
@@ -229,6 +230,7 @@ function deleteCard(id) {
   if (!storageItem || parsedItem.length == 0) {
     messageInfo.classList.add('is-open-message-info');
     paginationBlock.classList.add('close');
+    window.location.reload();
   }
   renderFavoriteCards();
 }

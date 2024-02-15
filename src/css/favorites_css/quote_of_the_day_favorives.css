@@ -1,9 +1,77 @@
+@media only screen and (min-resolution: 192dpi) and (min-width: 375px) {
+    .quote-favorites-img {
+      background-image: url(/img/mob/favorites/women.fav.mob@2x.png);
+    }
+}
+
+@media only screen and (min-resolution: 192dpi) and (min-width: 768px) {
+    .quote-favorites-img {
+      background-image: url(/img/tablet/favorites/women.fav.tab@2x.png);
+    }
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
 .quote-favorites-icon-div-one {
     width: 32px;
     height: 32px;
     flex-shrink: 0;
     border-radius: 32px;
     background: rgba(246, 246, 246, 0.10);
+}
+
+.quote-favorites {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.quote-favorites-one {
+    border-radius: 30px;
+    width: 335px;
+    min-height: 272px;
+    height: auto;
+    background: #7e847f;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    gap: 12px;
+}
+
+.quotefavorites-icon-div-two {
+    position: absolute;
+    padding-top: 40px;
+    padding-left: 287px;
+}
+
+.quote-favorites-icon-two {
+    fill: #f6f6f6;
+    width: 28px;
+    height: 28px;
+}
+
+.quote-favorites-img {
+    border-radius: 30px;
+    width: 335px;
+    height: 272px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(/img/mob/favorites/women.fav.mob.png);
+}
+
+.favorites-quote-div {
+    border-radius: 30px;
+    width: 335px;
+    height: 272px;
+    background: #FFF;
+}
+
+.quote-favorites-icon-div-three {
+    padding-left: 102px;
+    padding-top: 96px;
+    padding-right: 101px;
 }
 
 .quote-favorite-title {
@@ -71,65 +139,11 @@
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-@media screen and (min-width: 375px) {
-
-    .quote-favorites {
-        padding-top: 20px;
-    }
-
-    .quote-favorites-one {
-        border-radius: 30px;
-        width: 335px;
-        min-height: 272px;
-        height: auto;
-        background: #7e847f;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        display: flex;
-        gap: 12px;
-    }
-
-    .quotefavorites-icon-div-two {
-        position: absolute;
-        padding-top: 40px;
-        padding-left: 287px;
-    }
-
-    .quote-favorites-icon-two {
-        fill: #f6f6f6;
-        width: 28px;
-        height: 28px;
-    }
-
-    .quote-favorites-img {
-        border-radius: 30px;
-        width: 335px;
-        height: 272px;
-        background-image: url(/img/mob/favorites/women.fav.mob.png);
-    }
-
-    .favorites-quote-div {
-        border-radius: 30px;
-        width: 335px;
-        height: 272px;
-        background: #FFF;
-    }
-
-    .quote-favorites-icon-div-three {
-        padding-left: 102px;
-        padding-top: 96px;
-        padding-right: 101px;
-    }
-}
-
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
 @media screen and (min-width: 768px) {
 
     .quote-favorites {
         padding-top: 16px;
+        padding-bottom: 16px;
     }
 
     .quote-favorites-one {
@@ -182,14 +196,10 @@
 
     .quote-favorites {
         display: flex;
-        padding-top: 16px;
-        padding-bottom: 16px;
     }
 
     .quote-favorites-one {
-        border-radius: 50px;
         width: 704px;
-        height: 302px;
         padding-left: 64px;
         padding-right: 64px;
     }
@@ -208,7 +218,6 @@
 
     .quote-favorites-icon-div-three {
         padding-left: 110px;
-        padding-top: 106px;
         padding-right: 110px;
     }
 }

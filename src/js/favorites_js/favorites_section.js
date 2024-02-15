@@ -300,23 +300,10 @@ function createFavoriteCardMarkup(elem) {
 function toggleFavorite(obj) {
   let parsedItem = JSON.parse(localStorage.getItem(storage)) || [];
   let existingIndex = parsedItem.findIndex(item => item._id === obj._id);
-  console.log(existingIndex);
   if (existingIndex === -1) {
     parsedItem.push(obj);
     localStorage.setItem(storage, JSON.stringify(parsedItem));
   }
 }
 
-function deleteLocalStorageId(id) {
-  const index = parsedItem.findIndex(item => item._id == id);
-  parsedItem.splice(index, 1);
-  localStorage.setItem(storage, JSON.stringify(parsedItem));
-  deleteCards.forEach(elem => {
-    if (elem._id == id) cardForDelete = elem;
-  });
-  if (cardForDelete) {
-    favoritesList.removeChild(cardForDelete);
-  }
-}
-
-export { toggleFavorite, deleteCard, deleteLocalStorageId };
+export { toggleFavorite, deleteCard };

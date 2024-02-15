@@ -5,7 +5,7 @@ import { toggleFavorite, deleteCard } from './favorites_js/favorites_section';
 const modalBackdrop = document.querySelector('.Backdrop');
 const card = document.querySelector('.Modal');
 const button = document.querySelector('.ExerciseFiltersListSubcategories');
-const buttonSearch = document.querySelector('.search-list');
+const buttonSearch = document.querySelector('.SearchList');
 const body = document.querySelector('body');
 const buttonFavorite = document.querySelector('.favorites-list');
 

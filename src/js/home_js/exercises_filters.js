@@ -13,9 +13,9 @@ const ExerciseFiltersListSubcategories = document.querySelector(
 const PaginationSubcategories = document.querySelector(
   '.PaginationSubcategories'
 );
-const searchList = document.querySelector('.search-list'); // ok
-const searchPagination = document.querySelector('.search-pagination');
-const noResultsText = document.querySelector('.no-results');
+const searchList = document.querySelector('.SearchList'); // ok
+const searchPagination = document.querySelector('.SearchPagination');
+const noResultsText = document.querySelector('.NoResults');
 const home = document.querySelector('.Exercises');
 
 const BASE_URL = 'https://energyflow.b.goit.study/api';

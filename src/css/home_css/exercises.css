@@ -72,7 +72,7 @@
   line-height: 1.3;
 }
 
-.buttons-container {
+.ButtonsContainer {
   display: flex;
   gap: 4px;
 }
@@ -518,7 +518,7 @@
 
 /* стили для сообщения об отсутствии результатов поиска в файле exercises_search.js */
 
-.no-results {
+.NoResults {
   padding-top: 164px;
   padding-bottom: 320px;
   font-size: 14px;
@@ -528,7 +528,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .no-results {
+  .NoResults {
     padding-top: 222px;
     padding-bottom: 585px;
     padding-left: 50px;
@@ -536,20 +536,20 @@
   }
 }
 @media screen and (min-width: 1440px) {
-  .no-results {
+  .NoResults {
     padding-top: 217px;
     padding-bottom: 350px;
     padding-left: 340px;
     padding-right: 340px;
   }
 }
-.accent-text {
+.AccentText {
   color: #7e847f;
 }
 /* Тут закончились стили для сообщения об отсутствии результатов поиска в файле exercises_search.js */
 /* ТУТ ПОЧИНАЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises_search.js */
 
-.search-list {
+.SearchList {
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -561,7 +561,7 @@
   margin-bottom: 32px;
 }
 
-.search-pagination {
+.SearchPagination {
   display: flex;
   justify-content: center;
   align-items: center;

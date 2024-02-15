@@ -19,14 +19,14 @@ const BASE_URL = 'https://energyflow.b.goit.study/api';
 const exercisesFilterSection = document.querySelector(
   '.ExerciseFiltersListSubcategories'
 );
-const searchContainer = document.querySelector('.search-container');
-const searchListEl = document.querySelector('.search-list');
+const searchContainer = document.querySelector('.SearchContainer');
+const searchListEl = document.querySelector('.SearchList');
 const formEl = document.querySelector('.ExercisesForm');
-const noResultsText = document.querySelector('.no-results');
+const noResultsText = document.querySelector('.NoResults');
 const PaginationSubcategories = document.querySelector(
   '.PaginationSubcategories'
 );
-const searchPagination = document.querySelector('.search-pagination');
+const searchPagination = document.querySelector('.SearchPagination');
 let query;
 let resultsArray;
 let page = 1;

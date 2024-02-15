@@ -46,7 +46,7 @@ async function modalCard(event) {
     addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
     textBtn = addRemoveFavorites.textContent;
 
-    addRemoveFavorites.addEventListener('click', addRemoveFavoritesFunc);
+    addRemoveFavorites.addEventListener('click', addFavorites);
     const modalClose = document.querySelector('.CloseModalIcon');
 
     document.addEventListener('keydown', function (event) {
@@ -67,24 +67,23 @@ async function modalCard(event) {
         enableScroll();
       }
     });
+  } catch (error) {
   } finally {
-    // catch (error) {
-    // }
   }
 }
 
-function addRemoveFavoritesFunc() {
-  console.log(textBtn);
-  if (textBtn == 'Add to favorites') {
-    toggleFavorite(cardObj);
-    addRemoveFavorites.innerText = ' Remove from ';
-  } else if (textBtn == 'Remove from') {
-    deleteCard(cardObj._id);
-    addRemoveFavorites.innerText = ' Add to favorites ';
-  } else {
-    console.log('fack');
-  }
-}
+// function addRemoveFavoritesFunc() {
+//   console.log(textBtn);
+//   if (textBtn == 'Add to favorites') {
+//     toggleFavorite(cardObj);
+//     addRemoveFavorites.innerText = ' Remove from ';
+//   } else if (textBtn == 'Remove from') {
+//     deleteCard(cardObj._id);
+//     addRemoveFavorites.innerText = ' Add to favorites ';
+//   } else {
+//     console.log('fack');
+//   }
+// }
 
 function addFavorites() {
   toggleFavorite(cardObj);

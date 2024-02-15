@@ -67,9 +67,8 @@ async function modalCard(event) {
         enableScroll();
       }
     });
+  } catch (error) {
   } finally {
-    // catch (error) {
-    // }
   }
 }
 

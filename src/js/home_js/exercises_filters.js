@@ -112,7 +112,7 @@ async function filterBtnClick(event) {
       const { results, totalPages, page } = data;
       exerciseFiltersList.innerHTML = markupExercises(results);
 
-      if (1) {
+      if (totalPages > 1) {
         const pag = paginationPages(page, totalPages);
         pagination.innerHTML = pag;
       } else {

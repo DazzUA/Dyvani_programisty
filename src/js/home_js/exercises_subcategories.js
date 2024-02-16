@@ -111,7 +111,7 @@ function createMarkUp(array) {
         </div>
         
           <button type="button" class="start-btn">
-  START<svg width='13' height='13'>
+  Start<svg width='13' height='13'>
           <use href='${icons}#icon-arrow'></use>
         </svg>
 </button>

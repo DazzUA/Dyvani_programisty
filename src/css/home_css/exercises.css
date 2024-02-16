@@ -80,11 +80,16 @@
   margin-bottom: 20px;
 }
 .workout-card {
-  flex-basis: 100%;
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
   padding: 16px;
   height: 165px;
+}
+
+@media screen and (max-width: 768px) {
+  .workout-card {
+    width: 295px;
+  }
 }
 .card-header {
   display: flex;
@@ -459,7 +464,7 @@
   font-size: 16px;
   line-height: 1.5;
   outline: none;
-  width: 250px;
+  width: 235px;
 }
 @media screen and (min-width: 768px) {
   .search-input {

@@ -7,7 +7,6 @@ import { onScroll } from './exercises_filters';
 import icons from '/img/symbol-defs.svg';
 
 const exerciseFiltersList = document.querySelector('.exercise-filters-list');
-const exercisesHead = document.querySelector('.exercises-head');
 const pagination = document.querySelector('.pagination');
 const paginationSubcategories = document.querySelector(
   '.pagination-subcategories'
@@ -30,17 +29,17 @@ async function onCardClick(event) {
   pagination.innerHTML = '';
   exerciseFiltersList.classList.add('visually-hidden');
   exerciseFiltersListSubcategories.classList.remove('visually-hidden');
-
   pagination.removeEventListener('click', onPaginationPagesbyFilter);
+
   if (event.target === event.currentTarget) {
     return;
   }
 
-  const liEl = event.target.closest('.exercises-item'); // при кліку на картку шукаємо найближчий елемент у якого буде заданий селектор (це li)
+  const liEl = event.target.closest('.exercises-item');
   const { filter, name } = liEl.dataset;
 
-  filterValue = filter; //Muscles   // тепер можемо отримати li дата-атрибути
-  nameValue = name; // abductors
+  filterValue = filter;
+  nameValue = name;
   titleExercises.innerHTML = `Exercises /<span class='span-title-exercises'> ${nameValue}</span>`;
 
   try {
@@ -48,25 +47,22 @@ async function onCardClick(event) {
       filterValue,
       nameValue
     );
-    exerciseFiltersListSubcategories.innerHTML = createMarkUp(results); // це буде масив об'єктів
+    exerciseFiltersListSubcategories.innerHTML = createMarkUp(results);
 
-    pagination.innerHTML = ''; // пагінація
     if (totalPages > 1) {
       const pag = paginationPages(page, totalPages);
-      paginationSubcategories.innerHTML = pag; // додаємо в div розмітку сторінок
+      paginationSubcategories.innerHTML = pag;
     }
     paginationSubcategories.addEventListener(
       'click',
       onPaginationSubcategoriesPage
     );
-    // pagination.addEventListener('click', onPaginationSubcategoriesPage); // вішаємо на дів з кнопками нумерації сторінок слухача подій при кліку
   } catch (error) {
     createIziToastError('Error');
   }
 }
 
 async function getExercisesByFilter(filterValue, nameValue, currentPage) {
-  // в запиті можливі три ключі, тому відповідно до значення фільтра пишемо цей ключ
   try {
     if (filterValue === 'Muscles') {
       const response = await axios.get(`${BASE_URL}/exercises`, {
@@ -165,26 +161,22 @@ async function onPaginationSubcategoriesPage(e) {
     return;
   }
   onScroll();
-  currentPage = e.target.textContent; // при кліку на цифру сторінки будемо діставати цифру (текст-контент кнопки: 1, 4, 7...)
+  currentPage = e.target.textContent;
   try {
-    // запит на картки по фільтру
     const { results } = await getExercisesByFilter(
       filterValue,
       nameValue,
       currentPage
     );
-    exerciseFiltersListSubcategories.innerHTML = createMarkUp(results); // робимо розмітку підкатегорій відповідно до номеру сторінки
+    exerciseFiltersListSubcategories.innerHTML = createMarkUp(results);
   } catch (error) {
     createIziToastError('Error');
   }
 }
 
-// вішаємо слухач на дів з цифрами сторінок
-
 async function onPaginationPagesbyFilter(e) {
   currentPage = e.target.textContent;
   try {
-    // запит на картки по фільтру
     const { results } = await getExercise(filterValue, currentPage);
     exerciseFiltersList.innerHTML = markupExercises(results);
   } catch (error) {

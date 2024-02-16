@@ -185,10 +185,7 @@
     gap: 67px;
   }
   .main-part-name {
-    color: #1b1b1b;
-    font-family: 'DM Sans', sans-serif;
     font-size: 24px;
-    line-height: 1.33;
   }
 
   .list-exercises {
@@ -208,7 +205,7 @@
   }
   .workout-card {
     flex-basis: calc((100% - 40px) / 3);
-    height: 141px;
+    height: 155px;
   }
   .exercises-form {
     min-width: 273px;
@@ -218,7 +215,6 @@
   }
 
   .exercise-category-list {
-    flex-direction: column;
     column-gap: 20px;
   }
   .exercise-filters-list-subcategories {

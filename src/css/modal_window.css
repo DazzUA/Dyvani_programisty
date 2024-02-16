@@ -25,13 +25,9 @@
     max-width: 100%;
     border-radius: 20px;
     border: none;
-    background-color: #FCFCFC;
+    background-color: #f6f6f6;
     padding: 40px 20px;
     overflow: auto;
-
-    /* box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
-        0px 1px 3px rgba(0, 0, 0, 0.12),
-        0px 2px 1px rgba(0, 0, 0, 0.2); */
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -45,8 +41,8 @@
     width: 24px;
     height: 24px;
     border: none;
+    border-radius: 30px;
     padding: 0;
-    border-radius: 50%;
     background-color: #E7E9FC;
     cursor: pointer;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -70,9 +66,8 @@
 } */
 
 .close-modal-icon {
-    stroke: black;
-    border-radius: 50%;
-
+    stroke: #1b1b1b;
+    fill: #ffffff;
 }
 
 .modal-image {
@@ -90,10 +85,10 @@
 }
 
 .modal-title {
-    font-family: var(--font-family);
+    font-family: "DM Sans", sans-serif;
     font-weight: 500;
     font-size: 20px;
-    line-height: 100%;
+    line-height: 1;
     color: #1b1b1b;
     margin-bottom: 10px;
 }
@@ -107,16 +102,19 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
+    width: 118px;
+    height: 18px;
     gap: 8px;
     margin-bottom: 16px;
 }
 
 .number-rating {
-    font-family: var(--font-family);
+    font-family: "DM Sans", sans-serif;
     font-weight: 400;
     font-size: 12px;
     line-height: 1.5;
     color: #1b1b1b;
+    padding-top: 2px;
 }
 
 .rating-body {
@@ -147,7 +145,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    color: #ffd300;
+    color: #eea10c;
 }
 
 .rating-items {
@@ -168,6 +166,7 @@
 
 .modal-list {
     width: 295px;
+    height: 100px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -177,6 +176,7 @@
 }
 
 .modal-list-item {
+    height: 40px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -207,7 +207,7 @@
     font-family: "DM Sans", sans-serif;
     font-weight: 500;
     font-size: 14px;
-    line-height: 1.28571;
+    line-height: 1.29;
     color: #1b1b1b;
 }
 
@@ -217,7 +217,7 @@
     font-family: "DM Sans", sans-serif;
     font-weight: 400;
     font-size: 14px;
-    line-height: 1.28571;
+    line-height: 1.29;
     color: rgba(27, 27, 27, 0.6);
     margin-top: 16px;
     margin-bottom: 40px;
@@ -229,19 +229,22 @@
 
 
 .add-remove-favorites {
-
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    gap: 9px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 8px;
     border-radius: 30px;
     padding: 12px 83px;
     width: 295px;
     height: 42px;
     background-color: #7e847f;
-    color: #f6f6f6;
     border: none;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    color: #f6f6f6;
 }
 
 
@@ -249,15 +252,15 @@
 .heart-modal-icon {
     position: absolute;
     right: 60px;
-    bottom: 11px;
+    bottom: 12px;
     stroke: #f6f6f6;
     fill: #7e847f;
 
 }
 
 .vector {
-    stroke: #7e847f;
-    width: 280px;
+    stroke: rgba(27, 27, 27, 0.2);
+    width: 295px;
 
 }
 
@@ -283,18 +286,75 @@
     }
 
     .modal-image {
-        width: 270px;
+        min-width: 270px;
         height: 259px;
         margin-right: 25px;
     }
 
     .image-gif {
         width: 270px;
-        height: 259px;
+        min-height: 259px;
+    }
+
+    .modal-title {
+        font-family: "DM Sans", sans-serif;
+        font-size: 24px;
+        line-height: 1.33;
+        margin-bottom: 8px;
+    }
+
+    .modal-rating {
+        margin-bottom: 7px;
+    }
+
+    .vector {
+        width: 342px;
+
+    }
+
+    .modal-list {
+        width: 342px;
+        height: 96px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    .description {
+        width: 342px;
+        margin-bottom: 30px;
+    }
+
+    .add-remove-favorites {
+        height: 48px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .heart-modal-icon {
+        right: 110px;
+        bottom: 16px;
     }
 
 
 }
 
 
-@media screen and (min-width: 1440px) {}
+@media screen and (min-width: 1440px) {
+    .modal {
+        max-width: 732px;
+    }
+
+    .modal-image {
+        margin-right: 30px;
+    }
+
+    .heart-modal-icon {
+        right: 112px;
+
+    }
+
+}

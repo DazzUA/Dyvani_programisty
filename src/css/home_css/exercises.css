@@ -84,11 +84,11 @@
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
   padding: 16px;
-  height: 200px;
+  height: 165px;
 }
 .card-header {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   align-items: center;
   gap: 57px;
 }
@@ -111,13 +111,17 @@
 .main-part-name {
   color: #1b1b1b;
   font-family: 'DM Sans', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.33;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 216px;
 }
 
 .card-main-part {
   display: flex;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
   align-items: center;
   gap: 16px;
 }
@@ -165,7 +169,6 @@
 
   .workout-card {
     flex-basis: calc((100% - 14px) / 2);
-    height: 195px;
   }
   .card-main-part {
     margin-bottom: 8px;
@@ -176,7 +179,7 @@
   .main-part-name {
     color: #1b1b1b;
     font-family: 'DM Sans', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 1.33;
   }
 
@@ -194,7 +197,7 @@
   }
   .workout-card {
     flex-basis: calc((100% - 40px) / 3);
-    height: 185px;
+    height: 141px;
   }
   .exercises-form {
     min-width: 273px;
@@ -206,9 +209,6 @@
   .exercise-category-list {
     flex-direction: column;
     column-gap: 20px;
-  }
-  .card-main-part {
-    margin-bottom: 24px;
   }
   .exercise-filters-list-subcategories {
     row-gap: 8px;

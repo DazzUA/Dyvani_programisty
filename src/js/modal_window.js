@@ -19,6 +19,7 @@ if (body.classList.contains('home-style')) {
   button.addEventListener('click', modalCard);
   buttonSearch.addEventListener('click', modalCard);
 }
+
 if (body.classList.contains('favorites-style')) {
   buttonFavorite.addEventListener('click', favoriteDeleteCard);
 }
@@ -51,6 +52,7 @@ async function modalCard(event) {
     document.addEventListener('keydown', closeEscapeFunc);
     modalBackdrop.addEventListener('click', closeBackdropFunc);
     modalClose.addEventListener('click', closeModalFunc);
+
     function closeModalFunc(event) {
       if (event.target === modalClose) {
         hideModal();

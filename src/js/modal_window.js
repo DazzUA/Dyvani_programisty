@@ -1,12 +1,16 @@
 import axios from 'axios';
 import icons from '/img/symbol-defs.svg';
-import { toggleFavorite, deleteCard } from './favorites_js/favorites_section';
+import {
+  toggleFavorite,
+  createFavoriteCardMarkup,
+} from './favorites_js/favorites_section';
 
 const modalBackdrop = document.querySelector('.backdrop');
 const button = document.querySelector('.exercise-filters-list-subcategories');
 const buttonSearch = document.querySelector('.search-list');
 const body = document.querySelector('body');
 const buttonFavorite = document.querySelector('.favorites-list');
+const favoritesList = document.querySelector('.favorites-list');
 
 const openClass = 'is-open';
 let cardObj = {};
@@ -166,7 +170,7 @@ async function favoriteDeleteCard(event) {
     addRemoveFavorites = document.querySelector('.add-remove-favorites');
     addRemoveFavorites.textContent = ' Remove from ';
     textBtn = addRemoveFavorites.textContent;
-    addRemoveFavorites.addEventListener('click', addRemoveFavoritesFunc);
+    addRemoveFavorites.addEventListener('click', removeFavoritesFunc);
 
     const modalClose = document.querySelector('.close-modal-icon');
 
@@ -182,6 +186,24 @@ async function favoriteDeleteCard(event) {
     }
   } catch (error) {
   } finally {
+  }
+}
+
+function removeFavoritesFunc() {
+  favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+  if (textBtn.trim().toLowerCase() == 'add to favorites') {
+    addRemoveFavorites.textContent = ' Remove from ';
+    textBtn = addRemoveFavorites.textContent;
+    toggleFavorite(cardObj);
+    renderFavoriteCardsFunc();
+  } else if (textBtn.trim().toLowerCase() == 'remove from') {
+    addRemoveFavorites.textContent = ' Add to favorites ';
+    textBtn = addRemoveFavorites.textContent;
+    favorites = favorites.filter(item => item._id !== cardObj._id);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    renderFavoriteCardsFunc();
   }
 }
 
@@ -238,4 +260,16 @@ function enableScroll() {
   document.body.style.width = '';
   document.body.style.top = '';
   window.scrollTo(0, scrollPosition);
+}
+
+function renderFavoriteCardsFunc() {
+  favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  // Очищаємо поточні карточки зі списку
+  favoritesList.innerHTML = '';
+  // Рендеримо кожну карточку у списку
+  favorites.forEach(elem => {
+    const markup = createFavoriteCardMarkup(elem);
+    // Вставляємо розмітку карточки у список улюблених елементів
+    favoritesList.insertAdjacentHTML('beforeend', markup);
+  });
 }

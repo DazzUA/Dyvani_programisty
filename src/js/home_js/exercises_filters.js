@@ -8,7 +8,7 @@ const exerciseFiltersList = document.querySelector('.exercise-filters-list');
 const pagination = document.querySelector('.pagination');
 const form = document.querySelector('.exercises-form');
 const exercises = document.querySelector('.exercises ');
-
+const titleExercises = document.querySelector('.title-exercises');
 const exerciseFiltersListSubcategories = document.querySelector(
   '.exercise-filters-list-subcategories'
 );
@@ -83,6 +83,7 @@ async function filterBtnClick(event) {
     return;
   }
   onScroll();
+  titleExercises.innerHTML = 'Exercises';
   searchList.innerHTML = '';
   searchPagination.innerHTML = '';
   event.preventDefault();

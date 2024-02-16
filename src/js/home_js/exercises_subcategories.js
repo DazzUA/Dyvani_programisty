@@ -16,6 +16,7 @@ const exerciseFiltersListSubcategories = document.querySelector(
   '.exercise-filters-list-subcategories'
 );
 const form = document.querySelector('.exercises-form');
+const titleExercises = document.querySelector('.title-exercises');
 
 const BASE_URL = 'https://energyflow.b.goit.study/api';
 let currentPage = 1;
@@ -40,6 +41,7 @@ async function onCardClick(event) {
 
   filterValue = filter; //Muscles   // тепер можемо отримати li дата-атрибути
   nameValue = name; // abductors
+  titleExercises.innerHTML = `Exercises /<span class='span-title-exercises'> ${nameValue}</span>`;
 
   try {
     const { page, totalPages, results } = await getExercisesByFilter(

@@ -227,6 +227,9 @@
   .card-header {
     gap: 185px;
   }
+  .main-part-name {
+    width: 318px;
+  }
 }
 
 @media screen and (min-width: 768px) {

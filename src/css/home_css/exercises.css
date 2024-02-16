@@ -5,7 +5,6 @@
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  row-gap: 20px;
   column-gap: 14px;
   margin-bottom: 32px;
 }
@@ -29,7 +28,7 @@
 }
 
 .item-exercises {
-  padding: 7px 10px;
+  padding: 7px 14px;
   color: rgb(27, 27, 27);
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
@@ -50,7 +49,7 @@
   align-items: center;
   justify-content: space-between;
   height: 42px;
-  min-width: 280px;
+  min-width: 295px;
 }
 
 .exercises-form .search-input::placeholder {
@@ -85,9 +84,30 @@
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
   padding: 16px;
-  height: 185px;
+  height: 200px;
 }
-
+.card-header {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+  gap: 57px;
+}
+.workout {
+  border-radius: 15px;
+  background-color: #7e847f;
+  padding: 5px 8px;
+  text-transform: uppercase;
+  color: #f6f6f6;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  margin-right: 16px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .main-part-name {
   color: #1b1b1b;
   font-family: 'DM Sans', sans-serif;
@@ -100,15 +120,6 @@
   margin-bottom: 12px;
   align-items: center;
   gap: 16px;
-}
-
-@media screen and (min-width: 375px) {
-  .item-exercises {
-    padding: 7px 14px;
-  }
-  .exercises-form {
-    min-width: 295px;
-  }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767.98px) {
@@ -149,19 +160,18 @@
   }
   .exercise-category-list {
     width: 100%;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
     column-gap: 14px;
-    margin-bottom: 32px;
   }
 
   .workout-card {
     flex-basis: calc((100% - 14px) / 2);
-    background-color: rgb(255, 255, 255);
-    border-radius: 15px;
-    padding: 16px;
-    height: 185px;
+    height: 195px;
+  }
+  .card-main-part {
+    margin-bottom: 8px;
+  }
+  .card-header {
+    gap: 67px;
   }
   .main-part-name {
     color: #1b1b1b;
@@ -184,9 +194,6 @@
   }
   .workout-card {
     flex-basis: calc((100% - 40px) / 3);
-    background-color: rgb(255, 255, 255);
-    border-radius: 15px;
-    padding: 16px;
     height: 185px;
   }
   .exercises-form {
@@ -202,6 +209,12 @@
   }
   .card-main-part {
     margin-bottom: 24px;
+  }
+  .exercise-filters-list-subcategories {
+    row-gap: 8px;
+  }
+  .card-header {
+    gap: 185px;
   }
 }
 
@@ -356,14 +369,6 @@
   border-radius: 18px;
 }
 
-/* ТУТ ПОЧИНАЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises.subcategories.js */
-
-.card-header {
-  display: flex;
-  margin-bottom: 29px;
-  justify-content: space-between;
-}
-
 .card-footer {
   display: flex;
   gap: 7px;
@@ -380,7 +385,6 @@
   stroke: #1b1b1b;
   fill: white;
   border: none;
-  margin-left: 50px;
   background-color: transparent;
 }
 .workout-wrapper {
@@ -414,18 +418,6 @@
   text-transform: uppercase;
 }
 
-.workout {
-  border-radius: 15px;
-  background-color: #7e847f;
-  padding: 5px 8px;
-  text-transform: uppercase;
-  color: #f6f6f6;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: normal;
-  margin-right: 16px;
-}
 .rating-wrapper {
   display: flex;
   gap: 2px;
@@ -457,11 +449,13 @@
   font-size: 16px;
   line-height: 1.5;
   outline: none;
+  width: 250px;
 }
-
-/* ТУТ ЗАКІНЧУЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises.subcategories.js */
-
-/* стили для сообщения об отсутствии результатов поиска в файле exercises_search.js */
+@media screen and (min-width: 768px) {
+  .search-input {
+    width: 215px;
+  }
+}
 
 .no-results {
   padding-top: 164px;
@@ -491,8 +485,6 @@
 .accent-text {
   color: #7e847f;
 }
-/* Тут закончились стили для сообщения об отсутствии результатов поиска в файле exercises_search.js */
-/* ТУТ ПОЧИНАЮТЬСЯ СТИЛІ ДО ФАЙЛУ exercises_search.js */
 
 .search-list {
   display: flex;

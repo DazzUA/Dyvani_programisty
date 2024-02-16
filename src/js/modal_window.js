@@ -1,28 +1,19 @@
 import axios from 'axios';
 import icons from '/img/symbol-defs.svg';
-import {
-  toggleFavorite,
-  deleteCard,
-  deleteLocalStorageId,
-} from './favorites_js/favorites_section';
+import { toggleFavorite, deleteCard } from './favorites_js/favorites_section';
 
-const modalBackdrop = document.querySelector('.Backdrop');
-const card = document.querySelector('.Modal');
+const modalBackdrop = document.querySelector('.backdrop');
 const button = document.querySelector('.exercise-filters-list-subcategories');
 const buttonSearch = document.querySelector('.search-list');
 const body = document.querySelector('body');
 const buttonFavorite = document.querySelector('.favorites-list');
 
-const messageInfo = document.querySelector('.message-favorites');
-const paginationBlock = document.querySelector('.favorites-pagination-block');
-
-const openClass = 'IsOpen';
+const openClass = 'is-open';
 let cardObj = {};
 let ratingActive, ratingValue;
 let addRemoveFavorites;
 let scrollPosition;
 let textBtn;
-// const test = 'Add to favorites';
 
 if (body.classList.contains('home-style')) {
   button.addEventListener('click', modalCard);
@@ -50,62 +41,39 @@ async function modalCard(event) {
       span.textContent =
         span.textContent.charAt(0).toUpperCase() + span.textContent.slice(1);
     });
-    addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
+    addRemoveFavorites = document.querySelector('.add-remove-favorites');
     textBtn = addRemoveFavorites.textContent;
 
     addRemoveFavorites.addEventListener('click', addRemoveFavoritesFunc);
-    const modalClose = document.querySelector('.CloseModalIcon');
 
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        hideModal();
-        enableScroll();
-      }
-    });
-    modalBackdrop.addEventListener('click', function (event) {
-      if (event.target === modalBackdrop) {
-        hideModal();
-        enableScroll();
-      }
-    });
-    modalClose.addEventListener('click', function (event) {
+    const modalClose = document.querySelector('.close-modal-icon');
+
+    document.addEventListener('keydown', closeEscapeFunc);
+    modalBackdrop.addEventListener('click', closeBackdropFunc);
+    modalClose.addEventListener('click', closeModalFunc);
+    function closeModalFunc(event) {
       if (event.target === modalClose) {
         hideModal();
         enableScroll();
+        modalClose.removeEventListener('click', closeModalFunc);
       }
-    });
+    }
+  } catch (error) {
   } finally {
-    // catch (error) {
-    // }
   }
 }
 
 function addRemoveFavoritesFunc() {
-  console.log(textBtn);
   if (textBtn.trim().toLowerCase() == 'add to favorites') {
-    console.log('add');
     addRemoveFavorites.textContent = ' Remove from ';
     textBtn = addRemoveFavorites.textContent;
     toggleFavorite(cardObj);
   } else if (textBtn.trim().toLowerCase() == 'remove from') {
-    console.log('remove');
     addRemoveFavorites.textContent = ' Add to favorites ';
     textBtn = addRemoveFavorites.textContent;
-    console.log(cardObj._id);
-    deleteLocalStorageId(cardObj._id);
+    deleteCard(cardObj._id);
   }
 }
-
-// function addFavorites() {
-//   toggleFavorite(cardObj);
-//   addRemoveFavorites.innerText = ' Remove from ';
-// }
-
-// function removeFavorites() {
-//   deleteCard(cardObj._id);
-//   console.log(cardObj._id);
-//   addRemoveFavorites.innerText = ' Add to favorites ';
-// }
 
 async function fetchImages(id) {
   const url = `https://energyflow.b.goit.study/api/exercises/${id}`;
@@ -118,48 +86,48 @@ async function fetchImages(id) {
 }
 
 function displayImages(cardObj) {
-  const markup = `<div class="Modal">
-   <button class="ModalClose" type="button">
-          <svg class="CloseModalIcon" width="25" height="25">
+  const markup = `<div class="modal">
+   <button class="modal-close" type="button">
+          <svg class="close-modal-icon" width="25" height="25">
             <use href="${icons}#icon-close"></use>
           </svg>
         </button>
-  <div class="ModalImage">     
-  <img class="ImageGif" src="${cardObj.gifUrl}" alt="imagegif"/>
+  <div class="modal-image">     
+  <img class="image-gif" src="${cardObj.gifUrl}" alt="imagegif"/>
   </div><div>
-  <h3 class="ModalTitle">${cardObj.name}</h3>
-  <div class="ModalRating">
-  <div class="NumberRating">${cardObj.rating}</div>
-  <div class="RatingBody">
-    <div class="RatingActive"></div>
-    <div class="RatingItems">
-      <input type="radio" class="RatingItem" value="1" name="Rating" />
-      <input type="radio" class="RatingItem" value="2" name="Rating" />
-      <input type="radio" class="RatingItem" value="3" name="Rating" />
-      <input type="radio" class="RatingItem" value="4" name="Rating" />
-      <input type="radio" class="RatingItem" value="5" name="Rating" />
+  <h3 class="modal-title">${cardObj.name}</h3>
+  <div class="modal-rating">
+  <div class="number-rating">${cardObj.rating}</div>
+  <div class="rating-body">
+    <div class="rating-active"></div>
+    <div class="rating-items">
+      <input type="radio" class="rating-item" value="1" name="Rating" />
+      <input type="radio" class="rating-item" value="2" name="Rating" />
+      <input type="radio" class="rating-item" value="3" name="Rating" />
+      <input type="radio" class="rating-item" value="4" name="Rating" />
+      <input type="radio" class="rating-item" value="5" name="Rating" />
     </div>
   </div>
   </div>
   <svg class="vector" width="25" height="2">
             <use href="${icons}#icon-vector"></use>
           </svg>
-  <ul class="ModalList">
-  <li class="ModalListItem"><span class="ItemTitle">Target</span> <span class="ItemData">${cardObj.target}</span></li>
-  <li class="ModalListItem"><span class="ItemTitle">Body Part</span> <span class="ItemData">${cardObj.bodyPart}</span></li>
-  <li class="ModalListItem"><span class="ItemTitle">Equipment</span><span class="ItemData">${cardObj.equipment}</span></li>
-  <li class="ModalListItem"><span class="ItemTitle">Popular</span><span class="ItemData">${cardObj.popularity}</span></li>
-  <li class="ModalListItem"><span class="ItemTitle">Burned Calories</span><span class="ItemData">${cardObj.burnedCalories}/${cardObj.time} min</span></li>
+  <ul class="modal-list">
+  <li class="modal-list-item"><span class="item-title">Target</span> <span class="item-data">${cardObj.target}</span></li>
+  <li class="modal-list-item"><span class="item-title">Body Part</span> <span class="item-data">${cardObj.bodyPart}</span></li>
+  <li class="modal-list-item"><span class="item-title">Equipment</span><span class="item-data">${cardObj.equipment}</span></li>
+  <li class="modal-list-item"><span class="item-title">Popular</span><span class="item-data">${cardObj.popularity}</span></li>
+  <li class="modal-list-item"><span class="item-title">Burned Calories</span><span class="item-data">${cardObj.burnedCalories}/${cardObj.time} min</span></li>
   </ul>
   <svg class="vector" width="25" height="2">
             <use href="${icons}#icon-vector"></use>
           </svg>
-  <p class="Description">${cardObj.description}</p>
-  <button class="AddRemoveFavorites" type="button">Add to favorites
-  <svg class="HeartModalIcon" width="18" height="18">
-            <use href="${icons}#icon-heart"></use>
-          </svg>   
-          </button>
+  <p class="description">${cardObj.description}</p>
+ <div class="button-favourites"> <button class="add-remove-favorites" type="button">Add to favorites</button>
+  <svg class="heart-modal-icon" width="18" height="18">
+            <use href="${icons}#icon-heart"></use></svg>
+             
+          </div>
           </div>
   </div>
   </div> `;
@@ -185,50 +153,41 @@ async function favoriteDeleteCard(event) {
         span.textContent.charAt(0).toUpperCase() + span.textContent.slice(1);
     });
 
-    addRemoveFavorites = document.querySelector('.AddRemoveFavorites');
+    addRemoveFavorites = document.querySelector('.add-remove-favorites');
     addRemoveFavorites.textContent = ' Remove from ';
     textBtn = addRemoveFavorites.textContent;
-    addRemoveFavorites.addEventListener('click', removeFavoritesFunc);
+    addRemoveFavorites.addEventListener('click', addRemoveFavoritesFunc);
 
-    const modalClose = document.querySelector('.CloseModalIcon');
+    const modalClose = document.querySelector('.close-modal-icon');
 
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        hideModal();
-        enableScroll();
-      }
-    });
-    modalBackdrop.addEventListener('click', function (event) {
-      if (event.target === modalBackdrop) {
-        hideModal();
-        enableScroll();
-      }
-    });
-    modalClose.addEventListener('click', function (event) {
+    document.addEventListener('keydown', closeEscapeFunc);
+    modalBackdrop.addEventListener('click', closeBackdropFunc);
+    modalClose.addEventListener('click', closeModalFunc);
+    function closeModalFunc(event) {
       if (event.target === modalClose) {
         hideModal();
         enableScroll();
+        modalClose.removeEventListener('click', closeModalFunc);
       }
-    });
+    }
+  } catch (error) {
   } finally {
-    // catch (error) {
-    // }
   }
 }
 
-function removeFavoritesFunc() {
-  console.log(textBtn);
-  if (textBtn.trim().toLowerCase() == 'add to favorites') {
-    console.log('add');
-    addRemoveFavorites.textContent = ' Remove from ';
-    textBtn = addRemoveFavorites.textContent;
-    toggleFavorite(cardObj);
-  } else if (textBtn.trim().toLowerCase() == 'remove from') {
-    console.log('remove');
-    addRemoveFavorites.textContent = ' Add to favorites ';
-    textBtn = addRemoveFavorites.textContent;
-    console.log(cardObj._id);
-    deleteCard(cardObj._id);
+function closeEscapeFunc(event) {
+  if (event.key === 'Escape') {
+    hideModal();
+    enableScroll();
+    document.removeEventListener('keydown', closeEscapeFunc);
+  }
+}
+
+function closeBackdropFunc(event) {
+  if (event.target === modalBackdrop) {
+    hideModal();
+    enableScroll();
+    modalBackdrop.removeEventListener('click', closeBackdropFunc);
   }
 }
 
@@ -246,8 +205,8 @@ function initRating() {
 }
 
 function initRatingVars() {
-  ratingActive = document.querySelector('.RatingActive');
-  ratingValue = document.querySelector('.NumberRating');
+  ratingActive = document.querySelector('.rating-active');
+  ratingValue = document.querySelector('.number-rating');
 }
 
 function setRatingActiveWidth(index = ratingValue.innerHTML) {

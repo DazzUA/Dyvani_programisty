@@ -1,4 +1,4 @@
-.Backdrop {
+.backdrop {
     position: fixed;
     inset: 0;
     display: flex;
@@ -13,13 +13,13 @@
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.Backdrop.IsOpen {
+.backdrop.is-open {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
 
-.Modal {
+.modal {
     position: absolute;
     top: 40px;
     max-width: 100%;
@@ -35,7 +35,7 @@
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.ModalClose {
+.modal-close {
     position: absolute;
     display: flex;
     align-items: center;
@@ -69,27 +69,27 @@
     
 } */
 
-.CloseModalIcon {
+.close-modal-icon {
     stroke: black;
     border-radius: 50%;
 
 }
 
-.ModalImage {
+.modal-image {
     border-radius: 12px;
     background-color: rgba(27, 27, 27, 0.2);
     background-blend-mode: multiply;
     margin-bottom: 20px;
 }
 
-.ImageGif {
+.image-gif {
     width: 295px;
     height: 258px;
     border-radius: 12px;
     opacity: 0.6;
 }
 
-.ModalTitle {
+.modal-title {
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 20px;
@@ -98,11 +98,11 @@
     margin-bottom: 10px;
 }
 
-.ModalTitle::first-letter {
+.modal-title::first-letter {
     text-transform: uppercase;
 }
 
-.ModalRating {
+.modal-rating {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -111,7 +111,7 @@
     margin-bottom: 16px;
 }
 
-.NumberRating {
+.number-rating {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 12px;
@@ -119,18 +119,18 @@
     color: #1b1b1b;
 }
 
-.RatingBody {
+.rating-body {
     position: relative;
 }
 
-.RatingBody::before {
+.rating-body::before {
     font-size: 20px;
     content: "★★★★★";
     display: block;
     color: rgba(27, 27, 27, 0.2);
 }
 
-.RatingActive {
+.rating-active {
     position: absolute;
     width: 0%;
     height: 100%;
@@ -139,7 +139,7 @@
     overflow: hidden;
 }
 
-.RatingActive::before {
+.rating-active::before {
     font-size: 20px;
     content: "★★★★★";
     position: absolute;
@@ -150,7 +150,7 @@
     color: #ffd300;
 }
 
-.RatingItems {
+.rating-items {
     display: flex;
     position: absolute;
     width: 100%;
@@ -159,14 +159,14 @@
     left: 0;
 }
 
-.RatingItem {
+.rating-item {
     flex: 0 0 20%;
     height: 100;
     opacity: 0;
 }
 
 
-.ModalList {
+.modal-list {
     width: 295px;
     display: flex;
     flex-wrap: wrap;
@@ -176,7 +176,7 @@
     gap: 20px;
 }
 
-.ModalListItem {
+.modal-list-item {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -185,7 +185,7 @@
 }
 
 
-.ItemTitle {
+.item-title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -198,7 +198,7 @@
     color: rgba(27, 27, 27, 0.4);
 }
 
-.ItemData {
+.item-data {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -212,7 +212,7 @@
 }
 
 
-.Description {
+.description {
     width: 295px;
     font-family: "DM Sans", sans-serif;
     font-weight: 400;
@@ -223,9 +223,13 @@
     margin-bottom: 40px;
 }
 
-
-.AddRemoveFavorites {
+.button-favourites {
     position: relative;
+}
+
+
+.add-remove-favorites {
+
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -242,9 +246,10 @@
 
 
 
-.HeartModalIcon {
+.heart-modal-icon {
     position: absolute;
     right: 60px;
+    bottom: 11px;
     stroke: #f6f6f6;
     fill: #7e847f;
 
@@ -258,7 +263,7 @@
 
 
 @media screen and (min-width: 375px) {
-    .Modal {
+    .modal {
 
         max-width: 335px;
 
@@ -267,7 +272,7 @@
 
 
 @media screen and (min-width: 768px) {
-    .Modal {
+    .modal {
         display: flex;
         max-width: 716px;
         padding: 40px 40px;
@@ -277,13 +282,13 @@
         transform: translate(-50%, -50%);
     }
 
-    .ModalImage {
+    .modal-image {
         width: 270px;
         height: 259px;
         margin-right: 25px;
     }
 
-    .ImageGif {
+    .image-gif {
         width: 270px;
         height: 259px;
     }

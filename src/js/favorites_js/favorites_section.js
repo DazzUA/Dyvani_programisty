@@ -306,4 +306,4 @@ function toggleFavorite(obj) {
   }
 }
 
-export { toggleFavorite, deleteCard };
+export { toggleFavorite, createFavoriteCardMarkup };

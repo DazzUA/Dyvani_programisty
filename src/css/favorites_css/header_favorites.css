@@ -6,20 +6,20 @@
 }
 
 @media screen and (min-width: 768px) {
-  .body-container {
+  /* .body-container {
     padding: 180px 0 0;
-  }
+  } */
 }
 
 @media screen and (min-width: 1440px) {
-  .body-container {
+  /* .body-container {
     padding: 156px 0 0;
-  }
+  } */
 }
 
 .header-main-favorites {
   position: absolute;
-  top: 20px;
+  top: 40px;
   width: 100%;
   z-index: 2;
 }
@@ -38,4 +38,30 @@
 
 .mobile-menu.is-open {
   transform: translate(0%);
+}
+@media screen and (min-width: 768px) {
+  .mobile-icons {
+    display: flex;
+    gap: 12px;
+  }
+  .mobile-icons-list {
+    box-sizing: border-box;
+    border: 1px solidrgba(126, 132, 127, 0.2);
+    padding: 8px;
+    border-radius: 10px;
+  }
+  .mobile-icons-list:hover,
+  .mobile-icons-list:focus {
+    border: 1px solid rgb(95, 101, 96);
+    animation: pulse 1s infinite;
+    transition: 0.3s;
+  }
+  .mobile-fill {
+    fill: #7e847f;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+  }
 }

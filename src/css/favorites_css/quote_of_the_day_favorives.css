@@ -1,223 +1,223 @@
-@media only screen and (min-resolution: 192dpi) and (min-width: 375px) {
-    .quote-favorites-img {
-      background-image: url(/img/mob/favorites/women.fav.mob@2x.png);
-    }
-}
-
-@media only screen and (min-resolution: 192dpi) and (min-width: 768px) {
-    .quote-favorites-img {
-      background-image: url(/img/tablet/favorites/women.fav.tab@2x.png);
-    }
-}
-
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 .quote-favorites-icon-div-one {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-    border-radius: 32px;
-    background: rgba(246, 246, 246, 0.10);
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 32px;
+  background: rgba(246, 246, 246, 0.1);
 }
 
 .quote-favorites {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  /* padding-top: 20px; */
+  padding-bottom: 20px;
 }
 
 .quote-favorites-one {
-    border-radius: 30px;
-    width: 335px;
-    min-height: 272px;
-    height: auto;
-    background: #7e847f;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    display: flex;
-    gap: 12px;
+  border-radius: 30px;
+  width: 335px;
+  min-height: 272px;
+  height: auto;
+  background: #7e847f;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  gap: 12px;
 }
 
 .quotefavorites-icon-div-two {
-    position: absolute;
-    padding-top: 40px;
-    padding-left: 287px;
+  position: absolute;
+  padding-top: 40px;
+  padding-left: 287px;
 }
 
 .quote-favorites-icon-two {
-    fill: #f6f6f6;
-    width: 28px;
-    height: 28px;
+  fill: #f6f6f6;
+  width: 28px;
+  height: 28px;
 }
 
 .quote-favorites-img {
-    border-radius: 30px;
-    width: 335px;
-    height: 272px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-image: url(/img/mob/favorites/women.fav.mob.png);
+  border-radius: 30px;
+  width: 335px;
+  height: 272px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(/img/mob/favorites/women.fav.mob.png);
 }
 
 .favorites-quote-div {
-    border-radius: 30px;
-    width: 335px;
-    height: 272px;
-    background: #FFF;
+  border-radius: 30px;
+  width: 335px;
+  height: 272px;
+  background: #fff;
 }
 
 .quote-favorites-icon-div-three {
-    padding-left: 102px;
-    padding-top: 96px;
-    padding-right: 101px;
+  padding-left: 102px;
+  padding-top: 96px;
+  padding-right: 101px;
 }
 
 .quote-favorite-title {
-    color: #F6F6F6;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: "DM Sans";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 28px; 
-    margin-bottom: 14px;
+  color: #f6f6f6;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: 'DM Sans';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  margin-bottom: 14px;
 }
 
 .quoteFavoritesText {
-    color: rgba(246, 246, 246, 0.60);
-    font-family: "DM Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px; 
-    margin-bottom: 25px;
+  color: rgba(246, 246, 246, 0.6);
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 25px;
 }
 
 .quoteFavoritesAuthor {
-    color: #F6F6F6;
-    font-family: "DM Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; 
+  color: #f6f6f6;
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .quote-favorites-icon-div-one {
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 }
 
 .quote-favorites-icon {
-    fill: #f6f6f6;
+  fill: #f6f6f6;
 }
 
 .quote-favorites-icon-two {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .favorites-quote {
-    color: #1B1B1B;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: "DM Sans";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px; 
-    padding-bottom: 6px;
+  color: #1b1b1b;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: 'DM Sans';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  padding-bottom: 6px;
 }
 
 .favorites-quote-text {
-    color: rgba(27, 27, 27, 0.60);
-    font-family: "DM Sans";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 18px;
+  color: rgba(27, 27, 27, 0.6);
+  font-family: 'DM Sans';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
 }
 
+@media screen and (min-resolution: 192dpi) and (max-width: 767px),
+  screen and (min-resolution: 2dppx) and (max-width: 767px),
+  screen and (min-device-pixel-ratio: 2) and (max-width: 767px) {
+  .quote-favorites-img {
+    background-image: url(/img/mob/favorites/women.fav.mob@2x.png);
+  }
+}
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 @media screen and (min-width: 768px) {
+  .quote-favorites {
+    padding-top: 80px;
+    padding-bottom: 16px;
+  }
 
-    .quote-favorites {
-        padding-top: 16px;
-        padding-bottom: 16px;
-    }
+  .quote-favorites-one {
+    border-radius: 50px;
+    width: 736px;
+    height: 302px;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 64px;
+    gap: 16px;
+  }
 
-    .quote-favorites-one {
-        border-radius: 50px;
-        width: 736px;
-        height: 302px;
-        padding-left: 80px;
-        padding-right: 80px;
-        padding-top: 64px;
-        gap: 16px;
-    }
+  .quotefavorites-icon-div-two {
+    padding-top: 32px;
+    padding-left: 608px;
+  }
 
-    .quotefavorites-icon-div-two {
-        padding-top: 32px;
-        padding-left: 608px;
-    }
+  .quote-favorites-icon-two {
+    width: 48px;
+    height: 48px;
+  }
 
-    .quote-favorites-icon-two {
-        width: 48px;
-        height: 48px;
-    }
+  .quote-favorites-img {
+    border-radius: 50px;
+    width: 368px;
+    height: 302px;
+    background-image: url(/img/tablet/favorites/women.fav.tab.png);
+  }
 
-    .quote-favorites-img {
-        border-radius: 50px;
-        width: 368px;
-        height: 302px;
-        background-image: url(/img/tablet/favorites/women.fav.tab.png);
-    }
+  .quote-favorites-two {
+    display: flex;
+  }
 
-    .quote-favorites-two {
-        display: flex;
-    }
+  .favorites-quote-div {
+    border-radius: 50px;
+    width: 368px;
+    height: 302px;
+  }
 
-    .favorites-quote-div {
-        border-radius: 50px;
-        width: 368px;
-        height: 302px;
-    }
-
-    .quote-favorites-icon-div-three {
-        padding-left: 118px;
-        padding-top: 106px;
-        padding-right: 118px;
-    }
+  .quote-favorites-icon-div-three {
+    padding-left: 118px;
+    padding-top: 106px;
+    padding-right: 118px;
+  }
 }
-
+@media screen and (min-resolution: 192dpi) and (min-width: 768px),
+  screen and (min-resolution: 2dppx) and (min-width: 768px),
+  screen and (min-device-pixel-ratio: 2) and (min-width: 768px) {
+  .quote-favorites-img {
+    background-image: url(/img/tablet/favorites/women.fav.tab@2x.png);
+  }
+}
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 @media screen and (min-width: 1440px) {
+  .quote-favorites {
+    display: flex;
+    padding-top: 64px;
+  }
 
-    .quote-favorites {
-        display: flex;
-    }
+  .quote-favorites-one {
+    width: 704px;
+    padding-left: 64px;
+    padding-right: 64px;
+  }
 
-    .quote-favorites-one {
-        width: 704px;
-        padding-left: 64px;
-        padding-right: 64px;
-    }
+  .quotefavorites-icon-div-two {
+    padding-left: 592px;
+  }
 
-    .quotefavorites-icon-div-two {
-        padding-left: 592px;
-    }
+  .quote-favorites-img {
+    width: 352px;
+  }
 
-    .quote-favorites-img {
-        width: 352px;
-    }
+  .favorites-quote-div {
+    width: 352px;
+  }
 
-    .favorites-quote-div {
-        width: 352px;
-    }
-
-    .quote-favorites-icon-div-three {
-        padding-left: 110px;
-        padding-right: 110px;
-    }
+  .quote-favorites-icon-div-three {
+    padding-left: 110px;
+    padding-right: 110px;
+  }
 }

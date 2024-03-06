@@ -31,14 +31,13 @@ let query;
 let resultsArray;
 let page = 1;
 
-// formEl.addEventListener('submit', onSearch);
+formEl.addEventListener('submit', onSearch);
 //Цей код додає обробник подій на подію keydown для поля введення пошукового запиту. В обробнику подій перевіряється, чи натиснута клавіша Enter (keyCode 13), і якщо так, викликається функція onSearch, яка виконує пошук.
 formEl.addEventListener('keydown', function (event) {
   if (event.keyCode === 13) {
     onSearch(event);
   }
 });
-
 async function bodyPart(group, query, page, limit = 9) {
   try {
     const response = await axios.get(`${BASE_URL}/exercises`, {

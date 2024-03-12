@@ -57,17 +57,16 @@ async function getExercises() {
 
 async function fetchDefaultApiUrl() {
   try {
-    const response = await getExercises().then(data => {
-      const { results, totalPages, page } = data;
-      if (results && results.length > 0) {
-        exerciseFiltersList.innerHTML = markupExercises(results);
+    const response = await getExercises();
+    const { results, totalPages, page } = response;
+    if (results && results.length > 0) {
+      exerciseFiltersList.innerHTML = markupExercises(results);
 
-        const pag = paginationPages(page, totalPages);
-        pagination.innerHTML = pag;
-      } else {
-        console.error('No exercises found.');
-      }
-    });
+      const pag = paginationPages(page, totalPages);
+      pagination.innerHTML = pag;
+    } else {
+      console.error('No exercises found.');
+    }
   } catch (error) {
     createIziToastError('Error');
   }

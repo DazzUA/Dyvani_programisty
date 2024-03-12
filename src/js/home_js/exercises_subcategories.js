@@ -29,7 +29,7 @@ async function onCardClick(event) {
   pagination.innerHTML = '';
   exerciseFiltersList.classList.add('visually-hidden');
   exerciseFiltersListSubcategories.classList.remove('visually-hidden');
-  pagination.removeEventListener('click', onPaginationPagesbyFilter);
+  pagination.removeEventListener('click', onPaginationPagesbyFilter); ///???
 
   if (event.target === event.currentTarget) {
     return;
@@ -162,6 +162,18 @@ async function onPaginationSubcategoriesPage(e) {
   }
   onScroll();
   currentPage = e.target.textContent;
+  //
+
+  Array.from(e.currentTarget.children).map(item => {
+    if (item.textContent !== currentPage) {
+      item.classList.remove('pagination-btn-is-active');
+    } else {
+      e.target.classList.add('pagination-btn-is-active');
+    }
+  });
+
+  //
+
   try {
     const { results } = await getExercisesByFilter(
       filterValue,
